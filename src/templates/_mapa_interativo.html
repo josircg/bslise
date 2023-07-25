@@ -1,0 +1,51 @@
+{% load staticfiles %}
+{% load i18n cache %}
+{% cache 0 project_map %}
+<div id="mapaHome" class="mb-5">
+    <div class="mapaContent">
+        <div class="d-flex">
+            <div class="d-sm-flex align-items-center flex-grow-1">
+              <span class="title">{% trans 'Project Map' %}</span>
+            </div>
+            <div id="div-ordenacao">
+                <div class="title-filtros text-white">{% trans "Select the theme" %}</div>
+                <div class="input-group input-group-sm filter-bar">
+                        <select id="orderby" name="orderby" class="custom-select form-control">
+                          <option value="{{ visao_endpoint }}" selected>{% trans 'All Topics' %}</option>
+                            {% for project_topic, endpoint  in project_topics %}
+                              <option value="{{ endpoint }}">{{ project_topic }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+            </div>
+        </div>        
+        <br>
+        <div id="frame-visao" class="">
+          <iframe src="about:blank" title="Visão" id="visao_iframe"></iframe>
+        </div>
+    </div>
+</div>
+{% endcache %}
+
+<script>
+    $(document).ready(function (){
+        let $iframe = $('#visao_iframe');
+
+        function loadDeferredIframe(src) {
+            $iframe.attr('src', src);
+        }
+
+        $('#orderby').change(function (){
+          // change project map
+          let selected_option = $(this).find(":selected").val();
+
+          if (selected_option) {
+            loadDeferredIframe($(this).find(":selected").val());
+          }
+        });
+
+        $(window).on('load', function (){
+            loadDeferredIframe('{{ visao_endpoint }}');
+        });
+    });
+</script>

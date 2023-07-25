@@ -1,0 +1,3950 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Enter Email"
+msgstr "Ingrese su correo electrónico"
+
+msgid "Enter Password"
+msgstr "Ingrese su contraseña"
+
+msgid "Log in"
+msgstr "Iniciar sesión"
+
+#, fuzzy
+#| msgid ""
+#| "We see that your email address is in our database, but that you have not "
+#| "yet confirmed your address. Please search for the confirmation email in "
+#| "your inbox (or spam) to activate your account"
+msgid ""
+"We see that your email address is in our database, but that you have not "
+"yetconfirmed your address. Please search for the confirmation email in your "
+"inbox(or spam) to activate your account"
+msgstr ""
+"Su correo electrónico se encuentra en nuestra base de datos, pero Ud. no "
+"haconfirmado todavía esta dirección. Por favor, busque el correo de "
+"confirmaciónen su bandeja de entrada (o spam) para activar su cuenta"
+
+msgid "I want to receive the newsletter from Civis"
+msgstr ""
+
+#, fuzzy
+#| msgid "Enter Full Name"
+msgid "Enter name"
+msgstr "Ingrese su nombre completo"
+
+msgid "Re-enter Password"
+msgstr "Ingrese de nuevo su contraseña"
+
+msgid "Sign up"
+msgstr "Registrarse"
+
+msgid "Enter old password"
+msgstr "Ingrese su contraseña antigua"
+
+msgid "Enter new password"
+msgstr "Ingrese una nueva contraseña"
+
+msgid "Enter new password (again)"
+msgstr "Ingrese otra vez su nueva contraseña"
+
+msgid "Change Password"
+msgstr "Cambiar contraseña"
+
+msgid "Enter email"
+msgstr "Ingrese su correo electrónico"
+
+msgid "Reset Password"
+msgstr "Restaurar mi contraseña"
+
+msgid ""
+"This email address doesn't have an associated user account. Are you sure "
+"you've registered?"
+msgstr ""
+
+msgid "The two password fields didn't match."
+msgstr ""
+
+#, python-format
+msgid "A user with that %(username)s already exists."
+msgstr ""
+
+msgid "Enter the same password as above, for verification."
+msgstr ""
+
+msgid "Task Email"
+msgstr ""
+
+msgid "Task Module"
+msgstr ""
+
+msgid "Task Name"
+msgstr ""
+
+msgid "Task Params"
+msgstr ""
+
+msgid "Task Description"
+msgstr ""
+
+msgid "Activate your EU-Citizen.Science account."
+msgstr "Active su cuenta EU-Citizen Science"
+
+msgid "Almost done!"
+msgstr ""
+
+msgid ""
+"We sent you an email to confirm your registration. Please, check your inbox"
+msgstr ""
+
+msgid "Activation link invalid or expired!"
+msgstr "Enlace de activación no válido o caducado"
+
+msgid "Go back to home"
+msgstr "Volver a la página de inicio"
+
+#, fuzzy
+#| msgid "Thank you"
+msgid "Thanks, you are in"
+msgstr "Gracias"
+
+msgid "You can start by filling "
+msgstr ""
+
+#, fuzzy
+#| msgid "profile"
+msgid "your personal profile."
+msgstr "perfil"
+
+#, fuzzy, python-format
+#| msgid "Password reset confirmation"
+msgid "Password Reset on %(domain)s"
+msgstr "Cambio de contraseña en %(domain)s"
+
+msgid "Don't have an account?"
+msgstr ""
+
+msgid "Already signed up?"
+msgstr ""
+
+msgid "By clicking on Register, you accept our"
+msgstr ""
+
+msgid "Terms of Use"
+msgstr "Términos de Uso"
+
+msgid "Learn more about how we collect, use and share your information in the"
+msgstr ""
+
+#, fuzzy
+#| msgid "Privacy"
+msgid "Privacy section"
+msgstr "Privacidad"
+
+msgid ", as well as our use of cookies and similar technologies in our"
+msgstr ""
+
+msgid "Cookie Policy"
+msgstr "Política de Cookies"
+
+msgid "Welcome!"
+msgstr "Benvenido!"
+
+msgid "Mark selected posts as published"
+msgstr ""
+
+msgid "Mark selected posts as draft"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+#, fuzzy
+#| msgid "Publisher"
+msgid "Published"
+msgstr "Editora"
+
+#, fuzzy
+#| msgid "Not"
+msgid "No"
+msgstr "No"
+
+msgid "Yes"
+msgstr ""
+
+#, fuzzy
+#| msgid "review"
+msgid "Preview"
+msgstr "Opinar"
+
+#, fuzzy
+#| msgid "Publisher"
+msgid "Save and publish"
+msgstr "Editora"
+
+#, fuzzy
+#| msgid "Go to Organisation"
+msgid "Save as draft"
+msgstr "Ir a la Organización"
+
+msgid "Want to send a text or suggestions for the blog?"
+msgstr ""
+
+msgid "Contact us"
+msgstr "Contacta con nosotras"
+
+#, fuzzy
+#| msgid "Enter email"
+msgid "From email"
+msgstr "Ingrese su correo electrónico"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Surname"
+msgstr "Apellido"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Subject"
+msgstr "Asunto"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Organisation"
+msgstr "Organización"
+
+msgid "Origin"
+msgstr ""
+
+msgid "Describe the file origin"
+msgstr ""
+
+#, fuzzy
+#| msgid "Enter Email"
+msgid "Valid Email"
+msgstr "Email valido"
+
+msgid "Date Created"
+msgstr "Creado en"
+
+msgid "Subscriber"
+msgstr "Asinante"
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Subscribers"
+msgstr "Assinantes"
+
+msgid "Ready"
+msgstr ""
+
+msgid "Queued"
+msgstr ""
+
+msgid "Sent"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Title"
+msgstr "Título"
+
+msgid "Headline"
+msgstr ""
+
+#, fuzzy
+#| msgid "Featured"
+msgid "Featured Title"
+msgstr "Destacado"
+
+#, fuzzy
+#| msgid "Featured"
+msgid "Featured Text"
+msgstr "Destacado"
+
+#, fuzzy
+#| msgid "Go to Resource"
+msgid "Feature Resource"
+msgstr "Ir al Recurso"
+
+msgid "Source HTML"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Sent Count"
+msgstr ""
+
+#, fuzzy
+#| msgid "Read more"
+msgid "Read Count"
+msgstr "Leer más"
+
+msgid "Test newsletter"
+msgstr ""
+
+msgid "Import CSV"
+msgstr ""
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid ""
+"You can reach out by this form, or through the email: <a href='mailto:"
+"civis@ibict.br'>civis@ibict.br</a>"
+msgstr ""
+
+msgid "Refresh captcha"
+msgstr ""
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "Select a CSV UTF-8 file with the following fields separated by commas"
+msgstr ""
+
+msgid "Email, Name (Optional), Organisation (Optional)"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Submitter Contact"
+msgstr "Contacto del remitente/solicitante"
+
+msgid "This email will be sent to submitter of"
+msgstr "Este correo electrónico se enviará al remitente/solicitante"
+
+msgid "Subscribe to our newsletter"
+msgstr ""
+
+msgid ""
+"Sign up to the CIVIS newsletter to get the latest updates on citizen science "
+"initiatives across Latin America"
+msgstr ""
+
+msgid ""
+"You can unsubscribe at any time by clicking the link in the footer of our "
+"emails. For information about our privacy practices, please visit our "
+"website."
+msgstr ""
+
+#, fuzzy
+#| msgid "Contact"
+msgid "Contact Form"
+msgstr "Contacto"
+
+#, fuzzy
+#| msgid "Sucess!"
+msgid "Success!"
+msgstr "¡Éxito!"
+
+#, fuzzy
+#| msgid "Thank you"
+msgid "Thanks for you contact"
+msgstr "Gracias"
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Subscription created from site"
+msgstr "Suscripción creada desde el sitio"
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Subscription updated from site"
+msgstr "Suscripción cambiada desde el sitio"
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Subscription done"
+msgstr "Suscripción efetuada"
+
+msgid "Thank you for your interest in subscribing to our newsletter."
+msgstr "Gracias por su interés en suscribirse a nuestro boletín"
+
+msgid "Confirm your Email"
+msgstr "Confirme tu email"
+
+msgid "Thank you for registering at Civis Newsletter"
+msgstr "Gracias por suscribirse a nuestro boletín"
+
+msgid ""
+"Please check your mailbox.You are going to receive an email to certify that "
+"your email is valid."
+msgstr ""
+
+msgid "Email confirmed"
+msgstr ""
+
+#, fuzzy
+#| msgid "organisation"
+msgid "Confirmation Done!"
+msgstr "organización"
+
+#, fuzzy
+#| msgid "Confirm your Email"
+msgid "Thanks for confirming your email"
+msgstr "Confirme tu email"
+
+#, python-format
+msgid "Email %s have been unsubscribed"
+msgstr ""
+
+msgid "We hope you come back soon."
+msgstr ""
+
+#, fuzzy, python-format
+#| msgid "Newsletter sent"
+msgid "Newsletter %s sent"
+msgstr "Newsletter %s enviada"
+
+#, python-format
+msgid "Added by CSV named %s"
+msgstr ""
+
+msgid "Errors during import"
+msgstr "Errores encontrados"
+
+#, python-format
+msgid "%d lines read"
+msgstr "%d lineas lidas"
+
+#, fuzzy, python-format
+#| msgid "My organisations"
+msgid "%d subscribers added"
+msgstr "%d assinantes inscritos"
+
+#, fuzzy, python-format
+#| msgid "Newsletter sent"
+msgid "Opened newsletter %s email"
+msgstr ""
+
+#, python-format
+msgid "%d test email was sent"
+msgid_plural "%d test mails were sent"
+msgstr[0] "Se ha enviado %d correo de prueba"
+msgstr[1] "Se han enviado %d correos de prueba"
+
+#, fuzzy
+#| msgid "Portuguese"
+msgid "Brazilian Portuguese"
+msgstr "Português"
+
+msgid "Spanish"
+msgstr "Español"
+
+msgid "English"
+msgstr "Inglês"
+
+msgid "Falkland Islands (Malvinas)"
+msgstr "Islas Malvinas"
+
+#, fuzzy
+#| msgid "Not yet moderated"
+msgid "Not moderated"
+msgstr "Aún no revisados"
+
+#, fuzzy
+#| msgid "Event"
+msgid "Events"
+msgstr "Evento"
+
+msgid "Title of the event"
+msgstr "Nombre del evento"
+
+msgid "A brief description of the event"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Location of the Event"
+msgstr "Localización del evento"
+
+msgid "Place"
+msgstr ""
+
+msgid "Start date"
+msgstr ""
+
+msgid "End date"
+msgstr ""
+
+msgid "Hour"
+msgstr ""
+
+msgid "Copy and paste the full event URL."
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid ""
+"Please provide a URL to an external web site for the event. Include http:// "
+"or https://"
+msgstr ""
+
+msgid "Approved"
+msgstr ""
+
+msgid "Event"
+msgstr "Evento"
+
+#, python-format
+msgid "Your event \"%s\" has been approved!"
+msgstr ""
+
+#, fuzzy
+#| msgid "Sort by Most Recent Updated"
+msgid "Go to event page"
+msgstr "Ordenar por añadidos más recientes"
+
+msgid "Editing"
+msgstr "Editar"
+
+#, fuzzy
+#| msgid "New"
+msgctxt "masc"
+msgid "New"
+msgstr "Nuevo"
+
+#, fuzzy
+#| msgid "Event"
+msgid "event"
+msgstr "Evento"
+
+#, fuzzy
+#| msgid ""
+#| "Upon saving this profile, your organisational profile will be submitted "
+#| "for moderation by one of the members of the EU-Citizen.Science "
+#| "consortium. This step is simply to check for ‘spam’ or inappropriate uses "
+#| "of the profile form."
+msgid ""
+"Thank you for submitting an event to the EU-Citizen.Science platform. Upon "
+"clicking on “Add”, the event will immediately show up on the platform but "
+"will be later moderated by one of the platform moderators. This step is "
+"simply to check for spam or inappropriate uses of the platform."
+msgstr ""
+"Al guardar este perfil, los datos de su organización serán enviados "
+"arevisión por uno de los miembros del consorcio de EU-Citizen.Science. Este "
+"paso se realiza solamente para comprobar si es ‘spam’ o un uso inapropiado "
+"del formulario."
+
+#, python-format
+msgid ""
+"\n"
+"    <p>Hello,</p>\n"
+"    <p>\n"
+"      We are pleased to inform you that the event <a href=\"%(domain)s"
+"%(event_url)s\">%(title)s</a>\n"
+"      has been approved.\n"
+"    </p>\n"
+"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>This is an automated email, DO NOT reply.</p>\n"
+"    <p>Greetings,</p>\n"
+"    <p>Civis Team</p>\n"
+"  "
+msgstr ""
+
+msgid "Event info"
+msgstr "Información del evento"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Add"
+msgstr "Anadir"
+
+msgid "Approve"
+msgstr ""
+
+msgid "Do not"
+msgstr ""
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Ongoing <span class='text-pink6'>events</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Upcoming <span class='text-pink6'>Events</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Past <span class='text-pink6'>events</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Event approved"
+msgstr "Evento aprobado"
+
+msgid "Event not approved"
+msgstr "Evento no aprobrado"
+
+msgid "Only staff can approve object"
+msgstr "Sólo el personal puede aprobar el registro"
+
+msgid "Event added correctly"
+msgstr "Evento añadido correctamente"
+
+#, python-format
+msgid "Your event \"%s\" has been submitted!"
+msgstr ""
+
+#, python-format
+msgid "Notification - New event \"%s\" submitted"
+msgstr ""
+
+msgid "Organisations"
+msgstr "Organizaciones"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation name"
+msgstr "Organización"
+
+#, fuzzy
+#| msgid "The name or the organisation"
+msgid "Please write the name of the organisation."
+msgstr "Nombre u organización"
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please provide the URL to the website of the organisation."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+#, fuzzy
+#| msgid ""
+#| "Please briefly describe the organisation (ideally in 500 words or less)"
+msgid "Please briefly describe the organisation (max 3000 characters)."
+msgstr ""
+"Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Please select one."
+msgstr ""
+
+#, fuzzy
+#| msgid "Please upload the logo of your organisation (.jpg or .png)"
+msgid "Please upload the logo of your organisation (.jpg or .png)."
+msgstr "Por favor, añada el logo de su organización (en .jpg o .png)"
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please name the contact person or contact point for the organisation."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation contact point"
+msgstr "Organización"
+
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact point email"
+msgstr "Correo electrónico del punto de contacto"
+
+#, fuzzy
+#| msgid ""
+#| "Please provide the email address of the contact person or contact point. "
+#| "Note you will need permission to do that"
+msgid ""
+"Please provide the email address of the contact person or contact point. "
+"Note you will need permission to do that."
+msgstr ""
+"Por favor, indique la dirección de correo electrónico del contacto de la "
+"organización.Tenga en cuenta que deberá tener permiso para ello"
+
+msgid "Give additional users permission to edit"
+msgstr "Dar permiso a más usuarios para editar"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organization Type"
+msgstr "Tipos de Organización"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organization Types"
+msgstr "Tipos de Organización"
+
+msgid "Criador"
+msgstr ""
+
+#, python-format
+msgid "Your organisation \"%s\" has been approved!"
+msgstr ""
+
+msgid "Confirm delete"
+msgstr "Confirmar eliminación"
+
+msgid ""
+"You are going to delete this organisation, this procedure is irreversible."
+msgstr "Ud. va a eliminar esta organización. El proceso es irreversible."
+
+msgid "Do you want to proceed?"
+msgstr "¿Desea continuar?"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Order by"
+msgstr "Ordenar por"
+
+#, fuzzy
+#| msgid "Most Recent"
+msgid "Most Recent"
+msgstr "Ordenar por añadidos más recientes"
+
+#, fuzzy
+#| msgid "Full Name"
+msgid "By Name"
+msgstr "Nombre Completo"
+
+#, fuzzy
+#| msgid "Filter"
+msgid "Filter by"
+msgstr "Filtrar"
+
+msgid "Country"
+msgstr "País"
+
+#, fuzzy
+#| msgid "Keywords"
+msgid "keyword:"
+msgstr "Palabras clave"
+
+#, fuzzy
+#| msgid "Country"
+msgid "country"
+msgstr "País"
+
+msgid "type:"
+msgstr "tipo:"
+
+msgid "Clear current search query and filters"
+msgstr "Borra la búsqueda actual"
+
+msgid "organisations"
+msgstr "organizaciones"
+
+msgid "organisation"
+msgstr "organización"
+
+msgid "found"
+msgstr "encontradas"
+
+#, fuzzy
+#| msgid "New"
+msgctxt "fem"
+msgid "New"
+msgstr "Nuevo"
+
+#, fuzzy
+#| msgid ""
+#| "Thank you for proposing a new citizen science resource to be shared on "
+#| "the EU-Citizen.Science Platform. Please fill in all of the mandatory "
+#| "information in the fields below (indicated with an asterisk*), and as "
+#| "much of the non-mandatory information as possible."
+msgid ""
+"Thank you for creating a profile for your organisation on the EU-Citizen."
+"Science platform. This can be linked with the personal profiles of the "
+"people in your organisation, the project profiles that your organisation is "
+"involved in, and the resource profiles or the training resources that were "
+"published by your organisation. Please fill in all of the mandatory "
+"information in the fields below (indicated with an asterisk*), and as much "
+"of the non-mandatory information as possible."
+msgstr ""
+"Gracias por proponer un nuevo recurso de ciencia ciudadana y compartirlo en "
+"laPlataforma EU-Citizen.Science. Por favor, complete toda la información "
+"requerida en los siguientes campos (marcados por un asterisco*), así como la "
+"información noesencial que sea posible."
+
+#, fuzzy
+#| msgid ""
+#| "Please fill in all of the mandatory information in the fields below "
+#| "(indicated with an asterisk*), and as much of the non-mandatory "
+#| "information as possible."
+msgid ""
+"Fill in all mandatory information (indicated with an asterisk*) and as much "
+"optional information as possible."
+msgstr ""
+"Por favor, complete la información requerida en los siguientes "
+"campos(marcados por un asterisco*), así como la información no esencialque "
+"sea posible"
+
+#, fuzzy
+#| msgid ""
+#| "Upon saving this profile, your organisational profile will be submitted "
+#| "for moderation by one of the members of the EU-Citizen.Science "
+#| "consortium. This step is simply to check for ‘spam’ or inappropriate uses "
+#| "of the profile form."
+msgid ""
+"Upon saving this profile, your organisational profile will immediately show "
+"up on the platform but will be later moderated by one of the platform "
+"moderators. This step is simply to check for spam or inappropriate uses of "
+"the profile form."
+msgstr ""
+"Al guardar este perfil, los datos de su organización serán enviados "
+"arevisión por uno de los miembros del consorcio de EU-Citizen.Science. Este "
+"paso se realiza solamente para comprobar si es ‘spam’ o un uso inapropiado "
+"del formulario."
+
+msgid ""
+"We would like to point out that, as the author of this profile, you have to "
+"clear the image rights and copyrights of the content you are submitting. "
+"Please indicate the author or copyright holder of pictures. You may need to "
+"obtain express written permission from them."
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"    <p>Hello,</p>\n"
+"    <p>We are pleased to inform you that the organisation <a href="
+"\"%(domain)s%(organisation_url)s\">%(name)s</a> has been approved.</p>\n"
+"    <p>\n"
+"      You can make updates or changes to this organisation's profile by "
+"accessing the section my submissions in\n"
+"      your <a href=\"%(domain)s%(my_profile_url)s\">Personal Area</a> (see "
+"top right corner of platform menu).\n"
+"    </p>\n"
+"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>This is an automated email, DO NOT reply.</p>\n"
+"    <p>Greetings,</p>\n"
+"    <p>Civis Team</p>\n"
+"  "
+msgstr ""
+
+#, fuzzy
+#| msgid "organisations"
+msgid "organisations found"
+msgstr "organizaciones"
+
+#, fuzzy
+#| msgid "organisation"
+msgid "organisation found"
+msgstr "organización"
+
+msgid "Projects"
+msgstr "Proyectos"
+
+msgid "Resources"
+msgstr "Recursos"
+
+#, fuzzy
+#| msgid "in Resources"
+msgid "Training resources"
+msgstr "en Recursos"
+
+msgid "Members"
+msgstr "Miembros"
+
+msgid "Go to Organisation"
+msgstr "Ir a la Organización"
+
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact e-mail"
+msgstr "Correo electrónico del punto de contacto"
+
+msgid "Edit Organisation"
+msgstr "Editar Organización"
+
+msgid "Delete Organisation"
+msgstr "Eliminar Organización"
+
+msgctxt "fem"
+msgid "Approved"
+msgstr "Aprobada"
+
+msgid "Not"
+msgstr "No"
+
+msgid "Contact submitter"
+msgstr ""
+
+#, fuzzy
+#| msgid "Moderation"
+msgid "Main information"
+msgstr "Revisión"
+
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact information"
+msgstr "Correo electrónico del punto de contacto"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation logo"
+msgstr "Organización"
+
+msgid "Location"
+msgstr "Localización"
+
+msgid ""
+"Locate on the map or inform in the field below the city or region and "
+"country of your initiative or organization."
+msgstr ""
+"Localice en el mapa o informe en el campo inferior la ciudad o región y el "
+"país de su iniciativa u organización."
+
+msgid "organisation <span class='text-pink5'>search</span>"
+msgstr "busca <span class='text-pink5'>Organização</span>"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation added"
+msgstr "Organización añadida"
+
+#, python-format
+msgid "Your organisation \"%s\" has been submitted!"
+msgstr ""
+
+#, python-format
+msgid "Notification - New organisation \"%s\" submitted"
+msgstr ""
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation approved"
+msgstr "Tipos de Organización"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation not approved"
+msgstr "Tipos de Organización"
+
+msgid "Platforms"
+msgstr "Plataformas"
+
+#, fuzzy
+#| msgid "The name or the organisation"
+msgid "Please write the name of the network or platform."
+msgstr "Nombre u organización"
+
+#, fuzzy
+#| msgid "Platforms"
+msgid "Platform name"
+msgstr "Plataformas"
+
+#, fuzzy
+#| msgid "URL of the organisation"
+msgid "Please provide the URL of the network or platform."
+msgstr "URL de la organización"
+
+#, fuzzy
+#| msgid ""
+#| "Please briefly describe the organisation (ideally in 500 words or less)"
+msgid "Please briefly describe the network or platform (max 3000 characters)."
+msgstr ""
+"Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
+
+#, fuzzy
+#| msgid "The name or the organisation"
+msgid "Please indicate the spatial scale of the network or platform."
+msgstr "Nombre u organización"
+
+#, fuzzy
+#| msgid "Geographic Extend"
+msgid "Geographic extent"
+msgstr "Localización geográfica"
+
+#, fuzzy
+#| msgid "Country"
+msgid "Countries"
+msgstr "País"
+
+#, fuzzy
+#| msgid "The name or the organisation"
+msgid "Please select the country(ies) related to the network or platform."
+msgstr "Nombre u organización"
+
+#, fuzzy
+#| msgid "Public Contact Point"
+msgid "Platform contact point"
+msgstr "Correo electrónico del punto de contacto"
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid ""
+"Please name the contact person or contact point for the network or platform."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+msgid "Organisation(s)"
+msgstr "Organización(es)"
+
+#, fuzzy
+#| msgid ""
+#| "Organisation(s) contributing the resource (multiple selection separated "
+#| "by comma or pressing enter).         If not listed, please add them <a "
+#| "href=\"/new_organisation\">here</a > before submitting"
+msgid ""
+"Please select the organisation(s) coordinating the platform. If not listed, "
+"please add <a href='/new_organisation' target='_blank'>here</a> before "
+"submitting the network or platform."
+msgstr ""
+"Organización(es) que han contribuido al recurso (en caso de selección "
+"múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
+"favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
+
+msgid "Logo of your network or platform"
+msgstr ""
+
+msgid "This image will be resized to 600x400 pixels."
+msgstr ""
+
+msgid "Logo credit, if applicable"
+msgstr ""
+
+msgid "Network or platform profile image"
+msgstr ""
+
+msgid "This image will be resized to 1100x400 pixels."
+msgstr ""
+
+msgid "Profile image credit, if applicable."
+msgstr ""
+
+#, fuzzy
+#| msgid "Geographic Extend"
+msgid "Geographic extents"
+msgstr "Localización geográfica"
+
+#, fuzzy
+#| msgid "Platforms"
+msgid "Platform"
+msgstr "Plataformas"
+
+#, fuzzy
+#| msgid "platforms"
+msgid "platforms found"
+msgstr "plataformas"
+
+#, fuzzy
+#| msgid "platforms"
+msgid "platform found"
+msgstr "plataformas"
+
+#, fuzzy
+#| msgid "The Platform"
+msgid "platform"
+msgstr "La Plataforma"
+
+#, fuzzy
+#| msgid ""
+#| "Thank you for proposing a new citizen science resource to be shared on "
+#| "the EU-Citizen.Science Platform. Please fill in all of the mandatory "
+#| "information in the fields below (indicated with an asterisk*), and as "
+#| "much of the non-mandatory information as possible."
+msgid ""
+"Thank you for creating a profile for your platform or network on the EU-"
+"Citizen.Science platform. Please fill in all of the mandatory information in "
+"the fields below (indicated with an asterisk*), and as much of the non-"
+"mandatory information as possible."
+msgstr ""
+"Gracias por proponer un nuevo recurso de ciencia ciudadana y compartirlo en "
+"laPlataforma EU-Citizen.Science. Por favor, complete toda la información "
+"requerida en los siguientes campos (marcados por un asterisco*), así como la "
+"información noesencial que sea posible."
+
+msgid "Go to platform or network"
+msgstr ""
+
+#, fuzzy
+#| msgid "Geographic Extend"
+msgid "Geographic extend"
+msgstr "Localización geográfica"
+
+msgid "Network or platform images"
+msgstr ""
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "platform <span class='text-pink5'>search</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Platform added correctly"
+msgstr "Plataforma añadida"
+
+msgid "First Name and Surname"
+msgstr "Nombre y apellidos"
+
+msgid "None"
+msgstr "No hay"
+
+#, fuzzy
+#| msgid "Interest Areas"
+msgid "Interest Areas"
+msgstr "Áreas de interés"
+
+msgid ""
+"Please write or select interest areas, separated by commas or pressing enter"
+msgstr ""
+"Por favor, escriba o seleccione las palabras clave que definen el recurso, "
+"separadas por comas o pulsando enter"
+
+msgid "Profile picture"
+msgstr "Foto del perfil"
+
+msgid "Short Bio and disciplinary background"
+msgstr "Bio y ámbito profesional"
+
+msgid ""
+"ORCID (If you have registered on the ORCID platform for researchers and "
+"havea persistent digital identifier (your ORCID iD) you can add it here to "
+"link thisprofile with your professional information such as affiliations, "
+"grants, publications,peer review, and more.)"
+msgstr ""
+
+msgid "Email verified"
+msgstr ""
+
+#, fuzzy
+#| msgid "profile"
+msgid "{}'s profile"
+msgstr "perfil"
+
+#, fuzzy
+#| msgid "found"
+msgid "users found"
+msgstr "encontradas"
+
+#, fuzzy
+#| msgid "found"
+msgid "user found"
+msgstr "encontradas"
+
+#, fuzzy
+#| msgid "profile"
+msgid "Personal profile"
+msgstr "perfil"
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Submissions"
+msgstr "Mis organizaciones"
+
+#, fuzzy
+#| msgid "Project"
+msgid "Projects (Cooperator)"
+msgstr "Proyecto"
+
+msgid "Bookmarks"
+msgstr ""
+
+#, fuzzy
+#| msgid "Privacy"
+msgid "Privacy center"
+msgstr "Privacidad"
+
+msgid "Edit profile"
+msgstr "Editar Perfil"
+
+#, fuzzy
+#| msgid "Project is going to saved"
+msgid "Projects in bookmarks"
+msgstr "El proyecto va a ser guardado"
+
+msgid "Submitted organisations"
+msgstr "Organizaciones añadidas"
+
+#, fuzzy
+#| msgid "Resources library"
+msgid "Resources in bookmarks"
+msgstr "Biblioteca de recursos"
+
+msgid "Training in bookmarks"
+msgstr ""
+
+#, fuzzy
+#| msgid "Submitted projects"
+msgid "Submitted events"
+msgstr "Proyectos añadidos"
+
+msgid "Personal information"
+msgstr ""
+
+#, fuzzy
+#| msgid "Interest Areas"
+msgid "Bio &amp; Interest Areas"
+msgstr "Áreas de interés"
+
+msgid "Picture"
+msgstr ""
+
+#, fuzzy
+#| msgid "Enter old password"
+msgid "Permissions and password"
+msgstr "Ingrese su contraseña antigua"
+
+msgid ""
+"Your profile is public and visible (your email address will not be shared in "
+"any case)"
+msgstr ""
+
+msgid "The list of content you uploaded is public and visible"
+msgstr ""
+
+#, fuzzy
+#| msgid "Geographical location"
+msgid "General information"
+msgstr "Localización geográfica"
+
+msgid "When"
+msgstr ""
+
+msgid "Profile created on"
+msgstr ""
+
+#, fuzzy
+#| msgid "Last seen"
+msgid "Last seen on"
+msgstr "Última visita"
+
+#, fuzzy
+#| msgid "Submitted projects"
+msgid "<span class='text-pink6'>Projects (Cooperator)</span>"
+msgstr "Proyectos añadidos"
+
+#, fuzzy
+#| msgid "Bio and disciplinary background"
+msgid "Bio and <span class='lightBlue-color'>disciplinary background</span>"
+msgstr "Bio y ámbito profesional"
+
+#, fuzzy
+#| msgid "Interest Areas"
+msgid "Interest and expertise areas"
+msgstr "Áreas de interés"
+
+#, fuzzy
+#| msgid "Submitted projects"
+msgid "Submitted <span class='text-pink6'>projects</span>"
+msgstr "Proyectos añadidos"
+
+#, fuzzy
+#| msgid "Submitted projects"
+msgid "Submitted <span class='text-pink6'>resources</span>"
+msgstr "Proyectos añadidos"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Submitted <span class='text-pink6'>training</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Submitted <span class='text-pink6'>organisations</span>"
+msgstr "Presentado <span class='text-pink6'>organizaciones</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Submitted <span class='text-pink6'>events</span>"
+msgstr "Presentado <span class='text-pink6'>eventos</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "user <span class='text-pink5'>search</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Profile details saved!"
+msgstr "Datos del perfil guardados!"
+
+msgid "Project"
+msgstr "Proyecto"
+
+#, fuzzy
+#| msgid "Project"
+msgid "Project name"
+msgstr "Proyecto"
+
+#, fuzzy
+#| msgid "Insert here the title or name of the resource"
+msgid "Please write the name of the project."
+msgstr "Añada aquí el título o nombre del recurso"
+
+msgid "Please provide the URL to an external website of the project."
+msgstr ""
+
+#, fuzzy
+#| msgid ""
+#| "Please briefly describe the organisation (ideally in 500 words or less)"
+msgid ""
+"Please provide a description of your project here (max 3000 characters)."
+msgstr ""
+"Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
+
+msgid ""
+"Please describe the citizen science aspect(s) of the project and the link of "
+"the project toSAcitizen science using the <a href=\"https://zenodo.org/"
+"record/5127534#.YV8J0dpBxPa\">ECSA 10 Characteristics of Citizen Science</a> "
+"and the <a href=\"https://osf.io/xpr2n/\">ECSA 10 Principles of Citizen "
+"Science</a>. What you introduce in this text field will not appear on the "
+"platform; it is just for moderation purposes (max 2000 characters)."
+msgstr ""
+
+#, fuzzy
+#| msgid "Ten principles of citizen science"
+msgid "Description of citizen science aspects"
+msgstr "Diez principios de la ciencia ciudadana"
+
+#, fuzzy
+#| msgid "Project status"
+msgid "Activity status"
+msgstr "Situación del proyeto"
+
+msgid "Please, select the status of your project."
+msgstr ""
+
+#, fuzzy
+#| msgid ""
+#| "Please write or select interest areas, separated by commas or pressing "
+#| "enter"
+msgid ""
+"Please select or enter 2-3 keywords separated by commas or by pressing enter."
+msgstr ""
+"Por favor, escriba o seleccione las palabras clave que definen el recurso, "
+"separadas por comas o pulsando enter"
+
+msgid "Keywords"
+msgstr "Palabras clave"
+
+msgid "Closest approximate start date of the project"
+msgstr ""
+
+msgid "Approximate end date of the project"
+msgstr ""
+
+msgid "Please select the project topic(s) or field(s) of science."
+msgstr ""
+
+msgid "Topic"
+msgstr ""
+
+msgid "Please select the task(s) undertaken by participants."
+msgstr ""
+
+msgid "Participation Task"
+msgstr "Tarefas dos Participantes"
+
+#, fuzzy
+#| msgid ""
+#| "Please briefly describe the organisation (ideally in 500 words or less)"
+msgid ""
+"Please describe how people can get involved in the project (max 2000 "
+"characters)."
+msgstr ""
+"Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
+
+msgid "How to participate"
+msgstr ""
+
+msgid ""
+"Please indicate any required or suggested equipment to be used in the "
+"project (max 2000 characters)."
+msgstr ""
+
+msgid "Equipment"
+msgstr ""
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please name the contact person or contact point of the project."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+#, fuzzy
+#| msgid "Public Contact Point"
+msgid "Public contact point"
+msgstr "Correo electrónico del punto de contacto"
+
+#, fuzzy
+#| msgid "Please provide the email for the contact person or contact point"
+msgid ""
+"Please provide the email address of the contact person or contact point."
+msgstr ""
+"Por favor, indique la dirección de correo electrónico del contacto de la "
+"organización."
+
+#, fuzzy
+#| msgid ""
+#| "Organisation(s) contributing the resource (multiple selection separated "
+#| "by comma or pressing enter).         If not listed, please add them <a "
+#| "href=\"/new_organisation\">here</a > before submitting"
+msgid ""
+"Please select the organisation coordinating the project. If not listed, "
+"please add it <a href=\"/new_organisation\" target=\"_blank\">here</a> "
+"before submitting the project"
+msgstr ""
+"Organización(es) que han contribuido al recurso (en caso de selección "
+"múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
+"favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
+
+msgid "Lead organisation / coordinator"
+msgstr "Organização Responsável"
+
+#, fuzzy
+#| msgid ""
+#| "Organisation(s) contributing the resource (multiple selection separated "
+#| "by comma or pressing enter).         If not listed, please add them <a "
+#| "href=\"/new_organisation\">here</a > before submitting"
+msgid ""
+"Please select other organisation(s) participating in the project. If not "
+"listed,please add it <a href=\"/new_organisation\" target=\"_blank\">here</"
+"a> before submitting the project"
+msgstr ""
+"Organización(es) que han contribuido al recurso (en caso de selección "
+"múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
+"favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
+
+msgid "Other Organisations"
+msgstr "Otras organizaciones"
+
+msgid ""
+"Please enter the funding agencies of the project (e.g. European "
+"Commission)<br />Select them from the list or add your own <b>ended by comma "
+"or pressing enter</b>."
+msgstr ""
+
+msgid "Funding body"
+msgstr ""
+
+msgid "Funding programme"
+msgstr ""
+
+msgid ""
+"Please indicate the name of the programme that funds or funded the project."
+msgstr ""
+
+msgid "Image for the thumbnail profile"
+msgstr ""
+
+msgid "It will be resized to 600x400 pixels"
+msgstr ""
+
+msgid "Thumbnail credit, if applicable"
+msgstr ""
+
+#, fuzzy
+#| msgid "Project"
+msgid "Project logo"
+msgstr "Proyecto"
+
+msgid "It will be resized to 600x400 pixels)"
+msgstr ""
+
+msgid "Image for the profile heading"
+msgstr ""
+
+msgid "It will be resized to 1100x400 pixels."
+msgstr ""
+
+msgid "Heading image credit, if applicable"
+msgstr ""
+
+msgid ""
+"I want to participate in the #MonthOfTheProjects and agree to be contacted "
+"via email if theproject I am submitting wins the contest.<a href=\"/"
+"blog/2021/05/31/june-monthoftheprojects-eu-citizenscience/\"> Learn more "
+"here!</a>"
+msgstr ""
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please provide a <i>description</i> field translation."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please provide a <i>how to participate</i> field translation."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+#, fuzzy
+#| msgid "Please name the contact person or contact point for the organisation"
+msgid "Please provide a <i>translated equipment</i> field translation."
+msgstr "Por favor, indique la persona o punto de contacto de la organización"
+
+msgid "Needed equipment"
+msgstr ""
+
+#, fuzzy
+#| msgid "Enter email"
+msgid "Cooperator email"
+msgstr "Ingrese su correo electrónico"
+
+msgid ""
+"You can invite a cooperator to this project. Enter his email address here to "
+"send the invitation. Cooperators are authorized to change all registration "
+"information. Therefore, be careful when assigning this role to someone."
+msgstr ""
+
+msgid "You can't invite yourself"
+msgstr ""
+
+msgid "You can't invite project creator"
+msgstr ""
+
+msgid "User already accepted invite for this project"
+msgstr ""
+
+#, fuzzy
+#| msgid "Give additional users permission to edit"
+msgid "Grants an unregistered user permission to edit a project"
+msgstr "Dar permiso a más usuarios para editar"
+
+#, fuzzy
+#| msgid "Projects"
+msgid "Project Status"
+msgstr "Proyectos"
+
+#, fuzzy
+#| msgid "Keywords"
+msgid "Keyword"
+msgstr "Palabras clave"
+
+msgid "Funding Body"
+msgstr ""
+
+#, fuzzy
+#| msgid "Translate"
+msgid "Translated Project"
+msgstr "Traducir"
+
+#, fuzzy
+#| msgid "Not yet moderated"
+msgid "Project not moderated"
+msgstr "Aún no revisados"
+
+#, fuzzy
+#| msgid "Project"
+msgid "Project approved"
+msgstr "Proyecto aprovado"
+
+#, fuzzy
+#| msgid "Project"
+msgid "Project not approved"
+msgstr "Proyecto non aprovado"
+
+#, fuzzy
+#| msgid "Coordinator"
+msgid "Cooperator"
+msgstr "Organização Responsável"
+
+msgid "Invite Accepted"
+msgstr ""
+
+#, fuzzy
+#| msgid "Project locality"
+msgid "Project Permission"
+msgstr "Proyecto"
+
+#, fuzzy
+#| msgid "Project locality"
+msgid "Project Permissions"
+msgstr "Proyecto"
+
+#, python-format
+msgid "Your project \"%s\" has been approved!"
+msgstr ""
+
+#, python-format
+msgid "You was removed from project %s"
+msgstr ""
+
+#, fuzzy
+#| msgid "Featured"
+msgid "Featured"
+msgstr "Destacado"
+
+msgid "Not approved"
+msgstr ""
+
+msgid "Not yet moderated"
+msgstr "Aún no revisados"
+
+msgid "topic:"
+msgstr ""
+
+msgid "status:"
+msgstr ""
+
+msgid "participation task:"
+msgstr "Tarefas dos Participantes"
+
+#, fuzzy
+#| msgid "Projects"
+msgid "projects found"
+msgstr "Proyectos"
+
+#, fuzzy
+#| msgid "Project"
+msgid "project found"
+msgstr "Proyecto"
+
+#, fuzzy
+#| msgid "Project"
+msgid "project"
+msgstr "Proyecto"
+
+msgid ""
+"Thank you for sharing your citizen science project on the EU-Citizen.Science "
+"platform. Please fill in all of the mandatory information in the fields "
+"below (indicated with an asterisk*), and as much of the non-mandatory "
+"information as possible."
+msgstr ""
+
+msgid ""
+"Citizen science embraces a wide range of project types that can be adapted "
+"and applied within diverse situations and disciplines, represent a range of "
+"approaches and historical practices for public participation in scientific "
+"research, and involve participants in a range of activities across the "
+"research lifecycle. For guidance on whether your project can be considered "
+"to be citizen science,"
+msgstr ""
+
+#, fuzzy
+#| msgid "ECSA 10 Principles of Citizen Science"
+msgid "please refer to the ECSA Characteristics of Citizen Science."
+msgstr "los 10 Principios de la Ciencia Ciudadana"
+
+msgid ""
+"In the form below, along with other descriptive information, we require that "
+"you describe the citizen science aspects of your project and the type of "
+"task(s) that participants undertake."
+msgstr ""
+
+msgid ""
+"Your project should engage meaningfully with the ECSA 10 Principles of "
+"Citizen Science."
+msgstr ""
+
+msgid ""
+"Upon saving this profile, your project will be submitted for moderation."
+msgstr ""
+
+msgid "Use Guide"
+msgstr "Guia del uso"
+
+#, python-format
+msgid ""
+"\n"
+"  <p>You were invited by %(creator)s to be cooperator of the project <a "
+"href='%(domain)s/project/%(project_id)s'>%(project)s</a>, registered on the "
+"Civis platform.</p>\n"
+"  <p>This gives you authorization to update or modify information for this "
+"project.</p>\n"
+"  <p>To accept the invitation, <a href='%(domain)s/%(link)s'>click here</a>."
+"</p>\n"
+"  <p>\n"
+"    Civis [pronounced Cívis] is a citizen science platform, developed by the "
+"Brazilian Institute of Information in Science and Technology - IBICT.\n"
+"    Our goal is to offer infrastructure and content that contribute to "
+"broadening the compreension about citizen science,\n"
+"    disseminating its use and supporting the development of projects and the "
+"application of methodologies in this field.\n"
+"  </p>\n"
+"  <p>Civis is open for anyone to register projects, resources and other "
+"citizen science content.</p>\n"
+"  <p>Join the Civis community!</p>\n"
+msgstr ""
+
+#, python-format
+msgid ""
+"\n"
+"  <p>You was removed from project <a href='%(domain)s/project/"
+"%(project_id)s'>%(project)s</a>.</p>\n"
+msgstr ""
+
+msgid "Info"
+msgstr "Información"
+
+msgid "Close"
+msgstr "Cerrar"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid ""
+"projects by title or keywords by typing text directly into the the search bar"
+msgstr ""
+
+msgid "Sort"
+msgstr "Ordenar"
+
+msgid "projects by date or by rating"
+msgstr "proyectos por fecha o por valoración"
+
+msgid "Filter"
+msgstr "Filtrar"
+
+#, fuzzy
+#| msgid "search results by language, theme or category"
+msgid "search results by project status, or topic"
+msgstr "buscar resultados por idioma, temática o categoría"
+
+msgid ""
+"Submitted projects that have been through the moderation process are marked "
+"as 'Moderated'.Only these will show in your search results unless you filter "
+"for 'not yet moderated' or 'All'."
+msgstr ""
+
+msgid "Read more about our"
+msgstr "Leer más sobre nuestro"
+
+msgid "moderation process"
+msgstr "proceso de revisión"
+
+#, fuzzy
+#| msgid "Moderated"
+msgid "Created"
+msgstr "Revisados"
+
+#, fuzzy
+#| msgid "Last updated"
+msgid "Updated"
+msgstr "Último añadido"
+
+msgid "This translation was done before a project profile update."
+msgstr ""
+
+msgid "Plase help the community by improving it"
+msgstr ""
+
+msgid "here"
+msgstr "aquí"
+
+msgid "This project profile is not available in your selected language."
+msgstr "Este perfil de proyecto no está disponible en el idioma seleccionado."
+
+#, fuzzy
+#| msgid ""
+#| "Please indicate the (main) language that the resource is made available"
+msgid "Please help the community by translating it."
+msgstr "Por favor, ayude a la comunidad traduciéndolo."
+
+msgid "from"
+msgstr "De"
+
+msgid "until"
+msgstr "hasta"
+
+msgid "Science Topics"
+msgstr "Temas científicos"
+
+#, fuzzy
+#| msgid "Participation Task"
+msgid "Participation Tasks"
+msgstr "Tarefas dos Participantes"
+
+msgid "Coordinator"
+msgstr "Organização Responsável"
+
+#, fuzzy
+#| msgid "Other Organisations"
+msgid "Other Organisations involved"
+msgstr "Otras organizaciones"
+
+msgid "Go to Project"
+msgstr "Ir al proyecto"
+
+msgid "Edit"
+msgstr "Editar"
+
+#, fuzzy
+#| msgid "Coordinator"
+msgid "Cooperators"
+msgstr "Organização Responsável"
+
+#, fuzzy
+#| msgid "Coordinator"
+msgid "Invite new Cooperators"
+msgstr "Organização Responsável"
+
+msgid "Translate"
+msgstr "Traducir"
+
+msgctxt "fem"
+msgid "Not Approved"
+msgstr ""
+
+#, fuzzy
+#| msgid "Featured"
+msgid "Is featured"
+msgstr "Destacado"
+
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact project submitter"
+msgstr "Correo electrónico del punto de contacto"
+
+msgid "Useful information to classify the project"
+msgstr ""
+
+msgid "Participation information"
+msgstr ""
+
+msgid ""
+"Locate on the map or inform in the field below the city or region and "
+"country of your initiative."
+msgstr ""
+
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact and hosts details"
+msgstr "Correo electrónico del punto de contacto"
+
+msgid "Funding Information"
+msgstr ""
+
+msgid "Project profile images"
+msgstr ""
+
+msgid "Review"
+msgstr "Opinar"
+
+msgid "Rate and comment"
+msgstr "Puntuar y comentar"
+
+msgid "<span class='text-pink5'>search</span> project"
+msgstr "busqueda <span class='text-white'>proyeto</span>"
+
+#, fuzzy
+#| msgid "Coordinator"
+msgid "Delete Cooperator"
+msgstr "Organização Responsável"
+
+msgid "Waiting to accept the invitation"
+msgstr ""
+
+#, fuzzy
+#| msgid "Delete Organisation"
+msgid "Delete Invitation"
+msgstr "Eliminar Organización"
+
+#, fuzzy
+#| msgid "in Projects"
+msgid "Invite cooperators to this project"
+msgstr "en Proyectos"
+
+msgid "Invite"
+msgstr ""
+
+msgid "No invites accepted"
+msgstr ""
+
+msgid "Do you want to delete this Cooperator? This action is permanent."
+msgstr ""
+
+#, fuzzy
+#| msgid ""
+#| "Please indicate the (main) language that the resource is made available"
+msgid "Please indicate the language you want to translate to"
+msgstr "Indique el idioma al que desea traducir"
+
+#, fuzzy
+#| msgid "Go to Organisation"
+msgid "Save translation"
+msgstr "Ir a la Organización"
+
+msgid "Project added correctly"
+msgstr "Proyecto añadido correctamente"
+
+msgid "Completed"
+msgstr ""
+
+#, python-format
+msgid "Invitation to edit Project %s"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password reset successful"
+msgid "Invitation sent succesfully!"
+msgstr "Contraseña restaurada"
+
+#, python-format
+msgid "Invitation sent to an unregistered email (%s)"
+msgstr ""
+
+#, python-format
+msgid "Invitation sent to %s"
+msgstr ""
+
+#, python-format
+msgid "%s accepted invitation to edit project"
+msgstr ""
+
+#, fuzzy
+#| msgid "in Projects"
+msgid "Invitation to edit project accepted!"
+msgstr "en Proyectos"
+
+#, python-format
+msgid "%s removed from project"
+msgstr ""
+
+#, python-format
+msgid "Non registered user (%s) removed from project"
+msgstr ""
+
+msgid "Field isTrainingResource changed"
+msgstr ""
+
+#, python-brace-format
+msgid "\"{obj}\" was changed successfully"
+msgstr ""
+
+#, fuzzy
+#| msgid "Resource"
+msgid "Resource name"
+msgstr "Nombre del Recurso"
+
+#, fuzzy
+#| msgid "Insert here the title or name of the resource"
+msgid "Please write the title or name of the resource."
+msgstr "Añada aquí el título o nombre del recurso"
+
+#, fuzzy
+#| msgid ""
+#| "URL to where the document is hosted by the publisher,         or in a "
+#| "permanent repository such as Zenodo, OSF, the RIO Journal, or similar"
+msgid ""
+"Please provide the URL to where the document is hosted by the publisher, or "
+"in a permanent repository such as Zenodo, OSF, the RIO Journal, or similar."
+msgstr ""
+"URL donde se encuentra originalmente el documento,        o si está en "
+"unrepositorio permanente como Zenodo, OSF, the RIO Journal, o similar"
+
+#, fuzzy
+#| msgid ""
+#| "Please write or select interest areas, separated by commas or pressing "
+#| "enter"
+msgid ""
+"Please select the keywords that describe the resource or add new ones "
+"<b>separated by commas or by pressing enter</b>."
+msgstr ""
+"Por favor, escriba o seleccione las palabras clave que definen el recurso, "
+"separadas por comas o pulsando enter"
+
+#, fuzzy
+#| msgid ""
+#| "Please briefly describe the organisation (ideally in 500 words or less)"
+msgid "Please briefly describe the resource (max 3000 characters)."
+msgstr ""
+"Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
+
+msgid "Abstract"
+msgstr ""
+
+msgid ""
+"Please describe the link between citizen science and the resource you are "
+"uploading – for guidance see the <a href=\"https://zenodo.org/communities/"
+"citscicharacteristics\"> ECSA Characteristics of Citizen Science</a> as well "
+"as the<a href=\"https://zenodo.org/record/5127534#.YV8J0dpBxPa\"> ECSA 10 "
+"Principles of Citizen Science</a>. What you introduce in this text field "
+"will not appear on the platform; it is just for moderation purposes and for "
+"the administrators of the platform to see (max 2000 characters)."
+msgstr ""
+
+#, fuzzy
+#| msgid "European Citizen Science Association"
+msgid "Description of Citizen Science Aspects"
+msgstr "Asociación Europea para la Ciencia Ciudadana"
+
+#, fuzzy
+#| msgid ""
+#| "Author(s) of the resource. Enter <i>FirstInitial LastName</i> and close "
+#| "with a comma or pressing enter to add an author,        or multiple "
+#| "authors. If not known, name the project within the resource was created."
+msgid ""
+"Please name the author(s) of the resource. Enter <i>FirstInitial LastName</"
+"i> and close with a comma or press enter to add an author or multiple "
+"authors."
+msgstr ""
+"Autoría del recurso. Ingrese <i>FirstInitial LastName</i> y termine con una "
+"coma o pulsando enter para añadir al autor, o múltiples autores. Si los "
+"desconoce, indique el nombre del proyecto que generó el recurso"
+
+msgid "Authors"
+msgstr "Autoría"
+
+msgid "Category"
+msgstr "Categoría"
+
+#, fuzzy
+#| msgid "Select one of the proposed categories"
+msgid "Please select one of the proposed categories."
+msgstr "Seleccione una de las categorías propuestas"
+
+msgid "Theme"
+msgstr "Tema"
+
+#, fuzzy
+#| msgid "Insert here the title or name of the resource"
+msgid "Please select the thematic content of the resource."
+msgstr "Añada aquí el título o nombre del recurso"
+
+#, fuzzy
+#| msgid ""
+#| "Please provide the Digital Object Signifier that is unique to your "
+#| "resource,        generated by the Publisher, Zenodo..."
+msgid ""
+"Please provide the <b>Digital Object Identifier</b> that is unique to your "
+"resource."
+msgstr ""
+"Por favor, añada el DOI (Digital Object Signifier) exclusivo de su recurso "
+"generado por la Editorial, Zenodo..."
+
+msgid "Resource DOI"
+msgstr "DOI del recurso"
+
+msgid "Year of publication"
+msgstr "Año de publicación"
+
+#, fuzzy
+#| msgid ""
+#| "Enter the year (YYYY) that this version of the resource was published"
+msgid ""
+"Please enter the year (YYYY) when this version of the resource was published."
+msgstr "Ingrese el año (aaaa) en el que esta versión del recurso fue publicada"
+
+#, fuzzy
+#| msgid ""
+#| "Indicate the resource license, such as Creative Commons CC-BY.         "
+#| "Enter a URL link to the license if available."
+msgid ""
+"Please indicate the resource license, such as Creative Commons CC-BY. Enter "
+"a URL link to the license if available."
+msgstr ""
+"Indique la licencia del recurso, como Creative Commons CC-BY.          "
+"Enlaceal URL de la licencia si está disponible"
+
+msgid "License"
+msgstr "Licencia"
+
+#, fuzzy
+#| msgid ""
+#| "Organisation(s) contributing the resource (multiple selection separated "
+#| "by comma or pressing enter).         If not listed, please add them <a "
+#| "href=\"/new_organisation\">here</a > before submitting"
+msgid ""
+"Please select the organisation(s) contributing the resource. If not listed, "
+"please add them <a href=\"/new_organisation\" target=\"_blank\">here</a > "
+"before submitting."
+msgstr ""
+"Organización(es) que han contribuido al recurso (en caso de selección "
+"múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
+"favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
+
+#, fuzzy
+#| msgid ""
+#| "Organisation(s) contributing the resource (multiple selection separated "
+#| "by comma or pressing enter).         If not listed, please add them <a "
+#| "href=\"/new_organisation\">here</a > before submitting"
+msgid ""
+"Please select the project(s) where the resource was created. If not listed, "
+"please add them <a href=\"/newProject\" target=\"_blank\">here</a > before "
+"submitting."
+msgstr ""
+"Organización(es) que han contribuido al recurso (en caso de selección "
+"múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
+"favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
+
+#, fuzzy
+#| msgid "Projects"
+msgid "Project(s)"
+msgstr "Proyectos"
+
+msgid "Publisher"
+msgstr "Editora"
+
+#, fuzzy
+#| msgid "Insert here the title or name of the resource"
+msgid "Please indicate the publisher of the resource"
+msgstr "Añada aquí el título o nombre del recurso"
+
+msgid "Resource image for the thumbnail profile"
+msgstr ""
+
+msgid "This image will be resized to 600x400 pixels"
+msgstr ""
+
+msgid "Image 1 credit"
+msgstr "Créditos de la Imagen 1"
+
+msgid "Resource image for the profile heading"
+msgstr ""
+
+msgid "This image will be resized to 1100x400 pixels"
+msgstr ""
+
+msgid "Image 2 credit"
+msgstr "Créditos de la Imagen 2"
+
+msgid "Curated lists"
+msgstr "Mis listas"
+
+#, fuzzy
+#| msgid "Aproximate hours required to finish the training"
+msgid "Please write the approximate  hours required to finish the training."
+msgstr "Tiempo aproximado requerido para finalizar la formación"
+
+msgid ""
+"Please describe any conditions that affect the accessibility of the training "
+"material, such as <i>requires registration</i>, <i>requires enrollment</i>, "
+"or <i>requires payment</i>."
+msgstr ""
+
+#, fuzzy
+#| msgid "Resource"
+msgid "Resource Keyword"
+msgstr "Recurso"
+
+#, fuzzy
+#| msgid "Resource"
+msgid "Resource Keywords"
+msgstr "Recurso"
+
+msgid "Audience"
+msgstr "Público"
+
+#, fuzzy
+#| msgid "Audience"
+msgid "Audiences"
+msgstr "Público"
+
+#, fuzzy
+#| msgid "Resource"
+msgid "Resource Category"
+msgstr "Categoria del recurso"
+
+#, fuzzy
+#| msgid "Resource"
+msgid "Resource Categories"
+msgstr "Categorias del Recurso"
+
+#, fuzzy
+#| msgid "Publisher"
+msgid "Year published"
+msgstr "Editora"
+
+#, fuzzy
+#| msgid "in Resources"
+msgid "Is Training Resource"
+msgstr "Treinamento"
+
+msgid "Resource"
+msgstr "Recurso"
+
+#, fuzzy
+#| msgid "in Resources"
+msgid "Training Resource"
+msgstr "Treinamento"
+
+#, fuzzy
+#| msgid "in Resources"
+msgid "Training Resources"
+msgstr "Treinamentos"
+
+msgid "Resource Group"
+msgstr "Grupo de Recurso"
+
+msgid "Resource Groups"
+msgstr "Grupos de Recurso"
+
+msgid "Resources Grouped"
+msgstr "Recursos agrupados"
+
+#, python-format
+msgid "Your resource \"%s\" has been approved!"
+msgstr ""
+
+msgid "Alphabetic Order"
+msgstr "Orden Alfabética"
+
+msgid "All languages"
+msgstr "Cualquier idioma"
+
+msgid "All themes"
+msgstr "Cualquier temática"
+
+#, fuzzy
+#| msgid "Language"
+msgid "language:"
+msgstr "Idioma"
+
+#, fuzzy
+#| msgid "Theme"
+msgid "theme:"
+msgstr "Tema"
+
+#, fuzzy
+#| msgid "Category"
+msgid "category:"
+msgstr "Categoría"
+
+#, fuzzy
+#| msgid "Learning resource type"
+msgid "training resources found"
+msgstr "Tipo de recurso de aprendizaje"
+
+#, fuzzy
+#| msgid "Learning resource type"
+msgid "training resource found"
+msgstr "Tipo de recurso de aprendizaje"
+
+#, fuzzy
+#| msgid "resource"
+msgid "resources found"
+msgstr "recurso"
+
+#, fuzzy
+#| msgid "resource"
+msgid "resource found"
+msgstr "recurso"
+
+msgid "resource"
+msgstr "recurso"
+
+#, fuzzy
+#| msgid ""
+#| "Thank you for proposing a new citizen science resource to be shared on "
+#| "the EU-Citizen.Science Platform. Please fill in all of the mandatory "
+#| "information in the fields below (indicated with an asterisk*), and as "
+#| "much of the non-mandatory information as possible."
+msgid ""
+"Thank you for submitting a new citizen science resource to be shared on the "
+"EU-Citizen.Science platform. Please fill in all of the mandatory information "
+"in the fields below (indicated with an asterisk*), and as much of the non-"
+"mandatory information as possible."
+msgstr ""
+"Gracias por proponer un nuevo recurso de ciencia ciudadana y compartirlo en "
+"laPlataforma EU-Citizen.Science. Por favor, complete toda la información "
+"requerida en los siguientes campos (marcados por un asterisco*), así como la "
+"información noesencial que sea posible."
+
+#, fuzzy
+#| msgid ""
+#| "Resources can include documents such as guidelines, reports, policy "
+#| "briefs, and protocols; tools such as software or hardware, and other file "
+#| "formats such as videos or podcasts. Read our blog post on Types of "
+#| "Resources."
+msgid ""
+"Resources can include documents such as guidelines, reports, policy briefs, "
+"and protocols; tools such as software or hardware; and other file formats "
+"such as videos or podcasts."
+msgstr ""
+"Los recursos pueden incluir documentos como guías, dossieres, informes sobre "
+"políticas, y protocolos; herramientas como software o hardware, y otro tipo "
+"de formatos como vídeos o podcasts. Lea el post sobre Tipos de Recursos en "
+"nuestro blog."
+
+#, fuzzy
+#| msgid ""
+#| "Upon saving this profile, your resource will be submitted for moderation "
+#| "by one of the members of the EU-Citizen.Science consortium. The "
+#| "moderation process is meant to ensure that all of the resources shared on "
+#| "the platform are indeed useful for citizen science projects and "
+#| "practitioners, and are of good quality. Read more about "
+msgid ""
+"Upon saving this profile, your resource will be submitted for moderation. "
+"The moderation process is meant to ensure that all of the resources shared "
+"on the platform are useful for citizen science projects and practitioners, "
+"and are of good quality."
+msgstr ""
+"Al guardar este perfil, su recurso será enviado a revisión por uno de los "
+"miembros del consorcio EU-Citizen.Science. El proceso de revisión se encarga "
+"de asegurar que todos los recursos compartidos en la plataforma son de "
+"utilidad para los proyectos y profesionales de ciencia ciudadana, y que son "
+"de calidad. Leer más sobre"
+
+#, fuzzy
+#| msgid ""
+#| "Please note that we strongly recommend that you first ensure that your "
+#| "resource is hosted in a permanent repository (such as on a website that "
+#| "will be maintained and can provide a permalink, or a repository such as a "
+#| "publisher, "
+msgid ""
+"Please note that we strongly recommend that you first ensure that your "
+"resource is hosted in a permanent repository, such as on a website that will "
+"be maintained and can provide a permalink, or a repository such as a "
+"publisher like"
+msgstr ""
+"Por favor, tenga en cuenta que es muy recomendable que su recurso esté "
+"alojado en un repositorio permanente (una web que seamantenida y pueda "
+"proporcionar un enlace permanente, o un repositorio como una editorial,"
+
+msgid "the RIO Journal"
+msgstr ""
+
+msgid "If you have any doubts about filling it out, consult our "
+msgstr ""
+
+#, fuzzy
+#| msgid "New"
+msgctxt "femi"
+msgid "New"
+msgstr "Nuevo"
+
+#, fuzzy
+#| msgid "Learning resource type"
+msgid "training resource"
+msgstr "Tipo de recurso de aprendizaje"
+
+#, fuzzy
+#| msgid ""
+#| "Thank you for proposing a new citizen science resource to be shared on "
+#| "the EU-Citizen.Science Platform. Please fill in all of the mandatory "
+#| "information in the fields below (indicated with an asterisk*), and as "
+#| "much of the non-mandatory information as possible."
+msgid ""
+"Thank you for submitting a new citizen science training resource to be "
+"shared on the EU-Citizen.Science platform. Please fill in all of the "
+"mandatory information in the fields below (indicated with an asterisk*), and "
+"as much of the non-mandatory information as possible."
+msgstr ""
+"Gracias por proponer un nuevo recurso de ciencia ciudadana y compartirlo en "
+"laPlataforma EU-Citizen.Science. Por favor, complete toda la información "
+"requerida en los siguientes campos (marcados por un asterisco*), así como la "
+"información noesencial que sea posible."
+
+#, fuzzy
+#| msgid ""
+#| "Resources can include documents such as guidelines, reports, policy "
+#| "briefs, and protocols; tools such as software or hardware, and other file "
+#| "formats such as videos or podcasts. Read our blog post on Types of "
+#| "Resources."
+msgid ""
+"Training Resources can include documents such as guidelines, reports, policy "
+"briefs, and protocols; tools such as software or hardware; and other file "
+"formats such as videos or podcasts."
+msgstr ""
+"Los recursos pueden incluir documentos como guías, dossieres, informes sobre "
+"políticas, y protocolos; herramientas como software o hardware, y otro tipo "
+"de formatos como vídeos o podcasts. Lea el post sobre Tipos de Recursos en "
+"nuestro blog."
+
+#, fuzzy
+#| msgid ""
+#| "Upon saving this profile, your resource will be submitted for moderation "
+#| "by one of the members of the EU-Citizen.Science consortium. The "
+#| "moderation process is meant to ensure that all of the resources shared on "
+#| "the platform are indeed useful for citizen science projects and "
+#| "practitioners, and are of good quality. Read more about "
+msgid ""
+"Upon saving this profile, your training resource will be submitted for "
+"moderation. The moderation process is meant to ensure that all of the "
+"resources shared on the platform are useful for citizen science projects and "
+"practitioners, and are of good quality."
+msgstr ""
+"Al guardar este perfil, su recurso será enviado a revisión por uno de los "
+"miembros del consorcio EU-Citizen.Science. El proceso de revisión se encarga "
+"de asegurar que todos los recursos compartidos en la plataforma son de "
+"utilidad para los proyectos y profesionales de ciencia ciudadana, y que son "
+"de calidad. Leer más sobre"
+
+#, fuzzy
+#| msgid ""
+#| "Please note that we strongly recommend that you first ensure that your "
+#| "resource is hosted in a permanent repository (such as on a website that "
+#| "will be maintained and can provide a permalink, or a repository such as a "
+#| "publisher, "
+msgid ""
+"Please note that we strongly recommend that you first ensure that your "
+"training resource is hosted in a permanent repository, such as on a website "
+"that will be maintained and can provide a permalink, or a repository such as "
+"a publisher like "
+msgstr ""
+"Por favor, tenga en cuenta que es muy recomendable que su recurso esté "
+"alojado en un repositorio permanente (una web que seamantenida y pueda "
+"proporcionar un enlace permanente, o un repositorio como una editorial,"
+
+msgid "Migrate to Training Resource"
+msgstr ""
+
+msgid "Migrate to Resource"
+msgstr ""
+
+msgid ""
+"resources by title or keywords by typing text directly into the the search "
+"bar"
+msgstr ""
+"recursos por título o palabras clave, escribiendo el texto directamente en "
+"labarra de búsqueda"
+
+msgid "resources by date or by rating"
+msgstr "recursos por fecha o por valoración"
+
+msgid "search results by language, theme or category"
+msgstr "buscar resultados por idioma, temática o categoría"
+
+msgid ""
+"Submitted resources that have been through the moderation process are marked "
+"as 'Moderated'.Only these will show in your search results unless you filter "
+"for 'not yet moderated' or 'All'."
+msgstr ""
+"Los recursos añadidos que han pasado el proceso de revisión están marcados "
+"como ‘Revisados’. Solo estos serán mostrados en sus resultados de búsqueda, "
+"a no ser que Ud. filtre para ‘aún no revisados’’ o ‘Todos’."
+
+msgid "Publish information"
+msgstr ""
+
+#, fuzzy
+#| msgid "Submitted organisations"
+msgid "Links with projects and/or organisations"
+msgstr "Organizaciones añadidas"
+
+msgid "Go to Training"
+msgstr "Ir a Formación"
+
+msgid "Go to Resource"
+msgstr "Ir al Recurso"
+
+msgid "Comment"
+msgstr ""
+
+msgid "Language"
+msgstr "Idioma"
+
+#, fuzzy
+#| msgid ""
+#| "Please indicate the (main) language that the resource is made available"
+msgid ""
+"Please indicate the (main) language that the resource is made available in"
+msgstr ""
+"Por favor, indique el idioma principal en el que el recurso está disponible"
+
+#, fuzzy
+#| msgid "Submitted organisations"
+msgid "Links with projects and organisations"
+msgstr "Organizaciones añadidas"
+
+#, fuzzy
+#| msgid "Resources library"
+msgid "Resource profile images"
+msgstr "Biblioteca de recursos"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "training resource <span class='text-pink5'> search</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "resource <span class='text-pink5'> search</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid "Training Resource added correctly"
+msgstr ""
+
+#, fuzzy
+#| msgid "Project added correctly"
+msgid "Resource added correctly"
+msgstr "Proyecto añadido correctamente"
+
+#, python-format
+msgid "Your resource \"%s\" has been submitted!"
+msgstr ""
+
+#, python-format
+msgid "Notification - New resource \"%s\" submitted"
+msgstr ""
+
+#, python-format
+msgid "Your resource \"%s\" has been followed!"
+msgstr ""
+
+#, fuzzy
+#| msgctxt "fem"
+#| msgid "Approved"
+msgid "approved"
+msgstr "Aprobada"
+
+#, fuzzy
+#| msgid "Event approved"
+msgid "not approved"
+msgstr "Evento aprobado"
+
+msgid "Permission Denied (403)"
+msgstr "Permission Negada (403)"
+
+msgid "You do not have access to this page"
+msgstr "Permission Negada a esta página"
+
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+msgid "Server error (500)"
+msgstr ""
+
+msgid ""
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Ha habido un error. Se ha comunicado a los administradores del sitio por "
+"correo electrónico y debería solucionarse en breve."
+
+msgid "Crop the photo"
+msgstr "Recortar la foto"
+
+msgid "zoom_in"
+msgstr "Acercar"
+
+msgid "zoom_out"
+msgstr "Alejar"
+
+msgid "Crop and upload"
+msgstr "Recortar y añadir"
+
+msgid "About"
+msgstr "Acerca de"
+
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Políticas"
+msgstr ""
+
+msgid "Privacy"
+msgstr "Privacidad"
+
+#, fuzzy
+#| msgid "Followed projects"
+msgid "Follow us"
+msgstr "Siga-nos"
+
+msgid "What is on"
+msgstr "Próximos eventos"
+
+#, fuzzy
+#| msgid "Resources"
+msgid "See all events"
+msgstr "Ver todos los eventos"
+
+#, fuzzy
+#| msgid "platforms"
+msgid "See all platforms"
+msgstr "Ver todas as plataformas"
+
+#, fuzzy
+#| msgid "Submitted projects"
+msgid "Initiatives and Projects"
+msgstr "Proyectos añadidos"
+
+#, fuzzy
+#| msgid "Resources"
+msgid "See all projects"
+msgstr "Recursos"
+
+#, fuzzy
+#| msgid "Resources"
+msgid "See all Resources"
+msgstr "Recursos"
+
+msgid "Training"
+msgstr "Formación"
+
+#, fuzzy
+#| msgid "training"
+msgid "See all trainings"
+msgstr "formación"
+
+#, fuzzy
+#| msgid "Project"
+msgid "Project Map"
+msgstr "Proyecto"
+
+msgid "Select the theme"
+msgstr ""
+
+#, fuzzy
+#| msgid "projects"
+msgid "All Topics"
+msgstr ""
+
+#, fuzzy
+#| msgid "Do you want to proceed?"
+msgid "What do you want to submit?"
+msgstr "¿Desea continuar?"
+
+msgid "Create a Citizen Science Project profile"
+msgstr "Crear Perfil para un Proyecto de Ciencia Ciudadana"
+
+msgid "Create a profile for a Resource that is relevant for Citizen Science"
+msgstr "Crear Perfil de Recurso relevante para la Ciencia Ciudadana"
+
+msgid ""
+"Create a profile for Training and Education Material related to the practice "
+"of Citizen Science"
+msgstr ""
+"Crear Perfil para una Formación o Material Educativo relacionado con el "
+"desarrollo de la Ciencia Ciudadana"
+
+msgid "Create an Event"
+msgstr ""
+
+#, fuzzy
+#| msgid "Create a profile for your Organisation"
+msgid "Create a profile for your citizen science platform or network"
+msgstr "Crear Perfil para su Organización"
+
+#, fuzzy
+#| msgid "Organisation"
+msgid "Organisation or Network"
+msgstr "Organización"
+
+msgid "Create a profile for your Organisation"
+msgstr "Crear Perfil para su Organización"
+
+msgid "SEARCH"
+msgstr "BUSCAR"
+
+msgid "BLOG"
+msgstr "BLOG"
+
+msgid "EVENTS"
+msgstr "EVENTOS"
+
+msgid "MOOCS"
+msgstr ""
+
+msgid "CALL"
+msgstr ""
+
+msgid "ABOUT"
+msgstr "ACERCA DE"
+
+msgid "Save & continue editing"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Our Gold Star Selection"
+msgstr "Nuestros destacados"
+
+msgid "Search..."
+msgstr "Buscar..."
+
+msgid "what can you find here?"
+msgstr "¿Qué puedes encontrar aquí?"
+
+msgid "projects"
+msgstr "proyectos"
+
+msgid "that are engaging the public in research via citizen science activities"
+msgstr ""
+"que están involucrando al público en la investigación a través de "
+"actividades de ciencia ciudadana"
+
+msgid "resources"
+msgstr "recursos"
+
+msgid "useful for planning and running citizen science projects"
+msgstr "útiles para planificar y llevar a cabo proyectos de ciencia ciudadana"
+
+msgid "training resources"
+msgstr "recursos de formación"
+
+msgid "about the practice of citizen science"
+msgstr "sobre la práctica de la ciencia ciudadana"
+
+msgid "involved in citizen science projects and research"
+msgstr "implicadas en proyectos de ciencia ciudadana e investigación"
+
+msgid "platforms"
+msgstr "plataformas"
+
+msgid "to get an overview of further developments in citizen science"
+msgstr "para tener una perspectiva de la evolución de la ciencia ciudadana"
+
+msgid "users"
+msgstr "usuarios y usuarias"
+
+msgid "with whom you can connect"
+msgstr "con quienes puedes conectar"
+
+msgid ""
+" Check out our <a href='/events'>events</a> calendar, <a href='/blog'>blog</"
+"a> and <a href='/forum'>forum!</a>"
+msgstr ""
+" Mira nuestro <a href='/events'>calendario</a> de eventos, <a href='/"
+"blog'>blog</a> y <a href='/forum'>foro!</a>"
+
+msgid "what is <span class='text-white'>citizen science?</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#, fuzzy
+#| msgid ""
+#| "Citizen science actively involves the public in scientific research that "
+#| "generates new knowledge or understanding, and thus has the potential to "
+#| "bring together science, policy makers, and society as a whole in an "
+#| "impactful way. As a core dimension of Open Science, it opens up the "
+#| "opportunity for all members of society to take an active role in "
+#| "research, innovation and the development of evidence-based policy, at "
+#| "local, national and EU levels."
+msgid ""
+"Citizen science is any activity that involves the public in scientific "
+"research and thus has the potential to bring together science, policy "
+"makers, and society as a whole in an impactful way. Through citizen science, "
+"all people can participate in many stages of the scientific process, from "
+"the design of the research question, to data collection and volunteer "
+"mapping, data interpretation and analysis, and to publication and "
+"dissemination of results. Citizen science is also an approach of scientific "
+"work that may be used as a part of a broader scientific activity."
+msgstr ""
+"La ciencia ciudadana involucra activamente al público que se dedica a la "
+"investigación científica ygenera nuevo conocimiento o comprensión, que a su "
+"vez tiene el potencial de implicar a agentes científicos, políticos y a la "
+"sociedad en general demanera efectiva. Como pilar principal de la Ciencia "
+"Abierta (Open Science), da a todos los miembros de la sociedad la "
+"oportunidad de formar parte activa de la investigación, innovación y el "
+"desarrollo de medidas basadas en la evidencia a nivel local, nacional "
+"yeuropeo."
+
+#, fuzzy
+#| msgid ""
+#| "Learn more about it with the ECSA 10 Principles of Citizen Science and "
+#| "the ECSA Characteristics of Citizen Science!"
+msgid ""
+"Learn more about it with the <a href='/resource/88'>ECSA 10 Principles of "
+"Citizen Science</a> and the <a href='/resource/87'>ECSA Characteristics of "
+"Citizen Science!</a>"
+msgstr ""
+"Conoce más sobre ella a través de ECSA y sus 10 Principios de la Ciencia "
+"Ciudadana y Características de Ciencia Ciudadana"
+
+msgid "about"
+msgstr "Acerca de"
+
+msgid "History"
+msgstr "Histórico"
+
+msgid "View on site"
+msgstr "Visualizar en site"
+
+msgid "Admin"
+msgstr "Administrar"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+msgid "Company"
+msgstr "Equipo"
+
+msgid "Connect with us on"
+msgstr "Conecte con EU-Citizen Science en "
+
+msgid "LOGIN"
+msgstr "INICIAR SESIÓN"
+
+msgid "SIGN UP"
+msgstr "REGISTRARSE"
+
+msgid "My Profile"
+msgstr "Mi Perfil"
+
+msgid "My organisations"
+msgstr "Mis organizaciones"
+
+msgid "Submitted projects"
+msgstr "Proyectos añadidos"
+
+msgid "Submitted resources"
+msgstr "Recursos añadidos"
+
+msgid "Followed projects"
+msgstr "Proyectos seguidos"
+
+msgid "Resources library"
+msgstr "Biblioteca de recursos"
+
+msgid "PROFILE"
+msgstr "PERFIL"
+
+msgid "LOGOUT"
+msgstr "CERRAR SESIÓN"
+
+msgid "ADMIN"
+msgstr "ADMINISTRAR"
+
+msgid "Login"
+msgstr "Iniciar sesión"
+
+msgid "profile"
+msgstr "perfil"
+
+msgid "logout"
+msgstr "cerrar sesión"
+
+msgid "Forum"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Moocs"
+msgstr ""
+
+#, fuzzy
+#| msgid "Event"
+msgid "Final Event"
+msgstr "Evento"
+
+msgid "Signup"
+msgstr "Registrarse"
+
+msgid "My personal area"
+msgstr ""
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "My submissions"
+msgstr "Mis organizaciones"
+
+msgid "My bookmarks"
+msgstr ""
+
+msgid "My privacy center"
+msgstr ""
+
+msgid "New submission"
+msgstr ""
+
+msgid "FORUM"
+msgstr "FORO"
+
+msgid "Fórum"
+msgstr ""
+
+msgid "Advanced search"
+msgstr ""
+
+#, fuzzy
+#| msgid "My organisations"
+msgid "Subscriptions"
+msgstr "Mis organizaciones"
+
+msgid "View my posts"
+msgstr ""
+
+#, fuzzy
+#| msgid "moderation"
+msgid "Moderation queue"
+msgstr "revisión"
+
+#, fuzzy
+#| msgid "EU-Citizen.Science call"
+msgid "EU-Citizen.Science call (closed)"
+msgstr "Ciencia Ciudadana"
+
+msgid "Coming Soon"
+msgstr ""
+
+msgid "Go back"
+msgstr "Volver"
+
+msgid "This website is using cookies."
+msgstr "Este sitio se utiliza de cookies"
+
+msgid "More info"
+msgstr "Más información"
+
+msgid "That's Fine"
+msgstr "Listo"
+
+msgid "Quality criteria"
+msgstr "Criterios de calidad"
+
+msgid "gold star <span class='lightBlue-color'> selection</span>"
+msgstr ""
+
+msgid ""
+"The EU-Citizen.Science consortium has curated a selection of Gold Star "
+"citizen science resources"
+msgstr ""
+"El consorcio de EU-Citizen Science ha hecho una selección de recursos sobre "
+"ciencia ciudadana "
+
+msgid ""
+"to help you get started with designing and launching your own citizen "
+"science project or simply learn about citizen science, categorised across "
+"the project lifecycle."
+msgstr ""
+
+msgid "Development"
+msgstr "Desarrollo"
+
+#, fuzzy
+#| msgid "what is <span class='text-white'>citizen science?</span>"
+msgid "Frequently <span class='text-pink6'>asked questions</span>"
+msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+msgid ""
+"What’s new in citizen science training: from open science to public "
+"engagement"
+msgstr ""
+
+msgid "Mark subforums read"
+msgstr ""
+
+msgid "New topic"
+msgstr ""
+
+msgid "Mark topics read"
+msgstr ""
+
+msgid "Announcements"
+msgstr ""
+
+#, fuzzy
+#| msgid "Science Topics"
+msgid "Topics"
+msgstr "Temas científicos"
+
+msgid "Posts"
+msgstr ""
+
+msgid "Last post"
+msgstr ""
+
+msgid "Forums"
+msgstr ""
+
+msgid "RSS feed"
+msgstr ""
+
+#, python-format
+msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
+msgstr ""
+
+#, python-format
+msgid "By: %(poster_username)s"
+msgstr ""
+
+msgid "No posts"
+msgstr ""
+
+msgid "Total redirects:"
+msgstr ""
+
+msgid "Subforums:"
+msgstr ""
+
+msgid "No forums."
+msgstr ""
+
+msgid "Index"
+msgstr ""
+
+msgid "Mark forums read"
+msgstr ""
+
+#, fuzzy
+#| msgid "Science Topics"
+msgid "View unread topics"
+msgstr "Temas científicos"
+
+msgid "Statistics"
+msgstr ""
+
+msgid "Total posts:"
+msgstr ""
+
+msgid "Total topics:"
+msgstr ""
+
+msgid "(optional)"
+msgstr ""
+
+msgid "Add another file"
+msgstr ""
+
+msgid "Attachments"
+msgstr ""
+
+msgid "You may select <b>1</b> option"
+msgstr ""
+
+#, python-format
+msgid "You may select up to <b>%(max_options)s</b> options"
+msgstr ""
+
+msgid "Vote"
+msgstr ""
+
+msgid "Change your vote"
+msgstr ""
+
+msgid "Poll options"
+msgstr ""
+
+msgid "Add a poll option"
+msgstr ""
+
+msgid ""
+"<b>Note:</b>&nbsp;Deleting poll options of an existing poll will delete the "
+"associated votes."
+msgstr ""
+
+#, fuzzy
+#| msgid "review"
+msgid "Preview:"
+msgstr "Opinar"
+
+msgid "Results are currently hidden."
+msgstr ""
+
+msgid "Total votes:"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "View results"
+msgstr ""
+
+#, fuzzy
+#| msgid "Organisations"
+msgid "Options"
+msgstr "Organizaciones"
+
+msgid "Post reply"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Unsubscribe"
+msgstr ""
+
+msgid "Lock topic"
+msgstr ""
+
+msgid "Unlock topic"
+msgstr ""
+
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete topic"
+msgstr "Eliminar"
+
+msgid "Move topic"
+msgstr ""
+
+msgid "Change to sticky topic"
+msgstr ""
+
+msgid "Change to announce"
+msgstr ""
+
+msgid "Change to standard topic"
+msgstr ""
+
+msgid "Poll"
+msgstr ""
+
+msgid "Post a reply"
+msgstr ""
+
+#, fuzzy
+#| msgid "review"
+msgid "Topic review"
+msgstr "Opinar"
+
+#, python-format
+msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
+msgstr ""
+
+#, python-format
+msgid "By: %(poster_username)s on %(creation_date)s"
+msgstr ""
+
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete post"
+msgstr "Eliminar"
+
+msgid "Are you sure you want to delete this post?"
+msgstr ""
+
+msgid "Yes, I'm sure"
+msgstr ""
+
+msgid "No, take me back"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit post"
+msgstr "Editar Perfil"
+
+msgid "Post a new topic"
+msgstr ""
+
+msgid "Last edited by:"
+msgstr ""
+
+#, fuzzy
+#| msgid "None"
+msgid "on"
+msgstr "No hay"
+
+#, python-format
+msgid "edited %(counter)s time in total."
+msgid_plural "edited %(counter)s times in total."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Reason:"
+msgstr ""
+
+msgid "Posts:"
+msgstr ""
+
+msgid "Anonymous user"
+msgstr ""
+
+msgid "Replies"
+msgstr ""
+
+#, fuzzy
+#| msgid "reviews"
+msgid "Views"
+msgstr "Opiniones"
+
+msgid "This topic is locked"
+msgstr ""
+
+msgid "There are no topics in this forum."
+msgstr ""
+
+#, fuzzy
+#| msgid "Sort by Most Recent Updated"
+msgid "Go to the page:"
+msgstr "Ordenar por añadidos más recientes"
+
+msgid "Posted by"
+msgstr ""
+
+#, python-format
+msgid "%(username)s profile"
+msgstr ""
+
+#, python-format
+msgid ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p><small>Post</small></p>"
+msgid_plural ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p class=\"mb-1\"><small>Posts</small></p>"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p><small>Topic</small></p>"
+msgid_plural ""
+"<h2><strong>%(counter)s</strong></h2>\n"
+"                      <p class=\"mb-1\"><small>Topics</small></p>"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Recent posts"
+msgstr ""
+
+msgid "View all"
+msgstr ""
+
+#, python-format
+msgid "On %(creation_date)s"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit profile"
+msgid "Edit forum profile"
+msgstr "Editar Perfil"
+
+msgid "Topics that you are subscribed to"
+msgstr ""
+
+#, python-format
+msgid "%(counter)s topic found"
+msgid_plural "%(counter)s topics found"
+msgstr[0] ""
+msgstr[1] ""
+
+#, fuzzy
+#| msgid "Project"
+msgid "Not topics found."
+msgstr "Proyecto"
+
+msgid "Subscribe to topic"
+msgstr ""
+
+msgid "Would you like to subscribe to this topic?"
+msgstr ""
+
+msgid "Unsubscribe from topic"
+msgstr ""
+
+msgid "Would you like to unsubscribe from this topic?"
+msgstr ""
+
+#, fuzzy
+#| msgid "Message"
+msgid "My messages"
+msgstr "Mensaje"
+
+#, python-format
+msgid "%(username)s's posts"
+msgstr ""
+
+#, fuzzy, python-format
+#| msgid "found"
+msgid "%(counter)s post found"
+msgid_plural "%(counter)s posts found"
+msgstr[0] "encontradas"
+msgstr[1] "encontradas"
+
+#, fuzzy
+#| msgid "Project"
+msgid "No posts found"
+msgstr "Proyecto"
+
+#, fuzzy
+#| msgctxt "fem"
+#| msgid "Approved"
+msgid "Disapprove"
+msgstr "Aprobada"
+
+msgid "New post"
+msgstr ""
+
+msgid "<b>1</b> option may be selected"
+msgstr ""
+
+#, python-format
+msgid "Up to <b>%(max_options)s</b> options may be selected"
+msgstr ""
+
+#, python-format
+msgid "%(topic_length)s posts found"
+msgstr ""
+
+msgid "No posts awaiting approval."
+msgstr ""
+
+#, fuzzy
+#| msgctxt "fem"
+#| msgid "Approved"
+msgid "Approve post"
+msgstr "Aprobada"
+
+msgid "Are you sure you want to approve this post?"
+msgstr ""
+
+#, fuzzy
+#| msgctxt "fem"
+#| msgid "Approved"
+msgid "Disapprove post"
+msgstr "Aprobada"
+
+msgid ""
+"Are you sure you want to disapprove this post? This post will be deleted."
+msgstr ""
+
+msgid "Are you sure you want to delete this topic?"
+msgstr ""
+
+msgid "Are you sure you want to lock this topic?"
+msgstr ""
+
+msgid "Are you sure you want to unlock this topic?"
+msgstr ""
+
+msgid "Change topic type"
+msgstr ""
+
+#, fuzzy
+#| msgid "Search"
+msgid "Search forums"
+msgstr "Buscar"
+
+#, fuzzy
+#| msgid "Search"
+msgid "New search"
+msgstr "Buscar"
+
+#, python-format
+msgid "Your search has returned <b>%(number_of_results)s</b> result"
+msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Results"
+msgstr ""
+
+msgid "No results."
+msgstr ""
+
+msgid "Are you sure you want to mark forums read?"
+msgstr ""
+
+#, fuzzy
+#| msgid "Do you want to proceed?"
+msgid "Are you sure you want to mark topics read?"
+msgstr "¿Desea continuar?"
+
+#, python-format
+msgid "%(topic_length)s unread topic found"
+msgid_plural "%(topic_length)s unread topics found"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "There are no unread topics."
+msgstr ""
+
+msgid "Join us"
+msgstr "Únete"
+
+#, fuzzy
+#| msgid "Search..."
+msgid "Search all site..."
+msgstr "Buscar..."
+
+msgid "<a href='signup'>join the community</a> <div>and participate</div>"
+msgstr "<a href='signup'>únete a la comunidad</a> <div>y participa</div>"
+
+msgid "Imprint"
+msgstr "Imprimir"
+
+msgid "The moderation process"
+msgstr "El proceso de revisión"
+
+msgid "The Moderation Process"
+msgstr "el Proceso de Revisión"
+
+msgid "moderation"
+msgstr "revisión"
+
+msgid "and"
+msgstr "y"
+
+#, fuzzy
+#| msgid "Quality criteria"
+msgid "quality criteria"
+msgstr "Criterios de calidad"
+
+msgid ""
+"The project and (training) resource profiles that you can find on the "
+"platform have been submitted by the citizen science community or the EU-"
+"Citizen.Science project consortium. Before publishing, they undergo a "
+"moderation process where the quality criteria framework developed within the "
+"EU-Citizen.Science project is applied. Below you can find a description of "
+"the moderation process and of all the criteria. IIASA and other partners in "
+"the project have developed these criteria and assessment framework as part "
+"of WP3 “Content - Framework, Quality Assurance and Curation” of the EU-"
+"Citizen.Science project. The work carried out can be found in <a "
+"href='https://zenodo.org/record/3716236#.YZNyLRwxlhE' target='_blank'>D3.1 "
+"<i>Framework Report Describing Criteria and Rationale for Sharing and "
+"Selecting State of the art Citizen Science Resources</i></a> and <a "
+"href='https://zenodo.org/record/5041332#.YZNxBRwxlhF' target='_blank'>D3.3 "
+"<i>Review of Framework Implementation Defined in D3.1</i></a>."
+msgstr ""
+
+msgid ""
+"Our ambitious goal is to become <b>the</b> place to share useful resources "
+"about planning, running, evaluating and participating in citizen science "
+"initiatives or simply learning about citizen science, including tools and "
+"guidelines, best practices and training modules. We hope to make practical "
+"guidance on citizen science findable and accessible to all, and enable "
+"people to initiate their own activities wherever they are. It is important "
+"to us, and the community of practitioners, that we have a way of ensuring "
+"that the resources profiled on the platform are of good quality, and that "
+"the projects profiled on the platform are indeed citizen science "
+"initiatives. This is why we have a moderation process for all submissions."
+msgstr ""
+
+msgid ""
+"When you create a profile for a resource or a project to share on the "
+"platform, you will be asked to provide a range of descriptive information "
+"about it, and once all of the mandatory data fields are completed, you will "
+"be able to submit the profile. Upon submission, it will be sent for "
+"moderation. Until it has been reviewed against our criteria, it will be "
+"marked as ‘not yet moderated’, and will not be automatically visible in "
+"search results. Once your resource profile has successfully been through the "
+"moderation process, it will be marked as ‘moderated’, and will be fully "
+"available in search results."
+msgstr ""
+
+msgid ""
+"We have developed a set of comprehensive quality criteria as a way of "
+"ensuring that the projects and resources that you can find on this platform "
+"are of good quality. The overarching criteria can be applied to both "
+"projects and resources. Specific and supporting criteria have been developed "
+"for resources. The table below provides an overview of all resources; "
+"further down on this page you can read about all the quality criteria in "
+"more detail."
+msgstr ""
+
+msgid "Overarching Criteria (for projects and resources)"
+msgstr ""
+
+#, fuzzy
+#| msgid "about the practice of citizen science"
+msgid "About citizen science or relevant to citizen science (required)"
+msgstr "sobre la práctica de la ciencia ciudadana"
+
+msgid "All mandatory metadata is provided (required)"
+msgstr ""
+
+msgid ""
+"Engages with the <a target='_blank' href='https://zenodo.org/record/5127534#."
+"YV7PKt9CRhF'>ECSA 10 Principles of Citizen Science</a> (suggested)"
+msgstr ""
+
+msgid "Specific Criteria (for resources)"
+msgstr ""
+
+#, fuzzy
+#| msgid "Go to Resource"
+msgid "Access to the resource"
+msgstr "Ir al Recurso"
+
+msgid "Readability and Legibility"
+msgstr ""
+
+msgid "Clear structure"
+msgstr ""
+
+#, fuzzy
+#| msgid "All languages"
+msgid "Clear language"
+msgstr "Cualquier idioma"
+
+msgid "Basic formatting"
+msgstr ""
+
+#, fuzzy
+#| msgid "Contact"
+msgid "Content"
+msgstr "Contacto"
+
+msgid "Applicability"
+msgstr ""
+
+msgid "Easy to implement"
+msgstr ""
+
+msgid "Easy to adapt"
+msgstr ""
+
+#, fuzzy
+#| msgid "Project"
+msgid "Object"
+msgstr "Proyecto"
+
+msgid "Clearly audible (audio object)"
+msgstr ""
+
+msgid "Good quality (video or image)"
+msgstr ""
+
+msgid "Supporting Criteria (for resources)"
+msgstr ""
+
+msgid "Evaluation"
+msgstr ""
+
+msgid "Used in the context of a citizen science initiative"
+msgstr ""
+
+msgid ""
+"Evaluated in terms of the quality of the content, methods, or results of the "
+"method"
+msgstr ""
+
+msgid "Impact"
+msgstr ""
+
+msgid "The overarching criteria for all resources"
+msgstr ""
+
+#, fuzzy
+#| msgid "10 Principles of Citizen Science"
+msgid " Required Criteria - Citizen Science"
+msgstr "los 10 Principios de la Ciencia Ciudadana"
+
+msgid ""
+"The first criterion that the moderator will look for, is that your "
+"<b>resource is relevant to citizen science</b>, or that your <b>project is a "
+"citizen science initiative</b>."
+msgstr ""
+
+msgid ""
+"Although there are no hard and fast definitions of what citizen science is "
+"and is not (nor should there be - citizen science should always remain a "
+"broad and inclusive concept), we turn to the recent work conducted by the "
+"citizen science community on the <a target='_blank' href='https://zenodo.org/"
+"communities/citscicharacteristics/?page=1&size=20'>ECSA Characteristics of "
+"Citizen Science</a> as guidance. Please consult these characteristics if you "
+"are uncertain whether the resource or the project you would like to share "
+"really does relate to citizen science. If the moderator has concerns they "
+"will contact you directly."
+msgstr ""
+
+msgid ""
+"The moderator will also check if all mandatory fields in the resource "
+"profile are completed. This is to ensure that all project and resource "
+"profiles provide sufficient information to enable users of the platform to "
+"see whether it is useful or relevant to them."
+msgstr ""
+
+#, fuzzy
+#| msgid "ECSA 10 Principles of Citizen Science"
+msgid "Suggested Criteria - the Principles of Citizen Science"
+msgstr "los 10 Principios de la Ciencia Ciudadana"
+
+msgid ""
+"The moderator of your submitted profile will also consider whether your "
+"resource or project is in alignment with the <a href='https://zenodo.org/"
+"record/5127534#.YV7PKt9CRhF' target='_blank'>ECSA 10 Principles of Citizen "
+"Science</a>."
+msgstr ""
+
+#, fuzzy
+#| msgid "Quality criteria"
+msgid "Specific criteria"
+msgstr "Criterios de calidad"
+
+msgid ""
+"For the resources to be shared on the platform, we have developed a specific "
+"set of further criteria, which will be assessed during the moderation "
+"process. You can read more about how we developed these in the blog post ‘<a "
+"href='/blog/2020/04/30/how-we-developed-quality-criteria-resources/'>How we "
+"developed the quality criteria for resources’</a>."
+msgstr ""
+
+msgid ""
+"We consider good quality citizen science resources to be those that are easy "
+"to access, implement and adapt, well structured, clearly described and "
+"written in clear language, and ideally improve or support the desired impact "
+"of the initiative (eg. on science, policy or society, etc). For this purpose "
+"we have developed a range of criteria that the moderator will assess against "
+"a 5-point scale, from strongly disagree (1 point) to strongly agree (5 "
+"points)."
+msgstr ""
+
+msgid "Easy access to the resource"
+msgstr ""
+
+msgid ""
+"The resource should be easy to access, i.e. it doesn’t require registration, "
+"and is not behind a paywall."
+msgstr ""
+
+msgid ""
+"The resource should be <b>clearly structured</b> according to the type of "
+"the resource. For example, a scientific paper or report should include an "
+"introduction, methodology, results, discussion and/or conclusions, and "
+"methodology documents should include an introduction, audience description, "
+"step by step methodology, and an example."
+msgstr ""
+
+msgid ""
+"The resource should be <b>written in clear language</b> that is easy to read "
+"and understand for the intended target audience, and should be concise, "
+"unambiguous, and avoid the use of unusual words and jargon. Where technical "
+"terms are used, their meaning should be explained clearly."
+msgstr ""
+
+msgid ""
+"The resource should pay attention to <b>basic formatting</b>, such as clear "
+"titles and paragraphs, correct grammar and spelling, a legible font of large "
+"enough size to read, and clearly marked references."
+msgstr ""
+
+msgid "Clarity of Content"
+msgstr ""
+
+msgid ""
+"The resource should clearly describe its aims, goals and methods, so that it "
+"is easy for readers to understand how to apply the resource in their own "
+"context."
+msgstr ""
+
+msgid ""
+"The resource should be <b>easy to implement</b>, ideally with descriptions "
+"of how it can be implemented, the contexts that it is useful for, and "
+"recommendations for further use or development."
+msgstr ""
+
+msgid ""
+"The resource should be <b>easy to adapt</b> to different cases, ideally with "
+"an explanation of any limitations of the resource and the contexto in which "
+"it could be useful, and with guidelines or recommendations for its "
+"adaptation to different cases."
+msgstr ""
+
+#, fuzzy
+#| msgid "Project locality"
+msgid "Object Quality"
+msgstr "Proyecto"
+
+msgid ""
+"If the resource is an audio object, it should be <b>clearly audible</b>, "
+"with no interruptions or background noise."
+msgstr ""
+
+msgid ""
+"If the resource is a video, an image or illustration, the quality should be "
+"good enough to <b>see clearly, with a sharp focus</b>."
+msgstr ""
+
+#, python-format
+msgid ""
+"The highest possible score is 40 points, if all criteria are applicable. But "
+"in most cases, only a selection of the above criteria will be applicable. "
+"The moderator will look to see that your resource exceeds 50%% of the total "
+"possible points for that type of resource. That is the threshold for being "
+"listed on the platform as a good quality resource."
+msgstr ""
+
+#, fuzzy
+#| msgid "Quality criteria"
+msgid "Supporting criteria"
+msgstr "Criterios de calidad"
+
+msgid ""
+"It really enhances the value and quality of your resources when you can say "
+"something about how it has been used and developed further in practice, and "
+"whether or not it has been evaluated for usefulness and applicability in "
+"practice. The moderator will also take it into positive consideration if "
+"there is evidence of the following criteria being met (but these are not "
+"part of the threshold calculation mentioned above):"
+msgstr ""
+
+msgid ""
+"The resource has been <b>used in the context of citizen science</b>, or is "
+"currently being used in a citizen science initiative, and the outcome of "
+"this has been shared."
+msgstr ""
+
+msgid ""
+"The resource has been <b>evaluated</b> in terms of the quality of the "
+"content, or the methods, or the results of the method, and the outcomes of "
+"these evaluations have been shared."
+msgstr ""
+
+msgid ""
+"The resource refers to any <b>impact</b> that it could have (or has had) on "
+"science, policy, society, etc."
+msgstr ""
+
+msgid ""
+"The impact of the resource has been <b>measured</b> and is shared in the "
+"resource."
+msgstr ""
+
+msgid "Forum index"
+msgstr ""
+
+msgid "Policy Brief"
+msgstr ""
+
+msgid "Citizen Science for Policy across Europe"
+msgstr ""
+
+msgid "NOT YET MODERATED"
+msgstr "AÚN NO REVISADO"
+
+msgid "MODERATED"
+msgstr "REVISADO"
+
+msgid "Read more"
+msgstr "Leer más"
+
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+"Gracias por invertir tiempo de calidad en nuestra web durante el día de hoy."
+
+msgid "Log in again"
+msgstr "Iniciar sesión otra vez"
+
+msgid "Home"
+msgstr "Inicio"
+
+msgid "Password change"
+msgstr "Cambiar contraseña"
+
+msgid "Password change successful"
+msgstr "Cambio de contraseña realizado"
+
+msgid "Your password was changed."
+msgstr "Su contraseña ha cambiado."
+
+msgid "Please correct the error below."
+msgstr "Por favor, corrija el error indicado."
+
+msgid "Please correct the errors below."
+msgstr "Por favor, corrija los errores indicados."
+
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"Por favor, como medida de seguridad, indique su antigua contraseña. Después, "
+"escriba dos veces su nueva contraseña, así podremos validar que se ha "
+"escrito correctamente"
+
+msgid "Change my password"
+msgstr "Cambiar mi contraseña"
+
+msgid "Password reset complete"
+msgstr "Contraseña restaurada"
+
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Su contraseña ha cambiado. Deberá salir e iniciar sesión de nuevo."
+
+msgid "Password reset confirmation"
+msgstr "Confirmación de cambio de contraseña"
+
+msgid "Password reset"
+msgstr "Restaurar contraseña"
+
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"Por favor, escriba su nueva contraseña dos veces, así podremos validar que "
+"se ha escrito correctamente."
+
+msgid "New password:"
+msgstr "Nueva contraseña:"
+
+msgid "Confirm password:"
+msgstr "Confirmar contraseña:"
+
+msgid "Password reset unsuccessful"
+msgstr "Cambio de contraseña fallido"
+
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"El enlace para restaurar la contraseña no es válido, posiblemente debido a "
+"que haya sido utilizado. Por favor, solicite un nuevo cambio de contraseña"
+
+msgid "Password reset successful"
+msgstr "Contraseña restaurada"
+
+msgid ""
+"We've emailed you instructions for setting your password to the email "
+"address you submitted. You should be receiving it shortly."
+msgstr ""
+"Le hemos enviado las instrucciones para cambiar su contraseña a la dirección "
+"de correo electrónico que indicó. Lo recibirá en breve. "
+
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"¿Olvidó su contraseña? Indique su correo electrónico, y le enviaremos las "
+"instrucciones para solicitar una nueva."
+
+msgid "Email address:"
+msgstr "Dirección de correo electrónico"
+
+msgid "Reset my password"
+msgstr "Restaurar mi contraseña"
+
+msgid "NOT ACCEPTED"
+msgstr "NO ACEPTADO"
+
+msgid "review"
+msgstr "Opinar"
+
+msgid "reviews"
+msgstr "Opiniones"
+
+msgid "In my library"
+msgstr "En mi biblioteca"
+
+msgid "Add to library"
+msgstr "Añadir a mi biblioteca"
+
+msgid "Translations"
+msgstr "Traducciones"
+
+#, fuzzy
+#| msgid "Translate"
+msgid "Translated Text"
+msgstr "Traducir"
+
+#, fuzzy
+#| msgid "Translations"
+msgid "Translation"
+msgstr "Traducciones"
+
+#, fuzzy
+#~| msgid "My organisations"
+#~ msgid "Subscriptions"
+#~ msgstr "Mis organizaciones"
+
+#, fuzzy
+#~| msgid "View on site"
+#~ msgid "View my posts"
+#~ msgstr "Visualizar en site"
+
+#, fuzzy
+#~| msgid "moderation"
+#~ msgid "Moderation queue"
+#~ msgstr "revisión"
+
+#, fuzzy
+#~| msgid "Science Topics"
+#~ msgid "Topics"
+#~ msgstr "Temas científicos"
+
+#, fuzzy
+#~| msgid "Science Topics"
+#~ msgid "View unread topics"
+#~ msgstr "Temas científicos"
+
+#, fuzzy
+#~| msgid "review"
+#~ msgid "Preview:"
+#~ msgstr "Opinar"
+
+#, fuzzy
+#~| msgid "Organisations"
+#~ msgid "Options"
+#~ msgstr "Organizaciones"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete topic"
+#~ msgstr "Eliminar"
+
+#, fuzzy
+#~| msgid "review"
+#~ msgid "Topic review"
+#~ msgstr "Opinar"
+
+#, fuzzy
+#~| msgid "Delete"
+#~ msgid "Delete post"
+#~ msgstr "Eliminar"
+
+#, fuzzy
+#~| msgid "Edit profile"
+#~ msgid "Edit post"
+#~ msgstr "Editar Perfil"
+
+#, fuzzy
+#~| msgid "None"
+#~ msgid "on"
+#~ msgstr "No hay"
+
+#, fuzzy
+#~| msgid "reviews"
+#~ msgid "Views"
+#~ msgstr "Opiniones"
+
+#, fuzzy
+#~| msgid "Sort by Most Recent Updated"
+#~ msgid "Go to the page:"
+#~ msgstr "Ordenar por añadidos más recientes"
+
+#, fuzzy
+#~| msgid "profile"
+#~ msgid "%(username)s profile"
+#~ msgstr "%(username)s perfil"
+
+#, fuzzy
+#~| msgid "Edit profile"
+#~ msgid "Edit forum profile"
+#~ msgstr "Editar Perfil"
+
+#, fuzzy
+#~| msgid "Message"
+#~ msgid "My messages"
+#~ msgstr "Mensaje"
+
+#, fuzzy
+#~| msgid "found"
+#~ msgid "%(counter)s post found"
+#~ msgid_plural "%(counter)s posts found"
+#~ msgstr[0] "encontradas"
+#~ msgstr[1] "encontradas"
+
+#, fuzzy
+#~| msgid "Projects"
+#~ msgid "No posts found"
+#~ msgstr "Proyectos"
+
+#, fuzzy
+#~| msgctxt "fem"
+#~| msgid "Approved"
+#~ msgid "Disapprove"
+#~ msgstr "Aprobada"
+
+#, fuzzy
+#~| msgctxt "fem"
+#~| msgid "Approved"
+#~ msgid "Approve post"
+#~ msgstr "Aprobada"
+
+#, fuzzy
+#~| msgctxt "fem"
+#~| msgid "Approved"
+#~ msgid "Disapprove post"
+#~ msgstr "Aprobada"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "Search forums"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~| msgid "Search"
+#~ msgid "New search"
+#~ msgstr "Buscar"
+
+#, fuzzy
+#~| msgid "Do you want to proceed?"
+#~ msgid "Are you sure you want to mark topics read?"
+#~ msgstr "¿Desea continuar?"

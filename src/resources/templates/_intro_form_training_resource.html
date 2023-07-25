@@ -1,0 +1,35 @@
+{% load staticfiles %}
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        {% if resource.id %}
+        <h1>{% trans "Editing" %}<span class="text-pink6"> {{resource.name}}</span></h1>
+        {% else %}
+        <h1>{% trans "New" context "femi" %}<span class="text-pink6"> {% trans "training resource" %}</span></h1>
+        {% endif %}
+
+        {% if not resource.id %}
+        <div class="row">
+            <div class="col-12">
+                <div class="small mb-2">{% trans "Thank you for submitting a new citizen science training resource to be shared on the EU-Citizen.Science platform. Please fill in all of the mandatory information in the fields below (indicated with an asterisk*), and as much of the non-mandatory information as possible." %}</div>
+
+                <div class="small mb-2">{% trans "Training Resources can include documents such as guidelines, reports, policy briefs, and protocols; tools such as software or hardware; and other file formats such as videos or podcasts." %}</div>
+
+                <div class="small mb-2">{% trans "Upon saving this profile, your training resource will be submitted for moderation. The moderation process is meant to ensure that all of the resources shared on the platform are useful for citizen science projects and practitioners, and are of good quality." %}</div>
+
+                <div class="small mb-2">{% trans "Please note that we strongly recommend that you first ensure that your training resource is hosted in a permanent repository, such as on a website that will be maintained and can provide a permalink, or a repository such as a publisher like " %}
+                    <a href="https://zenodo.org/" target="_blank">Zenodo</a>,
+                    <a href="https://osf.io/" target="_blank">OSF</a>,
+                    <a href="https://riojournal.com/" target="_blank">{% trans "the RIO Journal" %}</a>.
+                </div>
+
+                <div class="small mb-2">{% trans "We would like to point out that, as the author of this profile, you have to clear the image rights and copyrights of the content you are submitting. Please indicate the author or copyright holder of pictures. You may need to obtain express written permission from them." %}</div>
+
+                <div class="small mb-2">{% trans "If you have any doubts about filling it out, consult our " %}
+                    <a href="/guide" target="_blank">{% trans "Use Guide" %}</a>.
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>

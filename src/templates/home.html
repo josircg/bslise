@@ -1,0 +1,89 @@
+{% extends "base_r2.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% block head %}
+{{block.super }}
+<meta name="Description" content="CIVIS - Ciência cidadã">
+{% endblock %}
+{% block navbar-left %}
+{% include "_navbar_r2.html"  %}
+{% endblock %}
+{% block splash %}
+{% if request.get_full_path == "/" %}
+
+<div id="banner" class="container-fluid" >
+    <div class="container" >
+        <div class="row">
+            <div class="col-12 col-md-12 mt-0 headerText">
+                <div class="">
+                    <span class="mt-4 mb-2 whiteText headerTitle">
+                        A ciência construída por meio da colaboração entre 
+                        <img data-src="{% static 'site/img/todxs.gif' %}" alt="todos" style="width: 127px; margin-bottom: 7px;" class="lazyload">
+                    </span>
+                    <span class="headerSubTitle">
+                        <a href="{% url 'accounts:signup' %}">{% trans "Join us" %}</a>! 
+                    </span>
+                </div>                
+            </div>
+
+            {% include "_subnavbar.html" %}
+            <div class="row">
+                <div class="col-12 pb-5">
+                    <form id="finder" action="/projects" class="finder-page">
+                        <div class="form-row">
+                            <div class="input-group border-0">
+                                <div class="input-group-text inhead clickable bg-white border-end-0" id="mysearch">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <input type="text" 
+                                       id="keywords"
+                                       name="keywords" 
+                                       autocomplete="off"                                                                            
+                                       class="basicAutoComplete form-control opacity-25 border-start-0 border-end-0"
+                                       placeholder="{% trans 'Search all site...' %}"
+                                       data-url="/home_autocomplete/">
+                                <div class="input-group-text inhead clickable border-start-0 bg-white" id="backsign"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="col-md-6 col-12 mt-5 pb-5">
+                    {% if user.is_authenticated %}
+                    <h3 class="mb-5 mt-5">Go to your 
+                        <a class="lightBlue-color" href="/users/me">personal area</a><br/>
+                        and see your stats</h3>
+                    {% else %}
+                    <h3 class="mb-5 mt-5">{% trans "<a href='signup'>join the community</a> <div>and participate</div>" %}</h3>
+                    {% endif %}
+                </div> -->
+            </div>
+        </div>
+    </div>    
+</div>
+{% endif %}
+{% endblock splash %}
+{% block list_of_items %}
+    {% include '_about_section.html' %}
+    {% include '_latest_events.html' %}
+    {% if visao_endpoint %}
+        {% include '_mapa_interativo.html' %}
+    {% endif %}
+    {% include '_latest_projects.html' %}
+    {% include '_latest_resources.html' %}
+    {% include '_latest_training_resources.html' %}
+    {% include '_latest_platforms.html' %}
+{% endblock list_of_items %}
+
+{% block scripts %}
+  <script src="{% static 'site/js/bootstrap-autocomplete.js'%}"></script>
+  <script>
+    $('.basicAutoComplete').autoComplete(
+        { minLength: 3 }
+    );
+    $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
+        $('#finder').submit();
+        $('#searchTop').submit();
+    });
+  </script>
+{% endblock scripts %}

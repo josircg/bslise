@@ -1,0 +1,21 @@
+{% extends "horizontal_card.html" %}
+{% load thumbnail %}
+{% block img %}
+<a href="{% if request.user.pk == member.pk %}{% url 'profiles:show_self'%}{% else %}{% url 'profiles:show' slug=member.slug %}{% endif %}">
+    <img title="project picture" class="img-fluid p-1 zoom lazyload" data-src="{% thumbnail member.picture|default:'default_profile.png' 200x133 crop %}">
+</a>
+{% endblock img %}
+{% block title %}
+<a href="{% if request.user.pk == member.pk %}{% url 'profiles:show_self'%}{% else %}{% url 'profiles:show' slug=member.slug %}{% endif %}">
+	{{ member.user.name }}
+</a>
+<div>
+{% for area in member.interestAreas.all %}
+{% if forloop.counter < 2 %}
+<span class="text-muted">{{area | title}}</span>
+{% elif forloop.counter < 3 %}
+...
+{% endif %}
+{% endfor %}
+</div>
+{% endblock title %}

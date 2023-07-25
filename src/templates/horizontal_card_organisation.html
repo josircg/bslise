@@ -1,0 +1,12 @@
+{% extends "horizontal_card.html" %}
+{% load thumbnail %}
+{% block img %}
+<a href="/organisation/{{organisation.id}}">
+    <img title="organisation picture" class="img-fluid lazyload" data-src="{% thumbnail organisation.safe_image|default:'default_profile.png' 200x133 crop %}">
+</a>
+{% endblock img %}
+{% block title %}
+<a href="/organisation/{{organisation.id}}">{{ organisation.name | truncatechars:30 }}</a>
+<div class="small text-muted">{{organisation.orgType}}</div>
+{% include '_card_moderation_info.html' with object=organisation %}
+{% endblock title %}

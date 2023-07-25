@@ -1,0 +1,37 @@
+{% load staticfiles %}
+{% load i18n %}
+<div class="row">
+    <div class="col-12">
+        {% if project.id %}
+        <h1>{% trans "Editing" %}<span class="text-pink6"> {{project.name}}</span></h1>
+        {% else %}
+        <h1>{% trans "New" context "fem" %}<span class="text-pink6"> {% trans "project" %}</span></h1>
+        {% endif %}
+
+        {% if not project.id %}
+        <div class="row">
+            <div class="col-12">
+                <div class="small mb-2"> {% trans "Thank you for sharing your citizen science project on the EU-Citizen.Science platform. Please fill in all of the mandatory information in the fields below (indicated with an asterisk*), and as much of the non-mandatory information as possible." %} </div>
+
+                <div class="small mb-2">{% trans "Citizen science embraces a wide range of project types that can be adapted and applied within diverse situations and disciplines, represent a range of approaches and historical practices for public participation in scientific research, and involve participants in a range of activities across the research lifecycle. For guidance on whether your project can be considered to be citizen science," %} 
+                    <!-- Removido por Marcos Novais 2022.03.18
+                    <a target="_blank" href="https://zenodo.org/communities/citscicharacteristics">
+                        {% trans "please refer to the ECSA Characteristics of Citizen Science." %}
+                    </a> -->
+                </div>
+
+                <div class="small mb-2">{% trans "In the form below, along with other descriptive information, we require that you describe the citizen science aspects of your project and the type of task(s) that participants undertake." %}
+                    <!-- Removido por Marcos Novais 2022.03.18
+                    <a target="_blank" href="https://zenodo.org/record/5127534#.YVGSxt9CSUl">
+                        {% trans "Your project should engage meaningfully with the ECSA 10 Principles of Citizen Science." %}
+                    </a> -->
+                </div>
+
+                <div class="small mb-2">{% trans "Upon saving this profile, your project will be submitted for moderation." %}
+                    <a target="_blank" href="/guide">{% trans "Use Guide" %}.</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
