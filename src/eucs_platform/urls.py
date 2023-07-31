@@ -25,17 +25,17 @@ from . import views
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="EUCS PLATFORM API",
+      title="PLATFORM API",
       default_version='v1',
-      description="This is the EUCS plaftorm API",
+      description="This is the platform API",
    ),
    public=True,
    permission_classes=(permissions.AllowAny,),
 )
 
 # Personalized admin site settings like title and header
-admin.site.site_title = "Civis Administração"
-admin.site.site_header = "Civis Administração"
+admin.site.site_title = "BSLise Administration"
+admin.site.site_header = "BSLise Administration"
 
 
 urlpatterns = [
@@ -52,9 +52,6 @@ urlpatterns = [
     path("moderation_quality_criteria", views.moderation_quality_criteria, name="moderation_quality_criteria"),
     path("translations/", views.translations, name="translations"),
     path("call/", views.call, name="call"),
-    path("policy_maker_event_2021/", views.policy_maker_event_2021, name="policy_maker_event_2021"),
-    path("final_launch/", views.final_launch, name="final_launch"),
-    path("final_event/", views.final_event, name="final_event"),
     path("home_autocomplete/", views.home_autocomplete, name="home_autocomplete"),
     path("development/", views.development, name="development"),
     path("about/", views.AboutPage.as_view(), name="about"),

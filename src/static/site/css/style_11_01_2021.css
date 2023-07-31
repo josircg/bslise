@@ -93,15 +93,6 @@ main.nomargintop {
 	background-size: cover;
 	background-position: center;
 }
-.jumbotron-blog{
-	background-image: url('../img/team.jpeg');
-	background-size: cover;
-	min-height: 15vh;
-	background-color: #405883;
-	background-blend-mode: overlay;
-	background-size: cover;
-	background-position: center;
-}
 
 h1,h2, h3, h4,h5 {
 	font-family: "Poppins", Helvetica, Arial, sans-serif;
