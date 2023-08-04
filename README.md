@@ -1,7 +1,7 @@
-# CIVIS
+# BSLise
 
-CIVIS is a web platform to register and maintain Citizen Science initiatives and project in Latin America. 
-It is a fork of [EU-CS_platform][0] and it's built with [Python][1] using the [Django Web Framework][2]. 
+BSLise is a web platform to register and maintain Information Science Courses around the world. 
+It is a fork of [EU-CS_platform][1] and [CIVIS][2] and it's built with [Python][3] using the [Django Web Framework][4]. 
 
 ## Requirements
 
@@ -69,7 +69,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## Cron jobs commands [4]
+## Cron jobs commands 
 ```
 python manage.py runcrons
 python manage.py runcrons --force
@@ -79,6 +79,7 @@ And to do this automatically:
 ```
 python manage.py crontab add
 ```
+More documentation in [django-cron][5]
 
 ## Running on a production server
 
@@ -94,15 +95,15 @@ cp docs/nginx.conf /etc/nginx/sites-enabled/civis.conf
 cp docs/supervisor.conf /etc/supervisor/conf.d/civis.conf  
 ```
 
-3) Adjust the files with the correct path and domain
+3) Adjust the nginx and supervisor files with the correct path and domain
 
 4) Restart nginx: systemctl restart nginx
 
 5) Verify supervisor configuration: supervisorctl reload
 
-6) Verify the wsgi.py setttings configuration 
 
-[1]: https://eu-citizen.science/
-[2]: https://www.python.org/
-[3]: https://www.djangoproject.com/
-[4]: https://pypi.org/project/django-crontab/ 
+[1]: https://eu-citizen.science
+[2]: https://civis.ibict.br
+[3]: https://www.python.org/
+[4]: https://www.djangoproject.com/
+[5]: https://pypi.org/project/django-crontab/ 

@@ -6,7 +6,6 @@
 {% load cookielaw_tags %}
 {% load countries %}
 {% load active_link_tags %}
-{% get_countries as countries %}
 
 <head>
     {% block head %}
@@ -15,9 +14,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" href="{% static 'site/ico/favicon.png' %}">
     <title>
-        {% block title %}
-        Civis - Plataforma de Ciência Cidadã 
-        {% endblock title%}
+        {% block title %}BSLise - Building Strong Library and Information Science Education{% endblock title%}
     </title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -63,55 +60,11 @@
                     <li class="nav-item top">
                         <a class="nav-link main {% active_link  'about' %}" href="/about">{% trans "About" %}</a>
                     </li>
-                     <li class="nav-item top">
-                        <a class="nav-link main {% active_link  'events' %}" href="{% url 'events' %}">{% trans "What is on" %}</a>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            {% if FORUM_ENABLED %}
-                              <a class="nav-link main {% active_link  'forum' %}" href="{% url 'forum:index' %}">{% trans "Forum" %}</a>
-                            {% else %}
-                              <a class="nav-link main {% active_link  'forum' %}" href="{% url 'coming_soon' %}">{% trans "Forum" %}</a>
-                            {% endif %}
-                        </div>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            <a class="nav-link main {% active_link  'blog' %}" href="{% url 'blog' %}">{% trans "Blog" %}</a>
-                        </div>
-                    </li>
-                    <li class="nav-item top">
-                        <div class="d-block">
-                            <a class="nav-link main {% active_link  'guide' %}" href="{% url 'guide' %}">{% trans "Use Guide" %}</a>
-                        </div>
-                    </li>
                     <li class="nav-item top">
                         <div class="d-block">
                             <a class="nav-link main {% active_link  'contact' %}" href="{% url 'contact' %}">{% trans "Contact" %}</a>
                         </div>
                     </li>
-
-
-
-                    <!--<li class="nav-item">
-                        <a class="nav-link main" href="https://moodle.eu-citizen.science/" target="_blank"
-                            rel="noreferrer">
-                            {% trans "Moocs" %}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link main {% active_link  'forum' %}" href="/forum">
-                            {% trans "Forum" %}
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link main {% active_link  'final_event' %}" href="{% url 'final_event' %}">
-                            {% trans "Final Event" %}
-                        </a>
-                    </li> -->
-                    
-
                 </ul>
 
                 <ul class="navbar-nav ml-auto">

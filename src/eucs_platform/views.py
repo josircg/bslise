@@ -37,20 +37,7 @@ def home(request):
     projects = paginatorprojects.get_page(page)
     counterprojects = paginatorprojects.count
 
-    # Resources
-    resources = Resource.objects.approved_resources().order_by('-dateUpdated')
-    paginatorresources = Paginator(resources, items_per_page)
-    resources = paginatorresources.get_page(page)
-    counterresources = paginatorresources.count
-
-    # Training Resources
-    training_resources = Resource.objects.approved_training_resources().order_by('-dateUpdated')
-    paginator_training_resources = Paginator(training_resources, items_per_page)
-    training_resources = paginator_training_resources.get_page(page)
-    countertresources = paginator_training_resources.count
-
     # Organisations
-    # TODO: Put -dateCreated
     organisations = Organisation.objects.all().order_by('id')
     if request.GET.get('keywords'):
         organisations = organisations.filter(Q(name__icontains=request.GET['keywords'])).distinct()
@@ -58,11 +45,17 @@ def home(request):
     organisations = paginatororganisation.get_page(page)
     counterorganisations = paginatororganisation.count
 
-    # Platforms
-    platforms = Platform.objects.filter(active=True).order_by('-dateCreated')
-    paginator_platform = Paginator(platforms, items_per_page)
-    platforms = paginator_platform.get_page(page)
-    counter_platforms = paginator_platform.count
+    # Resources
+    resources = Resource.objects.approved_resources().order_by('-dateUpdated')
+    paginatorresources = Paginator(resources, items_per_page)
+    resources = paginatorresources.get_page(page)
+    counterresources = paginatorresources.count
+
+    # Training Resources
+    # training_resources = Resource.objects.approved_training_resources().order_by('-dateUpdated')
+    # paginator_training_resources = Paginator(training_resources, items_per_page)
+    # training_resources = paginator_training_resources.get_page(page)
+    # countertraining = paginator_training_resources.count
 
     if settings.VISAO_USERNAME:
         base_endpoint = f'{settings.VISAO_URL}/app/visao/{settings.VISAO_LAYOUT}?'
@@ -93,7 +86,7 @@ def home(request):
     # Users
     counter_users = Profile.objects.count()
 
-    total = countertresources + counterprojects + countertresources + counterorganisations
+    total = counterresources + counterprojects + counterorganisations
 
     return render(request, 'home.html', {
         'user': user,
@@ -102,13 +95,9 @@ def home(request):
         'resources': resources,
         'counterresources': counterresources,
         'filters': filters,
-        'trainingResources': training_resources,
-        'countertresources': countertresources,
         'organisations': organisations,
         'counterorganisations': counterorganisations,
-        'platforms': platforms,
         'events': events,
-        'counterPlatforms': counter_platforms,
         'counterUsers': counter_users,
         'total': total,
         'visao_endpoint': visao_endpoint,
@@ -154,11 +143,6 @@ def privacy(request):
 def guide(request):
     if settings.USE_GUIDE:
         return HttpResponseRedirect("/static/site/files/%s" % settings.USE_GUIDE)
-        # filename = os.path.join(settings.STATIC_ROOT, 'site', 'files', settings.USE_GUIDE)
-        # response = FileResponse(open(filename))
-        # response.content_type = 'application/pdf'
-        # response['Content-Disposition'] = 'attachment; filename="' + settings.USE_GUIDE + '"'
-        # return response
     else:
         return render(request, 'guide.html')
 
