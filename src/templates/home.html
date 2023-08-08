@@ -13,16 +13,12 @@
 {% if request.get_full_path == "/" %}
 
 <div id="banner" class="container-fluid" >
-    <div class="container" >
+    <div class="container banner-content">
         <div class="row">
             <div class="col-12 col-md-12 mt-0 headerText">
                 <div class="">
-                    <span class="mt-4 mb-2 whiteText headerTitle">
-                        A ciência construída por meio da colaboração entre 
-                        <img data-src="{% static 'site/img/todxs.gif' %}" alt="todos" style="width: 127px; margin-bottom: 7px;" class="lazyload">
-                    </span>
-                    <span class="headerSubTitle">
-                        <a href="{% url 'accounts:signup' %}">{% trans "Join us" %}</a>! 
+                    <span class="mt-4 mb-4 whiteText headerTitle">
+                        Library and Information Science Schools' Directory by BSLISE/IFLA                        
                     </span>
                 </div>                
             </div>
@@ -84,6 +80,15 @@
     $('.basicAutoComplete').on('autocomplete.select', function (evt, item) {
         $('#finder').submit();
         $('#searchTop').submit();
+    });
+
+    $(window).on("scroll", function() {
+        if($(window).scrollTop() > 50) {
+            $("nav").addClass("active");
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+           $("nav").removeClass("active");
+        }
     });
   </script>
 {% endblock scripts %}

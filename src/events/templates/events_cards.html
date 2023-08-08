@@ -4,12 +4,12 @@
 {% load thumbnail %}
     
 <div class="col-lg-3 col-sm-6 col-12 mb-5">
-    <div class="card h-100 border-1 rounded">
-        <div class="card-body d-flex flex-column">
+    <div class="h-100">
+        <div class="d-flex flex-column">
             <div class="mb-auto">
-                <h4 class="mt-2 mb-0">
+                <h5 class="mt-3 mb-0">
                     <span class="card-title">{{event.title | truncatewords_html:10 }}</span>
-                </h4>        
+                </h5>        
                 <br>    
                 <span class="text-pink6">
                     {{event.start_date | date:" d M"}}                 

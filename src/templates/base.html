@@ -39,7 +39,11 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-white" id="navTop">
+        {% if request.path == "/" %}
+        <nav class="navbar navbar-light navbar-expand-lg home" id="navTop">
+        {% else %}
+        <nav class="navbar navbar-light navbar-expand-lg" id="navTop">
+        {% endif %}     
         <!-- Navbar -->
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal"
@@ -47,16 +51,19 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img data-src="{% static 'site/img/civis-logo.svg' %}" width="192" height="" alt="" class="lazyload"/>
+                <img data-src="{% static 'site/img/bslise-logo.svg' %}" width="" height="60" alt="" class="lazyload"/>
             </a>
             <div class="collapse navbar-collapse" id="navbarPrincipal">
                 <ul class="navbar-nav me-auto">
+
+                    <li class="nav-item top">
+                        <a class="nav-link main {% active_link  'home' %}" href="/">{% trans "Home" %}</a>
+                    </li>
                     <li class="nav-item top">
                         <a class="nav-link main {% active_link 'all || projects || resources || training_resources || organisations'%}"
                             href="{% url 'projects' %}">{% trans "Search" %}
                         </a>
-                    </li>
-                    
+                    </li>                    
                     <li class="nav-item top">
                         <a class="nav-link main {% active_link  'about' %}" href="/about">{% trans "About" %}</a>
                     </li>
@@ -129,7 +136,11 @@
     </nav>
     <!--/.Navbar-->
 
-    <main class="flex-fill">
+        {% if request.path == "/" %}
+        <main class="flex-fill home">
+        {% else %}
+        <main class="flex-fill">
+        {% endif %}    
         {% include "_modalsubmit.html" %}
         {% block splash %}
         {% endblock splash %}
