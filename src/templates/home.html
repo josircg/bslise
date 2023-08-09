@@ -26,7 +26,7 @@
             {% include "_subnavbar.html" %}
             <div class="row">
                 <div class="col-12 pb-5">
-                    <form id="finder" action="/projects" class="finder-page">
+                    <form id="finder" action="/platforms" class="finder-page">
                         <div class="form-row">
                             <div class="input-group border-0">
                                 <div class="input-group-text inhead clickable bg-white border-end-0" id="mysearch">
@@ -61,14 +61,13 @@
 {% endblock splash %}
 {% block list_of_items %}
     {% include '_about_section.html' %}
-    {% include '_latest_events.html' %}
+    {% include '_latest_platforms.html' %}
     {% if visao_endpoint %}
         {% include '_mapa_interativo.html' %}
     {% endif %}
+    {% include '_latest_events.html' %}
     {% include '_latest_projects.html' %}
     {% include '_latest_resources.html' %}
-    {% include '_latest_training_resources.html' %}
-    {% include '_latest_platforms.html' %}
 {% endblock list_of_items %}
 
 {% block scripts %}

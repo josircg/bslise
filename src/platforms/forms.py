@@ -12,32 +12,32 @@ from .models import Platform, GeographicExtend
 class PlatformForm(forms.Form):
     name = forms.CharField(
         max_length=200,
-        help_text=_('Please write the name of the network or platform.'),
-        label=_('Platform name'),
+        help_text=_('Please write the name of the programme.'),
+        label=_('Programme name'),
         widget=forms.TextInput())
 
     url = forms.URLField(
         max_length=200,
         label=_('URL'),
-        help_text=_('Please provide the URL of the network or platform.'),
+        help_text=_('Please provide the URL of the programme.'),
         widget=forms.TextInput())
 
     description = forms.CharField(
         max_length=3000,
         label=_('Description'),
-        help_text=_('Please briefly describe the network or platform (max 3000 characters).'),
+        help_text=_('Please briefly describe the programme (max 3000 characters).'),
         widget=CKEditorWidget(config_name='frontpage'))
 
     geoExtend = forms.ModelChoiceField(
         queryset=GeographicExtend.objects.none(),
         widget=s2forms.Select2Widget,
-        help_text=_('Please indicate the spatial scale of the network or platform.'),
+        help_text=_('Please indicate the spatial scale of the programme.'),
         label=_('Geographic extent'))
 
     countries = forms.MultipleChoiceField(
         widget=s2forms.Select2MultipleWidget,
         label=_("Countries"),
-        help_text=_('Please select the country(ies) related to the network or platform.')
+        help_text=_('Please select the country(ies) related to the programme.')
     )
     # platformLocality = forms.CharField(
     #         label=_("Network / platform locality"),
@@ -47,7 +47,7 @@ class PlatformForm(forms.Form):
     #         help_text=_('Please describe the locality of the network or platform. For example: City of Lisbon.'))
 
     contactPoint = forms.CharField(
-        label=_('Platform contact point'),
+        label=_('Contact point'),
         max_length=100,
         help_text=_('Please name the contact person or contact point for the network or platform.'),
         widget=forms.TextInput(),

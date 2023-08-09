@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 {% load staticfiles %}
 {% load thumbnail %}
 {% load i18n %}
@@ -14,7 +14,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" href="{% static 'site/ico/favicon.png' %}">
     <title>
-        {% block title %}BSLise - Building Strong Library and Information Science Education{% endblock title%}
+        {% block title %}BSLise - {% trans "Building Strong Library and Information Science Education" %}{% endblock title%}
     </title>
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"

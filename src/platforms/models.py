@@ -9,15 +9,6 @@ from utilities.models import AbstractTranslatedModel
 
 from .managers import GeographicExtendQuerySet
 
-GEOGRAPHIC_EXTEND_CHOICES = (
-    ("GLOBAL", "Global"),
-    ("MACRORREGIONAL", "Macrorregional"),
-    ("NACIONAL", "Nacional"),
-    ("REGIONAL", "Regional"),
-    ("MUNICIPAL", "Municipal"),
-    ("VIZINHANÇA", "Vizinhança")
-)
-
 
 class Keyword(models.Model):
     keyword = models.TextField()
@@ -49,10 +40,6 @@ class Platform(models.Model):
     dateCreated = models.DateTimeField('Created date', auto_now=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
     description = models.CharField(max_length=3000)
-    # geographicExtend DEPRECATED, use geoExtend
-    geographicExtend = models.CharField(
-        max_length=15, null=True,
-        choices=GEOGRAPHIC_EXTEND_CHOICES)
     geoExtend = models.ForeignKey(GeographicExtend, on_delete=models.PROTECT)
     countries = CountryField(multiple=True)
     keywords = models.ManyToManyField(Keyword, blank=True)
@@ -70,8 +57,8 @@ class Platform(models.Model):
     active = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name = _('Platform')
-        verbose_name_plural = _('Platforms')
+        verbose_name = _('Program')
+        verbose_name_plural = _('Programmes')
 
     def __str__(self):
         return f'{self.name}'

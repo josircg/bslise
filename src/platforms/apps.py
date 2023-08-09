@@ -5,4 +5,4 @@ from django.utils.translation import ugettext_lazy as _
 
 class PlatformsConfig(AppConfig):
     name = 'platforms'
-    verbose_name = _('Platforms')
+    verbose_name = _('Programmes')

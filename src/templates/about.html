@@ -9,32 +9,37 @@
         <div class="col-2"></div>
         <div class="col-8">
             <h1 class="mt-5 mb-5">
-                {% trans "about" %} <span class="text-pink6">civis</span>
+                {% trans "about" %} <span class="text-pink6">BSLise</span>
             </h1>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-2 col-12"></div>
         <div class="col-sm-8 col-11">
-
-            <div class="row mb-5">                
+            <div class="row mb-5">
                 <div class="col-12">
-                    <p>
-                        A Civis [pronuncia Cívis] é uma plataforma brasileira de Ciência Cidadã, desenvolvida pelo IBICT,
-                        em código aberto a partir da <a href="https://eu-citizen.science/">eu-citizen.science</a> 
+                    <p>{% trans "The Building Strong Library and Information Science Education (BSLISE) <a href="lisedu.wordpress.edu">Working Group</a>
+                        of the International Federation of Library Associations and Institutions (IFLA), is an initiative of the IFLA Sections on Education and Training,
+                        and Library Theory and Research, and the LIS Education in Developing Countries Special Interest Group." %}
+                    </p>
+                    <p>{% trans "The BSLISE Working Group is pursuing the development of an international quality assurance
+                        framework that will guide and promote international educational standards in LIS.
+                        Its work considers the sociopolitical and technological developments that are inclusive of
+                        local and regional contexts."%}
                     </p> 
-                    <p>
-                        Nosso objetivo é oferecer infraestrutura e conteúdos que contribuam para ampliar o entendimento sobre Ciência Cidadã, disseminar 
-                        seu uso e dar suporte ao desenvolvimento de iniciativas e à aplicação de metodologias nesse campo.
+                    <p>{% trans "In its first phase of research, the group conducted an international survey to understand the qualification requirements
+                        for library and information “professional” practice around the world, inclusive of regional and national contexts."%}
                     </p> 
-                    <p>
-                        A Civis está aberta para que qualquer pessoa possa cadastrar iniciativas, recursos e outros conteúdos de ciência cidadã.
-                    </p> 
-                    <p>
-                        A plataforma dirige-se a um público amplo e plural, incluindo:
+                    <p>{% trans "
+                        This Directory is a working progress and addresses a broad and plural audience, including:
+                        "%}
                     </p> 
                     <ul>
-                        <li>pesquisadores, cientistas e professores interessados em desenvolver projetos e iniciativas de ciência 
+                        <li>{% trans "researchers, scientists and teachers;"%}</li>
+                        <li>{% trans "students who are looking for courses in areas related to information science in their region;"%}</li>
+                        <li>{% trans "public and private managers interested in supporting and developing projects and initiatives of this nature."%}</li>
+                        <!----
+                        <li>pesquisadores, cientistas e professores interessados em desenvolver projetos e iniciativas de ciência
                             cidadã, bem como em conhecer e utilizar metodologias e resultados de iniciativas já existentes;
                         </li>
                         <li>
@@ -42,45 +47,11 @@
                             ou aprimorar ações com essa abordagem;
                         </li>
                         <li>gestores públicos e privados interessados em apoiar e desenvolver projetos e iniciativas dessa natureza.</li>
+                        !---->
                     </ul>
-                    
-                    <h1 class="mt-5 mb-5">
-                        O que é <span class="text-pink6">Ciência Cidadã</span>
-                    </h1>
-    
-                    <p>
-                        A Ciência Cidadã é uma das vertentes do movimento pela ciência aberta. Trata-se de um conceito amplo, que abrange uma extensa 
-                        diversidade de iniciativas, abordagens e metodologias que buscam aprimorar e promover a contribuição e o engajamento de não 
-                        cientistas nas atividades de produção e análise de conhecimentos, dados e informações relevantes à ciência e às questões de 
-                        importância social, ambiental e territorial.
-                    </p>
-                    
-                    
                 </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock list_of_items %}
-{% block scripts %}
-<script>
-	function loadTeaserVideo(){
-		var code = $("#id_teaser").val();
-		switch (code) {
-			case "NL": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/hPMN9LUo2x0"); break;
-			case "EN": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/jBfgV8LkYl8"); break;
-			case "ET": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/94wsDZDwU2A"); break;
-			case "FR": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/cTsiWL7kzjc"); break;
-			case "DE": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/E4Nl2qT3UVU"); break;
-			case "EL": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/sVAsKEzbOSg"); break;
-			case "HU": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/P4qvioSYLEk"); break;
-			case "IT": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/szQTUB4fzqs"); break;
-			case "LT": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/LPytoycYlio"); break;
-			case "PT": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/eJl0CyHVoF8"); break;
-			case "ES": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/6dF63l4sLRw"); break;
-			case "SV": $("#teaserIframe").attr("src", "https://www.youtube.com/embed/h2qNh32QIfs"); break;
-			default: $("#teaserIframe").attr("src", "https://www.youtube.com/embed/jBfgV8LkYl8");
-		}
-
-	}
-</script>
-{% endblock scripts %}
