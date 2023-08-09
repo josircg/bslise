@@ -18,7 +18,8 @@ def notify_approved_event(sender, instance, **kwargs):
                 message=render_to_string(
                     'emails/approved_event.html',
                     {"domain": settings.DOMAIN, "title": instance.title,
-                     'event_url': rl('events')}
+                     'event_url': rl('events'),
+                     'contact_email': settings.CONTACT_EMAIL}
                 ),
                 to=to
             )

@@ -46,8 +46,7 @@ msgstr ""
 "haconfirmado todavía esta dirección. Por favor, busque el correo de "
 "confirmaciónen su bandeja de entrada (o spam) para activar su cuenta"
 
-#: accounts/forms.py:76 contact/forms.py:13
-#: profiles/templates/profiles/privacy_center.html:28
+#: accounts/forms.py:76 profiles/templates/profiles/privacy_center.html:28
 msgid "I want to receive the newsletter from Civis"
 msgstr ""
 
@@ -286,6 +285,10 @@ msgstr "Apellido"
 msgid "Message"
 msgstr "Mensaje"
 
+#: contact/forms.py:13
+msgid "I want to receive the monthly newsletter"
+msgstr ""
+
 #: contact/forms.py:19
 msgid "Subject"
 msgstr "Asunto"
@@ -395,8 +398,8 @@ msgstr ""
 msgid "Import CSV"
 msgstr ""
 
-#: contact/templates/contact.html:10 contact/templates/contact.html:19
-#: contact/templates/contact.html:28
+#: contact/templates/contact.html:6 contact/templates/contact.html:10
+#: contact/templates/contact.html:19 contact/templates/contact.html:28
 #: contact/templates/submitter_contact.html:20
 #: contact/templates/submitter_contact.html:29
 #: contact/templates/subscribe.html:10 templates/base.html:72
@@ -404,9 +407,7 @@ msgid "Contact"
 msgstr "Contacto"
 
 #: contact/templates/contact.html:29
-msgid ""
-"You can reach out by this form, or through the email: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
+msgid "You can reach out by this form, or through the email:"
 msgstr ""
 
 #: contact/templates/contact.html:66
@@ -445,8 +446,8 @@ msgstr ""
 
 #: contact/templates/subscribe.html:29
 msgid ""
-"Sign up to the CIVIS newsletter to get the latest updates on citizen science "
-"initiatives across Latin America"
+"Sign up to the monthly newsletter to get the latest updates on BSLise "
+"initiative"
 msgstr ""
 
 #: contact/templates/subscribe.html:30
@@ -501,7 +502,9 @@ msgid "Confirm your Email"
 msgstr "Confirme tu email"
 
 #: contact/views.py:105
-msgid "Thank you for registering at Civis Newsletter"
+#, fuzzy
+#| msgid "Thank you for registering at Civis Newsletter"
+msgid "Thank you for registering our Newsletter"
 msgstr "Gracias por suscribirse a nuestro boletín"
 
 #: contact/views.py:106
@@ -587,7 +590,7 @@ msgstr "Español"
 msgid "English"
 msgstr "Inglês"
 
-#: eucs_platform/settings/base.py:444
+#: eucs_platform/settings/base.py:445
 msgid "Falkland Islands (Malvinas)"
 msgstr "Islas Malvinas"
 
@@ -708,10 +711,10 @@ msgstr "Evento"
 #| "consortium. This step is simply to check for ‘spam’ or inappropriate uses "
 #| "of the profile form."
 msgid ""
-"Thank you for submitting an event to the EU-Citizen.Science platform. Upon "
-"clicking on “Add”, the event will immediately show up on the platform but "
-"will be later moderated by one of the platform moderators. This step is "
-"simply to check for spam or inappropriate uses of the platform."
+"Thank you for submitting an event to our platform. Upon clicking on “Add”, "
+"the event will immediately show up on the platform but will be later "
+"moderated by one of the platform moderators. This step is simply to check "
+"for spam or inappropriate uses of the platform."
 msgstr ""
 "Al guardar este perfil, los datos de su organización serán enviados "
 "arevisión por uno de los miembros del consorcio de EU-Citizen.Science. Este "
@@ -728,10 +731,10 @@ msgid ""
 "%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
-"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>If you want to get in touch with us, write to %(contact_email)s.</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
-"    <p>Civis Team</p>\n"
+"    <p>Moderation Team</p>\n"
 "  "
 msgstr ""
 
@@ -1111,7 +1114,7 @@ msgid ""
 "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
-"    <p>Civis Team</p>\n"
+"    <p>%(site_name)s Team</p>\n"
 "  "
 msgstr ""
 
@@ -3231,6 +3234,12 @@ msgstr "Próximos eventos"
 #| msgid "Resources"
 msgid "See all events"
 msgstr "Ver todos los eventos"
+
+#: templates/_latest_platforms.html:6
+#, fuzzy
+#| msgid "Programmes"
+msgid "New Programmes included"
+msgstr "Programas"
 
 #: templates/_latest_platforms.html:13
 #, fuzzy

@@ -8,9 +8,9 @@ from datetime import datetime
 def deploy(connection):
     with connection.cd('/var/webapp/bslise/bslise/src/'):
         connection.run('git pull')
-        connection.run('../../bin/python3 manage.py migrate')
-        connection.run('../../bin/python3 manage.py compilemessages --use-fuzzy')
-        connection.run('../../bin/python3 manage.py collectstatic --noinput')
+        connection.run('/home/webapp/bslise/bin/python manage.py migrate')
+        connection.run('/home/webapp/bslise/bin/python manage.py compilemessages --use-fuzzy')
+        connection.run('/home/webapp/bslise/bin/python manage.py collectstatic --noinput')
         connection.run('supervisorctl restart bslise')
         print('Atualização efetuada com sucesso!')
 

@@ -57,7 +57,7 @@ def contactView(request):
             return render(request, 'success.html',
                           {'title': _('Success!'),
                            'message': _('Thanks for you contact')})
-    return render(request, "contact.html", {'form': form})
+    return render(request, "contact.html", {'form': form, 'contact_email': settings.CONTACT_EMAIL})
 
 
 def subscribeView(request):
@@ -102,7 +102,7 @@ def subscribeView(request):
                     to=[email],
                 )
                 return render(request, 'success.html', {
-                    'title': _("Thank you for registering at Civis Newsletter"),
+                    'title': _("Thank you for registering our Newsletter"),
                     'message': _("Please check your mailbox."
                                  "You are going to receive an email to certify that your email is valid.")
                     })

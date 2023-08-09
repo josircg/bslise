@@ -41,10 +41,11 @@ msgstr ""
 "confirmado. Para ativar a sua conta, procure o e-mail de confirmação na sua "
 "caixa de entrada (ou spam). "
 
-#: accounts/forms.py:76 contact/forms.py:13
-#: profiles/templates/profiles/privacy_center.html:28
+#: accounts/forms.py:76 profiles/templates/profiles/privacy_center.html:28
+#, fuzzy
+#| msgid "I want to receive the monthly newsletter"
 msgid "I want to receive the newsletter from Civis"
-msgstr "Quero receber a newsletter da Civis"
+msgstr "Quero receber a newsletter mensal"
 
 #: accounts/forms.py:91
 msgid "Enter name"
@@ -128,7 +129,7 @@ msgstr ""
 
 #: accounts/templates/accounts/acc_active_email.html:4
 msgid "Activate your EU-Citizen.Science account."
-msgstr "Ative sua conta Civis"
+msgstr "Ative sua conta"
 
 #: accounts/templates/accounts/confirm-email.html:8
 msgid "Almost done!"
@@ -264,6 +265,10 @@ msgstr "Sobrenome"
 msgid "Message"
 msgstr "Mensagem"
 
+#: contact/forms.py:13
+msgid "I want to receive the monthly newsletter"
+msgstr "Quero receber a newsletter mensal"
+
 #: contact/forms.py:19
 msgid "Subject"
 msgstr "Assunto"
@@ -361,8 +366,8 @@ msgstr "Testar envio da newsletter"
 msgid "Import CSV"
 msgstr "Importar CSV"
 
-#: contact/templates/contact.html:10 contact/templates/contact.html:19
-#: contact/templates/contact.html:28
+#: contact/templates/contact.html:6 contact/templates/contact.html:10
+#: contact/templates/contact.html:19 contact/templates/contact.html:28
 #: contact/templates/submitter_contact.html:20
 #: contact/templates/submitter_contact.html:29
 #: contact/templates/subscribe.html:10 templates/base.html:72
@@ -370,12 +375,8 @@ msgid "Contact"
 msgstr "Contato"
 
 #: contact/templates/contact.html:29
-msgid ""
-"You can reach out by this form, or through the email: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
-msgstr ""
-"Entre em contato pelo formulário ou envie um e-mail para: <a href='mailto:"
-"civis@ibict.br'>civis@ibict.br</a>"
+msgid "You can reach out by this form, or through the email:"
+msgstr "Entre em contato pelo formulário ou envie um e-mail para:"
 
 #: contact/templates/contact.html:66
 msgid "Refresh captcha"
@@ -414,10 +415,15 @@ msgid "Subscribe to our newsletter"
 msgstr "Assine nossa newsletter"
 
 #: contact/templates/subscribe.html:29
+#, fuzzy
+#| msgid ""
+#| "Sign up to the monthly newsletter to get the latest updates on BSLISE "
+#| "initiative"
 msgid ""
-"Sign up to the CIVIS newsletter to get the latest updates on citizen science "
-"initiatives across Latin America"
-msgstr "Inscreva-se na newsletter da Civis para receber as novidades"
+"Sign up to the monthly newsletter to get the latest updates on BSLise "
+"initiative"
+msgstr ""
+"Inscreva-se na newsletter mensal receber novidades sobre o projeto BSLISE"
 
 #: contact/templates/subscribe.html:30
 msgid ""
@@ -462,7 +468,7 @@ msgid "Confirm your Email"
 msgstr "Confirme o seu e-mail"
 
 #: contact/views.py:105
-msgid "Thank you for registering at Civis Newsletter"
+msgid "Thank you for registering our Newsletter"
 msgstr "Agradecemos por assinar nossa newsletter"
 
 #: contact/views.py:106
@@ -542,7 +548,7 @@ msgstr "Espanhol"
 msgid "English"
 msgstr "Inglês"
 
-#: eucs_platform/settings/base.py:444
+#: eucs_platform/settings/base.py:445
 msgid "Falkland Islands (Malvinas)"
 msgstr "Ilhas Malvinas"
 
@@ -648,15 +654,14 @@ msgstr "evento"
 
 #: events/templates/_intro_form_event.html:12
 msgid ""
-"Thank you for submitting an event to the EU-Citizen.Science platform. Upon "
-"clicking on “Add”, the event will immediately show up on the platform but "
-"will be later moderated by one of the platform moderators. This step is "
-"simply to check for spam or inappropriate uses of the platform."
+"Thank you for submitting an event to our platform. Upon clicking on “Add”, "
+"the event will immediately show up on the platform but will be later "
+"moderated by one of the platform moderators. This step is simply to check "
+"for spam or inappropriate uses of the platform."
 msgstr ""
-"Agradecemos por registrar um evento sobre ciência cidadã na plataforma "
-"Civis. Após o envio deste formulário, o evento passará por uma etapa de "
-"moderação pela equipe da Civis. O objetivo é prevenir o uso da plataforma "
-"para outros fins que não sejam o suporte à ciência cidadã."
+"Agradecemos por registrar um evento em nossa plataforma. Após o envio deste "
+"formulário, o evento passará por uma etapa de moderação por nossa equipe. O "
+"objetivo é prevenir o uso da plataforma para outros fins."
 
 #: events/templates/emails/approved_event.html:4
 #, python-format
@@ -668,21 +673,21 @@ msgid ""
 "%(event_url)s\">%(title)s</a>\n"
 "      has been approved.\n"
 "    </p>\n"
-"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>If you want to get in touch with us, write to %(contact_email)s.</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
-"    <p>Civis Team</p>\n"
+"    <p>Moderation Team</p>\n"
 "  "
 msgstr ""
 "\n"
 "    <p>Olá,</p>\n"
 "    <p>Temos o prazer de informar que o evento <a href=\"%(domain)s"
 "%(event_url)s\">%(title)s</a> foi aprovado.</p>\n"
-"    <p>Se quiser entrar em contato conosco, escreva para civis@ibict.br.</"
+"    <p>Se quiser entrar em contato conosco, escreva para %(contact_email)s.</"
 "p>\n"
 "    <p>Este é um e-mail automático, NÃO responda.</p>\n"
 "    <p>Saudações,</p>\n"
-"    <p>Equipe Civis</p>\n"
+"    <p>Equipe de Moderação</p>\n"
 "  "
 
 #: events/templates/event_form.html:37
@@ -951,12 +956,11 @@ msgid ""
 "information in the fields below (indicated with an asterisk*), and as much "
 "of the non-mandatory information as possible."
 msgstr ""
-"Agradecemos por registrar sua organização na plataforma Civis. O perfil de "
-"organização poderá ser associado aos perfis pessoais dos integrantes de sua "
-"organização, às iniciativas em que sua organização está envolvida e aos "
-"recursos publicados pela sua organização. Preencha todos os campos "
-"obrigatórios (indicados com asterisco*) e o máximo de possível de campos "
-"opcionais."
+"Agradecemos por registrar sua organização. O perfil de organização poderá "
+"ser associado aos perfis pessoais dos integrantes de sua organização, às "
+"iniciativas em que sua organização está envolvida e aos recursos publicados "
+"pela sua organização. Preencha todos os campos obrigatórios (indicados com "
+"asterisco*) e o máximo de possível de campos opcionais."
 
 #: organisations/templates/_intro_form_organisation.html:14
 msgid ""
@@ -974,8 +978,8 @@ msgid ""
 "the profile form."
 msgstr ""
 "Após o envio deste formulário, a organização passará por uma etapa de "
-"moderação pela equipe da Civis. O objetivo é prevenir o uso da plataforma "
-"para outros fins que não sejam o suporte à ciência cidadã."
+"moderação. O objetivo é prevenir o uso da plataforma para outros fins que "
+"não sejam o suporte à ciência cidadã."
 
 #: organisations/templates/_intro_form_organisation.html:18
 #: resources/templates/_intro_form_resource.html:26
@@ -993,7 +997,23 @@ msgstr ""
 "necessário, peça uma autorização por escrito."
 
 #: organisations/templates/emails/approved_organisation.html:4
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "    <p>Hello,</p>\n"
+#| "    <p>We are pleased to inform you that the organisation <a href="
+#| "\"%(domain)s%(organisation_url)s\">%(name)s</a> has been approved.</p>\n"
+#| "    <p>\n"
+#| "      You can make updates or changes to this organisation's profile by "
+#| "accessing the section my submissions in\n"
+#| "      your <a href=\"%(domain)s%(my_profile_url)s\">Personal Area</a> "
+#| "(see top right corner of platform menu).\n"
+#| "    </p>\n"
+#| "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+#| "    <p>This is an automated email, DO NOT reply.</p>\n"
+#| "    <p>Greetings,</p>\n"
+#| "    <p>Team %(site_name)s</p>\n"
+#| "  "
 msgid ""
 "\n"
 "    <p>Hello,</p>\n"
@@ -1008,7 +1028,7 @@ msgid ""
 "    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
-"    <p>Civis Team</p>\n"
+"    <p>%(site_name)s Team</p>\n"
 "  "
 msgstr ""
 "\n"
@@ -1025,7 +1045,7 @@ msgstr ""
 "p>\n"
 "    <p>Este é um e-mail automático, NÃO responda.</p>\n"
 "    <p>Saudações,</p>\n"
-"    <p>Equipe Civis</p>\n"
+"    <p>Equipe %(site_name)s</p>\n"
 "  "
 
 #: organisations/templates/finder_organisations.html:45
@@ -2373,8 +2393,8 @@ msgid ""
 "before submitting."
 msgstr ""
 "Organização que desenvolveu o recurso, se houver. Se não estiver listada, "
-"será necessário adicioná-la <a href='http://civis.ibict.br/"
-"new_organisation'>aqui</a> antes de submeter o recurso."
+"será necessário adicioná-la <a href='/new_organisation'>aqui</a> antes de "
+"submeter o recurso."
 
 #: resources/forms.py:137
 msgid ""
@@ -2383,8 +2403,8 @@ msgid ""
 "submitting."
 msgstr ""
 "Selecione a(s) iniciativa(s) em que o recurso foi desenvolvido. Se não "
-"estiver(em) listada(s), adicione-a(s) <a href='https://civis.ibict.br/"
-"newProject'>aqui</a> antes de submeter o recurso, se for o caso."
+"estiver(em) listada(s), adicione-a(s) <a href='/newProject'>aqui</a> antes "
+"de submeter o recurso, se for o caso."
 
 #: resources/forms.py:141
 msgid "Project(s)"
@@ -2581,7 +2601,7 @@ msgid ""
 "and are of good quality."
 msgstr ""
 "Após as informações registradas serem salvas, o recurso passará por uma "
-"etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
+"etapa de moderação por nossa equipe. O objetivo é prevenir o uso da "
 "plataforma para outros fins que não sejam o suporte à ciência cidadã. "
 
 #: resources/templates/_intro_form_resource.html:20
@@ -2621,9 +2641,9 @@ msgid ""
 "mandatory information in the fields below (indicated with an asterisk*), and "
 "as much of the non-mandatory information as possible."
 msgstr ""
-"Agradecemos por registrar uma nova formação ou material educativo de Ciência "
-"Cidadã na plataforma Civis. Preencha todas as informações obrigatórias "
-"(indicadas com asterisco*) e o máximo possível de informações opcionais."
+"Agradecemos por registrar uma nova formação ou material educativo em nossa "
+"plataforma. Preencha todas as informações obrigatórias (indicadas com "
+"asterisco*) e o máximo possível de informações opcionais."
 
 #: resources/templates/_intro_form_training_resource.html:16
 msgid ""
@@ -2644,7 +2664,7 @@ msgid ""
 "practitioners, and are of good quality."
 msgstr ""
 "Após as informações registradas serem salvas, a Formação passará por uma "
-"etapa de moderação pela equipe da Civis. O objetivo é prevenir o uso da "
+"etapa de moderação por nossa equipe. O objetivo é prevenir o uso da "
 "plataforma para outros fins que não sejam o suporte à ciência cidadã."
 
 #: resources/templates/_intro_form_training_resource.html:20
@@ -2847,6 +2867,12 @@ msgstr "Acontece"
 #: templates/_latest_events.html:15
 msgid "See all events"
 msgstr "Ver todos os Eventos"
+
+#: templates/_latest_platforms.html:6
+#, fuzzy
+#| msgid "Programme name"
+msgid "New Programmes included"
+msgstr "Nome"
 
 #: templates/_latest_platforms.html:13
 msgid "See all programmes"
@@ -3115,7 +3141,7 @@ msgstr "Empresa"
 
 #: templates/base_forms.html:78
 msgid "Connect with us on"
-msgstr "Entre em cotato com a Civis"
+msgstr "Entre em cotato conosco"
 
 #: templates/board_base.html:18
 msgid "Fórum"
@@ -3755,480 +3781,3 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
-
-#~ msgid "Platforms"
-#~ msgstr "Programas/Cursos"
-
-#, fuzzy
-#~| msgid "Building Strong Library and Information Science Education"
-#~ msgid ""
-#~ "The Building Strong Library and Information Science Education (BSLISE) <a "
-#~ "href=\\"
-#~ msgstr ""
-#~ "Construindo uma educação sólida na Biblioteconomia e na Ciência da "
-#~ "Informação"
-
-#~ msgid "platform"
-#~ msgstr "programa"
-
-#~ msgid "Please write the name of the network or platform."
-#~ msgstr "Nome do Programa"
-
-#~ msgid "Please name the contact person or contact point for programme."
-#~ msgstr "Indique uma pessoa ou um canal de contato com o programa/curso"
-
-#~ msgid "platforms found"
-#~ msgstr "Programas encontrados"
-
-#~ msgid "Network or platform images"
-#~ msgstr "Imagens de perfil do curso"
-
-#~ msgid "FAQ"
-#~ msgstr "Perguntas frequentes"
-
-#~ msgid "Newsletter"
-#~ msgstr "Newsletter"
-
-#~ msgid "Follow us"
-#~ msgstr "Seguir"
-
-#~ msgid "what can you find here?"
-#~ msgstr "o que você vai achar aqui"
-
-#~ msgid "projects"
-#~ msgstr "Iniciativas"
-
-#~ msgid ""
-#~ "that are engaging the public in research via citizen science activities"
-#~ msgstr ""
-#~ "que estão engajando o público em pesquisas por meio de atividades de "
-#~ "Ciência Cidadã."
-
-#~ msgid "resources"
-#~ msgstr "recursos"
-
-#~ msgid "useful for planning and running citizen science projects"
-#~ msgstr "que são úteis para praticantes de ciência cidadã"
-
-#~ msgid "training resources"
-#~ msgstr "formações"
-
-#~ msgid "about the practice of citizen science"
-#~ msgstr "Dez Princípios da ciência cidadã"
-
-#~ msgid "involved in citizen science projects and research"
-#~ msgstr ""
-#~ "Organizações envolvidas em iniciativas e pesquisas de ciência cidadã"
-
-#~ msgid "users"
-#~ msgstr "usuários"
-
-#~ msgid "with whom you can connect"
-#~ msgstr "com quem você pode conectar"
-
-#~ msgid ""
-#~ " Check out our <a href='/events'>events</a> calendar, <a href='/"
-#~ "blog'>blog</a> and <a href='/forum'>forum!</a>"
-#~ msgstr ""
-#~ " Confira nosso calendário de <a href='/events'>eventos</a>, <a href='/"
-#~ "blog'>blog</a> e <a href='/forum'>fórum!</a>"
-
-#~ msgid "Profile"
-#~ msgstr "Perfil"
-
-#~ msgid "LOGIN"
-#~ msgstr "ENTRAR"
-
-#~ msgid "SIGN UP"
-#~ msgstr "CRIAR CONTA"
-
-#~ msgid "My Profile"
-#~ msgstr "Meu Perfil"
-
-#~ msgid "My organisations"
-#~ msgstr "Minhas Organizações"
-
-#~ msgid "Submitted projects"
-#~ msgstr "Iniciativas submetidas"
-
-#~ msgid "Submitted resources"
-#~ msgstr "Iniciativas submetidas"
-
-#~ msgid "Followed projects"
-#~ msgstr "Iniciativas seguidas"
-
-#~ msgid "Resources library"
-#~ msgstr "Biblioteca de Recursos"
-
-#~ msgid "PROFILE"
-#~ msgstr "PERFIL"
-
-#~ msgid "LOGOUT"
-#~ msgstr "SAIR"
-
-#~ msgid "ADMIN"
-#~ msgstr "ADMIN"
-
-#~ msgid "Forum"
-#~ msgstr "Fórum"
-
-#~ msgid "Blog"
-#~ msgstr "Blog"
-
-#~ msgid "Moocs"
-#~ msgstr "Moocs"
-
-#~ msgid "Final Event"
-#~ msgstr "Evento"
-
-#~ msgid "EU-Citizen.Science call (closed)"
-#~ msgstr "Bem-vindo/a à plataforma Civis "
-
-#~ msgid "Mark subforums read"
-#~ msgstr "Marcas subtópicos como lidos"
-
-#~ msgid "New topic"
-#~ msgstr "Tema:"
-
-#~ msgid "Mark topics read"
-#~ msgstr "Marcar tópicos como lidos"
-
-#~ msgid "Announcements"
-#~ msgstr "Avisos"
-
-#~ msgid "Topics"
-#~ msgstr "Tópicos"
-
-#~ msgid "Posts"
-#~ msgstr "Posts"
-
-#~ msgid "Last post"
-#~ msgstr "Último post"
-
-#~ msgid "Forums"
-#~ msgstr "Fórum"
-
-#~ msgid "RSS feed"
-#~ msgstr "RSS"
-
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a>"
-#~ msgstr "Por: <a href=\"%(poster_url)s\">%(username)s</a>"
-
-#~ msgid "By: %(poster_username)s"
-#~ msgstr "Por: %(poster_username)s"
-
-#~ msgid "No posts"
-#~ msgstr "Sem posts"
-
-#~ msgid "Total redirects:"
-#~ msgstr "Redirecionamentos totais:"
-
-#~ msgid "Subforums:"
-#~ msgstr "Subfóruns:"
-
-#~ msgid "No forums."
-#~ msgstr "Sem fóruns."
-
-#~ msgid "Index"
-#~ msgstr "Índice"
-
-#~ msgid "Mark forums read"
-#~ msgstr "Marcar fóruns como lidos"
-
-#~ msgid "View unread topics"
-#~ msgstr "Ver tópicos não lidos"
-
-#~ msgid "Statistics"
-#~ msgstr "Estatísticas"
-
-#~ msgid "Total posts:"
-#~ msgstr "Total de posts:"
-
-#~ msgid "Total topics:"
-#~ msgstr "Total de tópicos:"
-
-#~ msgid "(optional)"
-#~ msgstr "(opcional)"
-
-#~ msgid "Add another file"
-#~ msgstr "Incluir outro arquivo"
-
-#~ msgid "Attachments"
-#~ msgstr "Anexos"
-
-#~ msgid "You may select <b>1</b> option"
-#~ msgstr "Você pode selecionar <b>1</b> opção"
-
-#~ msgid "You may select up to <b>%(max_options)s</b> options"
-#~ msgstr "Você pode selecionar no máximo <b>%(max_options)s</b> opções"
-
-#~ msgid "Vote"
-#~ msgstr "Votar"
-
-#~ msgid "Change your vote"
-#~ msgstr "Mude seu voto"
-
-#~ msgid "Poll options"
-#~ msgstr "Opções da enquete"
-
-#~ msgid "Add a poll option"
-#~ msgstr "Inclua uma opção na enquete"
-
-#~ msgid ""
-#~ "<b>Note:</b>&nbsp;Deleting poll options of an existing poll will delete "
-#~ "the associated votes."
-#~ msgstr ""
-#~ "<b>Atenção:</b>&nbsp;Excluir opções de uma enquete já existente irá "
-#~ "invalidar os respectivos votos."
-
-#~ msgid "Preview:"
-#~ msgstr "Visualizar:"
-
-#~ msgid "Results are currently hidden."
-#~ msgstr "Resultados estão ocultos"
-
-#~ msgid "Total votes:"
-#~ msgstr "Votos totais:"
-
-#~ msgid "Submit"
-#~ msgstr "Enviar"
-
-#~ msgid "View results"
-#~ msgstr "Ver resultados"
-
-#~ msgid "Options"
-#~ msgstr "Opções"
-
-#~ msgid "Post reply"
-#~ msgstr "Responder post"
-
-#~ msgid "Subscribe"
-#~ msgstr "Assinar"
-
-#~ msgid "Unsubscribe"
-#~ msgstr "Cancelar assinatura"
-
-#~ msgid "Lock topic"
-#~ msgstr "Bloquear tópico"
-
-#~ msgid "Unlock topic"
-#~ msgstr "Desbloqueat tópico"
-
-#~ msgid "Delete topic"
-#~ msgstr "Excluir tópico"
-
-#~ msgid "Move topic"
-#~ msgstr "Mover tópico"
-
-#~ msgid "Change to sticky topic"
-#~ msgstr "Alterar para tópico fixo"
-
-#~ msgid "Change to announce"
-#~ msgstr "Alterar para anúncio"
-
-#~ msgid "Change to standard topic"
-#~ msgstr "Alterar para tópico padrão"
-
-#~ msgid "Poll"
-#~ msgstr "Enquete"
-
-#~ msgid "Post a reply"
-#~ msgstr "Postar uma resposta"
-
-#~ msgid "Topic review"
-#~ msgstr "Revisar tópico"
-
-#~ msgid "By: <a href=\"%(poster_url)s\">%(username)s</a> on %(creation_date)s"
-#~ msgstr ""
-#~ "Por: <a href=\"%(poster_url)s\">%(username)s</a> em %(creation_date)s"
-
-#~ msgid "By: %(poster_username)s on %(creation_date)s"
-#~ msgstr "Por: %(poster_username)s em %(creation_date)s"
-
-#~ msgid "Delete post"
-#~ msgstr "Excluir post"
-
-#~ msgid "Are you sure you want to delete this post?"
-#~ msgstr "Confirmar exclusão de post?"
-
-#~ msgid "Yes, I'm sure"
-#~ msgstr "Sim, confirmar"
-
-#~ msgid "No, take me back"
-#~ msgstr "Não, cancelar"
-
-#~ msgid "Edit post"
-#~ msgstr "Editar post"
-
-#~ msgid "Post a new topic"
-#~ msgstr "Publique um novo tópico"
-
-#~ msgid "Last edited by:"
-#~ msgstr "Editado por:"
-
-#~ msgid "on"
-#~ msgstr "em"
-
-#~ msgid "edited %(counter)s time in total."
-#~ msgid_plural "edited %(counter)s times in total."
-#~ msgstr[0] "editado %(counter)s vez."
-#~ msgstr[1] "editado %(counter)s vezes."
-
-#~ msgid "Reason:"
-#~ msgstr "Razão:"
-
-#~ msgid "Posts:"
-#~ msgstr "Posts:"
-
-#~ msgid "Anonymous user"
-#~ msgstr "Usuário anônimo"
-
-#~ msgid "Replies"
-#~ msgstr "Respostas"
-
-#~ msgid "Views"
-#~ msgstr "Visualizações"
-
-#~ msgid "This topic is locked"
-#~ msgstr "Este tópico está bloqueado"
-
-#~ msgid "There are no topics in this forum."
-#~ msgstr "Não há tópicos neste fórum."
-
-#~ msgid "Go to the page:"
-#~ msgstr "Vá para a página:"
-
-#~ msgid "Posted by"
-#~ msgstr "Postado por"
-
-#~ msgid "%(username)s profile"
-#~ msgstr "Perfil pessoal %(username)s"
-
-#~ msgid "Recent posts"
-#~ msgstr "Posts recentes"
-
-#~ msgid "View all"
-#~ msgstr "Ver tudo"
-
-#~ msgid "On %(creation_date)s"
-#~ msgstr "Em %(creation_date)s"
-
-#~ msgid "Edit forum profile"
-#~ msgstr "Editar fórum"
-
-#~ msgid "Topics that you are subscribed to"
-#~ msgstr "Tópicos que você assinou"
-
-#~ msgid "%(counter)s topic found"
-#~ msgid_plural "%(counter)s topics found"
-#~ msgstr[0] "%(counter)s tópico encontrado"
-#~ msgstr[1] "%(counter)s tópicos encontrados"
-
-#~ msgid "Not topics found."
-#~ msgstr "Nenhum dado encontrado."
-
-#~ msgid "Subscribe to topic"
-#~ msgstr "Assinar notificação mensal"
-
-#~ msgid "Would you like to subscribe to this topic?"
-#~ msgstr "Gostaria de assinar este tópico?"
-
-#~ msgid "Unsubscribe from topic"
-#~ msgstr "Cancelar assinatura do tópico"
-
-#~ msgid "Would you like to unsubscribe from this topic?"
-#~ msgstr "Gostaria de cancelar a assinatura deste tópico?"
-
-#~ msgid "My messages"
-#~ msgstr "Minhas mensagens"
-
-#~ msgid "%(username)s's posts"
-#~ msgstr "Posts de %(username)s"
-
-#~ msgid "%(counter)s post found"
-#~ msgid_plural "%(counter)s posts found"
-#~ msgstr[0] "%(counter)s post encontrado"
-#~ msgstr[1] "%(counter)s posts encontrados"
-
-#~ msgid "No posts found"
-#~ msgstr "Nenhum dado encontrado"
-
-#~ msgid "Disapprove"
-#~ msgstr "Não aprovar"
-
-#~ msgid "New post"
-#~ msgstr "Novo post"
-
-#~ msgid "<b>1</b> option may be selected"
-#~ msgstr "<b>1</b> opção pode ser selecionada"
-
-#~ msgid "Up to <b>%(max_options)s</b> options may be selected"
-#~ msgstr "Até <b>%(max_options)s</b> opções podem ser selecionadas"
-
-#~ msgid "%(topic_length)s posts found"
-#~ msgstr "%(topic_length)s posts encontrados"
-
-#~ msgid "No posts awaiting approval."
-#~ msgstr "Nenhum post para aprovação"
-
-#~ msgid "Approve post"
-#~ msgstr "Aprovar"
-
-#~ msgid "Are you sure you want to approve this post?"
-#~ msgstr "Aprovar este post?"
-
-#~ msgid "Disapprove post"
-#~ msgstr "Não aprovar"
-
-#~ msgid ""
-#~ "Are you sure you want to disapprove this post? This post will be deleted."
-#~ msgstr "Confirmar a não aprovação do post? Ele será deletado."
-
-#~ msgid "Are you sure you want to delete this topic?"
-#~ msgstr "Confirmar a não aprovação do tópico?"
-
-#~ msgid "Are you sure you want to lock this topic?"
-#~ msgstr "Confirmar o bloqueio do tópico?"
-
-#~ msgid "Are you sure you want to unlock this topic?"
-#~ msgstr "Confirmar o desbloqueio do tópico?"
-
-#~ msgid "Change topic type"
-#~ msgstr "Alterar tipo do tópico"
-
-#~ msgid "Search forums"
-#~ msgstr "Busca"
-
-#~ msgid "New search"
-#~ msgstr "Busca"
-
-#~ msgid "Your search has returned <b>%(number_of_results)s</b> result"
-#~ msgid_plural "Your search has returned <b>%(number_of_results)s</b> results"
-#~ msgstr[0] "Sua busca retornou <b>%(number_of_results)s</b> resultado"
-#~ msgstr[1] "Sua busca retornou <b>%(number_of_results)s</b> resultados"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "No results."
-#~ msgstr "Nenhum resultado encontrado"
-
-#~ msgid "Are you sure you want to mark forums read?"
-#~ msgstr "Confirmar fóruns lidos?"
-
-#~ msgid "Are you sure you want to mark topics read?"
-#~ msgstr "Confirmar tópicos lidos?"
-
-#~ msgid "%(topic_length)s unread topic found"
-#~ msgid_plural "%(topic_length)s unread topics found"
-#~ msgstr[0] "%(topic_length)s tópico não lido encontrado"
-#~ msgstr[1] "%(topic_length)s tópicos não lidos encontrados"
-
-#~ msgid "There are no unread topics."
-#~ msgstr "Não existem tópicos não lidos."
-
-#~ msgid "Join us"
-#~ msgstr "Junte-se"
-
-#~ msgid "Forum index"
-#~ msgstr "Fórum"
