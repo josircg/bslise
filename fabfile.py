@@ -6,13 +6,22 @@ from datetime import datetime
 
 
 def deploy(connection):
-    with connection.cd('/var/webapp/civis/civis/src/'):
+    with connection.cd('/var/webapp/bslise/bslise/src/'):
         connection.run('git pull')
         connection.run('../../bin/python3 manage.py migrate')
         connection.run('../../bin/python3 manage.py compilemessages --use-fuzzy')
         connection.run('../../bin/python3 manage.py collectstatic --noinput')
-        connection.run('supervisorctl restart civis')
+        connection.run('supervisorctl restart bslise')
         print('Atualização efetuada com sucesso!')
+
+
+def upgrade_requirements(connection):
+    with connection.cd('/var/webapp/bslise/bslise/src'):
+        connection.run('git pull')
+        connection.run('../../bin/pip install django_select2 --upgrade')
+        connection.run('../../bin/pip install -r ../requirements.txt')
+        print('Atualização efetuada')
+
 
 @task
 def deploy_hml(context):
@@ -21,22 +30,8 @@ def deploy_hml(context):
 
 @task
 def deploy_producao(context):
-    connection = Connection('webapp@172.16.16.126', port=25000)
-    with connection.cd('/var/webapp/civis/civis/src/'):
-        connection.run('git pull')
-        connection.run('./deploy.sh')
-        connection.run('supervisorctl restart civis')
-        print('Atualização efetuada com sucesso!')
+    deploy(Connection('webapp@172.16.16.246', port=25000))
 
-
-@task
-def upgrade_requirements_hml(context):
-    connection = Connection('webapp@172.16.17.126', port=25000)
-    with connection.cd('/var/webapp/civis/civis/src'):
-        connection.run('git pull')
-        connection.run('../../bin/pip install django_select2 --upgrade')
-        connection.run('../../bin/pip install -r ../requirements.txt')
-        print('Atualização efetuada')
 
 @task
 def connect_hml(context):

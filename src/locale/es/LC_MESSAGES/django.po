@@ -8,7 +8,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-09 00:51-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -574,21 +573,21 @@ msgid_plural "%d test mails were sent"
 msgstr[0] "Se ha enviado %d correo de prueba"
 msgstr[1] "Se han enviado %d correos de prueba"
 
-#: eucs_platform/settings/base.py:236 eucs_platform/settings/base.py:248
+#: eucs_platform/settings/base.py:223 eucs_platform/settings/base.py:235
 #, fuzzy
 #| msgid "Portuguese"
 msgid "Brazilian Portuguese"
 msgstr "Português"
 
-#: eucs_platform/settings/base.py:237 eucs_platform/settings/base.py:249
+#: eucs_platform/settings/base.py:224 eucs_platform/settings/base.py:236
 msgid "Spanish"
 msgstr "Español"
 
-#: eucs_platform/settings/base.py:238 eucs_platform/settings/base.py:250
+#: eucs_platform/settings/base.py:225 eucs_platform/settings/base.py:237
 msgid "English"
 msgstr "Inglês"
 
-#: eucs_platform/settings/base.py:455
+#: eucs_platform/settings/base.py:444
 msgid "Falkland Islands (Malvinas)"
 msgstr "Islas Malvinas"
 
@@ -3178,6 +3177,30 @@ msgstr ""
 "Ha habido un error. Se ha comunicado a los administradores del sitio por "
 "correo electrónico y debería solucionarse en breve."
 
+#: templates/_about_section.html:6 templates/about.html:4
+#: templates/base.html:68 templates/faq.html:4
+#: templates/moderation_quality_criteria.html:4
+msgid "About"
+msgstr "Acerca de"
+
+#: templates/_about_section.html:9
+msgid "What is BSLISE Directory?"
+msgstr ""
+
+#: templates/_about_section.html:10
+msgid ""
+"It is a directory of Schools and Programmes especialized in Library and "
+"Information Science built by BSLISE/IFLA workgroup"
+msgstr ""
+
+#: templates/_about_section.html:14 templates/projects_cards_featured.html:28
+#: templates/projects_cards_short.html:28
+#: templates/resources_cards_featured.html:30
+#: templates/resources_cards_horizontal.html:45
+#: templates/resources_cards_short.html:30
+msgid "Read more"
+msgstr "Leer más"
+
 #: templates/_crop_zone.html:6 templates/_modal_to_crop.html:6
 msgid "Crop the photo"
 msgstr "Recortar la foto"
@@ -3208,10 +3231,6 @@ msgstr "Próximos eventos"
 #| msgid "Resources"
 msgid "See all events"
 msgstr "Ver todos los eventos"
-
-#: templates/_latest_platforms.html:6
-msgid "Platforms"
-msgstr "Plataformas"
 
 #: templates/_latest_platforms.html:13
 #, fuzzy
@@ -3248,17 +3267,17 @@ msgstr "Formación"
 msgid "See all trainings"
 msgstr "formación"
 
-#: templates/_mapa_interativo.html:8
+#: templates/_mapa_interativo.html:9
 #, fuzzy
 #| msgid "Project"
 msgid "Project Map"
 msgstr "Proyecto"
 
-#: templates/_mapa_interativo.html:11
+#: templates/_mapa_interativo.html:12
 msgid "Select the theme"
 msgstr ""
 
-#: templates/_mapa_interativo.html:14
+#: templates/_mapa_interativo.html:15
 msgid "All Topics"
 msgstr ""
 
@@ -3357,26 +3376,52 @@ msgstr "Nuestros destacados"
 msgid "Search..."
 msgstr "Buscar..."
 
-#: templates/about.html:4 templates/base.html:68 templates/faq.html:4
-#: templates/moderation_quality_criteria.html:4
-msgid "About"
-msgstr "Acerca de"
-
 #: templates/about.html:12
 msgid "about"
 msgstr "Acerca de"
 
-#: templates/about.html:44
+#: templates/about.html:21
+msgid ""
+"The Building Strong Library and Information Science Education (BSLISE) "
+"workgroup of the International Federation of Library Associations and "
+"Institutions (IFLA), is an initiative of the IFLA Sections on Education and "
+"Training, Library Theory and Research, and the LIS Education in Developing "
+"Countries Special Interest Group."
+msgstr ""
+
+#: templates/about.html:22
+msgid ""
+"The BSLISE Working Group is pursuing the development of an international "
+"quality assurance framework that will guide and promote international "
+"educational standards in LIS. Its work considers the sociopolitical and "
+"technological developments that are inclusive of local and regional contexts."
+msgstr ""
+
+#: templates/about.html:23
+msgid ""
+"In its first phase of research, the group conducted an international survey "
+"to understand the qualification requirements for library and information "
+"“professional” practice around the world, inclusive of regional and national "
+"contexts."
+msgstr ""
+
+#: templates/about.html:24
+msgid ""
+"This Directory is a working progress and addresses a broad and plural "
+"audience, including:"
+msgstr ""
+
+#: templates/about.html:26
 msgid "researchers, scientists and teachers;"
 msgstr ""
 
-#: templates/about.html:45
+#: templates/about.html:27
 msgid ""
 "students who are looking for courses in areas related to information science "
 "in their region;"
 msgstr ""
 
-#: templates/about.html:46
+#: templates/about.html:28
 msgid ""
 "public and private managers interested in supporting and developing projects "
 "and initiatives of this nature."
@@ -3537,6 +3582,10 @@ msgstr "Desarrollo"
 #| msgid "what is <span class='text-white'>citizen science?</span>"
 msgid "Frequently <span class='text-pink6'>asked questions</span>"
 msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
+#: templates/home.html:21
+msgid "Library and Information Science Schools' Directory by BSLISE/IFLA"
+msgstr ""
 
 #: templates/home.html:40
 #, fuzzy
@@ -3964,14 +4013,6 @@ msgstr "AÚN NO REVISADO"
 msgid "MODERATED"
 msgstr "REVISADO"
 
-#: templates/projects_cards_featured.html:28
-#: templates/projects_cards_short.html:28
-#: templates/resources_cards_featured.html:30
-#: templates/resources_cards_horizontal.html:45
-#: templates/resources_cards_short.html:30
-msgid "Read more"
-msgstr "Leer más"
-
 #: templates/registration/logged_out.html:9
 msgid "Thanks for spending some quality time with the Web site today."
 msgstr ""
@@ -4134,6 +4175,9 @@ msgstr "Traducir"
 #| msgid "Translations"
 msgid "Translation"
 msgstr "Traducciones"
+
+#~ msgid "Platforms"
+#~ msgstr "Plataformas"
 
 #, fuzzy
 #~| msgid "Platforms"

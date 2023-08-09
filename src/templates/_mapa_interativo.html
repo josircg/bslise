@@ -3,6 +3,7 @@
 {% cache 0 project_map %}
 <div id="mapaHome" class="mb-5">
     <div class="mapaContent">
+    <!---
         <div class="d-flex">
             <div class="d-sm-flex align-items-center flex-grow-1">
               <span class="title">{% trans 'Project Map' %}</span>
@@ -18,10 +19,11 @@
                         </select>
                 </div>
             </div>
-        </div>        
+        </div>
+     --->
         <br>
         <div id="frame-visao" class="">
-          <iframe src="about:blank" title="Visão" id="visao_iframe"></iframe>
+          <iframe src="{{ visao_endpoint }}" title="Visão" id="visao_iframe"></iframe>
         </div>
     </div>
 </div>
