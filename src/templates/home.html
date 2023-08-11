@@ -61,14 +61,14 @@
 {% endblock splash %}
 {% block list_of_items %}
     {% include '_about_section.html' %}
-    {% include '_latest_events.html' %}
+    {% include '_latest_platforms.html' %}
     {% if visao_endpoint %}
         {% include '_mapa_interativo.html' %}
     {% endif %}
+    {% include '_latest_events.html' %}
     {% include '_latest_projects.html' %}
     {% include '_latest_resources.html' %}
-    {% include '_latest_training_resources.html' %}
-    {% include '_latest_platforms.html' %}
+    {% include '_latest_training_resources.html' %}    
 {% endblock list_of_items %}
 
 {% block scripts %}
