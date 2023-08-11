@@ -19,7 +19,8 @@ def notify_approved_organisation(sender, instance, **kwargs):
                     'emails/approved_organisation.html',
                     {"domain": settings.DOMAIN, "name": instance.name,
                      'organisation_url': rl('organisation', kwargs={'pk': instance.pk}),
-                     'my_profile_url': rl('profiles:show_self')}
+                     'my_profile_url': rl('profiles:show_self'),
+                     'site_name': settings.SITE_NAME}
                 ),
                 to=to
             )

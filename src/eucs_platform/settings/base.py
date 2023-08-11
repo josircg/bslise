@@ -19,19 +19,6 @@ import environ
 
 from django.conf.locale.pt import formats as pt_formats
 
-# instalando o GDAL windows
-if os.name == 'nt':
-    import platform
-
-    OSGEO4W = r"C:\OSGeo4W"
-    if '64' in platform.architecture()[0]:
-        OSGEO4W += "64"
-    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
-    os.environ['OSGEO4W_ROOT'] = OSGEO4W
-    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
-    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
-    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
-
 # Build paths inside the project like this: BASE_DIR / "directory"
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 STATICFILES_DIRS = [str(BASE_DIR / "static"), MACHINA_MAIN_STATIC_DIR]
@@ -309,19 +296,15 @@ EMAIL_USE_TLS = True
 # EMAIL_BACKEND = 'django_ses.SESBackend'
 DEFAULT_FROM_EMAIL = env("FROM_EMAIL")
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
-# These are optional -- if they're set as environment variables they won't need to be set here as well
-# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-# Additionally, if you are not using the default AWS region of us-east-1,
-# you need to specify a region, like so:
-# AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
-# AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
-
-SITE_NAME = 'civis'
-EMAIL_RECIPIENT_LIST = ["civis@apps.ibict.br"]
-EMAIL_CONTACT_RECIPIENT_LIST = ["civis@apps.ibict.br"]
-EMAIL_CIVIS = ["civis@ibict.br"]
+SITE_NAME = 'Bslise'
+CONTACT_EMAIL = env("REPLY_EMAIL")
+EMAIL_RECIPIENT_LIST = ["bslise@apps.ibict.br"]
+EMAIL_CONTACT_RECIPIENT_LIST = ["bslise@apps.ibict.br"]
+EMAIL_CIVIS = [ CONTACT_EMAIL ]
 EMAIL_TAG = env("EMAIL_TAG")
+EMAIL_SUBJECT_PREFIX = EMAIL_TAG
+
+SITE_ID = 1
 HOST = env("HOST")
 DOMAIN = env("DOMAIN")
 USE_GUIDE = env("USE_GUIDE")
@@ -337,7 +320,6 @@ VISAO_LAYOUT = env('VISAO_LAYOUT')
 DEBUG = env('DEBUG')
 ADMIN_EMAIL = env('ADMIN_EMAIL')
 
-SITE_ID = 1
 REVIEW_PUBLISH_UNMODERATED = True
 NEWSLETTER_TYPE = 'Local'   # Accepts Local or Mailchimp
 
@@ -446,6 +428,14 @@ CRONJOBS = [
     ('0 * * * *', 'eucs_platform.cron.NewForumResponseCronJob'),
     ('30 0 * * *', 'eucs_platform.cron.CleanExpiredCaptchaCronJob')
 ]
+
+# These are optional -- if they're set as environment variables they won't need to be set here as well
+# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+# Additionally, if you are not using the default AWS region of us-east-1,
+# you need to specify a region, like so:
+# AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
+# AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
 FEATURED_MGT = env('FEATURED_MGT')
 FORUM_ENABLED = env('FORUM_ENABLED')

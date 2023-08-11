@@ -3,7 +3,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }} :: Contact{% endblock %}
+{% block title %}{{ block.super }}{% trans "Contact" %}{% endblock %}
 {% block splash %}
 <div class="jumbotron jumbotron-fluid jumbotron-default">
 	<div class="container">
@@ -26,7 +26,7 @@
 			<div class="mb-4">
 				<div class="p-3">
 					<h1 class="text-pink6">{% trans "Contact" %}</h1><br>
-					<p>{% trans "You can reach out by this form, or through the email: <a href='mailto:civis@ibict.br'>civis@ibict.br</a>" %}</p><br>
+					<p>{% trans "You can reach out by this form, or through the email: " %}<a href='{{contact_email}}'>{{contact_email}}</a></p><br>
 					<form method="post" autocomplete="off">
 						{% csrf_token %}
 						<div class="row">

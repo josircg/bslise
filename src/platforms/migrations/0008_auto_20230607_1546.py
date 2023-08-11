@@ -4,7 +4,8 @@ from django.db import migrations
 
 
 def load_geographic_extend(apps, schema_editor):
-    """Adds GeographicExtend and update Platform corresponding geographicExtend"""
+    """ Adds GeographicExtend and update Platform corresponding geographicExtend
+        This routine is no longer needed for new installations
     from platforms.models import GEOGRAPHIC_EXTEND_CHOICES
 
     dct = {k: v for k, v in GEOGRAPHIC_EXTEND_CHOICES}
@@ -30,7 +31,7 @@ def load_geographic_extend(apps, schema_editor):
 
         platform.geoExtend = geo_extend
         platform.save()
-
+    """
 
 class Migration(migrations.Migration):
     dependencies = [

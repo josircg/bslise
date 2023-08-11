@@ -47,6 +47,7 @@ python manage.py check
 
 ```
 python manage.py migrate
+python manage.py createcachetable
 python manage.py loaddata projects/fixtures/topics.json
 python manage.py loaddata projects/fixtures/status.json
 python manage.py loaddata projects/fixtures/participationtasks.json

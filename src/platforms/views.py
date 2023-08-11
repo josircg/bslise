@@ -82,9 +82,9 @@ def savePlatformAjax(request):
 def sendPlatformEmail(id, request, form):
     to = copy.copy(settings.EMAIL_RECIPIENT_LIST)
     to.append(request.user.email)
-    messages.success(request, _('Platform added correctly'))
+    messages.success(request, _('Program added correctly'))
     send_email(
-        subject='Sua plataforma "%s" foi submetida!' % form.cleaned_data['name'],
+        subject='Seu programa/curso "%s" foi submetido!' % form.cleaned_data['name'],
         message=render_to_string('emails/new_platform.html',
                                  {"domain": settings.DOMAIN, 'submissionName': form.cleaned_data['name'],
                                   'username': request.user.name}),
@@ -93,7 +93,7 @@ def sendPlatformEmail(id, request, form):
 
     # NOTIFICAÇÃO
     send_email(
-        subject='Notificação - Uma nova Plataforma "%s" foi submetida' % form.cleaned_data['name'],
+        subject='Notification - A new programme "%s" was submitted' % form.cleaned_data['name'],
         message=render_to_string('emails/notify_platform.html', {"platformid": id, "domain": settings.DOMAIN,
                                                                  'submissionName': form.cleaned_data['name'],
                                                                  'username': request.user.name}),
@@ -202,12 +202,13 @@ def setImages(request, form):
         w = form.cleaned_data.get('width' + key)
         h = form.cleaned_data.get('height' + key)
         image = Image.open(value)
-        image = image.crop((x, y, w + x, h + y))
-        if key == 'profileImage':
-            finalsize = (1100, 400)
-        else:
-            finalsize = (600, 400)
-        image = image.resize(finalsize, Image.ANTIALIAS)
+        if x and y and w and h:
+            image = image.crop((x, y, w + x, h + y))
+            if key == 'profileImage':
+                finalsize = (1100, 400)
+            else:
+                finalsize = (600, 400)
+            image = image.resize(finalsize, Image.ANTIALIAS)
         imagePath = getImagePath(value.name)
         image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
         images[key] = imagePath

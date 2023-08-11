@@ -10,30 +10,28 @@
             </div>
             <div class="modal-body">
                 <div class="menu-item mb-5">
+                    <h4><a href="/newPlatform" class="link-menu-submit">{% trans "Programme" %}</a></h4>
+                    <p class="fw-500">{% trans "Create a profile for your programme" %}</p>
+                </div>
+                <div class="menu-item mb-5">
+                    <h4><a href="/new_organisation" class="link-menu-submit">{% trans "Organisation or Network" %}</a></h4>
+                    <p class="fw-500">{% trans "Create a profile for your Organisation" %}</p>
+                </div>
+                <div class="menu-item mb-5">
                     <h4><a  href="/newProject" class="link-menu-submit" class="colorred">{% trans "Project" %}</a></h4>
-                    <p class="fw-500">{% trans "Create a Citizen Science Project profile" %}</p>
+                    <p class="fw-500">{% trans "Create a Project profile" %}</p>
                 </div>
                 <div class="menu-item mb-5">
                     <h4><a href="/newResource" class="link-menu-submit" class="colorgreen">{% trans "Resource" %}</a></h4>
-                    <p class="fw-500">{% trans "Create a profile for a Resource that is relevant for Citizen Science" %}</p>
+                    <p class="fw-500">{% trans "Create a profile for a Resource that is relevant for Information Science" %}</p>
                 </div>
                 <div class="menu-item mb-5">
                     <h4><a href="/newTrainingResource" class="link-menu-submit" class="colorlightblue">{% trans "Training" %}</a></h4>
-                    <p class="fw-500">{% trans "Create a profile for Training and Education Material related to the practice of Citizen Science" %}</p>
+                    <p class="fw-500">{% trans "Create a profile for Training and Education Material related to the practice of Information Science" %}</p>
                 </div>
                 <div class="menu-item mb-5">
                     <h4><a href="/new_event" class="link-menu-submit" class="colororange">{% trans "Event" %}</a></h4>
                     <p class="fw-500">{% trans "Create an Event" %}</p>
-                </div>
-                {% if user.is_staff %}
-                <div class="menu-item mb-5">
-                    <h4><a href="/newPlatform" class="link-menu-submit">{% trans "Platform" %}</a></h4>
-                    <p class="fw-500">{% trans "Create a profile for your citizen science platform or network" %}</p>
-                </div>
-                {% endif %}
-                <div class="menu-item mb-5">
-                    <h4><a href="/new_organisation" class="link-menu-submit">{% trans "Organisation or Network" %}</a></h4>
-                    <p class="fw-500">{% trans "Create a profile for your Organisation" %}</p>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
             <div class="col-12 col-md-12 mt-0 headerText">
                 <div class="">
                     <span class="mt-4 mb-4 whiteText headerTitle">
-                        Library and Information Science Schools' Directory by BSLISE/IFLA                        
+                        {% trans "Library and Information Science Schools' Directory by BSLISE/IFLA"  %}
                     </span>
                 </div>                
             </div>
@@ -26,7 +26,7 @@
             {% include "_subnavbar.html" %}
             <div class="row">
                 <div class="col-12 pb-5">
-                    <form id="finder" action="/projects" class="finder-page">
+                    <form id="finder" action="/platforms" class="finder-page">
                         <div class="form-row">
                             <div class="input-group border-0">
                                 <div class="input-group-text inhead clickable bg-white border-end-0" id="mysearch">
@@ -68,7 +68,6 @@
     {% include '_latest_events.html' %}
     {% include '_latest_projects.html' %}
     {% include '_latest_resources.html' %}
-    {% include '_latest_training_resources.html' %}    
 {% endblock list_of_items %}
 
 {% block scripts %}

@@ -32,6 +32,13 @@ def home(request):
     page = request.GET.get('page')
 
     # Projects
+    # platforms = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
+    platforms = Platform.objects.all().order_by('-dateCreated')
+    paginatorprojects = Paginator(platforms, items_per_page)
+    platforms = paginatorprojects.get_page(page)
+    counterplatforms = paginatorprojects.count
+
+    # Projects
     projects = Project.objects.filter(approved=True, hidden=False).order_by('-dateCreated')
     paginatorprojects = Paginator(projects, items_per_page)
     projects = paginatorprojects.get_page(page)
@@ -65,6 +72,8 @@ def home(request):
         visao_endpoint = mark_safe(
             f'{base_endpoint}grupCategory={settings.VISAO_GROUP}&amp&l={settings.VISAO_LAYER}&amp&e=f'
         )
+
+        'https://visao.ibict.br/app/visao/1?grupCategory=122&amp&l=88&i=597&e=f'
         project_topics = [
             (str(ptopic), f'{base_endpoint}{ptopic.external_url}')
             for ptopic in PTopic.objects.topics_with_external_url().translated().order_by('translated_text')
@@ -86,10 +95,11 @@ def home(request):
     # Users
     counter_users = Profile.objects.count()
 
-    total = counterresources + counterprojects + counterorganisations
+    total = counterresources + counterprojects + counterorganisations + counterplatforms
 
     return render(request, 'home.html', {
         'user': user,
+        'platforms': platforms,
         'projects': projects,
         'counterprojects': counterprojects,
         'resources': resources,
@@ -111,8 +121,8 @@ def all(request):
     return home(request)
 
 
-class AboutPage(generic.TemplateView):
-    template_name = "about.html"
+def about(request):
+    return render(request, 'about.html')
 
 
 def curated(request):

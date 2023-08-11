@@ -10,7 +10,7 @@ class ContactForm(forms.Form):
     name = forms.CharField(label=_('Name'), required=True)
     surname = forms.CharField(label=_('Surname'), required=False)
     message = forms.CharField(label=_('Message'), widget=forms.Textarea(attrs={'rows': 5,'cols': 40}), required=True)
-    newsletter = forms.BooleanField(label=_('I want to receive the newsletter from Civis'), required=False)
+    newsletter = forms.BooleanField(label=_('I want to receive the monthly newsletter'), required=False)
     message = forms.CharField(label=_('Message'), widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}), required=True)
     captcha = CaptchaField()
 
