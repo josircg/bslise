@@ -49,7 +49,6 @@ class Command(BaseCommand):
 
             except Exception as e:
                 newsletter.status = Newsletter.ERROR
-                newsletter.status = Newsletter.SENT
                 newsletter.sent_count += count
                 newsletter.save()
                 log_message(newsletter, str(e))

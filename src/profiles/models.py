@@ -16,6 +16,10 @@ class InterestArea(models.Model):
     def __str__(self):
         return f'{self.interestArea}'
 
+    class Meta:
+        verbose_name = _('Interest Area')
+        verbose_name_plural = _('Interest Areas')
+
 
 class BaseProfile(models.Model):
     user = models.OneToOneField(

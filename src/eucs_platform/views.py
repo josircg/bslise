@@ -7,7 +7,8 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
-from django.views import generic
+
+from admin_tools.dashboard.models import DashboardPreferences
 from events.models import Event
 from machina.apps.forum.models import Forum
 from machina.apps.forum_conversation.models import Topic
@@ -229,6 +230,15 @@ def getTopicsResponded(request):
 
     response['topics'] = topicshtml
     return JsonResponse(response)
+
+
+def reset_dashboard(request):
+    prefs = DashboardPreferences.objects.filter(user=request.user)
+    prefs.delete()
+    prefs = DashboardPreferences(user=request.user)
+    prefs.data = '{}'
+    prefs.save()
+    return HttpResponseRedirect('/admin')
 
 
 def getForumResponsesNumber(request):

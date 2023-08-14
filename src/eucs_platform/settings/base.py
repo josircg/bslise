@@ -64,7 +64,7 @@ TEMPLATES = [
             MACHINA_MAIN_TEMPLATE_DIR
             # insert more TEMPLATE_DIRS here
         ],
-        "APP_DIRS": True,
+        "APP_DIRS": False,
         "OPTIONS": {
             "context_processors": [
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
@@ -81,8 +81,13 @@ TEMPLATES = [
                 'machina.core.context_processors.metadata',
                 # Wwn
                 'eucs_platform.context_processors.global_settings',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
+            ],
 
-            ]
         },
     }
 ]
@@ -116,6 +121,8 @@ if ADMIN_EMAIL:
     MANAGERS = ADMINS
 # Application definition
 INSTALLED_APPS = (
+    "admin_tools",
+    "admin_tools.dashboard",
     "django.contrib.auth",
     "django.contrib.admin",
     "django.contrib.contenttypes",
@@ -444,3 +451,6 @@ FORUM_ENABLED = env('FORUM_ENABLED')
 COUNTRIES_OVERRIDE = {
     "FK": _("Falkland Islands (Malvinas)"),
 }
+
+ADMIN_TOOLS_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboard'

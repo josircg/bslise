@@ -5,6 +5,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
 from organisations.models import Organisation
+from projects.models import Topic
 from utilities.models import AbstractTranslatedModel
 
 from .managers import GeographicExtendQuerySet
@@ -22,7 +23,6 @@ class Keyword(models.Model):
 
 class GeographicExtend(AbstractTranslatedModel):
     description = models.CharField(verbose_name=_('Description'), max_length=40, unique=True)
-    translations = GenericRelation('utilities.Translation')
 
     str_field = 'description'
 
@@ -35,11 +35,11 @@ class GeographicExtend(AbstractTranslatedModel):
 
 class Platform(models.Model):
     name = models.CharField(max_length=200)
+    description = models.CharField(max_length=3000)
     url = models.URLField(max_length=200)
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='platform_creator')
     dateCreated = models.DateTimeField('Created date', auto_now=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
-    description = models.CharField(max_length=3000)
     geoExtend = models.ForeignKey(GeographicExtend, on_delete=models.PROTECT)
     countries = CountryField(multiple=True)
     keywords = models.ManyToManyField(Keyword, blank=True)
@@ -47,6 +47,7 @@ class Platform(models.Model):
     # Contact information
     contactPoint = models.CharField(max_length=100, null=True, blank=True)
     contactPointEmail = models.EmailField(max_length=100, null=True, blank=True)
+    contactPhone = models.CharField(_('Telephone'), max_length=20, null=True, blank=True)
     organisation = models.ManyToManyField(Organisation, blank=True)
 
     # Images
@@ -54,7 +55,12 @@ class Platform(models.Model):
     logoCredit = models.CharField(max_length=300, null=True, blank=True)
     profileImage = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     profileImageCredit = models.CharField(max_length=300, null=True, blank=True)
-    active = models.BooleanField(default=False)
+
+    topic = models.ManyToManyField(Topic, verbose_name=_('Topic'), blank=True)
+    qualification = models.CharField(_('Qualification Required'), max_length=100, null=True, blank=True)
+
+    approved = models.BooleanField(_('Approved'), null=True)
+    active = models.BooleanField(blank=True, default=False)
 
     class Meta:
         verbose_name = _('Program')

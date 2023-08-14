@@ -1,12 +1,12 @@
 import copy
 
-from PIL import Image
+from PIL import Image, ImageOps
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, ProtectedError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.loader import render_to_string
@@ -38,7 +38,7 @@ def new_organisation(request):
                 h = form.cleaned_data.get('height')
                 photo = request.FILES['logo']
                 image = Image.open(photo)
-                cropped_image = image.crop((x, y, w+x, h+y))
+                cropped_image = image.crop((x, y, w + x, h + y))
                 resized_image = cropped_image.resize((600, 400), Image.ANTIALIAS)
                 image_path = save_image_with_path(resized_image, photo.name)
             else:
@@ -64,16 +64,16 @@ def new_organisation(request):
                 message=render_to_string('emails/notify_organisation.html', context), to=settings.EMAIL_CIVIS,
                 reply_to=to
             )
-            return redirect('/organisation/'+str(organisation.id), {})
+            return redirect('/organisation/' + str(organisation.id), {})
         else:
             if 'latitude' in form.errors:
                 error = form.errors['latitude'].data[0].message
                 del form.errors['latitude']
 
     return render(
-            request,
-            'organisation_form.html',
-            {'form': form, 'user': request.user, 'error': error})
+        request,
+        'organisation_form.html',
+        {'form': form, 'user': request.user, 'error': error})
 
 
 def organisation(request, pk):
@@ -94,7 +94,7 @@ def organisation(request, pk):
     users = getOtherUsers(organisation.creator, members)
     cooperators = getCooperatorsEmail(pk)
     permissionForm = OrganisationPermissionForm(
-            initial={'usersCollection': users, 'selectedUsers': cooperators})
+        initial={'usersCollection': users, 'selectedUsers': cooperators})
 
     return render(request, 'organisation.html', {
         'organisation': organisation,
@@ -138,13 +138,15 @@ def edit_organisation(request, pk):
                 h = form.cleaned_data.get('height')
                 photo = request.FILES['logo']
                 image = Image.open(photo)
+                # Fix image orientation based on EXIF information
+                image = ImageOps.exif_transpose(image)
                 cropped_image = image.crop((x, y, w+x, h+y))
                 resized_image = cropped_image.resize((600, 400), Image.ANTIALIAS)
                 image_path = save_image_with_path(resized_image, photo.name)
             else:
                 image_path = None
             form.save(request, image_path)
-            return redirect('/organisation/'+str(organisation.id), {})
+            return redirect('/organisation/' + str(organisation.id), {})
         else:
             if '__all__' in form.errors:
                 form.errors['logo'] = form.errors['__all__']
@@ -222,9 +224,12 @@ def delete_organisation(request, pk):
     if user != organisation.creator and not user.is_staff:
         return redirect('../organisations', {})
 
-    organisation.delete()
-
-    return redirect('../organisations', {})
+    try:
+        organisation.delete()
+        return redirect('../organisations', {})
+    except ProtectedError:
+        messages.error(request, _('The Organisation cannot be removed because there are projects associated to it'))
+        return redirect('organisation', pk=pk)
 
 
 def organisationsAutocompleteSearch(request):
@@ -268,14 +273,14 @@ def getOtherUsers(creator, members):
         user = get_object_or_404(User, id=member.user_id)
         users.append(user.id)
     users = list(
-            User.objects.filter(id__in=users).exclude(
-                is_superuser=True).exclude(id=creator.id).values_list('name', 'email'))
+        User.objects.filter(id__in=users).exclude(
+            is_superuser=True).exclude(id=creator.id).values_list('name', 'email'))
     return users
 
 
 def getCooperators(organisationID):
     users = list(
-            OrganisationPermission.objects.all().filter(organisation_id=organisationID).values_list('user', flat=True))
+        OrganisationPermission.objects.all().filter(organisation_id=organisationID).values_list('user', flat=True))
     return users
 
 

@@ -16,7 +16,7 @@
 
 import logging
 
-from django.contrib.admin.models import LogEntry, CHANGE
+from django.contrib.admin.models import LogEntry, CHANGE, ADDITION
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType
 

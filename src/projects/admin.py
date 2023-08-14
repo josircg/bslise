@@ -11,7 +11,6 @@ class ProjectFormA(forms.ModelForm):
     class Meta:
         widgets = {
             'description': forms.Textarea(attrs={'rows': 10, 'cols': 100}),
-            'description_citizen_science_aspects': forms.Textarea(attrs={'rows': 10, 'cols': 100}),
         }
 
 
@@ -34,7 +33,7 @@ class ProjectA(admin.ModelAdmin):
     search_fields = ('creator__name', 'name',)
     list_display = ('name', 'creator', 'status', 'dateCreated', 'dateUpdated', 'approved', 'safe_url')
     fields = (
-        'name', 'url', 'description', 'description_citizen_science_aspects', 'status', 'keywords',
+        'name', 'url', 'description', 'status', 'keywords',
         'topic', ('start_date', 'end_date'), 'participationTask', 'howToParticipate', 'equipment',
         ('latitude', 'longitude'), 'country', ('author', 'author_email', 'mainOrganisation'),
         ('fundingBody', 'fundingProgram'), ('image1', 'imageCredit1'), ('image2', 'imageCredit2'),

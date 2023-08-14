@@ -12,11 +12,16 @@
                 {% for country in platform.countries %}
                 <a class="badge rounded-pill bg-pill text-decoration-none">{{country.name}}</a>
                 {% endfor %}
-                <a class="badge rounded-pill bg-pill text-decoration-none">{{platform.geoExtend | translate_instance | title}}</a>
+                {% for record in platform.topic.all %}
+                <a class="badge rounded-pill bg-pill text-decoration-none">{{record | translate_instance}}</a>
+                {% endfor %}
                 <h4 class="mt-2 mb-3">
                     <a href="/platform/{{platform.id}}" class="card-title">{{ platform.name }}</a>
                 </h4>
-                <p class="mt-3 card-desc">{{platform.description | safe | truncate_summary:30 }}</p>
+                <p class="mt-3 card-desc">{{ platform.description | safe | truncate_summary:30 }}</p>
+                {% for record in platform.organisation.all %}
+                    <p class="mt-3 card-desc"><b>{{ record | safe }}</b></p>
+                {% endfor %}
         </div><!-- End of card-body -->
     </div><!-- end of card -->
 </div>

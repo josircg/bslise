@@ -45,13 +45,17 @@ def editPlatform(request, pk):
         'countries': platform.countries,
         'contactPoint': platform.contactPoint,
         'contactPointEmail': platform.contactPointEmail,
+        'contactPhone': platform.contactPhone,
         'organisation': platform.organisation.all,
+        'topic': platform.topic.all,
         'logo': platform.logo,
         'logoCredit': platform.logoCredit,
         'profileImage': platform.profileImage,
         'profileImageCredit': platform.profileImageCredit
     })
     return render(request, 'platform_form.html', {'form': platformForm, 'user': user, 'id': platform.id})
+
+
 
 
 @staff_member_required(login_url='/login')
@@ -82,7 +86,7 @@ def savePlatformAjax(request):
 def sendPlatformEmail(id, request, form):
     to = copy.copy(settings.EMAIL_RECIPIENT_LIST)
     to.append(request.user.email)
-    messages.success(request, _('Program added correctly'))
+    messages.success(request, _('Programme added correctly'))
     send_email(
         subject='Seu programa/curso "%s" foi submetido!' % form.cleaned_data['name'],
         message=render_to_string('emails/new_platform.html',
@@ -197,21 +201,24 @@ def getPlatformsAutocomplete(text):
 def setImages(request, form):
     images = {}
     for key, value in request.FILES.items():
-        x = form.cleaned_data.get('x' + key)
-        y = form.cleaned_data.get('y' + key)
-        w = form.cleaned_data.get('width' + key)
-        h = form.cleaned_data.get('height' + key)
-        image = Image.open(value)
-        if x and y and w and h:
-            image = image.crop((x, y, w + x, h + y))
-            if key == 'profileImage':
-                finalsize = (1100, 400)
-            else:
-                finalsize = (600, 400)
-            image = image.resize(finalsize, Image.ANTIALIAS)
-        imagePath = getImagePath(value.name)
-        image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
-        images[key] = imagePath
+        if '.svg' in value.lower():
+            x = 0
+        else:
+            x = form.cleaned_data.get('x' + key)
+            y = form.cleaned_data.get('y' + key)
+            w = form.cleaned_data.get('width' + key)
+            h = form.cleaned_data.get('height' + key)
+            image = Image.open(value)
+            if x and y and w and h:
+                image = image.crop((x, y, w + x, h + y))
+                if key == 'profileImage':
+                    finalsize = (1100, 400)
+                else:
+                    finalsize = (600, 400)
+                image = image.resize(finalsize, Image.ANTIALIAS)
+            imagePath = getImagePath(value.name)
+            image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
+            images[key] = imagePath
     return images
 
 

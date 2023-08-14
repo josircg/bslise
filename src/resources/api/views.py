@@ -1,17 +1,16 @@
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 from django.http import Http404
-from rest_framework import viewsets
-from rest_framework import permissions
-from rest_framework import generics
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import BasePermission, IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
-from rest_framework.response import Response
-from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND)
-from rest_framework.views import APIView
-from resources.api.serializers import ResourceSerializer, AudienceSerializer, ThemeSerializer, CategorySerializer, ResourceSerializerCreateUpdate, TrainingResourceSerializer, TrainingResourceSerializerCreateUpdate
+from resources.api.serializers import ResourceSerializer, AudienceSerializer, ThemeSerializer, CategorySerializer, \
+    ResourceSerializerCreateUpdate, TrainingResourceSerializer, TrainingResourceSerializerCreateUpdate
 from resources.models import Resource, Audience, Theme, Category
-from resources.views import getCooperators, setResourceHidden, bookmarkResource
+from resources.views import getCooperators, setResourceHidden
+from rest_framework import viewsets
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import BasePermission
+from rest_framework.response import Response
+from rest_framework.status import (HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST)
+from rest_framework.views import APIView
 from reviews.models import Review
 
 
@@ -43,7 +42,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 class ResourceList(APIView):
     def applyFilters(self, request, resources):
-        approvedResources = Resource.objects.filter(approved=True).values_list('resource_id',flat=True)
+        approvedResources = Resource.objects.filter(approved=True).values_list('pk',flat=True)
 
         keywords = request.query_params.get('keywords', None)
         if keywords is not None:
@@ -153,7 +152,7 @@ class ResourceDetail(APIView):
 class TrainingResourceList(APIView):
 
     def applyFilters(self, request, resources):
-        approvedResources = Resource.objects.filter(approved=True).values_list('resource_id',flat=True)
+        approvedResources = Resource.objects.filter(approved=True).values_list('pk',flat=True)
 
         keywords = request.query_params.get('keywords', None)
         if keywords is not None:

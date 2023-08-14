@@ -65,11 +65,6 @@ class Organisation(models.Model):
 
         super().save(*args, **kwargs)
 
-    def delete(self):
-        super(Organisation, self).delete()
-        if default_storage.exists(self.logo.path):
-            default_storage.delete(self.logo.path)
-
 
 class OrganisationPermission(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

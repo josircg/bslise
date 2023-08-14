@@ -5,6 +5,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
 from eucs_platform import visao
+from eucs_platform.logger import log_message
 from organisations.models import Organisation
 from utilities.models import AbstractTranslatedModel
 
@@ -54,6 +55,7 @@ class Keyword(models.Model):
 
     class Meta:
         verbose_name = _('Keyword')
+        verbose_name_plural = _('Keywords')
         ordering = ['keyword']
 
     def __str__(self):
@@ -140,7 +142,7 @@ class Project(models.Model):
     author_email = models.CharField(max_length=100, null=True, blank=True)
     mainOrganisation = models.ForeignKey(
         Organisation,
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         null=True,
         blank=True,
         related_name='main_organisation')

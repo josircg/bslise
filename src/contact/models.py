@@ -33,10 +33,6 @@ class Subscriber(models.Model):
         verbose_name_plural = _('Subscribers')
         ordering = ('-id',)
 
-    class Meta:
-        verbose_name = _('Subscriber')
-        ordering = ('-id',)
-
     def __str__(self):
         return self.name
 
