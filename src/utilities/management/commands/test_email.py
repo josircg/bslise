@@ -7,6 +7,8 @@ class Command(BaseCommand):
     label = 'Test Email configuration'
 
     def handle(self, *args, **options):
-        print(f'Sending to {settings.ADMINS}')
-        send_email('Test', 'Test email', settings.ADMINS)
+        if settings.EMAIL_TAG == 'DEV':
+            print('Dummy test - DEV TAG')
+        print(f'Trying to send to {settings.ADMIN_EMAIL}')
+        send_email('Test', 'Test email', [settings.ADMIN_EMAIL])
         print('Message sent!')
