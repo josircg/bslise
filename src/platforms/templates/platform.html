@@ -46,7 +46,7 @@
             {% endif %}
 
             <a href="{{platform.url}}" target="_blank" class="btn btn-my-darkBlue mt-4 mb-4">
-                <i class="fas fa-external-link-square-alt"></i>{% trans "Go to platform or network" %}
+                <i class="fas fa-external-link-square-alt"></i>{% trans "Go to programme" %}
             </a>
 
             {% if platform.contactPointEmail %}
@@ -54,7 +54,7 @@
               <i class="far fa-envelope"></i> {% trans "Contact e-mail" %}</a>
             {% endif %}
 
-            {% if platform.creator == user %}
+            {% if platform.creator == user or user.is_staff %}
             <a href="/editPlatform/{{platform.id}}" class="btn btn-warning mt-4 mb-4">
                 <i class="fas fa-edit"></i>Edit
             </a>

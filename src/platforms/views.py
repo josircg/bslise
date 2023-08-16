@@ -15,11 +15,15 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.utils import formats
 from django.utils.translation import ugettext_lazy as _
+from django_countries import countries as countries_list
+
 from eucs_platform import send_email
 from rest_framework import status
+from utilities.file import assign_image
 
 from .forms import PlatformForm
-from .models import Platform, Keyword, GeographicExtend
+from .models import Platform, Keyword
+from projects.models import Topic
 
 
 @staff_member_required(login_url='/login')
@@ -37,11 +41,14 @@ def editPlatform(request, pk):
     if user != platform.creator and not user.is_staff:
         return redirect('../platforms', {})
 
+    status = '' if platform.active else 'Inactive'
+
     platformForm = PlatformForm(initial={
         'name': platform.name,
         'url': platform.url,
         'description': platform.description,
         'geoExtend': platform.geoExtend,
+        'qualification': platform.qualification,
         'countries': platform.countries,
         'contactPoint': platform.contactPoint,
         'contactPointEmail': platform.contactPointEmail,
@@ -53,9 +60,8 @@ def editPlatform(request, pk):
         'profileImage': platform.profileImage,
         'profileImageCredit': platform.profileImageCredit
     })
-    return render(request, 'platform_form.html', {'form': platformForm, 'user': user, 'id': platform.id})
-
-
+    return render(request, 'platform_form.html',
+                  {'form': platformForm, 'user': user, 'status': status, 'id': platform.id})
 
 
 @staff_member_required(login_url='/login')
@@ -105,6 +111,14 @@ def sendPlatformEmail(id, request, form):
     )
 
 
+def reset_image(request, pk):
+    platform = get_object_or_404(Platform, id=pk)
+    image_filename = f'images/course_{pk}.svg'
+    assign_image(image_filename, platform.logo, 306, 204, background_color='#FFFFFF')
+    assign_image(image_filename, platform.profileImage, 1320, 400, background_color='#FFFFFF')
+    return redirect(f'../platform/{pk}')
+
+
 def platform(request, pk):
     platform = get_object_or_404(Platform.objects.select_related('geoExtend'), id=pk)
     return render(request, 'platform.html', {'platform': platform})
@@ -112,18 +126,22 @@ def platform(request, pk):
 
 def platforms(request):
     platforms = Platform.objects.select_related('geoExtend').filter(active=True)
-    countries = Platform.objects.all().values_list('countries', flat=True).distinct()
-    geographicExtend = GeographicExtend.objects.translated().order_by('translated_text')
+    existing_countries = Platform.objects.all().values_list('countries', flat=True).distinct()
+    topics = Topic.objects.translated().order_by('translated_text')
 
     # I think this is not needded
-    filters = {'keywords': '', 'geographicExtend': '', 'country': ''}
+    filters = {'keywords': '', 'topics': '', 'country': ''}
 
     platforms = applyFilters(request, platforms)
     platforms = platforms.distinct()
     filters = setFilters(request, filters)
+
     # Distinct list of countries
-    countriesWithContent = [country for gcountry in countries for country in gcountry.split(',')]
-    countriesWithContent = list(set(countriesWithContent))
+    countries = []
+    for country_code in existing_countries:
+        countries.append({'code': country_code,
+                          'name': countries_list.countries.get(country_code, country_code)})
+    countries = sorted(countries, key=lambda d: d['name'])
 
     # Ordering
     if request.GET.get('orderby'):
@@ -142,9 +160,9 @@ def platforms(request):
     return render(request, 'platforms.html', {
         'platforms': platforms,
         'filters': filters,
-        'countriesWithContent': countriesWithContent,
+        'countries': countries,
         'counter': counter,
-        'geographicExtend': geographicExtend,
+        'topics': topics,
         'isSearchPage': True})
 
 
@@ -158,8 +176,8 @@ def applyFilters(request, platforms):
     if request.GET.get('country'):
         platforms = platforms.filter(countries__contains=request.GET['country'])
 
-    if request.GET.get('geographicExtend'):
-        platforms = platforms.filter(geoExtend__pk=request.GET['geographicExtend'])
+    if request.GET.get('topics'):
+        platforms = platforms.filter(topic__pk=request.GET['topics'])
 
     return platforms
 
@@ -171,8 +189,8 @@ def setFilters(request, filters):
         filters['orderby'] = request.GET['orderby']
     if request.GET.get('country'):
         filters['country'] = request.GET['country']
-    if request.GET.get('geographicExtend'):
-        filters['geographicExtend'] = request.GET['geographicExtend']
+    if request.GET.get('topics'):
+        filters['topics'] = request.GET['topics']
     return filters
 
 

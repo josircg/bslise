@@ -35,7 +35,7 @@
                     
             <div class="row d-flex justify-content-center">
                     <div class="col-8 mb-5">
-                    <h3 class="leftborder">{% trans "Main information" %}</h3>
+                        <h3 class="leftborder">{% trans "Main information" %} <span style="color:red">{{ status }}</span></h3>
                     {{ form.name | as_crispy_field }}
                     {{ form.url | as_crispy_field }}
                     {{ form.description | as_crispy_field }}
@@ -81,10 +81,14 @@
                     {{ form.profileImageCredit|as_crispy_field }}
                     <div class="mb-5"></div>
                     {% include '_save_zone.html' %}
+                    {% if user.is_staff and id %}
+                          <a href="{% url 'reset_image' id %}"
+                             class="btn btn-pink6"><i class="fas fa-image"></i> {% trans "Reset Image Background" %}
+                          </a>
+                    {% endif %}
                     <div class="mb-5"></div>
                 </div>
             </div>
-                
            
         </div>
     </form>

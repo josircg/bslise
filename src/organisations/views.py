@@ -11,6 +11,8 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
+from django_countries import countries as countries_list
+
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
 from profiles.models import Profile
@@ -183,7 +185,14 @@ def organisations(request):
     if not (request.user and request.user.is_staff):
         organisations = organisations.filter(approved=True)
 
-    org_countries = organisations.order_by('country').values_list('country', flat=True).distinct()
+    existing_countries = organisations.values_list('country', flat=True).distinct()
+    # Distinct list of countries
+    countries = []
+    for country_code in existing_countries:
+        countries.append({'code': country_code,
+                          'name': countries_list.countries.get(country_code, country_code)})
+    countries = sorted(countries, key=lambda d: d['name'])
+
     filters = {'keywords': '', 'orgTypes': '', 'country': ''}
     if request.GET.get('keywords'):
         organisations = organisations.filter(
@@ -212,7 +221,7 @@ def organisations(request):
         'organisations': organisations,
         'counter': counter,
         'filters': filters,
-        'countriesWithContent': org_countries,
+        'countries': countries,
         'orgTypes': org_types,
         'isSearchPage': True})
 

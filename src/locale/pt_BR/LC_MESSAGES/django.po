@@ -549,24 +549,7 @@ msgstr[1] "%d e-mails de teste foram enviados"
 msgid "Programmes"
 msgstr "Programas"
 
-#: eucs_platform/dashboard.py:38 organisations/templates/organisation.html:28
-#: projects/apps.py:10 templates/_subnavbar.html:23
-#: templates/_subnavbar_finder.html:23
-msgid "Projects"
-msgstr "Iniciativas"
-
-#: eucs_platform/dashboard.py:49 organisations/templates/organisation.html:39
-#: resources/apps.py:10 resources/templates/resources.html:7
-#: templates/_latest_resources.html:6 templates/_subnavbar.html:29
-#: templates/_subnavbar_finder.html:29
-msgid "Resources"
-msgstr "Recursos"
-
-#: eucs_platform/dashboard.py:61 events/apps.py:10
-msgid "Events"
-msgstr "Eventos"
-
-#: eucs_platform/dashboard.py:65 organisations/apps.py:10
+#: eucs_platform/dashboard.py:37 organisations/apps.py:10
 #: organisations/models.py:42 organisations/templates/organisations.html:5
 #: platforms/templates/platform.html:38
 #: profiles/templates/profiles/show_profile.html:17
@@ -574,6 +557,23 @@ msgstr "Eventos"
 #: templates/_subnavbar_finder.html:17
 msgid "Organisations"
 msgstr "Organizações"
+
+#: eucs_platform/dashboard.py:42 organisations/templates/organisation.html:28
+#: projects/apps.py:10 templates/_subnavbar.html:23
+#: templates/_subnavbar_finder.html:23
+msgid "Projects"
+msgstr "Iniciativas"
+
+#: eucs_platform/dashboard.py:53 organisations/templates/organisation.html:39
+#: resources/apps.py:10 resources/templates/resources.html:7
+#: templates/_latest_resources.html:6 templates/_subnavbar.html:29
+#: templates/_subnavbar_finder.html:29
+msgid "Resources"
+msgstr "Recursos"
+
+#: eucs_platform/dashboard.py:65 events/apps.py:10
+msgid "Events"
+msgstr "Eventos"
 
 #: eucs_platform/dashboard.py:69
 #, fuzzy
@@ -825,7 +825,7 @@ msgstr "Evento aprovado"
 msgid "Event not approved"
 msgstr "Evento não aprovado"
 
-#: events/views.py:95 organisations/views.py:175 projects/views.py:508
+#: events/views.py:95 organisations/views.py:177 projects/views.py:508
 #: resources/views.py:598
 msgid "Only staff can approve object"
 msgstr "Somente administradores podem aprovar"
@@ -861,7 +861,7 @@ msgid "Please briefly describe the organisation (max 3000 characters)."
 msgstr "Descreva resumidamente a organização(máximo de 500 palavras)"
 
 #: organisations/forms.py:30
-#: organisations/templates/_finder_organisation.html:45
+#: organisations/templates/_finder_organisation.html:40
 #: organisations/templates/finder_organisations.html:18
 msgid "Type"
 msgstr "Tipo de organização"
@@ -886,17 +886,21 @@ msgstr "Nome do responsável ou contato da organização"
 msgid "Organisation contact point"
 msgstr "Contato da organização"
 
-#: organisations/forms.py:48 platforms/forms.py:69 projects/forms.py:154
+#: organisations/forms.py:49 platforms/forms.py:69 projects/forms.py:154
 msgid "Contact point email"
 msgstr "E-mail"
 
-#: organisations/forms.py:50 platforms/forms.py:72
+#: organisations/forms.py:52 platforms/forms.py:72
 msgid ""
 "Please provide the email address of the contact person or contact point. "
 "Note you will need permission to do that."
 msgstr "Informe o endereço eletrônico de contato"
 
-#: organisations/forms.py:111 projects/forms.py:430 resources/forms.py:271
+#: organisations/forms.py:70
+msgid "Geolocation is required"
+msgstr "A marcação da localização no mapa é obrigatória"
+
+#: organisations/forms.py:113 projects/forms.py:430 resources/forms.py:271
 msgid "Give additional users permission to edit"
 msgstr "Concede permissões adicionais para edição"
 
@@ -940,77 +944,77 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Excluir"
 
-#: organisations/templates/_finder_organisation.html:11
-#: platforms/templates/_finder_platforms.html:11
+#: organisations/templates/_finder_organisation.html:10
+#: platforms/templates/_finder_platforms.html:10
 #: projects/templates/_finder_projects.html:11
 #: resources/templates/_finder_resources.html:13
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: organisations/templates/_finder_organisation.html:17
-#: platforms/templates/_finder_platforms.html:17
+#: organisations/templates/_finder_organisation.html:16
+#: platforms/templates/_finder_platforms.html:16
 #: profiles/templates/profiles/_finder_users.html:19
 #: projects/templates/_finder_projects.html:17
 #: resources/templates/_finder_resources.html:19
 msgid "Most Recent"
 msgstr "Mais recentes"
 
-#: organisations/templates/_finder_organisation.html:18
-#: platforms/templates/_finder_platforms.html:18
+#: organisations/templates/_finder_organisation.html:17
+#: platforms/templates/_finder_platforms.html:17
 #: profiles/templates/profiles/_finder_users.html:20
 #: projects/templates/_finder_projects.html:18
 msgid "By Name"
 msgstr "Ordem alfabética"
 
-#: organisations/templates/_finder_organisation.html:25
-#: platforms/templates/_finder_platforms.html:24
+#: organisations/templates/_finder_organisation.html:24
+#: platforms/templates/_finder_platforms.html:23
 #: projects/templates/_finder_projects.html:28
 #: resources/templates/_finder_resources.html:29
 msgid "Filter by"
 msgstr "Filtrar"
 
-#: organisations/templates/_finder_organisation.html:33
+#: organisations/templates/_finder_organisation.html:32
 #: organisations/templates/finder_organisations.html:28
-#: platforms/templates/_finder_platforms.html:32 profiles/forms.py:62
+#: platforms/templates/_finder_platforms.html:31 profiles/forms.py:62
 #: projects/templates/_finder_projects.html:34
 msgid "Country"
 msgstr "País"
 
-#: organisations/templates/_finder_organisation.html:60
-#: platforms/templates/_finder_platforms.html:60
+#: organisations/templates/_finder_organisation.html:55
+#: platforms/templates/_finder_platforms.html:55
 #: projects/templates/_finder_projects.html:93
 #: resources/templates/_finder_resources.html:78
 msgid "keyword:"
 msgstr "palavra-chave:"
 
-#: organisations/templates/_finder_organisation.html:68 profiles/models.py:58
+#: organisations/templates/_finder_organisation.html:63 profiles/models.py:58
 #: projects/templates/_finder_projects.html:87
 msgid "country"
 msgstr "país"
 
-#: organisations/templates/_finder_organisation.html:76
+#: organisations/templates/_finder_organisation.html:71
 msgid "type:"
 msgstr "tipo:"
 
-#: organisations/templates/_finder_organisation.html:81
+#: organisations/templates/_finder_organisation.html:76
 #: organisations/templates/finder_organisations.html:49
-#: platforms/templates/_finder_platforms.html:65
+#: platforms/templates/_finder_platforms.html:60
 #: profiles/templates/profiles/_finder_users.html:30
 #: projects/templates/_finder_projects.html:117
 #: resources/templates/_finder_resources.html:109
 msgid "Clear current search query and filters"
 msgstr "Limpar busca e filtros"
 
-#: organisations/templates/_finder_organisation.html:87
+#: organisations/templates/_finder_organisation.html:82
 msgid "organisations"
 msgstr "organizações"
 
-#: organisations/templates/_finder_organisation.html:89
+#: organisations/templates/_finder_organisation.html:84
 #: organisations/templates/_intro_form_organisation.html:7
 msgid "organisation"
 msgstr "organização"
 
-#: organisations/templates/_finder_organisation.html:91
+#: organisations/templates/_finder_organisation.html:86
 msgid "found"
 msgstr "encontradas"
 
@@ -1204,29 +1208,29 @@ msgstr ""
 msgid "organisation <span class='text-pink5'>search</span>"
 msgstr "<span class='text-pink5'>busca</span> Organização"
 
-#: organisations/views.py:48 organisations/views.py:49
+#: organisations/views.py:50 organisations/views.py:51
 msgid "Organisation added"
 msgstr "Organização adicionada com sucesso!"
 
-#: organisations/views.py:59
+#: organisations/views.py:61
 #, python-format
 msgid "Your organisation \"%s\" has been submitted!"
 msgstr "Sua organização \"%s\" foi submetida!"
 
-#: organisations/views.py:63
+#: organisations/views.py:65
 #, python-format
 msgid "Notification - New organisation \"%s\" submitted"
 msgstr "Notificação - Uma nova organização \"%s\" foi submetida"
 
-#: organisations/views.py:168
+#: organisations/views.py:170
 msgid "Organisation approved"
 msgstr "Organização aprovada"
 
-#: organisations/views.py:170
+#: organisations/views.py:172
 msgid "Organisation not approved"
 msgstr "Organização não aprovada"
 
-#: organisations/views.py:231
+#: organisations/views.py:240
 msgid ""
 "The Organisation cannot be removed because there are projects associated to "
 "it"
@@ -1265,7 +1269,6 @@ msgid "Please indicate the spatial scale of the programme."
 msgstr "Selecione a abrangência geográfica do programa."
 
 #: platforms/forms.py:47 platforms/models.py:32
-#: platforms/templates/_finder_platforms.html:44
 msgid "Geographic extent"
 msgstr "Extensão geográfica"
 
@@ -1371,13 +1374,22 @@ msgstr ""
 msgid "Program"
 msgstr "Programa"
 
-#: platforms/templates/_finder_platforms.html:71
+#: platforms/templates/_finder_platforms.html:39
+#: platforms/templates/platform.html:82
+#, fuzzy
+#| msgid "Topic"
+msgid "Topics"
+msgstr "Tema"
+
+#: platforms/templates/_finder_platforms.html:66
 msgid "programmes found"
 msgstr "programas encontrados"
 
-#: platforms/templates/_finder_platforms.html:73
-msgid "program found"
-msgstr "Programa encontrado"
+#: platforms/templates/_finder_platforms.html:68
+#, fuzzy
+#| msgid "programmes found"
+msgid "programme found"
+msgstr "programas encontrados"
 
 #: platforms/templates/_intro_form_platform.html:7
 msgid "New"
@@ -1398,30 +1410,30 @@ msgstr ""
 "nossa equipe. O objetivo é prevenir o uso da plataforma para outros fins."
 
 #: platforms/templates/platform.html:49
-msgid "Go to platform or network"
+msgid "Go to programme"
 msgstr "Acessar a página do programa"
 
 #: platforms/templates/platform.html:72
 msgid "Geographic extend"
 msgstr "Extensão geográfica"
 
-#: platforms/templates/platform.html:82
-#, fuzzy
-#| msgid "Topic"
-msgid "Topics"
-msgstr "Tema"
-
 #: platforms/templates/platform_form.html:63
 msgid "Programme images"
 msgstr "Imagens de perfil da iniciativa"
 
+#: platforms/templates/platform_form.html:86
+#, fuzzy
+#| msgid "Reset Password"
+msgid "Reset Image Background"
+msgstr "Redefir senha"
+
 #: platforms/templates/platforms.html:9
 #, fuzzy
-#| msgid "programme <span class='text-pink5'>search</span>"
-msgid "platform <span class='text-pink5'>search</span>"
-msgstr "<span class='text-pink5'>busca</span> Programa"
+#| msgid "resource <span class='text-pink5'> search</span>"
+msgid "Programme <span class='text-pink5'>search</span>"
+msgstr "<span class='text-pink5'>busca </span> Recurso"
 
-#: platforms/views.py:89
+#: platforms/views.py:95
 #, fuzzy
 #| msgid "Programme added correctly"
 msgid "Programme added correctly"
@@ -3097,15 +3109,15 @@ msgstr "SOBRE"
 msgid "Save & continue editing"
 msgstr "Salvar e continuar editando"
 
-#: templates/_subnavbar.html:41 templates/_subnavbar_finder.html:42
+#: templates/_subnavbar.html:41 templates/_subnavbar_finder.html:43
 msgid "Users"
 msgstr "Usuários"
 
-#: templates/_subnavbar.html:48 templates/_subnavbar_finder.html:50
+#: templates/_subnavbar.html:48 templates/_subnavbar_finder.html:51
 msgid "Our Gold Star Selection"
 msgstr "Nossa seleção"
 
-#: templates/_subnavbar.html:84 templates/_subnavbar_finder.html:86
+#: templates/_subnavbar.html:84 templates/_subnavbar_finder.html:87
 msgid "Search..."
 msgstr "Busca..."
 
@@ -3893,6 +3905,11 @@ msgstr "Adicionar à biblioteca"
 msgid "Translations"
 msgstr "Traduções"
 
+#: utilities/file.py:95
+#, python-format
+msgid "Invalid image file %s"
+msgstr ""
+
 #: utilities/models.py:9
 msgid "Translated Text"
 msgstr "Texto Traduzido"
@@ -3900,3 +3917,11 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
+
+#~ msgid "program found"
+#~ msgstr "Programa encontrado"
+
+#, fuzzy
+#~| msgid "programme <span class='text-pink5'>search</span>"
+#~ msgid "platform <span class='text-pink5'>search</span>"
+#~ msgstr "<span class='text-pink5'>busca</span> Programa"

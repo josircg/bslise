@@ -3,19 +3,17 @@ import re
 import requests
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
-from PIL import Image
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.admin.models import ADDITION
-from django.core.files.images import ImageFile
 from django.core.management.base import BaseCommand
 from django.db import transaction
 from django_countries import countries as countries_list
 from eucs_platform.logger import log_message
 from platforms.models import *
 from organisations.models import *
-from utilities.file import save_image_with_path
+from utilities.file import save_image_with_path, assign_image
 
 
 def remove_parenthesis(x):
@@ -133,59 +131,86 @@ class Command(BaseCommand):
 
         User = get_user_model()
         sys_user = User.objects.get_or_create(name='sys')[0]
-        org_type_unknown = OrganisationType.objects.get_or_create(type='Unknown')[0]
+        org_type_unknown = OrganisationType.objects.get_or_create(type='Private Organisation')[0]
+        org_type_public = OrganisationType.objects.get_or_create(type='Public University')[0]
         default_extend = GeographicExtend.objects.filter(description='Regional')[0]
 
         transaction.set_autocommit(False)
         file = open(filename, 'r')
         for record in csv.DictReader(file, delimiter=';'):
             tot_records += 1
-            org_name = record['Institution'].strip()
-            course_name = record['Academic unit'].strip()
+            org_name = record['Institution'].strip()[:200]
+            course_name = record['Academic unit'].strip()[:200]
             country_code = record['Code']
             country = countries_list.countries.get(country_code, None)
-            root_url = record['Web address']
-            parse_url = urlparse(root_url)
-            root_url = root_url.replace(parse_url.path,'')
             if not country:
-                print('Country %s not found (%s)' % (record['Code'], record['Country']))
+                print('Country %s not found (%s)' % (country_code, record['Country']))
+                country_code = None
+
+            root_url = record['Web address'].lower()
+            if root_url:
+                if not root_url.startswith('http'):
+                    root_url = 'http://'+root_url
+                parse_url = urlparse(root_url)
+                parent_url = parse_url.scheme+'://'+parse_url.netloc
+            else:
+                parent_url = ''
 
             org = Organisation.objects.filter(name=org_name)
             if org.count() == 0:
                 org = Organisation()
-                org.name = org_name
+                org.name = org_name[:200]
                 if record['Address'] and record['Address'] != record['Country']:
                     org.description = record['Address']
                 else:
                     org.description = record['Contact information'].split(';')[0]
                     org.description = org.description.replace(course_name,'').strip()[:200]
+                    if org.description[:2] == ', ':
+                        org.description = org.description[2:]
                 org.country = country_code
-                org.url = root_url
+                org.url = parent_url
                 org.creator = sys_user
-                org.orgType = org_type_unknown
+                if 'FEDERAL' in org_name.upper():
+                    org.org_type = org_type_public
+                else:
+                    org.orgType = org_type_unknown
                 org.latitude = round(float(record['Latitude'].replace(',','.')),5)
                 org.longitude = round(float(record['Longitude'].replace(',','.')),5)
                 org.approved = True
                 try:
                     org.save()
                 except:
-                    from django.db import connection
-                    result = connection.queries
+                    print(org_name)
                     raise
                 log_message(org, 'Imported', sys_user, ADDITION)
                 tot_new_org += 1
             else:
                 org = org[0]
 
+            if org.url != parent_url:
+                org.url = parent_url
+                org.save()
+
+            if not org.logo and org.approved:
+                valid, candidate_image = load_and_get_image(org.url, f'org_{org.id}')
+                if not valid:
+                    org.approved = False
+                    org.save()
+                else:
+                    if candidate_image:
+                        assign_image(candidate_image, org.logo, 600, 400)
+                        org.save()
+
             course = Platform.objects.filter(name=course_name, organisation=org)
             if course.count() == 0:
                 course = Platform()
                 course.name = course_name
                 course.description = record['Programme specification'].strip()
-                course.url = record['Web address']
-                course.countries = [country_code]
-                course.contactPhone = record['Telephone']
-                course.contactPointEmail = record['E-mail']
+                course.url = root_url
+                if country_code:
+                    course.countries = [country_code]
+                course.contactPhone = record['Telephone'][:20]
+                course.contactPointEmail = record['E-mail'].split(',')[0]
                 course.qualification = record['Qualification required']
                 course.creator = sys_user
                 course.geoExtend = default_extend
@@ -203,23 +228,16 @@ class Command(BaseCommand):
                             print(f'Topic created {topic_name}')
                         course.topic.add(topic)
 
-                valid, candidate_image = load_and_get_image(record['Web address'], f'course_{course.id}')
+                valid, candidate_image = load_and_get_image(root_url, f'course_{course.id}')
                 if not valid:
-                    print('URL not valid %s' % record['Web address'])
+                    print('URL not valid %s' % root_url)
                     course.approved = False
                     course.save()
                 else:
                     if candidate_image:
-                        course.profileImage.name = candidate_image
+                        assign_image(candidate_image, course.logo, 600, 400)
+                        assign_image(candidate_image, course.profileImage, 1320, 400)
                         course.save()
-                        if '.svg' not in candidate_image:
-                            image = Image.open(course.profileImage.file)
-                            resized_image = image.resize((600, 400), Image.ANTIALIAS)
-                            save_image_with_path(resized_image, course.profileImage.name)
-                            resized_image = image.resize((1320, 400), Image.ANTIALIAS)
-                            save_image_with_path(resized_image, course.profileImage.name)
-                        else:
-                            print(f'SVG {candidate_image}')
                         tot_images_saved += 1
 
                 tot_saved += 1

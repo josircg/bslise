@@ -79,7 +79,7 @@ class Platform(models.Model):
         return ",".join([p.name for p in self.organisation.all()])
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.active = self.creator.is_staff
+        if not self.pk and self.creator.is_staff:
+            self.approved = True
 
         super().save(*args, **kwargs)

@@ -54,10 +54,10 @@ def home(request):
     counterorganisations = paginatororganisation.count
 
     # Resources
-    resources = Resource.objects.approved_resources().order_by('-dateUpdated')
-    paginatorresources = Paginator(resources, items_per_page)
-    resources = paginatorresources.get_page(page)
-    counterresources = paginatorresources.count
+    # resources = Resource.objects.approved_resources().order_by('-dateUpdated')
+    # paginatorresources = Paginator(resources, items_per_page)
+    # resources = paginatorresources.get_page(page)
+    # counterresources = paginatorresources.count
 
     # Training Resources
     # training_resources = Resource.objects.approved_training_resources().order_by('-dateUpdated')
@@ -96,15 +96,13 @@ def home(request):
     # Users
     counter_users = Profile.objects.count()
 
-    total = counterresources + counterprojects + counterorganisations + counterplatforms
+    total = counterorganisations + counterplatforms
 
     return render(request, 'home.html', {
         'user': user,
         'platforms': platforms,
         'projects': projects,
         'counterprojects': counterprojects,
-        'resources': resources,
-        'counterresources': counterresources,
         'filters': filters,
         'organisations': organisations,
         'counterorganisations': counterorganisations,

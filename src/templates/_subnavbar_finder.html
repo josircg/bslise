@@ -17,7 +17,7 @@
                        {% trans "Organisations" %}
                     </a>
                 </li>
-                <li class="nav-item text-start">
+                <!---- li class="nav-item text-start">
                     <a class="nav-link {% active_link 'projects' %}"
                        href="{% url 'projects' %}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
                         {% trans "Projects" %}
@@ -34,7 +34,8 @@
                        href="{% url 'training_resources' %}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
                        {% trans "Training" %}
                     </a>
-                </li>
+                </li> !---->
+
                 <li class="nav-item">
                     {% with request.resolver_match.url_name as url_name %}
                         <a class="nav-link {% if request.get_full_path == '/users/' %}active{% endif %}"
