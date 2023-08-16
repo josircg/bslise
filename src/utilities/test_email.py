@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 def bare_test():
-    port = 587  # For starttls
+    port = 25  # or 587
     smtp_server = "smtp.apps.ibict.br"
     sender_email = "xxxx@apps.ibict.br"
     receiver_email = "josircg@gmail.com"
@@ -26,5 +26,5 @@ def django_email():
     send_email( 'Teste', 'Test email', settings.ADMINS)
 
 
-django_email()
+bare_test()
 print('Message sent!')
