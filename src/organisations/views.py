@@ -189,8 +189,9 @@ def organisations(request):
     # Distinct list of countries
     countries = []
     for country_code in existing_countries:
-        countries.append({'code': country_code,
-                          'name': countries_list.countries.get(country_code, country_code)})
+        if country_code:
+            countries.append({'code': country_code,
+                              'name': countries_list.countries.get(country_code, country_code)})
     countries = sorted(countries, key=lambda d: d['name'])
 
     filters = {'keywords': '', 'orgTypes': '', 'country': ''}
