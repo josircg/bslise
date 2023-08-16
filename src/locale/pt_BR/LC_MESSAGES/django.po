@@ -579,7 +579,7 @@ msgstr "Eventos"
 #, fuzzy
 #| msgid "organisations"
 msgid "Communications"
-msgstr "organizações"
+msgstr "Comunicação"
 
 #: eucs_platform/dashboard.py:75
 #, fuzzy
@@ -595,7 +595,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Edit Organisation"
 msgid "Administration"
-msgstr "Editar organização"
+msgstr "Administração"
 
 #: eucs_platform/dashboard.py:94
 msgid "Quick links"
@@ -1230,7 +1230,7 @@ msgstr "Organização aprovada"
 msgid "Organisation not approved"
 msgstr "Organização não aprovada"
 
-#: organisations/views.py:240
+#: organisations/views.py:241
 msgid ""
 "The Organisation cannot be removed because there are projects associated to "
 "it"
@@ -1259,10 +1259,8 @@ msgid "Please write the qualification required."
 msgstr "Qualificação requerida para se matricular no curso"
 
 #: platforms/forms.py:40
-#, fuzzy
-#| msgid "Evaluation"
 msgid "Qualification"
-msgstr "Avaliações"
+msgstr "Qualificação"
 
 #: platforms/forms.py:46
 msgid "Please indicate the spatial scale of the programme."
@@ -1289,16 +1287,12 @@ msgid "Please name the contact person or contact point."
 msgstr "Nome do responsável ou contato"
 
 #: platforms/forms.py:78
-#, fuzzy
-#| msgid "Contact point"
 msgid "Contact Phone"
-msgstr "Contato do Curso"
+msgstr "Telefone de Contato"
 
 #: platforms/forms.py:80
-#, fuzzy
-#| msgid "Organisation contact point"
 msgid "Insert a contact phone"
-msgstr "Contato da organização"
+msgstr "Insira um telefone de contato"
 
 #: platforms/forms.py:85 resources/forms.py:129
 msgid "Organisation(s)"
@@ -1315,10 +1309,8 @@ msgstr ""
 "submeter o curso"
 
 #: platforms/forms.py:99
-#, fuzzy
-#| msgid "Please select one of the proposed categories."
 msgid "Please select the programme types."
-msgstr "Selecione um dos tipos de recursos propostos"
+msgstr "Selecione os tipos de curso"
 
 #: platforms/forms.py:101 platforms/models.py:59 projects/forms.py:104
 #: projects/models.py:29 projects/models.py:37 projects/models.py:123
@@ -1376,18 +1368,14 @@ msgstr "Programa"
 
 #: platforms/templates/_finder_platforms.html:39
 #: platforms/templates/platform.html:82
-#, fuzzy
-#| msgid "Topic"
 msgid "Topics"
-msgstr "Tema"
+msgstr "Temas"
 
 #: platforms/templates/_finder_platforms.html:66
 msgid "programmes found"
 msgstr "programas encontrados"
 
 #: platforms/templates/_finder_platforms.html:68
-#, fuzzy
-#| msgid "programmes found"
 msgid "programme found"
 msgstr "programas encontrados"
 
@@ -1419,23 +1407,17 @@ msgstr "Extensão geográfica"
 
 #: platforms/templates/platform_form.html:63
 msgid "Programme images"
-msgstr "Imagens de perfil da iniciativa"
+msgstr "Imagens de perfil do programa"
 
 #: platforms/templates/platform_form.html:86
-#, fuzzy
-#| msgid "Reset Password"
 msgid "Reset Image Background"
-msgstr "Redefir senha"
+msgstr "Redefir Imagem"
 
 #: platforms/templates/platforms.html:9
-#, fuzzy
-#| msgid "resource <span class='text-pink5'> search</span>"
 msgid "Programme <span class='text-pink5'>search</span>"
-msgstr "<span class='text-pink5'>busca </span> Recurso"
+msgstr "<span class='text-pink5'>busca </span> Programa"
 
 #: platforms/views.py:95
-#, fuzzy
-#| msgid "Programme added correctly"
 msgid "Programme added correctly"
 msgstr "Programa adicionado com sucesso!"
 
@@ -1459,8 +1441,6 @@ msgstr ""
 "clicando ENTER"
 
 #: profiles/models.py:20
-#, fuzzy
-#| msgid "Interest Areas"
 msgid "Interest Area"
 msgstr "Áreas de interesse"
 
@@ -3000,8 +2980,6 @@ msgid "See all events"
 msgstr "Ver todos os Eventos"
 
 #: templates/_latest_platforms.html:6
-#, fuzzy
-#| msgid "Programme name"
 msgid "New Programmes included"
 msgstr "Novos Programas"
 
@@ -3165,10 +3143,6 @@ msgstr ""
 "contextos regionais e nacionais."
 
 #: templates/about.html:24
-#, fuzzy
-#| msgid ""
-#| "This Directory is a working progress project and addresses a broad and "
-#| "plural audience, including:"
 msgid ""
 "This Directory is a working progress and addresses a broad and plural "
 "audience, including:"
@@ -3917,11 +3891,3 @@ msgstr "Texto Traduzido"
 #: utilities/models.py:20
 msgid "Translation"
 msgstr "Tradução"
-
-#~ msgid "program found"
-#~ msgstr "Programa encontrado"
-
-#, fuzzy
-#~| msgid "programme <span class='text-pink5'>search</span>"
-#~ msgid "platform <span class='text-pink5'>search</span>"
-#~ msgstr "<span class='text-pink5'>busca</span> Programa"

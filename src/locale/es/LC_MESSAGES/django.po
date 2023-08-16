@@ -1318,7 +1318,7 @@ msgstr "Tipos de Organización"
 msgid "Organisation not approved"
 msgstr "Tipos de Organización"
 
-#: organisations/views.py:240
+#: organisations/views.py:241
 msgid ""
 "The Organisation cannot be removed because there are projects associated to "
 "it"

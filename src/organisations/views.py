@@ -122,6 +122,7 @@ def edit_organisation(request, pk):
         'url': organisation.url,
         'description': organisation.description,
         'orgType': organisation.orgType,
+        'country': organisation.country,
         'logo': organisation.logo,
         'withLogo': (True, False)[organisation.logo == ""],
         'contact_point': organisation.contactPoint,
