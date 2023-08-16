@@ -129,13 +129,13 @@ class Command(BaseCommand):
         tot_new_org = 0
         tot_images_saved = 0
 
+        transaction.set_autocommit(False)
         User = get_user_model()
         sys_user = User.objects.get_or_create(name='sys')[0]
         org_type_unknown = OrganisationType.objects.get_or_create(type='Private Organisation')[0]
         org_type_public = OrganisationType.objects.get_or_create(type='Public University')[0]
         default_extend = GeographicExtend.objects.filter(description='Regional')[0]
 
-        transaction.set_autocommit(False)
         file = open(filename, 'r')
         for record in csv.DictReader(file, delimiter=';'):
             tot_records += 1
@@ -171,7 +171,7 @@ class Command(BaseCommand):
                 org.url = parent_url
                 org.creator = sys_user
                 if 'FEDERAL' in org_name.upper():
-                    org.org_type = org_type_public
+                    org.orgType = org_type_public
                 else:
                     org.orgType = org_type_unknown
                 org.latitude = round(float(record['Latitude'].replace(',','.')),5)
