@@ -59,11 +59,11 @@ def new_organisation(request):
 
             send_email(
                 _('Your organisation "%s" has been submitted!') % form.cleaned_data['name'],
-                render_to_string('emails/new_organisation.html', context), to=to, reply_to=settings.EMAIL_CIVIS)
+                render_to_string('emails/new_organisation.html', context), to=to, reply_to=settings.REPLY_EMAIL)
 
             send_email(
                 subject=_('Notification - New organisation "%s" submitted') % form.cleaned_data['name'],
-                message=render_to_string('emails/notify_organisation.html', context), to=settings.EMAIL_CIVIS,
+                message=render_to_string('emails/notify_organisation.html', context), to=settings.REPLY_EMAIL,
                 reply_to=to
             )
             return redirect('/organisation/' + str(organisation.id), {})

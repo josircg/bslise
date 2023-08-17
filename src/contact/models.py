@@ -126,6 +126,6 @@ class Newsletter(models.Model):
         message = t.render(context)
         send_email(
             subject=self.headline,
-            message=message, to=[subscriber.email], reply_to=settings.EMAIL_CIVIS,
+            message=message, to=[subscriber.email], reply_to=settings.REPLY_EMAIL,
             headers=headers,
         )

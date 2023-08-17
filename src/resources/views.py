@@ -286,18 +286,19 @@ def sendResourceEmail(id, request, isTrainingResource, form):
 
     send_email(
         subject=_('Your resource "%s" has been submitted!') % form.cleaned_data['name'],
-        message=render_to_string('emails/new_resource.html', context), to=to, reply_to=settings.EMAIL_CIVIS
+        message=render_to_string('emails/new_resource.html', context), to=to, reply_to=settings.REPLY_EMAIL
     )
 
     send_email(
         subject=_('Notification - New resource "%s" submitted') % form.cleaned_data['name'],
-        message=render_to_string('emails/notify_resource.html', context), to=settings.EMAIL_CIVIS, reply_to=to
+        message=render_to_string('emails/notify_resource.html', context),
+        to=settings.REPLY_EMAIL, reply_to=to
     )
 
 
 def updateKeywords(dictio):
     keywords = dictio.pop('keywords', None)
-    if(keywords):
+    if keywords:
         for k in keywords:
             if not k.isdecimal():
                 # This is a new keyword

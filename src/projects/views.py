@@ -94,7 +94,7 @@ def sendProjectEmail(pk, user):
             'projectname': project.name,
             'projectid': pk}),
         reply_to=user_email,
-        to=settings.EMAIL_CIVIS,
+        to=settings.REPLY_EMAIL,
         bcc=bcc_list
     )
 

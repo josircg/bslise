@@ -51,7 +51,7 @@ def contactView(request):
             send_email(
                 subject=_('Contact Form'),
                 message=message,
-                to=settings.EMAIL_CIVIS,
+                to=settings.REPLY_EMAIL,
                 reply_to=[ from_email ]
             )
             return render(request, 'success.html',

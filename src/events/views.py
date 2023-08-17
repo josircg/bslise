@@ -107,12 +107,12 @@ def sendEventEmail(event_id, request, form):
 
     send_email(
         subject=_('Your event "%s" has been submitted!') % form.cleaned_data['title'],
-        message=render_to_string('emails/new_event.html', context), to=to, reply_to=settings.EMAIL_CIVIS
+        message=render_to_string('emails/new_event.html', context), to=to, reply_to=settings.REPLY_EMAIL
     )
 
     send_email(
         subject=_('Notification - New event "%s" submitted') % form.cleaned_data['title'],
-        message=render_to_string('emails/notify_event.html', context), reply_to=to, to=settings.EMAIL_CIVIS
+        message=render_to_string('emails/notify_event.html', context), reply_to=to, to=settings.REPLY_EMAIL
     )
 
 

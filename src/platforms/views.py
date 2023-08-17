@@ -98,7 +98,7 @@ def sendPlatformEmail(id, request, form):
         message=render_to_string('emails/new_platform.html',
                                  {"domain": settings.DOMAIN, 'submissionName': form.cleaned_data['name'],
                                   'username': request.user.name}),
-        reply_to=settings.EMAIL_CIVIS, to=to
+        reply_to=settings.REPLY_EMAIL, to=to
     )
 
     # NOTIFICAÇÃO
@@ -107,7 +107,7 @@ def sendPlatformEmail(id, request, form):
         message=render_to_string('emails/notify_platform.html', {"platformid": id, "domain": settings.DOMAIN,
                                                                  'submissionName': form.cleaned_data['name'],
                                                                  'username': request.user.name}),
-        reply_to=to, to=settings.EMAIL_CIVIS
+        reply_to=to, to=settings.REPLY_EMAIL
     )
 
 
@@ -219,24 +219,21 @@ def getPlatformsAutocomplete(text):
 def setImages(request, form):
     images = {}
     for key, value in request.FILES.items():
-        if '.svg' in value.lower():
-            x = 0
-        else:
-            x = form.cleaned_data.get('x' + key)
-            y = form.cleaned_data.get('y' + key)
-            w = form.cleaned_data.get('width' + key)
-            h = form.cleaned_data.get('height' + key)
-            image = Image.open(value)
-            if x and y and w and h:
-                image = image.crop((x, y, w + x, h + y))
-                if key == 'profileImage':
-                    finalsize = (1100, 400)
-                else:
-                    finalsize = (600, 400)
-                image = image.resize(finalsize, Image.ANTIALIAS)
-            imagePath = getImagePath(value.name)
-            image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
-            images[key] = imagePath
+        x = form.cleaned_data.get('x' + key)
+        y = form.cleaned_data.get('y' + key)
+        w = form.cleaned_data.get('width' + key)
+        h = form.cleaned_data.get('height' + key)
+        image = Image.open(value)
+        if x and y and w and h:
+            image = image.crop((x, y, w + x, h + y))
+            if key == 'profileImage':
+                finalsize = (1100, 400)
+            else:
+                finalsize = (600, 400)
+            image = image.resize(finalsize, Image.ANTIALIAS)
+        imagePath = getImagePath(value.name)
+        image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
+        images[key] = imagePath
     return images
 
 
