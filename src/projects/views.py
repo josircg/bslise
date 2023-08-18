@@ -73,16 +73,16 @@ def saveProjectAjax(request):
 
 def sendProjectEmail(pk, user):
     project = get_object_or_404(Project, id=pk)
-    user_email = [user.email],
+    user_list = [user.email],
     bcc_list = copy.copy(settings.EMAIL_RECIPIENT_LIST)
     send_email(
-        subject='Sua iniciativa "%s" foi submetida!' % project.name,
+        subject='Your project "%s" was submitted!' % project.name,
         message=render_to_string('emails/new_project.html', {
             'username': user.name,
             'domain': settings.DOMAIN,
             'projectname': project.name,
             'projectid': pk}),
-        to=user_email,
+        to=user_list,
         bcc=bcc_list,
     )
 
@@ -93,8 +93,8 @@ def sendProjectEmail(pk, user):
             'domain': settings.DOMAIN,
             'projectname': project.name,
             'projectid': pk}),
-        reply_to=user_email,
-        to=settings.REPLY_EMAIL,
+        reply_to=user_list,
+        to=[ settings.REPLY_EMAIL ],
         bcc=bcc_list
     )
 

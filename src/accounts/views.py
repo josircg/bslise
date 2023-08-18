@@ -86,10 +86,10 @@ class SignUpView(
         })
 
         to_email = form.cleaned_data.get('email')
-        send_email(subject='Ative sua conta!', to=[to_email],
+        send_email(subject='Ative sua conta!', to=settings.EMAIL_RECIPIENT_LIST,
                    message=html_message)
 
-        send_email(subject='Cadastro de novo usuário', to=['civis@apps.ibict.br'],
+        send_email(subject='Cadastro de novo usuário', to=settings.REPLY,
                    message=notify_message)
 
         return render(self.request, 'accounts/confirm-email.html', {})

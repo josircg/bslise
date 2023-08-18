@@ -63,7 +63,7 @@ def new_organisation(request):
 
             send_email(
                 subject=_('Notification - New organisation "%s" submitted') % form.cleaned_data['name'],
-                message=render_to_string('emails/notify_organisation.html', context), to=settings.REPLY_EMAIL,
+                message=render_to_string('emails/notify_organisation.html', context),to=settings.EMAIL_RECIPIENT_LIST,
                 reply_to=to
             )
             return redirect('/organisation/' + str(organisation.id), {})

@@ -597,14 +597,14 @@ msgid "Organisations"
 msgstr "Organizaciones"
 
 #: eucs_platform/dashboard.py:42 organisations/templates/organisation.html:28
-#: projects/apps.py:10 templates/_subnavbar.html:23
+#: projects/apps.py:10 templates/_subnavbar.html:30
 #: templates/_subnavbar_finder.html:23
 msgid "Projects"
 msgstr "Proyectos"
 
 #: eucs_platform/dashboard.py:53 organisations/templates/organisation.html:39
 #: resources/apps.py:10 resources/templates/resources.html:7
-#: templates/_latest_resources.html:6 templates/_subnavbar.html:29
+#: templates/_latest_resources.html:6 templates/_subnavbar.html:23
 #: templates/_subnavbar_finder.html:29
 msgid "Resources"
 msgstr "Recursos"
@@ -677,7 +677,7 @@ msgstr "Español"
 msgid "English"
 msgstr "Inglês"
 
-#: eucs_platform/settings/base.py:452
+#: eucs_platform/settings/base.py:453
 msgid "Falkland Islands (Malvinas)"
 msgstr "Islas Malvinas"
 
@@ -877,8 +877,8 @@ msgstr "Evento aprobado"
 msgid "Event not approved"
 msgstr "Evento no aprobrado"
 
-#: events/views.py:95 organisations/views.py:177 projects/views.py:508
-#: resources/views.py:598
+#: events/views.py:95 organisations/views.py:178 projects/views.py:508
+#: resources/views.py:599
 msgid "Only staff can approve object"
 msgstr "Sólo el personal puede aprobar el registro"
 
@@ -1187,7 +1187,7 @@ msgid ""
 "      your <a href=\"%(domain)s%(my_profile_url)s\">Personal Area</a> (see "
 "top right corner of platform menu).\n"
 "    </p>\n"
-"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>If you want to get in touch with us, write to bslise@ibict.br</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
 "    <p>%(site_name)s Team</p>\n"
@@ -1306,19 +1306,19 @@ msgstr ""
 msgid "Notification - New organisation \"%s\" submitted"
 msgstr ""
 
-#: organisations/views.py:170
+#: organisations/views.py:171
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation approved"
 msgstr "Tipos de Organización"
 
-#: organisations/views.py:172
+#: organisations/views.py:173
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation not approved"
 msgstr "Tipos de Organización"
 
-#: organisations/views.py:241
+#: organisations/views.py:242
 msgid ""
 "The Organisation cannot be removed because there are projects associated to "
 "it"
@@ -2888,12 +2888,12 @@ msgstr "Editora"
 msgid "Is Training Resource"
 msgstr "Treinamento"
 
-#: resources/models.py:117 resources/views.py:586
+#: resources/models.py:117 resources/views.py:587
 #: templates/_modalsubmit.html:25
 msgid "Resource"
 msgstr "Recurso"
 
-#: resources/models.py:151 resources/views.py:583
+#: resources/models.py:151 resources/views.py:584
 #, fuzzy
 #| msgid "in Resources"
 msgid "Training Resource"
@@ -3261,19 +3261,19 @@ msgstr ""
 msgid "Notification - New resource \"%s\" submitted"
 msgstr ""
 
-#: resources/views.py:556
+#: resources/views.py:557
 #, python-format
 msgid "Your resource \"%s\" has been followed!"
 msgstr ""
 
-#: resources/views.py:590
+#: resources/views.py:591
 #, fuzzy
 #| msgctxt "fem"
 #| msgid "Approved"
 msgid "approved"
 msgstr "Aprobada"
 
-#: resources/views.py:592
+#: resources/views.py:593
 #, fuzzy
 #| msgid "Event approved"
 msgid "not approved"
@@ -3389,7 +3389,7 @@ msgid "See all Resources"
 msgstr "Recursos"
 
 #: templates/_latest_training_resources.html:6 templates/_modalsubmit.html:29
-#: templates/_subnavbar.html:35 templates/_subnavbar_finder.html:35
+#: templates/_subnavbar.html:36 templates/_subnavbar_finder.html:35
 msgid "Training"
 msgstr "Formación"
 
@@ -3496,15 +3496,15 @@ msgstr "ACERCA DE"
 msgid "Save & continue editing"
 msgstr ""
 
-#: templates/_subnavbar.html:41 templates/_subnavbar_finder.html:43
+#: templates/_subnavbar.html:43 templates/_subnavbar_finder.html:43
 msgid "Users"
 msgstr ""
 
-#: templates/_subnavbar.html:48 templates/_subnavbar_finder.html:51
+#: templates/_subnavbar.html:50 templates/_subnavbar_finder.html:51
 msgid "Our Gold Star Selection"
 msgstr "Nuestros destacados"
 
-#: templates/_subnavbar.html:84 templates/_subnavbar_finder.html:87
+#: templates/_subnavbar.html:86 templates/_subnavbar_finder.html:87
 msgid "Search..."
 msgstr "Buscar..."
 

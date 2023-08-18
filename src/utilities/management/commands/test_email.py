@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if settings.EMAIL_TAG == 'DEV':
-            print('Dummy test - DEV TAG')
+            print('Dummy test - DEV TAG enabled')
         print(f'Trying to send to {settings.ADMIN_EMAIL}')
         send_email('Test', 'Test email', [settings.ADMIN_EMAIL])
         print('Message sent!')

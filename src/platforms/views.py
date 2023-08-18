@@ -107,7 +107,8 @@ def sendPlatformEmail(id, request, form):
         message=render_to_string('emails/notify_platform.html', {"platformid": id, "domain": settings.DOMAIN,
                                                                  'submissionName': form.cleaned_data['name'],
                                                                  'username': request.user.name}),
-        reply_to=to, to=settings.REPLY_EMAIL
+        reply_to=to,
+        to=settings.EMAIL_RECIPIENT_LIST
     )
 
 
