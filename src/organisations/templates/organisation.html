@@ -4,6 +4,7 @@
 {% load crispy_forms_tags %}
 {% load leaflet_tags %}
 {% load thumbnail %}
+{% load eucs_platform_tags %}
 {% block head %}
 {{ block.super }}
 {% leaflet_js %}
@@ -124,7 +125,7 @@
             <img title="{{ organisation.name }} logo"
                  target="_blank"
                  class="img-fluid border mb-3 lazyload"
-                 data-src="{% thumbnail organisation.safe_image 600x400 crop %}">
+                 data-src="{% thumbnail organisation.logo|safe_image 600x400 crop %}">
             {% endif %}
             <input type="hidden" id="lat" value="{{ organisation.latitude }}">
             <input type="hidden" id="long" value="{{ organisation.longitude }}">

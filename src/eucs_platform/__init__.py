@@ -4,6 +4,9 @@ from django.core.paginator import EmptyPage
 
 
 def send_email(subject, message, to, reply_to=None, bcc=None, headers=None):
+    """
+        to: should be a list
+    """
     tag = getattr(django_settings, 'EMAIL_TAG', 'XXX')
     if tag != 'DEV':
         email = EmailMessage('[%s] %s' % (tag, subject), message, to=to, reply_to=reply_to, bcc=bcc, headers=headers)

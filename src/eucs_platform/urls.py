@@ -58,6 +58,8 @@ urlpatterns = [
     path("policy_brief/", views.policy_brief, name="policy_brief"),
     path("users/", include(profiles.urls)),
     path("admin/", admin.site.urls),
+    path("reset_dashboard/", views.reset_dashboard, name="reset_dashboard"),
+    path("admin_tools/", include('admin_tools.urls')),
     path("select2/", include("django_select2.urls")),
     path('captcha/', include('captcha.urls')),
     path("", include(contact.urls)),

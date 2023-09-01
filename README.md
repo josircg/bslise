@@ -5,7 +5,7 @@ It is a fork of [EU-CS_platform][1] and [CIVIS][2] and it's built with [Python][
 
 ## Requirements
 
-    sudo apt install python3-venv python3-pip libpq-dev gettext
+    sudo apt install python3-venv python3-pip libpq-dev gettext libcairo2
 
 ## Configure postgres
 
@@ -17,10 +17,10 @@ It is a fork of [EU-CS_platform][1] and [CIVIS][2] and it's built with [Python][
    
 2) Open psql console:
 ```
-create database eucitizenscience;
-create user eucitizenscience_usr with password 'XXX';
-grant all on database eucitizenscience to eucitizenscience_usr;
-\connect eucitizenscience;
+create database bslise;
+create user bslise with password 'XXX';
+grant all on database bslise to bslise;
+\connect bslise;
 create extension postgis;
 ```
 ## Python Installation
@@ -30,7 +30,7 @@ create extension postgis;
 ```
 python3 -m venv venv
 source venv/bin/activate
-git clone git@git.ibict.br:cgti/civis.git
+git clone git@git.ibict.br:josir/bslise.git
 cd civis
 pip install -r requirements.txt
 cd src
@@ -48,7 +48,6 @@ python manage.py check
 ```
 python manage.py migrate
 python manage.py createcachetable
-python manage.py loaddata projects/fixtures/topics.json
 python manage.py loaddata projects/fixtures/status.json
 python manage.py loaddata projects/fixtures/participationtasks.json
 python manage.py loaddata projects/fixtures/geographicextend.json

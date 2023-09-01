@@ -33,10 +33,6 @@ class Subscriber(models.Model):
         verbose_name_plural = _('Subscribers')
         ordering = ('-id',)
 
-    class Meta:
-        verbose_name = _('Subscriber')
-        ordering = ('-id',)
-
     def __str__(self):
         return self.name
 
@@ -130,6 +126,6 @@ class Newsletter(models.Model):
         message = t.render(context)
         send_email(
             subject=self.headline,
-            message=message, to=[subscriber.email], reply_to=settings.EMAIL_CIVIS,
+            message=message, to=[subscriber.email], reply_to=settings.REPLY_EMAIL,
             headers=headers,
         )

@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 
 import pytz
-from PIL import Image
+from PIL import Image, ImageOps
 from accounts.models import ActivationTask
 from django.conf import settings
 from django.contrib import messages
@@ -73,16 +73,16 @@ def saveProjectAjax(request):
 
 def sendProjectEmail(pk, user):
     project = get_object_or_404(Project, id=pk)
-    user_email = [user.email],
+    user_list = [user.email],
     bcc_list = copy.copy(settings.EMAIL_RECIPIENT_LIST)
     send_email(
-        subject='Sua iniciativa "%s" foi submetida!' % project.name,
+        subject='Your project "%s" was submitted!' % project.name,
         message=render_to_string('emails/new_project.html', {
             'username': user.name,
             'domain': settings.DOMAIN,
             'projectname': project.name,
             'projectid': pk}),
-        to=user_email,
+        to=user_list,
         bcc=bcc_list,
     )
 
@@ -93,8 +93,8 @@ def sendProjectEmail(pk, user):
             'domain': settings.DOMAIN,
             'projectname': project.name,
             'projectid': pk}),
-        reply_to=user_email,
-        to=settings.EMAIL_CIVIS,
+        reply_to=user_list,
+        to=[ settings.REPLY_EMAIL ],
         bcc=bcc_list
     )
 
@@ -359,7 +359,9 @@ def saveImage(request, form, element, ref):
         h = form.cleaned_data.get('height' + ref)
         photo = request.FILES[element]
         image = Image.open(photo)
-        cropped_image = image.crop((x, y, w + x, h + y))
+        # Fix image orientation based on EXIF information
+        fixed_image = ImageOps.exif_transpose(image)
+        cropped_image = fixed_image.crop((x, y, w + x, h + y))
         if (ref == '3'):
             finalSize = (1320, 400)
         else:
@@ -367,15 +369,16 @@ def saveImage(request, form, element, ref):
 
         resized_image = cropped_image.resize(finalSize, Image.ANTIALIAS)
 
-        if (cropped_image.width > image.width):
-            size = (abs(int((finalSize[0] - (finalSize[0] / cropped_image.width * image.width)) / 2)), finalSize[1])
+        if (cropped_image.width > fixed_image.width):
+            size = (abs(int((finalSize[0] - (finalSize[0] / cropped_image.width * fixed_image.width)) / 2)), finalSize[1])
             whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
             position = ((finalSize[0] - whitebackground.width), 0)
             resized_image.paste(whitebackground, position)
             position = (0, 0)
             resized_image.paste(whitebackground, position)
-        if (cropped_image.height > image.height):
-            size = (finalSize[0], abs(int((finalSize[1] - (finalSize[1] / cropped_image.height * image.height)) / 2)))
+        if (cropped_image.height > fixed_image.height):
+            size = (finalSize[0], abs(int((finalSize[1] -
+                                           (finalSize[1] / cropped_image.height * fixed_image.height)) / 2)))
             whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
             position = (0, (finalSize[1] - whitebackground.height))
             resized_image.paste(whitebackground, position)
@@ -683,24 +686,12 @@ def projects_stats(request):
     return None
 
 
-def upload_visao(request):
-    auth_header = visao.authenticate()
-    if type(auth_header) == dict:
-        # for project in Project.objects.filter(approved=True):
-        #    visao.save_project(project, auth_header)
-        for project in Project.objects.exclude(approved=True):
-            visao.delete_project(project, auth_header)
-        return HttpResponse('Ok')
-    else:
-        return HttpResponse('Falha na autenticação: {auth_header}')
-
-
 def test_visao(request):
-    auth_header = visao.authenticate()
-    if type(auth_header) == dict:
+    try:
+        visao.authenticate()
         return HttpResponse('Ok')
-    else:
-        return HttpResponse('Falha na autenticação: {auth_header}')
+    except Exception as e:
+        return HttpResponse('Falha na autenticação: %s' % e)
 
 
 def send_project_invite_email(project_obj, email, user_registered):

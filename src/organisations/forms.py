@@ -42,10 +42,12 @@ class OrganisationForm(forms.Form):
             max_length=100,
             help_text=_('Please name the contact person or contact point for the organisation.'),
             label=_('Organisation contact point'),
+            required = False,
             widget=forms.TextInput())
     contact_point_email = forms.EmailField(
             max_length=100,
             label=_('Contact point email'),
+            required = False,
             help_text=_(
                 'Please provide the email address of the contact person or '
                 'contact point. Note you will need permission to do that.'),
@@ -65,7 +67,7 @@ class OrganisationForm(forms.Form):
 
     def clean_latitude(self):
         if not self.cleaned_data['latitude']:
-            raise ValidationError("A marcação da localização no mapa é obrigatória")
+            raise ValidationError(_("Geolocation is required"))
 
     def save(self, args, logo_path):
         pk = self.data.get('organisationID', '')

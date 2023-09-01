@@ -4,7 +4,7 @@ Tutorial de Instalação de um servidor do CIVIS para ambiente de produção:
 
 ````
 apt-get install -y nginx build-essential libssl-dev python3-dev python-setuptools libxml2-dev supervisor git libfreetype6 libfreetype6-dev python3-virtualenv libpq-dev
-dpkg-reconfigure tzdata
+dpkg-reconfigure tzdata libcairo2
 ````
 
 2) Criação do usuário webapp e permissões de uso (logado como root)

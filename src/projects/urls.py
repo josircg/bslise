@@ -23,7 +23,6 @@ urlpatterns = [
     path('project_review/<int:pk>', views.project_review, name='project_review'),
     url(r'^api/', include('projects.api.urls')),
     path('downloadProjects', views.downloadProjects, name='downloadProjects'),
-    path('upload_visao/', views.upload_visao, name='upload_visao'),
     path('test_visao/', views.test_visao, name='test_visao'),
     path('project_invite/', views.project_invite, name='project_invite'),
     path('project_invitation/<int:project_id>/', views.project_invitation, name='project_invitation'),

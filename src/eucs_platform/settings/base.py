@@ -64,7 +64,7 @@ TEMPLATES = [
             MACHINA_MAIN_TEMPLATE_DIR
             # insert more TEMPLATE_DIRS here
         ],
-        "APP_DIRS": True,
+        "APP_DIRS": False,
         "OPTIONS": {
             "context_processors": [
                 # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
@@ -81,8 +81,13 @@ TEMPLATES = [
                 'machina.core.context_processors.metadata',
                 # Wwn
                 'eucs_platform.context_processors.global_settings',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader',
+            ],
 
-            ]
         },
     }
 ]
@@ -116,6 +121,8 @@ if ADMIN_EMAIL:
     MANAGERS = ADMINS
 # Application definition
 INSTALLED_APPS = (
+    "admin_tools",
+    "admin_tools.dashboard",
     "django.contrib.auth",
     "django.contrib.admin",
     "django.contrib.contenttypes",
@@ -288,23 +295,24 @@ SUMMERNOTE_CONFIG = {
 }
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+SITE_ID = 1
+SITE_NAME = 'BSLISE'
 EMAIL_HOST = env("HOST_EMAIL")
 EMAIL_HOST_USER = env("FROM_EMAIL")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 # EMAIL_BACKEND = 'django_ses.SESBackend'
-DEFAULT_FROM_EMAIL = env("FROM_EMAIL")
-SERVER_EMAIL = DEFAULT_FROM_EMAIL
-SITE_NAME = 'Bslise'
-CONTACT_EMAIL = env("REPLY_EMAIL")
-EMAIL_RECIPIENT_LIST = ["bslise@apps.ibict.br"]
-EMAIL_CONTACT_RECIPIENT_LIST = ["bslise@apps.ibict.br"]
-EMAIL_CIVIS = [ CONTACT_EMAIL ]
-EMAIL_TAG = env("EMAIL_TAG")
-EMAIL_SUBJECT_PREFIX = EMAIL_TAG
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
 
-SITE_ID = 1
+# How will receive contact emails from users
+# Can be more than one but the first one will appear on site
+EMAIL_RECIPIENT_LIST = env("REPLY_EMAIL").split(',')
+REPLY_EMAIL = EMAIL_RECIPIENT_LIST[0]
+EMAIL_TAG = env("EMAIL_TAG")
+EMAIL_SUBJECT_PREFIX = f'[{EMAIL_TAG}] '
+
 HOST = env("HOST")
 DOMAIN = env("DOMAIN")
 USE_GUIDE = env("USE_GUIDE")
@@ -444,3 +452,6 @@ FORUM_ENABLED = env('FORUM_ENABLED')
 COUNTRIES_OVERRIDE = {
     "FK": _("Falkland Islands (Malvinas)"),
 }
+
+ADMIN_TOOLS_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomIndexDashboard'
+ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboard'

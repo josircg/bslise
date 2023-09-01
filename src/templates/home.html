@@ -4,7 +4,7 @@
 {% load i18n %}
 {% block head %}
 {{block.super }}
-<meta name="Description" content="CIVIS - Ciência cidadã">
+<meta name="Description" content="Library and Information Science Schools' Directory by BSLISE/IFLA">
 {% endblock %}
 {% block navbar-left %}
 {% include "_navbar_r2.html"  %}
@@ -65,9 +65,9 @@
     {% if visao_endpoint %}
         {% include '_mapa_interativo.html' %}
     {% endif %}
-    {% include '_latest_events.html' %}
-    {% include '_latest_projects.html' %}
-    {% include '_latest_resources.html' %}
+    <!--- {/% include '_latest_events.html' %/}
+    {/% include '_latest_projects.html' %/}
+    {/% include '_latest_resources.html' %/} --->
 {% endblock list_of_items %}
 
 {% block scripts %}

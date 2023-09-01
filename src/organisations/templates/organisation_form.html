@@ -4,6 +4,7 @@
 {% load thumbnail %}
 {% load leaflet_tags %}
 {% load crispy_forms_tags %}
+{% load eucs_platform_tags %}
 {% block head %}
 {{block.super }}
 <link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_style.css' %}">
@@ -69,7 +70,7 @@
                           <a id="imgResult" href="#"> <img
                                             class="img-fluid img-zoom"
                                             id="imageResult"
-                                            src="{% thumbnail organisation.safe_image|default:'void_600.png' 600x400 crop%}"> </a>
+                                            src="{% thumbnail organisation.logo|safe_image 600x400 crop%}"> </a>
 
                           {{ form.logo|as_crispy_field }}
                           {{ form.x|as_crispy_field }}

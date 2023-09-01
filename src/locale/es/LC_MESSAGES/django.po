@@ -220,7 +220,7 @@ msgstr ""
 msgid "Mark selected posts as draft"
 msgstr ""
 
-#: blog/models.py:8 contact/models.py:55
+#: blog/models.py:8 contact/models.py:51
 msgid "Draft"
 msgstr ""
 
@@ -265,6 +265,12 @@ msgstr ""
 #: blog/templates/blog.html:16
 msgid "Contact us"
 msgstr "Contacta con nosotras"
+
+#: contact/apps.py:7
+#, fuzzy
+#| msgid "Newsletter sent"
+msgid "Newsletters"
+msgstr "Newsletter %s enviada"
 
 #: contact/forms.py:7
 #, fuzzy
@@ -315,11 +321,11 @@ msgstr ""
 msgid "Valid Email"
 msgstr "Email valido"
 
-#: contact/models.py:27 contact/models.py:70
+#: contact/models.py:27 contact/models.py:66
 msgid "Date Created"
 msgstr "Creado en"
 
-#: contact/models.py:32 contact/models.py:37
+#: contact/models.py:32
 msgid "Subscriber"
 msgstr "Asinante"
 
@@ -329,61 +335,61 @@ msgstr "Asinante"
 msgid "Subscribers"
 msgstr "Assinantes"
 
-#: contact/models.py:56
+#: contact/models.py:52
 msgid "Ready"
 msgstr ""
 
-#: contact/models.py:57
+#: contact/models.py:53
 msgid "Queued"
 msgstr ""
 
-#: contact/models.py:58
+#: contact/models.py:54
 msgid "Sent"
 msgstr ""
 
-#: contact/models.py:59
+#: contact/models.py:55
 msgid "Error"
 msgstr ""
 
-#: contact/models.py:61 events/forms.py:11 profiles/models.py:36
+#: contact/models.py:57 events/forms.py:11 profiles/models.py:40
 msgid "Title"
 msgstr "Título"
 
-#: contact/models.py:62
+#: contact/models.py:58
 msgid "Headline"
 msgstr ""
 
-#: contact/models.py:63
+#: contact/models.py:59
 #, fuzzy
 #| msgid "Featured"
 msgid "Featured Title"
 msgstr "Destacado"
 
-#: contact/models.py:64
+#: contact/models.py:60
 #, fuzzy
 #| msgid "Featured"
 msgid "Featured Text"
 msgstr "Destacado"
 
-#: contact/models.py:67
+#: contact/models.py:63
 #, fuzzy
 #| msgid "Go to Resource"
 msgid "Feature Resource"
 msgstr "Ir al Recurso"
 
-#: contact/models.py:68
+#: contact/models.py:64
 msgid "Source HTML"
 msgstr ""
 
-#: contact/models.py:69 projects/templates/_finder_projects.html:45
+#: contact/models.py:65 projects/templates/_finder_projects.html:45
 msgid "Status"
 msgstr ""
 
-#: contact/models.py:71
+#: contact/models.py:67
 msgid "Sent Count"
 msgstr ""
 
-#: contact/models.py:72
+#: contact/models.py:68
 #, fuzzy
 #| msgid "Read more"
 msgid "Read Count"
@@ -407,7 +413,7 @@ msgid "Contact"
 msgstr "Contacto"
 
 #: contact/templates/contact.html:29
-msgid "You can reach out by this form, or through the email:"
+msgid "You can reach out by this form, or through the email: "
 msgstr ""
 
 #: contact/templates/contact.html:66
@@ -576,38 +582,113 @@ msgid_plural "%d test mails were sent"
 msgstr[0] "Se ha enviado %d correo de prueba"
 msgstr[1] "Se han enviado %d correos de prueba"
 
-#: eucs_platform/settings/base.py:223 eucs_platform/settings/base.py:235
+#: eucs_platform/dashboard.py:29 platforms/apps.py:8 platforms/models.py:67
+#: templates/_subnavbar.html:11 templates/_subnavbar_finder.html:11
+msgid "Programmes"
+msgstr "Programas"
+
+#: eucs_platform/dashboard.py:37 organisations/apps.py:10
+#: organisations/models.py:42 organisations/templates/organisations.html:5
+#: platforms/templates/platform.html:38
+#: profiles/templates/profiles/show_profile.html:17
+#: templates/_latest_organisations.html:6 templates/_subnavbar.html:17
+#: templates/_subnavbar_finder.html:17
+msgid "Organisations"
+msgstr "Organizaciones"
+
+#: eucs_platform/dashboard.py:42 organisations/templates/organisation.html:28
+#: projects/apps.py:10 templates/_subnavbar.html:30
+#: templates/_subnavbar_finder.html:23
+msgid "Projects"
+msgstr "Proyectos"
+
+#: eucs_platform/dashboard.py:53 organisations/templates/organisation.html:39
+#: resources/apps.py:10 resources/templates/resources.html:7
+#: templates/_latest_resources.html:6 templates/_subnavbar.html:23
+#: templates/_subnavbar_finder.html:29
+msgid "Resources"
+msgstr "Recursos"
+
+#: eucs_platform/dashboard.py:65 events/apps.py:10
+#, fuzzy
+#| msgid "Event"
+msgid "Events"
+msgstr "Evento"
+
+#: eucs_platform/dashboard.py:69
+#, fuzzy
+#| msgid "organisations"
+msgid "Communications"
+msgstr "organizaciones"
+
+#: eucs_platform/dashboard.py:75
+#, fuzzy
+#| msgid "Other Organisations"
+msgid "Authentication"
+msgstr "Otras organizaciones"
+
+#: eucs_platform/dashboard.py:84
+msgid "Forum"
+msgstr ""
+
+#: eucs_platform/dashboard.py:89
+#, fuzzy
+#| msgid "Edit Organisation"
+msgid "Administration"
+msgstr "Editar Organización"
+
+#: eucs_platform/dashboard.py:94
+msgid "Quick links"
+msgstr ""
+
+#: eucs_platform/dashboard.py:100
+#, fuzzy
+#| msgid "View on site"
+msgid "Return to site"
+msgstr "Visualizar en site"
+
+#: eucs_platform/dashboard.py:101
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: eucs_platform/dashboard.py:103
+#, fuzzy
+#| msgid "Log in"
+msgid "Log out"
+msgstr "Iniciar sesión"
+
+#: eucs_platform/dashboard.py:123
+msgid "Recent Actions"
+msgstr ""
+
+#: eucs_platform/settings/base.py:230 eucs_platform/settings/base.py:242
 #, fuzzy
 #| msgid "Portuguese"
 msgid "Brazilian Portuguese"
 msgstr "Português"
 
-#: eucs_platform/settings/base.py:224 eucs_platform/settings/base.py:236
+#: eucs_platform/settings/base.py:231 eucs_platform/settings/base.py:243
 msgid "Spanish"
 msgstr "Español"
 
-#: eucs_platform/settings/base.py:225 eucs_platform/settings/base.py:237
+#: eucs_platform/settings/base.py:232 eucs_platform/settings/base.py:244
 msgid "English"
 msgstr "Inglês"
 
-#: eucs_platform/settings/base.py:445
+#: eucs_platform/settings/base.py:453
 msgid "Falkland Islands (Malvinas)"
 msgstr "Islas Malvinas"
 
 #: events/admin.py:15 organisations/admin.py:16
-#: organisations/templates/organisation.html:101 projects/admin.py:52
+#: organisations/templates/organisation.html:102 projects/admin.py:51
 #: projects/templates/project.html:185 resources/admin.py:61
 #: resources/templates/_finder_resources.html:66
 #, fuzzy
 #| msgid "Not yet moderated"
 msgid "Not moderated"
 msgstr "Aún no revisados"
-
-#: events/apps.py:10
-#, fuzzy
-#| msgid "Event"
-msgid "Events"
-msgstr "Evento"
 
 #: events/forms.py:11
 msgid "Title of the event"
@@ -618,7 +699,7 @@ msgid "A brief description of the event"
 msgstr ""
 
 #: events/forms.py:13 organisations/forms.py:26 platforms/forms.py:27
-#: platforms/models.py:24 projects/forms.py:58 projects/forms.py:384
+#: platforms/models.py:25 projects/forms.py:58 projects/forms.py:384
 #: projects/templates/translation_form.html:48
 msgid "Description"
 msgstr ""
@@ -647,7 +728,7 @@ msgstr ""
 msgid "Copy and paste the full event URL."
 msgstr ""
 
-#: events/forms.py:19 organisations/forms.py:20 platforms/forms.py:21
+#: events/forms.py:19 organisations/forms.py:20 platforms/forms.py:33
 #: projects/forms.py:52 resources/forms.py:25
 msgid "URL"
 msgstr ""
@@ -658,9 +739,9 @@ msgid ""
 "or https://"
 msgstr ""
 
-#: events/models.py:23 organisations/models.py:38 projects/models.py:168
-#: projects/templates/_finder_projects.html:73 resources/models.py:107
-#: resources/templates/_finder_resources.html:64
+#: events/models.py:23 organisations/models.py:38 platforms/models.py:62
+#: projects/models.py:170 projects/templates/_finder_projects.html:73
+#: resources/models.py:107 resources/templates/_finder_resources.html:64
 msgid "Approved"
 msgstr ""
 
@@ -743,7 +824,7 @@ msgid "Event info"
 msgstr "Información del evento"
 
 #: events/templates/event_form.html:65
-#: organisations/templates/organisation_form.html:91
+#: organisations/templates/organisation_form.html:92
 #: profiles/templates/profiles/edit_profile.html:45
 #: projects/templates/project_form.html:166 templates/_save_zone.html:3
 msgid "Save"
@@ -754,8 +835,8 @@ msgid "Add"
 msgstr "Anadir"
 
 #: events/templates/event_form.html:74 events/templates/event_form.html:77
-#: organisations/templates/organisation_form.html:98
-#: organisations/templates/organisation_form.html:101
+#: organisations/templates/organisation_form.html:99
+#: organisations/templates/organisation_form.html:102
 #: projects/templates/project_form.html:177
 #: projects/templates/project_form.html:180
 #: resources/templates/resource_form.html:126
@@ -764,7 +845,7 @@ msgid "Approve"
 msgstr ""
 
 #: events/templates/event_form.html:77
-#: organisations/templates/organisation_form.html:101
+#: organisations/templates/organisation_form.html:102
 #: projects/templates/project_form.html:180
 #: resources/templates/resource_form.html:129
 msgid "Do not"
@@ -796,8 +877,8 @@ msgstr "Evento aprobado"
 msgid "Event not approved"
 msgstr "Evento no aprobrado"
 
-#: events/views.py:95 organisations/views.py:173 projects/views.py:505
-#: resources/views.py:596
+#: events/views.py:95 organisations/views.py:178 projects/views.py:508
+#: resources/views.py:599
 msgid "Only staff can approve object"
 msgstr "Sólo el personal puede aprobar el registro"
 
@@ -814,15 +895,6 @@ msgstr ""
 #, python-format
 msgid "Notification - New event \"%s\" submitted"
 msgstr ""
-
-#: organisations/apps.py:10 organisations/models.py:42
-#: organisations/templates/organisations.html:5
-#: platforms/templates/platform.html:38
-#: profiles/templates/profiles/show_profile.html:17
-#: templates/_latest_organisations.html:6 templates/_subnavbar.html:17
-#: templates/_subnavbar_finder.html:17
-msgid "Organisations"
-msgstr "Organizaciones"
 
 #: organisations/forms.py:15
 #, fuzzy
@@ -851,7 +923,7 @@ msgstr ""
 "Por favor, describa la organización (preferiblemente en 500 palabras o menos)"
 
 #: organisations/forms.py:30
-#: organisations/templates/_finder_organisation.html:45
+#: organisations/templates/_finder_organisation.html:40
 #: organisations/templates/finder_organisations.html:18
 msgid "Type"
 msgstr "Tipo"
@@ -878,13 +950,13 @@ msgstr "Por favor, indique la persona o punto de contacto de la organización"
 msgid "Organisation contact point"
 msgstr "Organización"
 
-#: organisations/forms.py:48 platforms/forms.py:57 projects/forms.py:154
+#: organisations/forms.py:49 platforms/forms.py:69 projects/forms.py:154
 #, fuzzy
 #| msgid "Contact Point Email"
 msgid "Contact point email"
 msgstr "Correo electrónico del punto de contacto"
 
-#: organisations/forms.py:50 platforms/forms.py:60
+#: organisations/forms.py:52 platforms/forms.py:72
 #, fuzzy
 #| msgid ""
 #| "Please provide the email address of the contact person or contact point. "
@@ -896,7 +968,11 @@ msgstr ""
 "Por favor, indique la dirección de correo electrónico del contacto de la "
 "organización.Tenga en cuenta que deberá tener permiso para ello"
 
-#: organisations/forms.py:111 projects/forms.py:430 resources/forms.py:271
+#: organisations/forms.py:70
+msgid "Geolocation is required"
+msgstr ""
+
+#: organisations/forms.py:113 projects/forms.py:430 resources/forms.py:271
 msgid "Give additional users permission to edit"
 msgstr "Dar permiso a más usuarios para editar"
 
@@ -943,15 +1019,15 @@ msgstr "Cancelar"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: organisations/templates/_finder_organisation.html:11
-#: platforms/templates/_finder_platforms.html:11
+#: organisations/templates/_finder_organisation.html:10
+#: platforms/templates/_finder_platforms.html:10
 #: projects/templates/_finder_projects.html:11
 #: resources/templates/_finder_resources.html:13
 msgid "Order by"
 msgstr "Ordenar por"
 
-#: organisations/templates/_finder_organisation.html:17
-#: platforms/templates/_finder_platforms.html:17
+#: organisations/templates/_finder_organisation.html:16
+#: platforms/templates/_finder_platforms.html:16
 #: profiles/templates/profiles/_finder_users.html:19
 #: projects/templates/_finder_projects.html:17
 #: resources/templates/_finder_resources.html:19
@@ -960,8 +1036,8 @@ msgstr "Ordenar por"
 msgid "Most Recent"
 msgstr "Ordenar por añadidos más recientes"
 
-#: organisations/templates/_finder_organisation.html:18
-#: platforms/templates/_finder_platforms.html:18
+#: organisations/templates/_finder_organisation.html:17
+#: platforms/templates/_finder_platforms.html:17
 #: profiles/templates/profiles/_finder_users.html:20
 #: projects/templates/_finder_projects.html:18
 #, fuzzy
@@ -969,8 +1045,8 @@ msgstr "Ordenar por añadidos más recientes"
 msgid "By Name"
 msgstr "Nombre Completo"
 
-#: organisations/templates/_finder_organisation.html:25
-#: platforms/templates/_finder_platforms.html:24
+#: organisations/templates/_finder_organisation.html:24
+#: platforms/templates/_finder_platforms.html:23
 #: projects/templates/_finder_projects.html:28
 #: resources/templates/_finder_resources.html:29
 #, fuzzy
@@ -978,15 +1054,15 @@ msgstr "Nombre Completo"
 msgid "Filter by"
 msgstr "Filtrar"
 
-#: organisations/templates/_finder_organisation.html:33
+#: organisations/templates/_finder_organisation.html:32
 #: organisations/templates/finder_organisations.html:28
-#: platforms/templates/_finder_platforms.html:32 profiles/forms.py:62
+#: platforms/templates/_finder_platforms.html:31 profiles/forms.py:62
 #: projects/templates/_finder_projects.html:34
 msgid "Country"
 msgstr "País"
 
-#: organisations/templates/_finder_organisation.html:60
-#: platforms/templates/_finder_platforms.html:60
+#: organisations/templates/_finder_organisation.html:55
+#: platforms/templates/_finder_platforms.html:55
 #: projects/templates/_finder_projects.html:93
 #: resources/templates/_finder_resources.html:78
 #, fuzzy
@@ -994,36 +1070,36 @@ msgstr "País"
 msgid "keyword:"
 msgstr "Palabras clave"
 
-#: organisations/templates/_finder_organisation.html:68 profiles/models.py:54
+#: organisations/templates/_finder_organisation.html:63 profiles/models.py:58
 #: projects/templates/_finder_projects.html:87
 #, fuzzy
 #| msgid "Country"
 msgid "country"
 msgstr "País"
 
-#: organisations/templates/_finder_organisation.html:76
+#: organisations/templates/_finder_organisation.html:71
 msgid "type:"
 msgstr "tipo:"
 
-#: organisations/templates/_finder_organisation.html:81
+#: organisations/templates/_finder_organisation.html:76
 #: organisations/templates/finder_organisations.html:49
-#: platforms/templates/_finder_platforms.html:65
+#: platforms/templates/_finder_platforms.html:60
 #: profiles/templates/profiles/_finder_users.html:30
 #: projects/templates/_finder_projects.html:117
 #: resources/templates/_finder_resources.html:109
 msgid "Clear current search query and filters"
 msgstr "Borra la búsqueda actual"
 
-#: organisations/templates/_finder_organisation.html:87
+#: organisations/templates/_finder_organisation.html:82
 msgid "organisations"
 msgstr "organizaciones"
 
-#: organisations/templates/_finder_organisation.html:89
+#: organisations/templates/_finder_organisation.html:84
 #: organisations/templates/_intro_form_organisation.html:7
 msgid "organisation"
 msgstr "organización"
 
-#: organisations/templates/_finder_organisation.html:91
+#: organisations/templates/_finder_organisation.html:86
 msgid "found"
 msgstr "encontradas"
 
@@ -1111,7 +1187,7 @@ msgid ""
 "      your <a href=\"%(domain)s%(my_profile_url)s\">Personal Area</a> (see "
 "top right corner of platform menu).\n"
 "    </p>\n"
-"    <p>If you want to get in touch with us, write to civil@ibict.br.</p>\n"
+"    <p>If you want to get in touch with us, write to bslise@ibict.br</p>\n"
 "    <p>This is an automated email, DO NOT reply.</p>\n"
 "    <p>Greetings,</p>\n"
 "    <p>%(site_name)s Team</p>\n"
@@ -1130,63 +1206,52 @@ msgstr "organizaciones"
 msgid "organisation found"
 msgstr "organización"
 
-#: organisations/templates/organisation.html:27 projects/apps.py:10
-#: templates/_subnavbar.html:23 templates/_subnavbar_finder.html:23
-msgid "Projects"
-msgstr "Proyectos"
-
-#: organisations/templates/organisation.html:38 resources/apps.py:10
-#: resources/templates/resources.html:7 templates/_latest_resources.html:6
-#: templates/_subnavbar.html:29 templates/_subnavbar_finder.html:29
-msgid "Resources"
-msgstr "Recursos"
-
-#: organisations/templates/organisation.html:49
+#: organisations/templates/organisation.html:50
 #, fuzzy
 #| msgid "in Resources"
 msgid "Training resources"
 msgstr "en Recursos"
 
-#: organisations/templates/organisation.html:60
+#: organisations/templates/organisation.html:61
 msgid "Members"
 msgstr "Miembros"
 
-#: organisations/templates/organisation.html:73
+#: organisations/templates/organisation.html:74
 msgid "Go to Organisation"
 msgstr "Ir a la Organización"
 
-#: organisations/templates/organisation.html:78
+#: organisations/templates/organisation.html:79
 #: platforms/templates/platform.html:54 projects/templates/project.html:148
 #, fuzzy
 #| msgid "Contact Point Email"
 msgid "Contact e-mail"
 msgstr "Correo electrónico del punto de contacto"
 
-#: organisations/templates/organisation.html:84
+#: organisations/templates/organisation.html:85
 msgid "Edit Organisation"
 msgstr "Editar Organización"
 
-#: organisations/templates/organisation.html:91
+#: organisations/templates/organisation.html:92
 msgid "Delete Organisation"
 msgstr "Eliminar Organización"
 
-#: organisations/templates/organisation.html:98
-#: organisations/templates/organisation.html:103
+#: organisations/templates/organisation.html:99
+#: organisations/templates/organisation.html:104
 #: projects/templates/project.html:182
 msgctxt "fem"
 msgid "Approved"
 msgstr "Aprobada"
 
-#: organisations/templates/organisation.html:103
+#: organisations/templates/organisation.html:104
 msgid "Not"
 msgstr "No"
 
-#: organisations/templates/organisation.html:111
+#: organisations/templates/organisation.html:112
 #: resources/templates/resource.html:107
 msgid "Contact submitter"
 msgstr ""
 
-#: organisations/templates/organisation_form.html:51
+#: organisations/templates/organisation_form.html:52
 #: platforms/templates/platform_form.html:38
 #: projects/templates/project_form.html:54
 #: resources/templates/resource_form.html:44
@@ -1195,25 +1260,25 @@ msgstr ""
 msgid "Main information"
 msgstr "Revisión"
 
-#: organisations/templates/organisation_form.html:61
+#: organisations/templates/organisation_form.html:62
 #: platforms/templates/platform_form.html:50
 #, fuzzy
 #| msgid "Contact Point Email"
 msgid "Contact information"
 msgstr "Correo electrónico del punto de contacto"
 
-#: organisations/templates/organisation_form.html:68
+#: organisations/templates/organisation_form.html:69
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation logo"
 msgstr "Organización"
 
-#: organisations/templates/organisation_form.html:83
+#: organisations/templates/organisation_form.html:84
 #: projects/templates/project_form.html:87
 msgid "Location"
 msgstr "Localización"
 
-#: organisations/templates/organisation_form.html:84
+#: organisations/templates/organisation_form.html:85
 msgid ""
 "Locate on the map or inform in the field below the city or region and "
 "country of your initiative or organization."
@@ -1225,56 +1290,51 @@ msgstr ""
 msgid "organisation <span class='text-pink5'>search</span>"
 msgstr "busca <span class='text-pink5'>Organização</span>"
 
-#: organisations/views.py:48 organisations/views.py:49
+#: organisations/views.py:50 organisations/views.py:51
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation added"
 msgstr "Organización añadida"
 
-#: organisations/views.py:59
+#: organisations/views.py:61
 #, python-format
 msgid "Your organisation \"%s\" has been submitted!"
 msgstr ""
 
-#: organisations/views.py:63
+#: organisations/views.py:65
 #, python-format
 msgid "Notification - New organisation \"%s\" submitted"
 msgstr ""
 
-#: organisations/views.py:166
+#: organisations/views.py:171
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation approved"
 msgstr "Tipos de Organización"
 
-#: organisations/views.py:168
+#: organisations/views.py:173
 #, fuzzy
 #| msgid "Organisation"
 msgid "Organisation not approved"
 msgstr "Tipos de Organización"
 
-#: platforms/apps.py:8 platforms/models.py:61 templates/_subnavbar.html:11
-#: templates/_subnavbar_finder.html:11
-msgid "Programmes"
-msgstr "Programas"
+#: organisations/views.py:242
+msgid ""
+"The Organisation cannot be removed because there are projects associated to "
+"it"
+msgstr ""
 
-#: platforms/forms.py:15
+#: platforms/forms.py:21
 #, fuzzy
 #| msgid "Insert here the title or name of the resource"
 msgid "Please write the name of the programme."
 msgstr "Añada aquí el título o nombre del programa"
 
-#: platforms/forms.py:16
+#: platforms/forms.py:22
 #, fuzzy
 #| msgid "Programmes"
 msgid "Programme name"
 msgstr "Programas"
-
-#: platforms/forms.py:22
-#, fuzzy
-#| msgid "URL of the organisation"
-msgid "Please provide the URL of the programme."
-msgstr "URL de la organización"
 
 #: platforms/forms.py:28
 #, fuzzy
@@ -1286,47 +1346,73 @@ msgstr ""
 
 #: platforms/forms.py:34
 #, fuzzy
+#| msgid "URL of the organisation"
+msgid "Please provide the URL of the programme."
+msgstr "URL de la organización"
+
+#: platforms/forms.py:39
+#, fuzzy
+#| msgid "Insert here the title or name of the resource"
+msgid "Please write the qualification required."
+msgstr "Añada aquí el título o nombre del recurso"
+
+#: platforms/forms.py:40
+msgid "Qualification"
+msgstr ""
+
+#: platforms/forms.py:46
+#, fuzzy
 #| msgid "The name or the organisation"
 msgid "Please indicate the spatial scale of the programme."
 msgstr "Nombre u organización"
 
-#: platforms/forms.py:35 platforms/models.py:32
-#: platforms/templates/_finder_platforms.html:44
+#: platforms/forms.py:47 platforms/models.py:32
 #, fuzzy
 #| msgid "Geographic Extend"
 msgid "Geographic extent"
 msgstr "Localización geográfica"
 
-#: platforms/forms.py:39 platforms/templates/platform.html:77
+#: platforms/forms.py:51 platforms/templates/platform.html:77
 #, fuzzy
 #| msgid "Country"
 msgid "Countries"
 msgstr "País"
 
-#: platforms/forms.py:40
+#: platforms/forms.py:52
 #, fuzzy
 #| msgid "The name or the organisation"
 msgid "Please select the country(ies) related to the programme."
 msgstr "Nombre u organización"
 
-#: platforms/forms.py:50
+#: platforms/forms.py:62
 #, fuzzy
 #| msgid "Contact Point Email"
 msgid "Contact point"
 msgstr "Correo electrónico del punto de contacto"
 
-#: platforms/forms.py:52
+#: platforms/forms.py:64
 #, fuzzy
 #| msgid "Please name the contact person or contact point for the organisation"
-msgid ""
-"Please name the contact person or contact point for the network or platform."
+msgid "Please name the contact person or contact point."
 msgstr "Por favor, indique la persona o punto de contacto de la organización"
 
-#: platforms/forms.py:66 resources/forms.py:129
+#: platforms/forms.py:78
+#, fuzzy
+#| msgid "Contact Point Email"
+msgid "Contact Phone"
+msgstr "Correo electrónico del punto de contacto"
+
+#: platforms/forms.py:80
+#, fuzzy
+#| msgid "Organisation"
+msgid "Insert a contact phone"
+msgstr "Organización"
+
+#: platforms/forms.py:85 resources/forms.py:129
 msgid "Organisation(s)"
 msgstr "Organización(es)"
 
-#: platforms/forms.py:68
+#: platforms/forms.py:87
 #, fuzzy
 #| msgid ""
 #| "Organisation(s) contributing the resource (multiple selection separated "
@@ -1341,27 +1427,39 @@ msgstr ""
 "múltiple, separe con comas o pulsando enter. Si no están en el listado, por "
 "favor, añádalas <a href=\"/new_organisation\">here</a > antes de enviar"
 
-#: platforms/forms.py:79
+#: platforms/forms.py:99
+#, fuzzy
+#| msgid "Select one of the proposed categories"
+msgid "Please select the programme types."
+msgstr "Seleccione una de las categorías propuestas"
+
+#: platforms/forms.py:101 platforms/models.py:59 projects/forms.py:104
+#: projects/models.py:29 projects/models.py:37 projects/models.py:123
+#: projects/templates/_finder_projects.html:54
+msgid "Topic"
+msgstr ""
+
+#: platforms/forms.py:105
 msgid "Logo of your network or platform"
 msgstr ""
 
-#: platforms/forms.py:80
+#: platforms/forms.py:106
 msgid "This image will be resized to 600x400 pixels."
 msgstr ""
 
-#: platforms/forms.py:89 projects/forms.py:228
+#: platforms/forms.py:115 projects/forms.py:228
 msgid "Logo credit, if applicable"
 msgstr ""
 
-#: platforms/forms.py:93
+#: platforms/forms.py:119
 msgid "Network or platform profile image"
 msgstr ""
 
-#: platforms/forms.py:94
+#: platforms/forms.py:120
 msgid "This image will be resized to 1100x400 pixels."
 msgstr ""
 
-#: platforms/forms.py:103
+#: platforms/forms.py:129
 msgid "Profile image credit, if applicable."
 msgstr ""
 
@@ -1371,21 +1469,36 @@ msgstr ""
 msgid "Geographic extents"
 msgstr "Localización geográfica"
 
+#: platforms/models.py:50
+msgid "Telephone"
+msgstr ""
+
 #: platforms/models.py:60
+msgid "Qualification Required"
+msgstr ""
+
+#: platforms/models.py:66
 msgid "Program"
 msgstr ""
 
-#: platforms/templates/_finder_platforms.html:71
+#: platforms/templates/_finder_platforms.html:39
+#: platforms/templates/platform.html:82
+#, fuzzy
+#| msgid "Science Topics"
+msgid "Topics"
+msgstr "Temas científicos"
+
+#: platforms/templates/_finder_platforms.html:66
 #, fuzzy
 #| msgid "Projects"
 msgid "programmes found"
 msgstr "programas encontrados"
 
-#: platforms/templates/_finder_platforms.html:73
+#: platforms/templates/_finder_platforms.html:68
 #, fuzzy
-#| msgid "platforms"
-msgid "program found"
-msgstr "plataformas"
+#| msgid "Projects"
+msgid "programme found"
+msgstr "programas encontrados"
 
 #: platforms/templates/_intro_form_platform.html:7
 #, fuzzy
@@ -1415,8 +1528,10 @@ msgstr ""
 "información noesencial que sea posible."
 
 #: platforms/templates/platform.html:49
-msgid "Go to platform or network"
-msgstr ""
+#, fuzzy
+#| msgid "Resources"
+msgid "Go to programme"
+msgstr "Recursos"
 
 #: platforms/templates/platform.html:72
 #, fuzzy
@@ -1424,20 +1539,26 @@ msgstr ""
 msgid "Geographic extend"
 msgstr "Localización geográfica"
 
-#: platforms/templates/platform_form.html:60
+#: platforms/templates/platform_form.html:63
 msgid "Programme images"
 msgstr ""
+
+#: platforms/templates/platform_form.html:86
+#, fuzzy
+#| msgid "Reset Password"
+msgid "Reset Image Background"
+msgstr "Restaurar mi contraseña"
 
 #: platforms/templates/platforms.html:9
 #, fuzzy
 #| msgid "what is <span class='text-white'>citizen science?</span>"
-msgid "platform <span class='text-pink5'>search</span>"
+msgid "Programme <span class='text-pink5'>search</span>"
 msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
 
-#: platforms/views.py:85
+#: platforms/views.py:95
 #, fuzzy
 #| msgid "Platform added correctly"
-msgid "Program added correctly"
+msgid "Programme added correctly"
 msgstr "Plataforma añadida"
 
 #: profiles/forms.py:24
@@ -1448,7 +1569,7 @@ msgstr "Nombre y apellidos"
 msgid "None"
 msgstr "No hay"
 
-#: profiles/forms.py:59
+#: profiles/forms.py:59 profiles/models.py:21
 #, fuzzy
 #| msgid "Interest Areas"
 msgid "Interest Areas"
@@ -1461,15 +1582,21 @@ msgstr ""
 "Por favor, escriba o seleccione las palabras clave que definen el recurso, "
 "separadas por comas o pulsando enter"
 
-#: profiles/models.py:31
+#: profiles/models.py:20
+#, fuzzy
+#| msgid "Interest Areas"
+msgid "Interest Area"
+msgstr "Áreas de interés"
+
+#: profiles/models.py:35
 msgid "Profile picture"
 msgstr "Foto del perfil"
 
-#: profiles/models.py:38
+#: profiles/models.py:42
 msgid "Short Bio and disciplinary background"
 msgstr "Bio y ámbito profesional"
 
-#: profiles/models.py:44
+#: profiles/models.py:48
 msgid ""
 "ORCID (If you have registered on the ORCID platform for researchers and "
 "havea persistent digital identifier (your ORCID iD) you can add it here to "
@@ -1477,11 +1604,11 @@ msgid ""
 "grants, publications,peer review, and more.)"
 msgstr ""
 
-#: profiles/models.py:52
+#: profiles/models.py:56
 msgid "Email verified"
 msgstr ""
 
-#: profiles/models.py:76
+#: profiles/models.py:80
 #, fuzzy
 #| msgid "profile"
 msgid "{}'s profile"
@@ -1668,7 +1795,7 @@ msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
 msgid "Profile details saved!"
 msgstr "Datos del perfil guardados!"
 
-#: projects/admin.py:82 projects/models.py:187 projects/models.py:257
+#: projects/admin.py:81 projects/models.py:189 projects/models.py:259
 #: templates/_modalsubmit.html:21
 msgid "Project"
 msgstr "Proyecto"
@@ -1735,8 +1862,9 @@ msgstr ""
 "Por favor, escriba o seleccione las palabras clave que definen el recurso, "
 "separadas por comas o pulsando enter"
 
-#: projects/forms.py:86 projects/templates/project.html:89
-#: resources/forms.py:35 resources/templates/resource.html:122
+#: projects/forms.py:86 projects/models.py:58
+#: projects/templates/project.html:89 resources/forms.py:35
+#: resources/templates/resource.html:122
 msgid "Keywords"
 msgstr "Palabras clave"
 
@@ -1752,16 +1880,11 @@ msgstr ""
 msgid "Please select the project topic(s) or field(s) of science."
 msgstr ""
 
-#: projects/forms.py:104 projects/models.py:28 projects/models.py:36
-#: projects/models.py:121 projects/templates/_finder_projects.html:54
-msgid "Topic"
-msgstr ""
-
 #: projects/forms.py:110
 msgid "Please select the task(s) undertaken by participants."
 msgstr ""
 
-#: projects/forms.py:112 projects/models.py:47 projects/models.py:48
+#: projects/forms.py:112 projects/models.py:48 projects/models.py:49
 #: projects/templates/_finder_projects.html:63
 msgid "Participation Task"
 msgstr "Tarefas dos Participantes"
@@ -1967,63 +2090,63 @@ msgstr ""
 msgid "Grants an unregistered user permission to edit a project"
 msgstr "Dar permiso a más usuarios para editar"
 
-#: projects/models.py:15 projects/models.py:22 projects/models.py:23
+#: projects/models.py:16 projects/models.py:23 projects/models.py:24
 #, fuzzy
 #| msgid "Projects"
 msgid "Project Status"
 msgstr "Proyectos"
 
-#: projects/models.py:56
+#: projects/models.py:57
 #, fuzzy
 #| msgid "Keywords"
 msgid "Keyword"
 msgstr "Palabras clave"
 
-#: projects/models.py:70 projects/models.py:71
+#: projects/models.py:72 projects/models.py:73
 msgid "Funding Body"
 msgstr ""
 
-#: projects/models.py:101
+#: projects/models.py:103
 #, fuzzy
 #| msgid "Translate"
 msgid "Translated Project"
 msgstr "Traducir"
 
-#: projects/models.py:235
+#: projects/models.py:237
 #, fuzzy
 #| msgid "Not yet moderated"
 msgid "Project not moderated"
 msgstr "Aún no revisados"
 
-#: projects/models.py:237
+#: projects/models.py:239
 #, fuzzy
 #| msgid "Project"
 msgid "Project approved"
 msgstr "Proyecto aprovado"
 
-#: projects/models.py:239
+#: projects/models.py:241
 #, fuzzy
 #| msgid "Project"
 msgid "Project not approved"
 msgstr "Proyecto non aprovado"
 
-#: projects/models.py:256
+#: projects/models.py:258
 #, fuzzy
 #| msgid "Coordinator"
 msgid "Cooperator"
 msgstr "Organização Responsável"
 
-#: projects/models.py:258
+#: projects/models.py:260
 msgid "Invite Accepted"
 msgstr ""
 
-#: projects/models.py:263
+#: projects/models.py:265
 #, fuzzy
 #| msgid "Project locality"
 msgid "Project Permission"
 msgstr "Proyecto"
 
-#: projects/models.py:264
+#: projects/models.py:266
 #, fuzzy
 #| msgid "Project locality"
 msgid "Project Permissions"
@@ -2427,48 +2550,48 @@ msgstr "Ir a la Organización"
 msgid "Project added correctly"
 msgstr "Proyecto añadido correctamente"
 
-#: projects/views.py:306 projects/views.py:441
+#: projects/views.py:306 projects/views.py:444
 msgid "Completed"
 msgstr ""
 
-#: projects/views.py:720
+#: projects/views.py:711
 #, python-format
 msgid "Invitation to edit Project %s"
 msgstr ""
 
-#: projects/views.py:741
+#: projects/views.py:732
 #, fuzzy
 #| msgid "Password reset successful"
 msgid "Invitation sent succesfully!"
 msgstr "Contraseña restaurada"
 
-#: projects/views.py:745
+#: projects/views.py:736
 #, python-format
 msgid "Invitation sent to an unregistered email (%s)"
 msgstr ""
 
-#: projects/views.py:749
+#: projects/views.py:740
 #, python-format
 msgid "Invitation sent to %s"
 msgstr ""
 
-#: projects/views.py:776
+#: projects/views.py:767
 #, python-format
 msgid "%s accepted invitation to edit project"
 msgstr ""
 
-#: projects/views.py:777
+#: projects/views.py:768
 #, fuzzy
 #| msgid "in Projects"
 msgid "Invitation to edit project accepted!"
 msgstr "en Proyectos"
 
-#: projects/views.py:828
+#: projects/views.py:819
 #, python-format
 msgid "%s removed from project"
 msgstr ""
 
-#: projects/views.py:848
+#: projects/views.py:839
 #, python-format
 msgid "Non registered user (%s) removed from project"
 msgstr ""
@@ -2765,12 +2888,12 @@ msgstr "Editora"
 msgid "Is Training Resource"
 msgstr "Treinamento"
 
-#: resources/models.py:117 resources/views.py:584
+#: resources/models.py:117 resources/views.py:587
 #: templates/_modalsubmit.html:25
 msgid "Resource"
 msgstr "Recurso"
 
-#: resources/models.py:151 resources/views.py:581
+#: resources/models.py:151 resources/views.py:584
 #, fuzzy
 #| msgid "in Resources"
 msgid "Training Resource"
@@ -3138,19 +3261,19 @@ msgstr ""
 msgid "Notification - New resource \"%s\" submitted"
 msgstr ""
 
-#: resources/views.py:554
+#: resources/views.py:557
 #, python-format
 msgid "Your resource \"%s\" has been followed!"
 msgstr ""
 
-#: resources/views.py:588
+#: resources/views.py:591
 #, fuzzy
 #| msgctxt "fem"
 #| msgid "Approved"
 msgid "approved"
 msgstr "Aprobada"
 
-#: resources/views.py:590
+#: resources/views.py:593
 #, fuzzy
 #| msgid "Event approved"
 msgid "not approved"
@@ -3266,7 +3389,7 @@ msgid "See all Resources"
 msgstr "Recursos"
 
 #: templates/_latest_training_resources.html:6 templates/_modalsubmit.html:29
-#: templates/_subnavbar.html:35 templates/_subnavbar_finder.html:35
+#: templates/_subnavbar.html:36 templates/_subnavbar_finder.html:35
 msgid "Training"
 msgstr "Formación"
 
@@ -3373,15 +3496,15 @@ msgstr "ACERCA DE"
 msgid "Save & continue editing"
 msgstr ""
 
-#: templates/_subnavbar.html:41 templates/_subnavbar_finder.html:42
+#: templates/_subnavbar.html:43 templates/_subnavbar_finder.html:43
 msgid "Users"
 msgstr ""
 
-#: templates/_subnavbar.html:48 templates/_subnavbar_finder.html:50
+#: templates/_subnavbar.html:50 templates/_subnavbar_finder.html:51
 msgid "Our Gold Star Selection"
 msgstr "Nuestros destacados"
 
-#: templates/_subnavbar.html:84 templates/_subnavbar_finder.html:86
+#: templates/_subnavbar.html:86 templates/_subnavbar_finder.html:87
 msgid "Search..."
 msgstr "Buscar..."
 
@@ -4173,6 +4296,11 @@ msgstr "Añadir a mi biblioteca"
 msgid "Translations"
 msgstr "Traducciones"
 
+#: utilities/file.py:95
+#, python-format
+msgid "Invalid image file %s"
+msgstr ""
+
 #: utilities/models.py:9
 #, fuzzy
 #| msgid "Translate"
@@ -4185,8 +4313,27 @@ msgstr "Traducir"
 msgid "Translation"
 msgstr "Traducciones"
 
+#, fuzzy
+#~| msgid "platforms"
+#~ msgid "program found"
+#~ msgstr "plataformas"
+
+#, fuzzy
+#~| msgid "what is <span class='text-white'>citizen science?</span>"
+#~ msgid "platform <span class='text-pink5'>search</span>"
+#~ msgstr "¿qué es la <span class='text-white'>ciencia ciudadana?</span>"
+
 #~ msgid "Platforms"
 #~ msgstr "Plataformas"
+
+#, fuzzy
+#~| msgid ""
+#~| "Please name the contact person or contact point for the organisation"
+#~ msgid ""
+#~ "Please name the contact person or contact point for the network or "
+#~ "platform."
+#~ msgstr ""
+#~ "Por favor, indique la persona o punto de contacto de la organización"
 
 #, fuzzy
 #~| msgid "Platforms"
@@ -4381,11 +4528,6 @@ msgstr "Traducciones"
 #~| msgid "EU-Citizen.Science call"
 #~ msgid "EU-Citizen.Science call (closed)"
 #~ msgstr "Ciencia Ciudadana"
-
-#, fuzzy
-#~| msgid "Science Topics"
-#~ msgid "Topics"
-#~ msgstr "Temas científicos"
 
 #, fuzzy
 #~| msgid "Science Topics"

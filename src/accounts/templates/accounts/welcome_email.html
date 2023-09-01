@@ -5,40 +5,31 @@
 <body>
 <p>
 {% autoescape off %}
-Olá, {{ user.name }}
+Hello {{ user.name }}
 {% endautoescape %}
 </p>
-<p>
-    <p>A plataforma de Ciência Cidadã Civis dá as boas-vindas! Estamos muito felizes por você ter se juntado a nós.</p>
+<div>
+    <p>Welcome to BSLISE Directory! We are very happy that you join our project.</p>
 
     <p>
-        Nesta versão beta da plataforma, você vai encontrar recursos úteis para planejar e desenvolver projetos de ciência cidadã,
-        além de uma variedade de iniciativas com as quais é possível contribuir e aprender com a experiência e o conhecimento de outras pessoas.
+        Subscribing at BSLISE Directory, you will be able to register your organisation and schools
+        that will be available at <a href="{{domain}}{% url 'profiles:show_self' %}">My Area</a>
     </p>
 
     <p>
-        Ao se inscrever na Civis, você será capaz de acompanhar iniciativas de seu interesse e adicionar recursos à sua biblioteca,
-        que podem ser encontrados em <a href="{{domain}}{% url 'profiles:show_self' %}">Minha Área</a>
+        <b>Your profile is private but if you want to make it public, you can use the "Privacy options" on your profile form</b>
     </p>
 
-    <p>Mas atenção: o sucesso da plataforma depende da contribuição de todas, todes e todos!</p>
-    <p>
-        Por isso, convidamos você a compartilhar seus próprios recursos de ciência cidadã e a cadastrar iniciativas de ciência cidadã das
-        quais participa ou tenha participado. Para isso, basta usar o botão “Nova Submissão”, no menu superior, e escolher a opção desejada.
-    </p>
+    <p>To start, just click on "New submission" button at Home page menu</p>
 
-    <p>
-        <b>Se quiser tornar seu perfil e suas submissões visíveis para o público, marque essas opções em Meu centro de privacidade.</b>
-    </p>
-
-<p> Se precisar de ajuda, tiver dúvidas ou quiser fazer alguma sugestão, escreva para civis@ibict.br.
-Este é um e-mail automático, NÃO responda.
-</p>
-<p>
-    Saudações, <br>
-    Equipe Civis
-</p>
+    <p>The Directory success depends on community contribution. Share your initiative to your peers!</p>
+    <br/>
+    <p>If you need any assistance, please write to us at bslise@ibict.br
+    <p>This is an automatic email, please do not respond</p>
+    <br/>
+    Sincerely, <br>
+    BSLise Team
+</div>
 </body>
-
 </html>
 {% endblock html_body %}

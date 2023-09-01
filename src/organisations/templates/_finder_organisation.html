@@ -1,6 +1,5 @@
 {% load i18n %}
 {% load staticfiles %}
-{% load countries %}
 <div class="row">
     <form class="form-inline float-lg-right" id="searchOrganisations" action="{% url 'organisations' %}">
         <input type="hidden" name="keywords" value="{{filters.keywords}}"/>
@@ -32,13 +31,9 @@
                     <select id="country" name="country" class="custom-select form-control">
                         <option value="">{% trans "Country" %}<option>
                         {% for country in countries %}
-                        {% for cwc in countriesWithContent %}
-                        {% if country.code == cwc %}
-                        <option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">
-                        {{ country.name }}
-                        </option>
-                        {% endif %}
-                        {% endfor %}
+                            <option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">
+                            {{ country.name }}
+                            </option>
                         {% endfor %}
                     </select>
                     <select id="orgTypes" name="orgTypes" class="custom-select form-control">

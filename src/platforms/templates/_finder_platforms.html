@@ -1,6 +1,5 @@
 {% load i18n %}
 {% load staticfiles %}
-{% load countries %}
 <div class="row">
     <form class="form-inline float-lg-right" id="searchPlatforms" action="{% url 'platforms' %}">
         <input type="hidden" name="keywords" value="{{filters.keywords}}" />
@@ -31,19 +30,15 @@
                     <select id="country" name="country" class="custom-select form-control">
                         <option value="">{% trans "Country" %}<option>
                         {% for country in countries %}
-                            {% for cwc in countriesWithContent %}
-                                {% if country.code == cwc %}
-                                    <option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">
-                                        {{ country.name }}
-                                    </option>
-                                {% endif %}
-                            {% endfor %}
+                            <option {% if country.code ==  filters.country %} selected {% endif %} value="{{ country.code }}">
+                                {{ country.name }}
+                            </option>
                         {% endfor %}
                     </select>
-                    <select id="geographicExtend" name="geographicExtend" class="custom-select form-control">
-                        <option value="">{% trans "Geographic extent" %}<option>
-                        {% for t in geographicExtend %}
-                            <option {% if t.pk == filters.geographicExtend %} selected {% endif %} value="{{t.pk}}">
+                    <select id="topics" name="topics" class="custom-select form-control">
+                        <option value="">{% trans "Topics" %}<option>
+                        {% for t in topics %}
+                            <option {% if t.pk == filters.topics %} selected {% endif %} value="{{t.pk}}">
                                 {{t|title}}
                             </option>
                         {% endfor %}
@@ -70,7 +65,7 @@
                     {% if counter != 1 %}
                     {% trans "programmes found" %}
                     {% else %}
-                    {% trans "program found" %}
+                    {% trans "programme found" %}
                     {% endif %}
                 </div>
             </div>

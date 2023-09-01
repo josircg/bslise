@@ -7,7 +7,8 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.utils.safestring import mark_safe
-from django.views import generic
+
+from admin_tools.dashboard.models import DashboardPreferences
 from events.models import Event
 from machina.apps.forum.models import Forum
 from machina.apps.forum_conversation.models import Topic
@@ -53,10 +54,10 @@ def home(request):
     counterorganisations = paginatororganisation.count
 
     # Resources
-    resources = Resource.objects.approved_resources().order_by('-dateUpdated')
-    paginatorresources = Paginator(resources, items_per_page)
-    resources = paginatorresources.get_page(page)
-    counterresources = paginatorresources.count
+    # resources = Resource.objects.approved_resources().order_by('-dateUpdated')
+    # paginatorresources = Paginator(resources, items_per_page)
+    # resources = paginatorresources.get_page(page)
+    # counterresources = paginatorresources.count
 
     # Training Resources
     # training_resources = Resource.objects.approved_training_resources().order_by('-dateUpdated')
@@ -95,15 +96,13 @@ def home(request):
     # Users
     counter_users = Profile.objects.count()
 
-    total = counterresources + counterprojects + counterorganisations + counterplatforms
+    total = counterorganisations + counterplatforms
 
     return render(request, 'home.html', {
         'user': user,
         'platforms': platforms,
         'projects': projects,
         'counterprojects': counterprojects,
-        'resources': resources,
-        'counterresources': counterresources,
         'filters': filters,
         'organisations': organisations,
         'counterorganisations': counterorganisations,
@@ -229,6 +228,15 @@ def getTopicsResponded(request):
 
     response['topics'] = topicshtml
     return JsonResponse(response)
+
+
+def reset_dashboard(request):
+    prefs = DashboardPreferences.objects.filter(user=request.user)
+    prefs.delete()
+    prefs = DashboardPreferences(user=request.user)
+    prefs.data = '{}'
+    prefs.save()
+    return HttpResponseRedirect('/admin')
 
 
 def getForumResponsesNumber(request):
