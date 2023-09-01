@@ -3,7 +3,7 @@
 <!--Footer-->
 <footer class="bg-green6 pt-5 pb-5 text-white">
   <div class="container">
-    <div class="d-flex">
+    <div class="d-md-flex">
       <div class="me-5 ms-5">
         <small class="title fw-600 mb-3 d-block">Redes sociais</small>
       </div>
@@ -11,23 +11,23 @@
         <small class="title fw-600 mb-3 d-block">Contatos</small>
         <p class="fw-300">Lorem ipsum dolor sit<br> amet consectetur.</p>
       </div>
-      <div class="me-5 ms-5 flex-grow-1">
+      <div class="me-5 ms-5 flex-grow-1 mb-5">
         <small class="title fw-600 mb-3 d-block">Mapa do site</small>        
         <a href="/terms" class="item-footer">{% trans "Terms of Use" %}</a>
         <a href="/privacy" class="item-footer">{% trans "Privacy" %}</a>
         <a href="/guide" class="item-footer" target="_blank">{% trans "Use Guide" %}</a>
       </div>
-      <div class="">
+      <div id="logos-footer">
         <small class="title fw-600 mb-3 d-block">Desenvolvido por</small>
-        <div class="d-flex">
-          <div class="pe-3 pt-2 me-3">
+        <div class="d-xl-flex">
+          <div class="pe-3 pt-2 me-3" id="ibict">
             <a href="https://www.gov.br/ibict/pt-br" target="_blank">
               <img data-src="{% static 'site/img/logos/ibict-white.png' %}" width="150" alt="" class="lazyload">
             </a>
           </div>
-          <div class="">
+          <div class="" id="mcti">
             <a href="https://www.gov.br/mcti/pt-br" target="_blank">
-              <img data-src="{% static 'site/img/logos/mcti-white.svg' %}?2022" style="width: 355px;"
+              <img data-src="{% static 'site/img/logos/mcti-white.svg' %}?2022" style=""
                 alt="logo gov.br 2022" class="lazyload">
             </a>
           </div>
