@@ -17,13 +17,13 @@
                        {% trans "Organisations" %}
                     </a>
                 </li>
+                <!---
                 <li class="nav-item">
                     <a class="nav-link {% active_link 'resources' %}"
                        href="{% url 'resources' %}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">
                        {% trans "Resources" %}
                     </a>
                 </li>
-                <!---
                 <li class="nav-item text-start">
                     <a class="nav-link {% active_link 'projects' %}"
                        href="{% url 'projects' %}{% if request.GET.keywords %}?keywords={{request.GET.keywords}}{%endif%}">

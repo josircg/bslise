@@ -168,6 +168,12 @@ msgstr ""
 msgid "your personal profile."
 msgstr "perfil"
 
+#: accounts/templates/accounts/emails/password-reset-email.html:3
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password "
+msgstr "Cambiar contraseña"
+
 #: accounts/templates/accounts/emails/password-reset-subject.txt:2
 #, fuzzy, python-format
 #| msgid "Password reset confirmation"
@@ -176,6 +182,31 @@ msgstr "Cambio de contraseña en %(domain)s"
 
 #: accounts/templates/accounts/login.html:18
 msgid "Don't have an account?"
+msgstr ""
+
+#: accounts/templates/accounts/password-change.html:5
+#: accounts/templates/accounts/password-change.html:13
+#: eucs_platform/dashboard.py:101
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: accounts/templates/accounts/password-reset-confirm.html:5
+#: accounts/templates/accounts/password-reset-confirm.html:13
+#: accounts/templates/accounts/password-reset-done.html:5
+#: accounts/templates/accounts/password-reset-done.html:13
+#: accounts/templates/accounts/password-reset.html:6
+#: accounts/templates/accounts/password-reset.html:15
+#, fuzzy
+#| msgid "Change my password"
+msgid "Change your password"
+msgstr "Cambiar mi contraseña"
+
+#: accounts/templates/accounts/password-reset-done.html:16
+msgid ""
+"Please, check your mailbox. You are going to receive a link to confirm your "
+"email"
 msgstr ""
 
 #: accounts/templates/accounts/signup.html:19
@@ -646,12 +677,6 @@ msgstr ""
 #| msgid "View on site"
 msgid "Return to site"
 msgstr "Visualizar en site"
-
-#: eucs_platform/dashboard.py:101
-#, fuzzy
-#| msgid "Change Password"
-msgid "Change password"
-msgstr "Cambiar contraseña"
 
 #: eucs_platform/dashboard.py:103
 #, fuzzy

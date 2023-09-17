@@ -26,7 +26,7 @@
 			<div class="mb-4">
 				<div class="p-3">
 					<h1 class="text-pink6">{% trans "Contact" %}</h1><br>
-					<p>{% trans "You can reach out by this form, or through the email: " %}<a href='{{contact_email}}'>{{contact_email}}</a></p><br>
+					<p>{% trans "You can reach out by this form, or through the email: " %}<a href='mailto:{{contact_email}}'>{{contact_email}}</a></p><br>
 					<form method="post" autocomplete="off">
 						{% csrf_token %}
 						<div class="row">

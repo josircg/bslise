@@ -163,6 +163,12 @@ msgstr "Você pode começar preenchendo"
 msgid "your personal profile."
 msgstr "seu perfil pessoal."
 
+#: accounts/templates/accounts/emails/password-reset-email.html:3
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password "
+msgstr "Alterar senha"
+
 #: accounts/templates/accounts/emails/password-reset-subject.txt:2
 #, python-format
 msgid "Password Reset on %(domain)s"
@@ -171,6 +177,37 @@ msgstr "Redefinição de senha em %(domain)s"
 #: accounts/templates/accounts/login.html:18
 msgid "Don't have an account?"
 msgstr "Não tem conta?"
+
+#: accounts/templates/accounts/password-change.html:5
+#: accounts/templates/accounts/password-change.html:13
+#: eucs_platform/dashboard.py:101
+#, fuzzy
+#| msgid "Change Password"
+msgid "Change password"
+msgstr "Alterar senha"
+
+#: accounts/templates/accounts/password-reset-confirm.html:5
+#: accounts/templates/accounts/password-reset-confirm.html:13
+#: accounts/templates/accounts/password-reset-done.html:5
+#: accounts/templates/accounts/password-reset-done.html:13
+#: accounts/templates/accounts/password-reset.html:6
+#: accounts/templates/accounts/password-reset.html:15
+#, fuzzy
+#| msgid "Change my password"
+msgid "Change your password"
+msgstr "Alterar minha senha"
+
+#: accounts/templates/accounts/password-reset-done.html:16
+#, fuzzy
+#| msgid ""
+#| "Please check your mailbox.You are going to receive an email to certify "
+#| "that your email is valid."
+msgid ""
+"Please, check your mailbox. You are going to receive a link to confirm your "
+"email"
+msgstr ""
+"Verifique sua caixa postal. Você irá receber um e-mail para nos "
+"certificarmos de que o seu endereço eletrônico é válido."
 
 #: accounts/templates/accounts/signup.html:19
 msgid "Already signed up?"
@@ -606,12 +643,6 @@ msgstr ""
 #| msgid "View on site"
 msgid "Return to site"
 msgstr "Visualizar no site"
-
-#: eucs_platform/dashboard.py:101
-#, fuzzy
-#| msgid "Change Password"
-msgid "Change password"
-msgstr "Alterar senha"
 
 #: eucs_platform/dashboard.py:103
 #, fuzzy

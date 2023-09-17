@@ -57,7 +57,7 @@ def contactView(request):
             return render(request, 'success.html',
                           {'title': _('Success!'),
                            'message': _('Thanks for you contact')})
-    return render(request, "contact.html", {'form': form, 'contact_email': settings.CONTACT_EMAIL})
+    return render(request, "contact.html", {'form': form, 'contact_email': settings.REPLY_EMAIL})
 
 
 def subscribeView(request):
