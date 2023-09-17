@@ -635,7 +635,7 @@ msgstr "Proyectos"
 
 #: eucs_platform/dashboard.py:53 organisations/templates/organisation.html:39
 #: resources/apps.py:10 resources/templates/resources.html:7
-#: templates/_latest_resources.html:6 templates/_subnavbar.html:23
+#: templates/_latest_resources.html:6 templates/_subnavbar.html:24
 #: templates/_subnavbar_finder.html:29
 msgid "Resources"
 msgstr "Recursos"
@@ -3372,6 +3372,12 @@ msgstr "Recortar y añadir"
 #: templates/privacy.html:21
 msgid "Privacy"
 msgstr "Privacidad"
+
+#: templates/_footer.html:21
+#, fuzzy
+#| msgid "Development"
+msgid "Developed by"
+msgstr "Desarrollo"
 
 #: templates/_latest_events.html:8
 msgid "What is on"
