@@ -2069,7 +2069,6 @@ msgstr "Se houver dúvidas no preenchimento, consulte nosso "
 #: projects/templates/_intro_form_project.html:31
 #: resources/templates/_intro_form_resource.html:29
 #: resources/templates/_intro_form_training_resource.html:29
-#: templates/_footer.html:18
 msgid "Use Guide"
 msgstr "Guia de Uso"
 
@@ -2997,12 +2996,26 @@ msgstr "Afastar"
 msgid "Crop and upload"
 msgstr "Cortar e submeter"
 
+#: templates/_footer.html:8
+msgid "Social Media"
+msgstr ""
+
+#: templates/_footer.html:11
+#, fuzzy
+#| msgid "Contact"
+msgid "Contato"
+msgstr "Contato"
+
+#: templates/_footer.html:15
+msgid "Site map"
+msgstr ""
+
 #: templates/_footer.html:17 templates/privacy.html:10
 #: templates/privacy.html:21
 msgid "Privacy"
 msgstr "Privacidade"
 
-#: templates/_footer.html:21
+#: templates/_footer.html:20
 #, fuzzy
 #| msgid "Development"
 msgid "Developed by"
