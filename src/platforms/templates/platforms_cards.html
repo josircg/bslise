@@ -26,3 +26,8 @@
     </div><!-- end of card -->
 </div>
 {% endfor %}
+{% with platforms as page_obj %}
+  <div class="col-12 mt-3 mb-3">
+      {% include "_paginator.html" %}
+  </div>
+{% endwith %}
