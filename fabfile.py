@@ -92,7 +92,6 @@ def backup_hml(context):
 
 @task
 def backup_producao(context):
-    get_database(Connection('webapp@172.16.16.126', port=25000),
-           banco='localhost/xxxx',
-           path='/var/webapp/backup')
-    get_mediafiles(Connection('webapp@directory.bslise.org'), '/var/webapp/bslise')
+    connection = Connection('webapp@172.16.16.246', port=25000)
+    get_database(connection, banco='localhost/bslise', path='/var/webapp/bslise')
+    get_mediafiles(connection, '/var/webapp/bslise')
