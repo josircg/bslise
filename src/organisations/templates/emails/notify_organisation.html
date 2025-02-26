@@ -1,9 +1,0 @@
-{% load i18n %}
-
-{% block html_body  %}
-  <h1>A new organisation was recorded on BSLISE</h1>
-  <p>
-    {{ submissionName }}
-    <a href="{{ domain }}{% url 'edit_organisation' pk=id %}">Click here to approve it</a>
-  </p>
-{% endblock html_body %}

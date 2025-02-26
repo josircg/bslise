@@ -5,11 +5,12 @@ from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage
+from django.db import ProgrammingError
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
-from django.utils import formats
-from django.utils.translation import ugettext_lazy as _
+from django.utils import formats, translation
+from django.utils.translation import ugettext_lazy as _, pgettext, get_language
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
 
@@ -40,6 +41,14 @@ def events(request):
         ongoing_events = ongoing_events.approved_events()
         past_events = past_events.approved_events()
 
+    try:
+        counter = len(upcoming_events) + len(ongoing_events) + len(past_events)
+    except ProgrammingError:
+        counter = 0
+        upcoming_events = Event.objects.none()
+        ongoing_events = upcoming_events
+        past_events = upcoming_events
+
     paginator_upcoming = Paginator(upcoming_events, 10)
     paginator_ongoing = Paginator(ongoing_events, 10)
     paginator_past = Paginator(past_events, 10)
@@ -51,7 +60,11 @@ def events(request):
     past_events = set_pages_and_get_object_list(paginator_past, page_list, page)
     # Return the page object from paginator with max pages, to command pagination
     if page_list:
-        page_obj = max(page_list, key=lambda item: item.paginator.num_pages)
+        if request.GET.get('pk'):
+            # Returns page_obj with one item to build meta tags for this item
+            page_obj = max(page_list, key=lambda item: item.paginator.count)
+        else:
+            page_obj = max(page_list, key=lambda item: item.paginator.num_pages)
     else:
         page_obj = None
 
@@ -107,7 +120,7 @@ def sendEventEmail(event_id, request, form):
 
     send_email(
         subject=_('Your event "%s" has been submitted!') % form.cleaned_data['title'],
-        message=render_to_string('emails/new_event.html', context), to=to, reply_to=settings.REPLY_EMAIL
+        message=render_to_string('emails/new_event.html', context), to=to, reply_to=settings.EMAIL_RECIPIENT_LIST
     )
 
     send_email(

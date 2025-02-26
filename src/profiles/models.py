@@ -1,13 +1,12 @@
-from __future__ import unicode_literals
-
 import uuid
 
 from django.conf import settings
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
 from organisations.models import Organisation
+from utilities.clean import validate_orcid
 
 
 class InterestArea(models.Model):
@@ -44,14 +43,25 @@ class BaseProfile(models.Model):
         blank=True,
         null=True)
     interestAreas = models.ManyToManyField(InterestArea, blank=True)
-    orcid = models.CharField(_(
-        "ORCID (If you have registered on the ORCID platform for researchers and have"
-        "a persistent digital identifier (your ORCID iD) you can add it here to link this"
-        "profile with your professional information such as affiliations, grants, publications,"
-        "peer review, and more.)"),
+    orcid = models.CharField(
+        "ORCID",
+        help_text=_("If you have registered on the ORCID platform for researchers, "
+                    "you may add your persistent digital identifier, or ORCID iD, to link "
+                    "this profile with your professional information such as affiliations, "
+                    "grants, publications, peer review, and more."),
         max_length=50,
         blank=True,
         null=True)
+
+    language = models.CharField(max_length=5, choices=settings.TRANSLATED_LANGUAGES,
+                                verbose_name=_('Language'), default=settings.LANGUAGE_CODE)
+    lattes_id = models.CharField(
+        _("Lattes ID"),
+        help_text=_("If you have registered on the Lattes platform, "
+                    "you may add your Lattes iD, to link this profile with your professional information "
+                    "such as affiliations, grants and publications."),
+        max_length=16, blank=True, null=True)
+
     organisation = models.ManyToManyField(Organisation, blank=True)
     email_verified = models.BooleanField(_("Email verified"), default=False)
     country = CountryField(
@@ -60,12 +70,9 @@ class BaseProfile(models.Model):
         blank=True)
 
     # Privacy and subscriptions
-    profileVisible = models.BooleanField(
-        default=False)
-    contentVisible = models.BooleanField(
-        default=True)
-    digest = models.BooleanField(
-        default=True)
+    profileVisible = models.BooleanField(verbose_name=_('Profile visible'), default=False)
+    contentVisible = models.BooleanField(default=True)
+    digest = models.BooleanField(default=True)
 
     # Permission to manage projects from a country
     manageProjectsFromCountry = CountryField(null=True, blank=True)
@@ -73,8 +80,16 @@ class BaseProfile(models.Model):
     class Meta:
         abstract = True
 
+    def save(self, *args, **kwargs):
+        if self.orcid and not validate_orcid(self.orcid):
+            raise ValidationError(_('Invalid ORCID'))
+        super().save(*args, **kwargs)
 
-@python_2_unicode_compatible
+    @property
+    def has_professional_info(self):
+        return bool(self.lattes_id) or bool(self.orcid)
+
+
 class Profile(BaseProfile):
     def __str__(self):
         return _("{}'s profile").format(self.user)

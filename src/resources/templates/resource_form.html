@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% load l10n %}
 {% load thumbnail %}
+{% load eucs_platform_tags %}
 {% block head %}
 {{ block.super }}
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
 <link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
 {{ form.media.css }}
 {% endblock head %}
 
-{% block title %}{{ block.super }} :: Edit resource{% endblock %}
+{% block title %}{{ block.super }} :: {% if not isTrainingResource %}{% translate 'Edit resource' %}{% else %}{% translate 'Edit training resource' %}{% endif %}{% endblock %}
 {% block navbar-left %}
 {% include "_navbar.html" with active_link="resources" %}
 {% endblock %}
@@ -99,7 +101,7 @@
                         <h3 class="leftborder mt-5">{% trans "Resource profile images" %}</h3>
                         <img class="img-fluid img-zoom" 
                                 id="imageResult1" 
-                                src="{% thumbnail resource.image1|default:'void_600.png' 600x400 %}">
+                                src="{% thumbnail resource.image1|safe_image 600x400 %}">
                         {{ form.image1|as_crispy_field }}
                         {{ form.x1|as_crispy_field }}
                         {{ form.y1|as_crispy_field }}
@@ -109,7 +111,7 @@
                         <div class="mb-5"></div>
                         <img class="img-fluid img-zoom" 
                                 id="imageResult2" 
-                                src="{% thumbnail resource.image2|default:'void_1100.png' 1100x400 %}">
+                                src="{% thumbnail resource.image2|safe_image:'void_1100.png' 1100x400 %}">
                         {{ form.image2|as_crispy_field }}
                         {{ form.x2|as_crispy_field }}
                         {{ form.y2|as_crispy_field }}
@@ -140,9 +142,12 @@
 {% endblock list_of_items %}
 
 {% block scripts %}
+<script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
 <script src="{% static 'site/js/site.js' %}"></script>
 <script src="{% static 'scripts/cropper.min.js' %}"></script>
 <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
 <script>
     $(function () {
         getSubCategories();
@@ -176,24 +181,44 @@
             $('.myerror').remove()
 
             // To check that save & continue was clicked
-            var contin = ($(this).hasClass('continue')) ? true : false;
+            let contin = ($(this).hasClass('continue')) ? true : false;
 
             for(var instanceName in CKEDITOR.instances)
                 CKEDITOR.instances[instanceName].updateElement();
+
+            let formData = new FormData(document.getElementById("form_resource"));
+
+            if (contin) {
+              formData.append('_continue', 'Save and continue');
+            }
 
             $.ajax({
                 type: 'POST',
                 url: '/saveResourceAjax',
                 processData: false,
                 contentType: false, // TODO: Check this
-                data: new FormData(document.getElementById("form_resource")),
+                data: formData,
                 success: function(response){
-                    console.log(response)
+                    console.log(response);
+
                     if(contin){
-                        $('#resourceID').val(response.Resource)
-                        console.log('continue')
-                        $('.savedInfo').html('<span class="alert alert-success fade show">'+
-                            '<i class="fas fa-check"></i> Saved</span>').show().fadeOut(2500)
+                        $('#resourceID').val(response.Resource);
+
+                        console.log('continue');
+
+                        let $messageContainer = $('.savedInfo');
+                        $messageContainer.empty();
+                        $messageContainer.append('<div class="mb-5"></div>');
+
+                        for (message of response.messages) {
+                          let icon = 'fa-check';
+                          if (message.tag !== 'alert-success') {
+                            icon = 'fa-exclamation-triangle';
+                          }
+                          $messageContainer.append(`<div class="alert ${message.tag} fade show"><i class="fas ${icon}"></i> ${message.message}</div>`);
+                        }
+
+                        $messageContainer.show().fadeOut(4000);
                     } else {
                         window.location.href = response.redirect_to + '?prev='+window.location.pathname
                     }
@@ -249,87 +274,6 @@ function getSubCategories() {
         }
     );
 }
-
-$(function () {
-    var imgSelected;
-    /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
-    $("#id_image1").change(function () {
-        imgSelected = 1;
-        $('#imageResult1').attr('src', '');
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#image").attr("src", e.target.result);
-                $("#modalCrop").modal("show");
-            }
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-    $("#id_image2").change(function () {
-        imgSelected = 2;
-        $('#imageResult2').attr('src', '');
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#image").attr("src", e.target.result);
-                $("#modalCrop").modal("show");
-            }
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-    $("#imageResult1").click(function () {
-        $("#modalCrop").modal("show");
-    });
-    $("#imageResult2").click(function () {
-        $("#modalCrop").modal("show");
-    });
-    /* SCRIPTS TO HANDLE THE CROPPER BOX */
-    var $image = $("#image");
-    var cropBoxData;
-    var canvasData;
-    $("#modalCrop").on("shown.bs.modal", function () {
-        $image.cropper({
-            viewMode: 1,
-            aspectRatio: imgSelected == 2 ? 11 / 4 : 3 / 2,
-            minCropBoxWidth: imgSelected == 2 ? 1100 : 600,
-            minCropBoxHeight: 400,
-            dragMode: 'move',
-            guides: false,
-            center: false,
-            highlight: false,
-            cropBoxResizable: false,
-            toggleDragModeOnDblclick: false,
-            ready: function () {
-                $image.cropper("setCanvasData", canvasData);
-                $image.cropper("setCropBoxData", cropBoxData);
-            }
-        });
-    }).on("hidden.bs.modal", function () {
-        cropBoxData = $image.cropper("getCropBoxData");
-        canvasData = $image.cropper("getCanvasData");
-        $image.cropper("destroy");
-    });
-
-    $(".js-zoom-in").click(function () {
-        $image.cropper("zoom", 0.1);
-    });
-
-    $(".js-zoom-out").click(function () {
-        $image.cropper("zoom", -0.1);
-    });
-
-    /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
-    $(".js-crop-and-upload").click(function () {
-        var cropData = $image.cropper("getData");
-        $("#id_x" + imgSelected).val(cropData["x"]);
-        $("#id_y" + imgSelected).val(cropData["y"]);
-        $("#id_height" + imgSelected).val(cropData["height"]);
-        $("#id_width" + imgSelected).val(cropData["width"]);
-        $("#modalCrop").modal("hide");
-        $('#imageResult' + imgSelected).attr('src', $image.cropper('getCroppedCanvas',
-            { width: imgSelected == 2 ? 1100 : 600, height: 400 }).toDataURL());
-        });
-    });
 </script>
 {{ form.media.js }}
 {% endblock scripts %}

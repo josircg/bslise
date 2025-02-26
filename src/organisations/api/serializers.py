@@ -15,9 +15,11 @@ class OrganisationTypeSerializer(serializers.ModelSerializer):
 class OrganisationSerializer(serializers.ModelSerializer):
     orgType = OrganisationTypeSerializer(many=False)
     country = CountryField(required=False)
+
     class Meta:
         model = Organisation
-        fields = ['id', 'name', 'url', 'description' , 'orgType', 'logo','contactPoint', 'contactPointEmail', 'latitude', 'longitude','country']
+        fields = ['id', 'name', 'url', 'description', 'orgType', 'logo', 'contactPoint', 'contactPointEmail',
+                  'latitude', 'longitude', 'country']
 
 
 class OrganisationSerializerCreateUpdate(serializers.ModelSerializer):
@@ -26,11 +28,10 @@ class OrganisationSerializerCreateUpdate(serializers.ModelSerializer):
 
     class Meta:
         model = Organisation
-        fields = ['id', 'name', 'url', 'description', 'orgType', 'logo','contactPoint', 'contactPointEmail',
+        fields = ['id', 'name', 'url', 'description', 'orgType', 'logo', 'contactPoint', 'contactPointEmail',
                   'latitude', 'longitude', 'country']
 
-    def save(self, args, **kwargs):               
-
+    def save(self, args, **kwargs):
         logo = self.validated_data.get('logo')
         if logo:
             image = Image.open(logo)
@@ -42,7 +43,7 @@ class OrganisationSerializerCreateUpdate(serializers.ModelSerializer):
             list(self.validated_data.items()) +
             list(kwargs.items()) + list(moreItems)
         )
-            
+
         self.instance = self.create(data)
 
         return "success"

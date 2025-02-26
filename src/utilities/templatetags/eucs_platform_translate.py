@@ -14,7 +14,7 @@ def translate_instance(instance):
     """
     if isinstance(instance, str):
         return instance
-    
+
     if not hasattr(instance, 'translations'):
         raise NotImplementedError(f'GenericRelation "translations" not defined in {instance.__class__}')
 

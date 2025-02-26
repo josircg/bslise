@@ -1,24 +1,25 @@
 import copy
 
-from PIL import Image, ImageOps
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import Q, ProtectedError
-from django.http import HttpResponse, JsonResponse
+from django.db import ProgrammingError
+from django.db.models import ProtectedError, Q
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
-from django_countries import countries as countries_list
+from django.utils import translation
+from django.utils.translation import ugettext_lazy as _, get_language
 
+from django_countries import countries as countries_list
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
 from profiles.models import Profile
 from projects.models import Project
 from resources.models import Resource
-from utilities.file import save_image_with_path
+from utilities.file import crop_and_save
 
 from .forms import OrganisationForm, OrganisationPermissionForm
 from .models import Organisation, OrganisationType, OrganisationPermission
@@ -33,19 +34,7 @@ def new_organisation(request):
     if request.method == 'POST':
         form = OrganisationForm(request.POST, request.FILES)
         if form.is_valid():
-            if request.FILES.get('logo'):
-                x = form.cleaned_data.get('x')
-                y = form.cleaned_data.get('y')
-                w = form.cleaned_data.get('width')
-                h = form.cleaned_data.get('height')
-                photo = request.FILES['logo']
-                image = Image.open(photo)
-                cropped_image = image.crop((x, y, w + x, h + y))
-                resized_image = cropped_image.resize((600, 400), Image.ANTIALIAS)
-                image_path = save_image_with_path(resized_image, photo.name)
-            else:
-                image_path = None
-
+            image_path = crop_and_save(request, form, 'logo')
             organisation = form.save(request, image_path)
             messages.success(request, _('Organisation added'))
             log_message(organisation, _('Organisation added'), request.user)
@@ -54,16 +43,22 @@ def new_organisation(request):
 
             context = {
                 'submissionName': form.cleaned_data['name'], 'username': request.user.name,
-                'domain': settings.DOMAIN, 'id': organisation.pk
+                'domain': settings.DOMAIN, 'id': organisation.pk,
+                'site_name': settings.SITE_NAME,
             }
+
+            language = organisation.creator.profile.language
 
             send_email(
                 _('Your organisation "%s" has been submitted!') % form.cleaned_data['name'],
-                render_to_string('emails/new_organisation.html', context), to=to, reply_to=settings.REPLY_EMAIL)
+                render_to_string(f'emails/{language}/new_organisation.html', context),
+                to=to,
+                reply_to=settings.EMAIL_RECIPIENT_LIST,)
 
             send_email(
                 subject=_('Notification - New organisation "%s" submitted') % form.cleaned_data['name'],
-                message=render_to_string('emails/notify_organisation.html', context),to=settings.EMAIL_RECIPIENT_LIST,
+                message=render_to_string(f'emails/{language}/notify_organisation.html', context),
+                to=settings.EMAIL_RECIPIENT_LIST,
                 reply_to=to
             )
             return redirect('/organisation/' + str(organisation.id), {})
@@ -110,6 +105,7 @@ def organisation(request, pk):
         'isSearchPage': True})
 
 
+@login_required(login_url='/login')
 def edit_organisation(request, pk):
     organisation = get_object_or_404(Organisation, id=pk)
     user = request.user
@@ -134,20 +130,7 @@ def edit_organisation(request, pk):
     if request.method == 'POST':
         form = OrganisationForm(request.POST, request.FILES)
         if form.is_valid():
-            if request.FILES.get('logo'):
-                x = form.cleaned_data.get('x')
-                y = form.cleaned_data.get('y')
-                w = form.cleaned_data.get('width')
-                h = form.cleaned_data.get('height')
-                photo = request.FILES['logo']
-                image = Image.open(photo)
-                # Fix image orientation based on EXIF information
-                image = ImageOps.exif_transpose(image)
-                cropped_image = image.crop((x, y, w+x, h+y))
-                resized_image = cropped_image.resize((600, 400), Image.ANTIALIAS)
-                image_path = save_image_with_path(resized_image, photo.name)
-            else:
-                image_path = None
+            image_path = crop_and_save(request, form, 'logo')
             form.save(request, image_path)
             return redirect('/organisation/' + str(organisation.id), {})
         else:
@@ -181,7 +164,7 @@ def approve_organisation(request, pk, status):
 
 def organisations(request):
     organisations = Organisation.objects.all()
-    org_types = OrganisationType.objects.all()
+    org_types = OrganisationType.objects.translated_sorted_by_text()
 
     if not (request.user and request.user.is_staff):
         organisations = organisations.filter(approved=True)
@@ -204,10 +187,17 @@ def organisations(request):
         organisations = organisations.filter(country=request.GET['country'])
         filters['country'] = request.GET['country']
     if request.GET.get('orgTypes'):
-        organisations = organisations.filter(orgType__type=request.GET['orgTypes'])
+        organisationtype_qs = OrganisationType.objects.translated().filter(
+            translated_text=request.GET['orgTypes']
+        ).values_list('pk')
+        organisations = organisations.filter(orgType__pk__in=organisationtype_qs)
         filters['orgTypes'] = request.GET['orgTypes']
 
-    counter = len(organisations)
+    try:
+        counter = len(organisations)
+    except ProgrammingError:
+        counter = 0
+        organisations = Organisation.objects.none()
 
     # Ordering
     order_by = request.GET.get('orderby', '-dateUpdated')

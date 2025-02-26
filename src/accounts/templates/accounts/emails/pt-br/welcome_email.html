@@ -1,0 +1,33 @@
+{% block html_body %}
+<!DOCTYPE html>
+<html>
+<body>
+<p>
+{% autoescape off %}
+Olá {{ user.name }},
+{% endautoescape %}
+</p>
+<div>
+    <p>Bemvinda(o) ao Diretório BSLISE! Nós estamos muito felizes por você ter se juntado ao projeto.</p>
+
+    <p>
+        Ao se inscrever, você estará apto a registrar sua instituição de ensino e os programas e cursos
+        e o seu perfil estará disponível em <a href="{{domain}}{% url 'profiles:show_self' %}">Minha área</a>
+    </p>
+
+    <p>
+        <b>Seu perfil é privado mas se você quiser que ele fique público,, você pode utilizar as "Opções de Privacidade"</b>
+    </p>
+
+    <p>Para começar, clique no menu "Nova submissão" disponível na Home da plataforma</p>
+
+    <p>O sucesso do diretório depende das contribuições da comunidade!</p>
+    <br/>
+    <p>Se você precisar de ajuda, por favor escreva para nós utilizando o email bslise@ibict.br
+    <br/>
+    Cordialmente, <br>
+    Equipe BSLISE
+</div>
+</body>
+</html>
+{% endblock html_body %}

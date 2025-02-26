@@ -12,11 +12,12 @@ from eucs_platform.logger import log_message
 from geopy.exc import GeocoderServiceError
 from geopy.geocoders import Nominatim
 from organisations.models import Organisation
+from django.conf import settings
 
 from .models import ParticipationTask, TranslatedProject, ProjectPermission, Project, Topic, Status, Keyword, \
     FundingBody
 
-geolocator = Nominatim(timeout=None)
+geolocator = Nominatim(timeout=None, user_agent=settings.USER_AGENT)
 USER = get_user_model()
 
 
@@ -24,7 +25,7 @@ def getCountryCode(latitude, longitude):
     try:
         if latitude and longitude:
             location = geolocator.reverse([latitude, longitude], exactly_one=True)
-            if len(location.raw) > 1 and location.raw['address'].get('country_code'):
+            if location is not None and len(location.raw) > 1 and location.raw['address'].get('country_code'):
                 return location.raw['address']['country_code'].upper()
         return ''
     except GeocoderServiceError:
@@ -200,7 +201,7 @@ class ProjectForm(forms.Form):
         required=False,
         label=_("Image for the thumbnail profile"),
         help_text=_('It will be resized to 600x400 pixels'),
-        widget=forms.FileInput)
+        widget=forms.FileInput(attrs={'data-image-suffix': '1', 'data-image-width-option': 0}))
 
     x1 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y1 = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -216,7 +217,7 @@ class ProjectForm(forms.Form):
         required=False,
         label=_("Project logo"),
         help_text=_('It will be resized to 600x400 pixels)'),
-        widget=forms.FileInput)
+        widget=forms.FileInput(attrs={'data-image-suffix': '2', 'data-image-width-option': 0}))
     x2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width2 = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -231,7 +232,7 @@ class ProjectForm(forms.Form):
         required=False,
         label=_("Image for the profile heading"),
         help_text=_("It will be resized to 1100x400 pixels."),
-        widget=forms.FileInput)
+        widget=forms.FileInput(attrs={'data-image-suffix': '3', 'data-image-width-option': 1}))
     x3 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y3 = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width3 = forms.FloatField(widget=forms.HiddenInput(), required=False)

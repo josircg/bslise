@@ -1,6 +1,8 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import QuerySet
 
+from eucs_platform.logger import log_message
+
 
 class SubscriberQuerySet(QuerySet):
 

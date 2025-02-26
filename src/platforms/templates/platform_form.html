@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load thumbnail %}
 {% load leaflet_tags %}
 {% load crispy_forms_tags %}
+{% load eucs_platform_tags %}
+
 {% block head %}
 {{block.super }}
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
 <link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
 {{ form.media.css }}
 {{ form.media.js }}
@@ -39,14 +42,8 @@
                     {{ form.name | as_crispy_field }}
                     {{ form.url | as_crispy_field }}
                     {{ form.description | as_crispy_field }}
-                    {{ form.qualification | as_crispy_field }}
                     {{ form.topic | as_crispy_field }}
-                    {% include '_save_zone.html' %}
-                </div>
-            </div>
-            
-            <div class="row d-flex justify-content-center">
-                <div class="col-8 mb-5">
+                    {{ form.qualification | as_crispy_field }}
                     <h3 class="leftborder mt-4">{% trans "Contact information" %}</h3>
                     {{ form.geoExtend | as_crispy_field }}
                     {{ form.countries | as_crispy_field }}
@@ -63,7 +60,7 @@
                     <h3 class="leftborder mt-4">{% trans "Programme images" %}</h3>
                     {{ platform.logo.initial }}
                     <img class="img-fluid img-zoom imageUpload" id="imageResultlogo"
-                                                                src="{% thumbnail form.logo.initial|default:'void_600.png' 600x400 crop %}" />
+                                                                src="{% thumbnail form.logo.initial|safe_image 600x400 crop %}" />
                     {{ form.logo|as_crispy_field }}
                     {{ form.xlogo|as_crispy_field }}
                     {{ form.ylogo|as_crispy_field }}
@@ -72,7 +69,7 @@
                     {{ form.logoCredit|as_crispy_field }}
                     <div class="mb-5"></div>
                     <img class="img-fluid img-zoom imageUpload" id="imageResultprofileImage" 
-                                                                src="{% thumbnail form.profileImage.initial|default:'void_1100.png' 1100x400 crop %}" />
+                                                                src="{% thumbnail form.profileImage.initial|safe_image:'void_1100.png' 1100x400 crop %}" />
                     {{ form.profileImage|as_crispy_field }}
                     {{ form.xprofileImage|as_crispy_field }}
                     {{ form.yprofileImage|as_crispy_field }}
@@ -82,20 +79,27 @@
                     <div class="mb-5"></div>
                     {% include '_save_zone.html' %}
                     {% if user.is_staff and id %}
+                          <div class="mb-5"></div>
                           <a href="{% url 'reset_image' id %}"
-                             class="btn btn-pink6"><i class="fas fa-image"></i> {% trans "Reset Image Background" %}
+                             class="btn btn-default"><i class="fas fa-image"></i> {% trans "Reset Image Background" %}
                           </a>
                     {% endif %}
                     <div class="mb-5"></div>
                 </div>
             </div>
-           
+
+
         </div>
     </form>
 </div>
 {% endblock list_of_items %}
 {% block scripts %}
-<script src='{% static 'site/js/forms.js' %}' ></script>
+  <script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+  <script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
+  <script src="{% static 'scripts/cropper.min.js' %}"></script>
+  <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
+  <script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
+  <script src="{% static 'site/js/forms.js' %}?v=3" ></script>
 {% endblock scripts %}
 
 

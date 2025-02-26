@@ -4,7 +4,6 @@ import logging
 from datetime import datetime
 
 import pytz
-from PIL import Image, ImageOps
 from accounts.models import ActivationTask
 from django.conf import settings
 from django.contrib import messages
@@ -24,9 +23,9 @@ from django.utils import formats
 from django.utils.translation import ugettext as _
 from eucs_platform import send_email, visao, set_pages_and_get_object_list, get_main_page
 from eucs_platform.logger import log_message
+from eucs_platform.utils import get_message_list
 from rest_framework import status
-from reviews.models import Review
-from utilities.file import save_image_with_path
+from utilities.file import crop_and_save
 
 from .forms import ProjectForm, ProjectTranslationForm, ProjectGeographicLocationForm, \
     InviteProjectForm
@@ -52,17 +51,23 @@ def saveProjectAjax(request):
     form = ProjectForm(request.POST, request.FILES)
     if form.is_valid():
         try:
-            images = setImages(request, form)
+            images = [
+                crop_and_save(request, form, 'image1', '1'), crop_and_save(request, form, 'image2', '2'),
+                crop_and_save(request, form, 'image3', '3', final_width=1320),
+            ]
             pk = form.save(request, images, [], '')
             # We have pk after save and not projectID (this means is a new project)
             if pk and not request.POST.get('projectID').isnumeric():
+                messages.success(request, _('Project added correctly!'))
                 sendProjectEmail(pk, request.user)
+            elif pk and request.POST.get('projectID').isnumeric():
+                messages.success(request, _('Project updated correctly!'))
 
-            messages.success(request, _('Project added correctly'))
-            return JsonResponse({'Created': 'OK', 'Project': pk}, status=status.HTTP_200_OK)
+            return JsonResponse({'Created': 'OK', 'Project': pk, 'messages': get_message_list(request)},
+                                status=status.HTTP_200_OK)
         except Exception as e:
-            logger.exception('saveProjectAjax')
-            return JsonResponse({'Created': 'NO', 'Project': 0}, status=status.HTTP_200_OK)
+            logger.exception(str(e), extra={'request': request})
+            return JsonResponse({'Created': 'NO', 'Project': 0}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:
         if 'latitude' in form.errors:
             form.errors['logo'] = form.errors['latitude']
@@ -329,69 +334,7 @@ def deleteProject(request, pk):
     obj = get_object_or_404(Project, id=pk)
     log_message(obj, '', request.user, DELETION)
     obj.delete()
-    reviews = Review.objects.filter(content_type=ContentType.objects.get(model="project"), object_pk=pk)
-
-    for r in reviews:
-        r.delete()
-
     return redirect('projects')
-
-
-def setImages(request, form):
-    images = []
-    image1_path = saveImage(request, form, 'image1', '1')
-    image2_path = saveImage(request, form, 'image2', '2')
-    image3_path = saveImage(request, form, 'image3', '3')
-    images.append(image1_path)
-    images.append(image2_path)
-    images.append(image3_path)
-    return images
-
-
-def saveImage(request, form, element, ref):
-    image_path = ''
-    filepath = request.FILES.get(element, False)
-    withImage = form.cleaned_data.get('withImage' + ref)
-    if (filepath):
-        x = form.cleaned_data.get('x' + ref)
-        y = form.cleaned_data.get('y' + ref)
-        w = form.cleaned_data.get('width' + ref)
-        h = form.cleaned_data.get('height' + ref)
-        photo = request.FILES[element]
-        image = Image.open(photo)
-        # Fix image orientation based on EXIF information
-        fixed_image = ImageOps.exif_transpose(image)
-        cropped_image = fixed_image.crop((x, y, w + x, h + y))
-        if (ref == '3'):
-            finalSize = (1320, 400)
-        else:
-            finalSize = (600, 400)
-
-        resized_image = cropped_image.resize(finalSize, Image.ANTIALIAS)
-
-        if (cropped_image.width > fixed_image.width):
-            size = (abs(int((finalSize[0] - (finalSize[0] / cropped_image.width * fixed_image.width)) / 2)), finalSize[1])
-            whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
-            position = ((finalSize[0] - whitebackground.width), 0)
-            resized_image.paste(whitebackground, position)
-            position = (0, 0)
-            resized_image.paste(whitebackground, position)
-        if (cropped_image.height > fixed_image.height):
-            size = (finalSize[0], abs(int((finalSize[1] -
-                                           (finalSize[1] / cropped_image.height * fixed_image.height)) / 2)))
-            whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
-            position = (0, (finalSize[1] - whitebackground.height))
-            resized_image.paste(whitebackground, position)
-            position = (0, 0)
-            resized_image.paste(whitebackground, position)
-
-        image_path = save_image_with_path(resized_image, photo.name)
-    elif withImage:
-        image_path = '/'
-    else:
-        image_path = ''
-
-    return image_path
 
 
 def getOtherUsers(creator):

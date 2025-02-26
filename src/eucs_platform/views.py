@@ -1,18 +1,22 @@
 from itertools import chain
 
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.admin.views.main import SEARCH_VAR
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.utils import translation
 from django.utils.safestring import mark_safe
 
 from admin_tools.dashboard.models import DashboardPreferences
+from django.utils.translation import get_language, check_for_language
+from django.views.i18n import set_language as sl, LANGUAGE_QUERY_PARAMETER
+from django_countries import countries
+from django_countries.templatetags.countries import get_country
 from events.models import Event
-from machina.apps.forum.models import Forum
-from machina.apps.forum_conversation.models import Topic
-from machina.apps.forum_tracking.handler import TrackingHandler
 from organisations.models import Organisation
 from organisations.views import getOrganisationAutocomplete
 from platforms.models import Platform
@@ -21,11 +25,17 @@ from profiles.models import Profile
 from profiles.views import getProfilesAutocomplete
 from projects.models import Project, Topic as PTopic
 from projects.views import getProjectsAutocomplete
-from resources.models import Resource, ResourceGroup, ResourcesGrouped
+from resources.models import ResourceGroup, ResourcesGrouped
 from resources.views import getResourcesAutocomplete
 
 
+from . import set_language_preference
+
 def home(request):
+    # home is the only language-prefixed URL, so we need to get the current language to set the
+    # session and cookie for the entire site. If the user enters the platform by another url, the language will
+    # be defined via locale middleware and will use the session and cookie previously stored.
+    current_language = get_language()
     # TODO: Clean this, we dont need lot of things
     user = request.user
     filters = {'keywords': ''}
@@ -65,11 +75,9 @@ def home(request):
     # training_resources = paginator_training_resources.get_page(page)
     # countertraining = paginator_training_resources.count
 
+    compare_topics_endpoint = None
     if settings.VISAO_USERNAME:
-        base_endpoint = f'{settings.VISAO_URL}/app/visao/{settings.VISAO_LAYOUT}?'
-        compare_topics_endpoint = mark_safe(
-            f'{settings.VISAO_URL}/app/#/visao?chart=1&grupCategory={settings.VISAO_GROUP}'
-        )
+        base_endpoint = f'{settings.VISAO_URL}/visao2/viewGroupCategory/{settings.VISAO_GROUP}?'
         visao_endpoint = mark_safe(
             f'{base_endpoint}grupCategory={settings.VISAO_GROUP}&amp&l={settings.VISAO_LAYER}&amp&e=f'
         )
@@ -80,7 +88,6 @@ def home(request):
             for ptopic in PTopic.objects.topics_with_external_url().translated().order_by('translated_text')
         ]
     else:
-        compare_topics_endpoint = None
         visao_endpoint = None
         project_topics = []
 
@@ -98,7 +105,7 @@ def home(request):
 
     total = counterorganisations + counterplatforms
 
-    return render(request, 'home.html', {
+    response = render(request, 'home.html', {
         'user': user,
         'platforms': platforms,
         'projects': projects,
@@ -114,6 +121,13 @@ def home(request):
         'project_topics': project_topics,
         'isSearchPage': True,
     })
+
+    clanguage = request.COOKIES.get(settings.LANGUAGE_COOKIE_NAME, '')
+    # Only set language for anonymous users. Authenticated user has default language defined in his profile.
+    if current_language != clanguage and not request.user.is_authenticated:
+        response = set_language_preference(request, response, current_language)
+
+    return response
 
 
 def all(request):
@@ -205,30 +219,49 @@ def home_autocomplete(request):
         return HttpResponse("No cookies")
 
 
-def getTopicsResponded(request):
-    response = {}
-    topics = {}
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        topics = TrackingHandler.get_unread_topics(request, result, request.user)
+@staff_member_required(login_url='/login')
+def country_list(request):
+    """Page with admin style to list countries from django-countries"""
+    if SEARCH_VAR in request.GET:
+        text = request.GET.get(SEARCH_VAR)
+        result = filter(lambda c: text.lower() in c.name.lower(), countries)
+    else:
+        result = countries
+    # Return country name translations
+    result = country_translation(result)
 
-    topicshtml = "</br>"
+    return render(request, 'country_list.html', {'countries': result})
 
-    for topic in topics:
-        slug = '' + topic.slug + '-' + str(topic.id)
-        forum = get_object_or_404(Forum, id=topic.forum_id)
-        forum_slug = forum.slug + '-' + str(forum.id)
-        topicshtml += '<p class="alert alert-info" role="alert">There is a response in a topic that you follow' \
-                      ' <a href="' + settings.HOST + '/forum/forum/' + forum_slug + '/topic/' + slug + '">%s</a></p>' % (
-                          topic.subject
-                      )
 
-    response['topics'] = topicshtml
-    return JsonResponse(response)
+def country_translation(country_iterator):
+    """Rebuild country list to return translations"""
+    for country in country_iterator:
+        country_object = get_country(country.code)
+        yield {
+            'code': country_object.code,
+            'name_english': get_country_translated_name('en', country_object),
+            'name_portuguese': get_country_translated_name('pt-br', country_object),
+            'name_spanish': get_country_translated_name('es', country_object),
+        }
 
+
+def get_country_translated_name(language, country):
+    with translation.override(language):
+        return translation.gettext(country.countries.name(country.code))
+
+
+def set_language(request):
+    """Set user default language after language change"""
+    response = sl(request)
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        lang_code = request.POST.get(LANGUAGE_QUERY_PARAMETER)
+        if lang_code and check_for_language(lang_code):
+            profile = request.user.profile
+            profile.language = lang_code
+            profile.save()
+
+    return response
 
 def reset_dashboard(request):
     prefs = DashboardPreferences.objects.filter(user=request.user)
@@ -239,16 +272,3 @@ def reset_dashboard(request):
     return HttpResponseRedirect('/admin')
 
 
-def getForumResponsesNumber(request):
-    response = {}
-    forumresponses = 0
-    if not request.user.is_anonymous and not request.user.is_staff:
-        own_topics = Topic.objects.get_queryset().filter(status=0, poster_id=request.user, posts_count__gt=1)
-        suscribed_topics = request.user.topic_subscriptions.all()
-        result = own_topics | suscribed_topics
-        result = result.distinct()
-        result = TrackingHandler.get_unread_topics(request, result, request.user)
-        forumresponses = len(result)
-
-    response['forumresponses'] = forumresponses
-    return JsonResponse(response)

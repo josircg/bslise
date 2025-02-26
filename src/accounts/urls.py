@@ -1,5 +1,4 @@
 from django.urls import path
-from django.conf.urls import url
 
 from . import views
 
@@ -8,21 +7,13 @@ urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("logout/", views.LogoutView.as_view(), name="logout"),
     path("signup/", views.SignUpView.as_view(), name="signup"),
-    path("delete/", views.delete_user, name="delete"),
-    path(
-        "password-change/", views.PasswordChangeView.as_view(), name="password-change"
-    ),
+    path("send_activate_email/<int:user_id>", views.send_activate_email_view, name="send_activate_email"),
+    path("password-change/", views.PasswordChangeView.as_view(), name="password-change"),
     path("password-reset/", views.PasswordResetView.as_view(), name="password-reset"),
+    path("password-reset-done/", views.PasswordResetDoneView.as_view(), name="password-reset-done", ),
     path(
-        "password-reset-done/",
-        views.PasswordResetDoneView.as_view(),
-        name="password-reset-done",
+        "password-reset/<uidb64>/<token>/", views.PasswordResetConfirmView.as_view(), name="password-reset-confirm",
     ),
-    url(
-        r"^password-reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$",
-        views.PasswordResetConfirmView.as_view(),
-        name="password-reset-confirm",
-    ),
-    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    path('activate/<uidb64>/<token>/', views.activate, name='activate'),
 ]

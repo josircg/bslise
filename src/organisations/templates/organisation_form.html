@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load thumbnail %}
 {% load leaflet_tags %}
 {% load crispy_forms_tags %}
 {% load eucs_platform_tags %}
 {% block head %}
 {{block.super }}
-<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_style.css' %}">
-<link rel="stylesheet" href="{% static 'site/css/leaflet.css' %}">
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_3_9.css' %}">
 <link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
 {% leaflet_js %}
 {% leaflet_css %}
@@ -89,7 +89,7 @@
                         {{ form.longitude|as_crispy_field }}
                         <div class="row mt-5 mb-5">
                             <div class="col-11">
-                                <button type="submit" class="btn btn-pink6"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
+                                <button type="submit" class="btn btn-default"><i class="fas fa-share-square"></i> {% trans "Save" %}</button>
                             </div>
                         </div>
                         <div class="row mt-5 mb-5">
@@ -113,101 +113,14 @@
 {% endblock list_of_items %}
 
 {% block scripts %}
+<script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
 <script src="{% static 'site/js/site.js' %}"></script>
 <script src="{% static 'scripts/cropper.min.js' %}"></script>
 <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"></script>
-<script src="{% static 'site/js/leaflet-geosearch_2_7.min.js' %}"></script>
+<script src="{% static 'site/js/leaflet-geosearch_3_9.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' %}?v=3"></script>
 <script>
-  $(document).ready(function () {
-    $(function () {
-      changed = false;
-      /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
-      $("#id_logo").change(function () {
-        $('#imageResult').attr('src', '');
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            changed = true;
-            $("#image").attr("src", e.target.result);
-            $("#modalCrop").modal("show");
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-
-
-      $("#imageResult").click(function () {
-        if(!changed)
-        $("#id_logo").click();
-        else{
-          $("#modalCrop").modal("show");
-        }
-      });
-
-      /* SCRIPTS TO HANDLE THE CROPPER BOX */
-      var $image = $("#image");
-      var cropBoxData;
-      var canvasData;
-      $("#modalCrop").on("shown.bs.modal", function () {
-        $image.cropper({
-          viewMode: 0,
-          aspectRatio: 3/2,
-          minCropBoxWidth: 600,
-          minCropBoxHeight: 400,
-          dragMode: 'move',
-          guides: false,
-          center: false,
-          highlight: false,
-          cropBoxResizable: false,
-          toggleDragModeOnDblclick: false,
-          ready: function () {
-            $image.cropper("setCanvasData", canvasData);
-            $image.cropper("setCropBoxData", cropBoxData);
-          }
-        });
-      }).on("hidden.bs.modal", function () {
-        cropBoxData = $image.cropper("getCropBoxData");
-        canvasData = $image.cropper("getCanvasData");
-        $image.cropper("destroy");
-      });
-
-      $(".js-zoom-in").click(function () {
-        $image.cropper("zoom", 0.1);
-      });
-
-      $(".js-zoom-out").click(function () {
-        $image.cropper("zoom", -0.1);
-      });
-
-      /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
-      $(".js-crop-and-upload").click(function () {
-        var cropData = $image.cropper("getData");
-        $("#id_x").val(cropData["x"]);
-        $("#id_y").val(cropData["y"]);
-        $("#id_height").val(cropData["height"]);
-        $("#id_width").val(cropData["width"]);
-        $("#modalCrop").modal("hide");
-        $('#imageResult').attr('src', $image.cropper('getCroppedCanvas',
-        {width: 600, height: 400}).toDataURL());
-
-        $("#deleteLogo").html('<a class="btn btn-red" ><i class="fas fa-trash-alt"></i> </a>  ');
-        $("#deleteLogo").click(function () {
-          $('#id_logo').val('');
-          $('#imageResult').attr('src', '');
-          $("#deleteLogo").empty();
-          $("#id_withLogo").val(false);
-        });
-
-      });
-      
-      
-
-    });  
-
-
-  });
 
 $('form').on('submit', function(e) {
   $("button[type=submit]").attr('disabled','true'); 

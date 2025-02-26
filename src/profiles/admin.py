@@ -19,7 +19,8 @@ class NewUserAdmin(NamedUserAdmin):
         "is_active",
         "email",
         "name",
-        "permalink",
+        "view_profile",
+        "activate",
         "is_superuser",
         "is_staff",
     )
@@ -27,10 +28,16 @@ class NewUserAdmin(NamedUserAdmin):
     # 'View on site' didn't work since the original User model needs to
     # have get_absolute_url defined. So showing on the list display
     # was a workaround.
-    def permalink(self, obj):
+    def view_profile(self, obj):
         url = reverse("profiles:show", kwargs={"slug": obj.profile.slug})
         # Unicode hex b6 is the Pilcrow sign
         return format_html('<a href="{}">{}</a>'.format(url, "\xb6"))
+
+    def activate(self, obj):
+        url = reverse("accounts:send_activate_email", kwargs={"user_id": obj.id})
+        # Unicode hex b6 is the Pilcrow sign
+        return format_html('<a href="{}">{}</a>'.format(url, "\xb6"))
+    activate.short_description = "Send activation email"
 
 
 admin.site.unregister(User)

@@ -13,6 +13,7 @@ class PostList(generic.ListView):
         context['query_params'] = urlencode(query_params)
         context['site_name'] = settings.SITE_NAME
         return context
+
     queryset = Post.objects.filter(status=1).order_by('-sticky', '-created_on')
     template_name = 'blog.html'
     paginate_by = '12'
@@ -21,7 +22,3 @@ class PostList(generic.ListView):
 def post_detail(request, year, month, day, slug):
     post = get_object_or_404(Post, slug=slug, status=1)
     return render(request, 'post_detail.html', {'post': post, "domain": settings.HOST})
-
-
-def post_review(request, pk):
-    return render(request, 'post_review.html', {'postID': pk})

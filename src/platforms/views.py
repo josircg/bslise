@@ -1,29 +1,28 @@
 import copy
-import os
-import random
-from datetime import datetime
 
-from PIL import Image
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.paginator import Paginator
+from django.db import ProgrammingError
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.utils import formats
-from django.utils.translation import ugettext_lazy as _
-from django_countries import countries as countries_list
+from django.utils import translation
+from django.utils.translation import ugettext_lazy as _, get_language
 
+from django_countries import countries as countries_list
 from eucs_platform import send_email
+from eucs_platform.utils import get_message_list
+from projects.models import Topic
 from rest_framework import status
 from utilities.file import assign_image
+from utilities.file import crop_and_save
 
 from .forms import PlatformForm
 from .models import Platform, Keyword
-from projects.models import Topic
 
 
 @staff_member_required(login_url='/login')
@@ -71,52 +70,68 @@ def deletePlatformAjax(request, pk):
         platform.delete()
         return JsonResponse({'Platform deleted': 'OK', 'Id': pk}, status=status.HTTP_200_OK)
     else:
-        return JsonResponse({}, status=status.HTTP_403.FORBIDDEN)
+        return JsonResponse({}, status.HTTP_401_UNAUTHORIZED)
 
 
 @staff_member_required(login_url='/login')
 def savePlatformAjax(request):
     form = PlatformForm(request.POST, request.FILES)
+
     if form.is_valid():
         images = setImages(request, form)
         pk = form.save(request, images)
+
         if request.POST.get('Id').isnumeric():
-            return JsonResponse({'Platform updated': 'OK', 'Id': pk}, status=status.HTTP_200_OK)
+            messages.success(request, _('Programme updated'))
+            return JsonResponse({'Platform updated': 'OK', 'Id': pk, 'messages': get_message_list(request)},
+                                status=status.HTTP_200_OK)
         else:
-            sendPlatformEmail(pk, request, form)
-            return JsonResponse({'Platform created': 'OK', 'Id': pk}, status=status.HTTP_200_OK)
+            messages.success(request, _('Programme added correctly'))
+            sendPlatformEmail(pk, request.user, form)
+            return JsonResponse({'Platform created': 'OK', 'Id': pk, 'messages': get_message_list(request)},
+                                status=status.HTTP_201_CREATED, )
     else:
         return JsonResponse(form.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
-def sendPlatformEmail(id, request, form):
-    to = copy.copy(settings.EMAIL_RECIPIENT_LIST)
-    to.append(request.user.email)
-    messages.success(request, _('Programme added correctly'))
-    send_email(
-        subject='Seu programa/curso "%s" foi submetido!' % form.cleaned_data['name'],
-        message=render_to_string('emails/new_platform.html',
-                                 {"domain": settings.DOMAIN, 'submissionName': form.cleaned_data['name'],
-                                  'username': request.user.name}),
-        reply_to=settings.REPLY_EMAIL, to=to
-    )
+def sendPlatformEmail(id, user, form):
+    try:
+        language = user.profile.language
+        to = copy.copy(settings.EMAIL_RECIPIENT_LIST)
+        to.append(user.email)
+        send_email(
+            subject=_('The programme "%s" has been submitted!') % form.cleaned_data['name'],
+            message=render_to_string(f'emails/{language}/new_platform.html',
+                                     {"domain": settings.DOMAIN, 'submissionName': form.cleaned_data['name'],
+                                      "username": user.name,
+                                      "site_name": settings.SITE_NAME,
+                                      "site_contact": settings.REPLY_EMAIL
+                                      }),
+            reply_to=settings.EMAIL_RECIPIENT_LIST, to=to
+        )
 
-    # NOTIFICAÇÃO
-    send_email(
-        subject='Notification - A new programme "%s" was submitted' % form.cleaned_data['name'],
-        message=render_to_string('emails/notify_platform.html', {"platformid": id, "domain": settings.DOMAIN,
-                                                                 'submissionName': form.cleaned_data['name'],
-                                                                 'username': request.user.name}),
-        reply_to=to,
-        to=settings.EMAIL_RECIPIENT_LIST
-    )
+        # NOTIFICAÇÃO
+        with translation.override(settings.LANGUAGE_CODE):
+            send_email(
+                subject='Notification - A new programme "%s" was submitted' % form.cleaned_data['name'],
+                message=render_to_string(f'emails/{settings.LANGUAGE_CODE}/notify_platform.html',
+                                         {"platformid": id, "domain": settings.DOMAIN,
+                                          'submissionName': form.cleaned_data['name'],
+                                          'username': user.name,
+                                          "site_name": settings.SITE_NAME,
+                                          "site_contact": settings.REPLY_EMAIL
+                                          }),
+                reply_to=to, to=settings.EMAIL_RECIPIENT_LIST,
+            )
+    except Exception as e:
+        print(f'Error:{e}')
 
 
 def reset_image(request, pk):
     platform = get_object_or_404(Platform, id=pk)
     image_filename = f'images/course_{pk}.svg'
-    assign_image(image_filename, platform.logo, 306, 204, background_color='#FFFFFF')
-    assign_image(image_filename, platform.profileImage, 1320, 400, background_color='#FFFFFF')
+    assign_image(image_filename, platform.logo, 306, 204)
+    assign_image(image_filename, platform.profileImage, 1320, 400)
     return redirect(f'../platform/{pk}')
 
 
@@ -128,7 +143,7 @@ def platform(request, pk):
 def platforms(request):
     platforms = Platform.objects.select_related('geoExtend').filter(active=True)
     existing_countries = Platform.objects.all().values_list('countries', flat=True).distinct()
-    topics = Topic.objects.translated().order_by('translated_text')
+    topics = Topic.objects.translated_sorted_by_text()
 
     # I think this is not needded
     filters = {'keywords': '', 'topics': '', 'country': ''}
@@ -138,11 +153,8 @@ def platforms(request):
     filters = setFilters(request, filters)
 
     # Distinct list of countries
-    countries = []
-    for country_code in existing_countries:
-        countries.append({'code': country_code,
-                          'name': countries_list.countries.get(country_code, country_code)})
-    countries = sorted(countries, key=lambda d: d['name'])
+    countriesWithContent = [country for gcountry in existing_countries for country in gcountry.split(',')]
+    countriesWithContent = list(set(countriesWithContent))
 
     # Ordering
     if request.GET.get('orderby'):
@@ -152,7 +164,11 @@ def platforms(request):
     else:
         platforms = platforms.order_by('-dateUpdated')
 
-    counter = len(platforms)
+    try:
+        counter = len(platforms)
+    except ProgrammingError:
+        counter = 0
+        platforms = Platform.objects.none()
 
     paginator = Paginator(platforms, 16)
     page = request.GET.get('page')
@@ -161,14 +177,13 @@ def platforms(request):
     return render(request, 'platforms.html', {
         'platforms': platforms,
         'filters': filters,
-        'countries': countries,
+        'countries': countriesWithContent,
         'counter': counter,
         'topics': topics,
         'isSearchPage': True})
 
 
 def applyFilters(request, platforms):
-    # approvedProjects = ApprovedProjects.objects.all().values_list('project_id', flat=True)
     if request.GET.get('keywords'):
         platforms = platforms.filter(
             Q(name__icontains=request.GET['keywords']) |
@@ -219,26 +234,9 @@ def getPlatformsAutocomplete(text):
 
 def setImages(request, form):
     images = {}
-    for key, value in request.FILES.items():
-        x = form.cleaned_data.get('x' + key)
-        y = form.cleaned_data.get('y' + key)
-        w = form.cleaned_data.get('width' + key)
-        h = form.cleaned_data.get('height' + key)
-        image = Image.open(value)
-        if x and y and w and h:
-            image = image.crop((x, y, w + x, h + y))
-            if key == 'profileImage':
-                finalsize = (1100, 400)
-            else:
-                finalsize = (600, 400)
-            image = image.resize(finalsize, Image.ANTIALIAS)
-        imagePath = getImagePath(value.name)
-        image.save(os.path.join(settings.MEDIA_ROOT, imagePath))
-        images[key] = imagePath
+
+    for key in request.FILES.keys():
+        kwargs = {'final_width': 1100} if key == 'profileImage' else {}
+        images[key] = crop_and_save(request, form, key, key, **kwargs)
+
     return images
-
-
-def getImagePath(imageName):
-    _datetime = formats.date_format(datetime.now(), 'Y-m-d_hhmmss')
-    random_num = random.randint(0, 1000)
-    return "images/" + _datetime + '_' + str(random_num) + '_' + imageName

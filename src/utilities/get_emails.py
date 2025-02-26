@@ -1,6 +1,6 @@
 import poplib
 import environ
-from imap_tools import MailBox
+
 
 env = environ.Env()
 env_filename = "../eucs_platform/settings/local.env"

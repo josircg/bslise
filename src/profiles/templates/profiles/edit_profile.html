@@ -1,6 +1,6 @@
 {% extends "./base_template_profiles.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load thumbnail %}
 {% load crispy_forms_tags %}
 {% block head %}
@@ -24,12 +24,15 @@
                             {{ user_form.name|as_crispy_field }}
                             {{ user_form.email|as_crispy_field }}
                             {{ profile_form.country|as_crispy_field }}
+                            {{ profile_form.language|as_crispy_field }}
                         </div>
                     </div>
                     <h4 class="leftborder mt-5">{% trans "Bio &amp; Interest Areas" %}</h4>
                     <div class="row">
                         <div class="col-12">
                             {{ profile_form.bio|as_crispy_field }}
+                            {{ profile_form.orcid|as_crispy_field }}
+                            {{ profile_form.lattes_id|as_crispy_field }}
                             {{ profile_form.interestAreas|as_crispy_field }}
                         </div>
                     </div>

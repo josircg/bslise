@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load leaflet_tags %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
+{% load eucs_platform_tags %}
 
 {% block head %}
 {{block.super }}
-<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_style.css' %}">
-<link rel="stylesheet" href="{% static 'site/css/leaflet.css' %}">
+<link rel="stylesheet" href="{% static 'styles/jquery-ui.css' %}">
+<link rel="stylesheet" href="{% static 'site/css/leaflet-geosearch_3_9.css' %}">
 <link rel="stylesheet" href="{% static 'site/css/forms.css' %}">
 {% leaflet_js %}
 {% leaflet_css %}
@@ -122,7 +123,7 @@
                         <h4 class="leftborder mt-5">{% trans "Project profile images" %}</h4>
                         <img class="img-fluid img-zoom"
                         id="imageResult1"
-                        src="{% thumbnail project.image1|default:'void_600.png' 600x400 %}">
+                        src="{% thumbnail project.image1|safe_image 600x400 %}">
                         {{ form.image1|as_crispy_field }}
                         {{ form.x1|as_crispy_field }}
                         {{ form.y1|as_crispy_field }}
@@ -132,17 +133,6 @@
                         {{ form.image_credit1|as_crispy_field }}
                         <div class="mb-5"></div>
 
-                        <!-- <img class="img-fluid img-zoom"
-                              id="imageResult2"
-                              src="{% thumbnail project.image2|default:'void_600.png' 600x400 %}">
-                        {{ form.image2|as_crispy_field }}
-                        {{ form.x2|as_crispy_field }}
-                        {{ form.y2|as_crispy_field }}
-                        {{ form.height2|as_crispy_field }}
-                        {{ form.width2|as_crispy_field }}
-                        {{ form.withImage2|as_crispy_field }}
-                        {{ form.image_credit2|as_crispy_field }}
-                        <div class="mb-5"></div> -->
                         <input type="hidden" id="image2" name="image2" value={{project.id}}>
                         <input type="hidden" id="x2" name="x2" value={{project.id}}>
                         <input type="hidden" id="y2" name="y2" value={{project.id}}>
@@ -153,7 +143,7 @@
 
                         <img class="img-fluid mt-3"
                               id="imageResult3"
-                              src="{% thumbnail project.image3|default:'void_1100.png' 1100x400 %}" alt="Image not upload">
+                              src="{% thumbnail project.image3|safe_image:'void_1100.png' 1100x400 %}" alt="Image not upload">
                         {{ form.withImage3|as_crispy_field }}
                         {{ form.image3|as_crispy_field }}
                         {{ form.x3|as_crispy_field }}
@@ -192,10 +182,13 @@
 {% endblock list_of_items %}
 
 {% block scripts %}
+<script src="{% static 'scripts/jquery-ui.min.js' %}"></script>
+<script src="{% static 'scripts/jquery.ui.touch-punch.min.js' %}"></script>
 <script src="{% static 'site/js/site.js' %}"></script>
 <script src="{% static 'scripts/cropper.min.js' %}"></script>
 <script src="{% static 'scripts/jquery-cropper.min.js' %}"></script>
-<script src="{% static 'site/js/leaflet-geosearch_2_7.min.js' %}"></script>
+<script src="{% static 'site/js/leaflet-geosearch_3_9.min.js' %}"></script>
+<script src="{% static 'site/js/modal-crop.js' %}?v=1"></script>
 <script>
     $(function () {
         $('input').on('focus', function(){
@@ -258,17 +251,35 @@
             for(var instanceName in CKEDITOR.instances)
                 CKEDITOR.instances[instanceName].updateElement();
 
+            let formData = new FormData(document.getElementById("form_project"));
+
+            if (contin) {
+              formData.append('_continue', 'Save and continue');
+            }
+            
             $.ajax({
                 type: 'POST',
                 url: '/saveProjectAjax',
                 processData: false,
                 contentType: false,
-                data: new FormData(document.getElementById("form_project")),
+                data: formData,
                 success: function (response){
                     if(contin){
                         $('#projectID').val(response.Project);
-                        $('.savedInfo').html('<span class="alert alert-success fade show">'+
-                            '<i class="fas fa-check"></i> Saved</span>').show().fadeOut(2500);
+
+                        let $messageContainer = $('.savedInfo');
+                        $messageContainer.empty();
+                        $messageContainer.append('<div class="mb-5"></div>');
+
+                        for (message of response.messages) {
+                          let icon = 'fa-check';
+                          if (message.tag !== 'alert-success') {
+                            icon = 'fa-exclamation-triangle';
+                          }
+                          $messageContainer.append(`<div class="alert ${message.tag} fade show"><i class="fas ${icon}"></i> ${message.message}</div>`);
+                        }
+
+                        $messageContainer.show().fadeOut(4000);
                     }
                     else{
                         window.location.href = '/project/'+response.Project+'?prev='+window.location.pathname;
@@ -287,107 +298,6 @@
     }
 </script>
 
-<script>
-    $(function () {
-      var imgSelected;
-      /* SCRIPT TO OPEN THE MODAL WITH THE PREVIEW */
-      $("#id_image1").change(function () {
-        imgSelected = 1;
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $("#image").attr("src", e.target.result);
-            $("#modalCrop").modal("show");
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-      $("#id_image2").change(function () {
-        imgSelected = 2;
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $("#image").attr("src", e.target.result);
-            $("#modalCrop").modal("show");
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-      $("#id_image3").change(function () {
-        imgSelected = 3;
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            $("#image").attr("src", e.target.result);
-            $("#modalCrop").modal("show");
-          }
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-      $("#imageResult").click(function () {
-        $("#modalCrop").modal("show");
-      });
-      $("#imageResult2").click(function () {
-        $("#modalCrop").modal("show");
-      });
-      $("#imageResult3").click(function () {
-        $("#modalCrop").modal("show");
-      });
-      /* SCRIPTS TO HANDLE THE CROPPER BOX */
-      var $image = $("#image");
-      var cropBoxData;
-      var canvasData;
-      $("#modalCrop").on("shown.bs.modal", function () {
-        $image.cropper({
-          viewMode: 1,
-          aspectRatio: imgSelected == 3 ? 11/4 : 3/2,
-          minCropBoxWidth: imgSelected == 3 ? 1100 : 600,
-          minCropBoxHeight: 400,
-          dragMode: 'move',
-          guides: false,
-          center: false,
-          highlight: false,
-          cropBoxResizable: false,
-          toggleDragModeOnDblclick: false,
-          ready: function () {
-            $image.cropper("setCanvasData", canvasData);
-            $image.cropper("setCropBoxData", cropBoxData);
-          }
-        });
-      }).on("hidden.bs.modal", function () {
-        cropBoxData = $image.cropper("getCropBoxData");
-        canvasData = $image.cropper("getCanvasData");
-        $image.cropper("destroy");
-      });
-
-      $(".js-zoom-in").click(function () {
-        $image.cropper("zoom", 0.1);
-      });
-
-      $(".js-zoom-out").click(function () {
-        $image.cropper("zoom", -0.1);
-      });
-
-      /* SCRIPT TO COLLECT THE DATA AND POST TO THE SERVER */
-      $(".js-crop-and-upload").click(function () {
-        var cropData = $image.cropper("getData");
-        $("#id_x" + imgSelected).val(cropData["x"]);
-        $("#id_y" + imgSelected).val(cropData["y"]);
-        $("#id_height" + imgSelected).val(cropData["height"]);
-        $("#id_width" + imgSelected).val(cropData["width"]);
-        $("#modalCrop").modal("hide");
-        $('#imageResult' + imgSelected).attr('src', $image.cropper('getCroppedCanvas',
-        {width: imgSelected == 3 ? 1100 : 600, height: 400}).toDataURL());
-      });
-
-      $(".read-before-save").click(function () {
-        readSavedConfirmation = true;
-        $("#savedModal").modal("hide");
-        $('form').submit();
-      });
-
-    });
-</script>
 <script type="text/javascript">
   var map;
   var coord_lat = $("#id_latitude").val();

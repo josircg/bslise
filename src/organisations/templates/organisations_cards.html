@@ -1,12 +1,12 @@
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load thumbnail eucs_platform_tags %}
 
 {% for organisation in organisations %}
 <div class="col-lg-3 col-sm-6 col-xs-12 mb-5">
     <div class="card h-100 border-1 rounded"> 
         <a href="/organisation/{{organisation.id}}">
-        <img  class="card-img-top lazyload" data-src="{% thumbnail organisation.safe_image|default:'void_600.png' 306x204 crop %}" />
+        <img  class="card-img-top lazyload img-zoom" data-src="{% thumbnail organisation.logo|safe_image 306x204 crop %}" />
         </a>
         <div class="card-body">
             <a href="/organisations?country={{organisation.country.code}}" class="badge rounded-pill bg-pill text-decoration-none">

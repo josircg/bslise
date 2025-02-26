@@ -1,13 +1,28 @@
 {% extends "./base_template_profiles.html" %}
 {% load i18n %}
 {% block profile_right %}
+
 {% if show_user.profile.bio %}
 <h3 class="col-12 leftborder">{% trans "Bio and <span class='lightBlue-color'>disciplinary background</span>" %}</h3>
 {{ show_user.profile.bio | safe }}
 {% endif %}
 
+{% if show_user.profile.has_professional_info %}
+  <h4 class="col-12 leftborder mt-4">{% translate "Professional Information" %}</h4>
+
+  {% if show_user.profile.lattes_id %}
+      <a class="badge bg-my-darkGreen" target="_blank"
+         href="https://lattes.cnpq.br/{{ show_user.profile.lattes_id }}">{% translate 'Lattes' %}</a>
+  {% endif %}
+
+  {% if show_user.profile.orcid %}
+    <a class="badge bg-my-darkGreen" target="_blank"
+       href="https://orcid.org/{{ show_user.profile.orcid }}">{% translate 'ORCID' %}</a>
+  {% endif %}
+{% endif %}
+
 {% if show_user.profile.interestAreas.all %}
-<h4 class="col-12 leftborder mt-4">{% trans "Interest and expertise areas" %}</h4>
+<h4 class="col-12 leftborder mt-4">{% trans "Interest areas" %}</h4>
 {% for area in show_user.profile.interestAreas.all %}
 <span class="badge bg-my-darkGreen">{{ area }}</span>
 {% endfor %}

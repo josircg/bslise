@@ -9,28 +9,29 @@ import profiles.urls
 import projects.urls
 import resources.urls
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
-from django.views.decorators.cache import never_cache
 from django.views.defaults import server_error
 from django.views.generic import TemplateView
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
-from machina import urls as machina_urls
 from rest_framework import permissions
 
+from . import sitemaps
 from . import views
 
 schema_view = get_schema_view(
    openapi.Info(
-      title="PLATFORM API",
+      title="BSLISE API",
       default_version='v1',
       description="This is the platform API",
    ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+   public=False,
+   permission_classes=(permissions.IsAuthenticated,),
 )
 
 # Personalized admin site settings like title and header
@@ -58,7 +59,6 @@ urlpatterns = [
     path("policy_brief/", views.policy_brief, name="policy_brief"),
     path("users/", include(profiles.urls)),
     path("admin/", admin.site.urls),
-    path("reset_dashboard/", views.reset_dashboard, name="reset_dashboard"),
     path("admin_tools/", include('admin_tools.urls')),
     path("select2/", include("django_select2.urls")),
     path('captcha/', include('captcha.urls')),
@@ -72,26 +72,25 @@ urlpatterns = [
     path("", include(digest.urls)),
     path("", include(platforms.urls)),
     path('summernote/', include('django_summernote.urls')),
-    path('forum/', include(machina_urls)),
-    path('getTopicsResponded', views.getTopicsResponded, name='getTopicsResponded'),
-    path('getForumResponsesNumber', views.getForumResponsesNumber, name='getForumResponsesNumber'),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'^reviews/', include('reviews.urls')),
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/auth/', include('djoser.urls')),
-    url(r'^api/auth/', include('djoser.urls.authtoken')),
-    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    url(r'^openid/', include('oidc_provider.urls', namespace='oidc_provider')),
-    re_path(r"^upload/", ckeditor_uploader.views.upload, name="ckeditor_upload"),
-    re_path(r"^browse/", never_cache(ckeditor_uploader.views.browse), name="ckeditor_browse",),
+    re_path(r'^api/auth/', include('djoser.urls')),
+    re_path(r'^api/auth/', include('djoser.urls.authtoken')),
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    re_path(r'^swagger/$', login_required(schema_view.with_ui('swagger', cache_timeout=0), login_url='/login'),
+            name='schema-swagger-ui'),
+    re_path(r'^redoc/$', login_required(schema_view.with_ui('redoc', cache_timeout=0), login_url='/login'),
+            name='schema-redoc'),
+    re_path(r'^openid/', include('oidc_provider.urls', namespace='oidc_provider')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('500/', server_error),
     path('403/', TemplateView.as_view(template_name='403.html')),
     path('coming_soon/', TemplateView.as_view(template_name='coming_soon.html'), name='coming_soon'),
     # add the robots.txt file
-    path("robots.txt",TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    # sitemaps
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps.sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 # User-uploaded files like profile pics need to be served in development

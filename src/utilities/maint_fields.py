@@ -14,6 +14,7 @@ from resources.models import Resource
   >>> update_models()
 """
 
+
 def split_url(url):
     try:
         return list(urlsplit(url))

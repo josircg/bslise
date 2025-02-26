@@ -3,7 +3,7 @@
 
 {% block profile_right %}
 {% if project_permissions %}
-<h3 class="col-12 leftborder mt-5">{% trans "<span class='text-pink6'>Projects (Cooperator)</span>" %}</h3>
+<h3 class="col-12 leftborder mt-5"><span class='text-pink6'>{% trans "Project Editor" %}</span></h3>
 <div class="row">
     {% for project_permission in project_permissions %}
       <div class="col-12 col-md-6">

@@ -151,7 +151,7 @@ class ResourceForm(forms.Form):
 
     image1 = forms.ImageField(
             required=False,
-            widget=forms.FileInput,
+            widget=forms.FileInput(attrs={'data-image-suffix': '1', 'data-image-width-option': 0}),
             label=_("Resource image for the thumbnail profile"),
             help_text=_("This image will be resized to 600x400 pixels"))
     image_credit1 = forms.CharField(max_length=300, required=False, label=_("Image 1 credit"))
@@ -163,7 +163,7 @@ class ResourceForm(forms.Form):
 
     image2 = forms.ImageField(
             required=False,
-            widget=forms.FileInput,
+            widget=forms.FileInput(attrs={'data-image-suffix': '2', 'data-image-width-option': 1}),
             label=_("Resource image for the profile heading"),
             help_text=_("This image will be resized to 1100x400 pixels"))
     image_credit2 = forms.CharField(max_length=300, required=False, label=_("Image 2 credit"))

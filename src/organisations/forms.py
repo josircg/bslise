@@ -11,20 +11,20 @@ from ckeditor.widgets import CKEditorWidget
 
 class OrganisationForm(forms.Form):
     name = forms.CharField(
-            max_length=200,
-            label=_('Organisation name'),
-            help_text=_('Please write the name of the organisation.'),
-            widget=forms.TextInput())
+        max_length=200,
+        label=_('Organisation name'),
+        help_text=_('Please write the name of the organisation or network.'),
+        widget=forms.TextInput())
     url = forms.URLField(
-            max_length=200,
-            label=_('URL'),
-            help_text=_('Please provide the URL to the website of the organisation.'),
-            widget=forms.TextInput())
+        max_length=200,
+        label=_('URL'),
+        help_text=_('Please provide the URL to the website of the organisation.'),
+        widget=forms.TextInput())
     description = forms.CharField(
-            help_text=_('Please briefly describe the organisation (max 3000 characters).'),
-            widget=CKEditorWidget(config_name='frontpage'),
-            label=_('Description'),
-            max_length=3000)
+        help_text=_('Please briefly describe the organisation (max 500 words).'),
+        widget=CKEditorWidget(config_name='frontpage'),
+        label=_('Description'),
+        max_length=3000)
     orgType = forms.ModelChoiceField(
             queryset=OrganisationType.objects.all(),
             label=_("Type"),
@@ -33,7 +33,7 @@ class OrganisationForm(forms.Form):
     logo = forms.ImageField(
             required=False,
             help_text=_('Please upload the logo of your organisation (.jpg or .png).'),
-            widget=forms.FileInput)
+            widget=forms.FileInput(attrs={'data-image-suffix': '', 'data-image-width-option': 0}))
     x = forms.FloatField(widget=forms.HiddenInput(), required=False)
     y = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -54,16 +54,20 @@ class OrganisationForm(forms.Form):
             widget=forms.TextInput())
 
     latitude = forms.DecimalField(
-            max_digits=9,
-            decimal_places=6,
-            widget=forms.HiddenInput(), 
-            required=True)
+        max_digits=9,
+        decimal_places=6,
+        widget=forms.HiddenInput(),
+        required=True)
 
     longitude = forms.DecimalField(
-            max_digits=9, 
-            decimal_places=6, 
-            widget=forms.HiddenInput(), 
-            required=False)
+        max_digits=9,
+        decimal_places=6,
+        widget=forms.HiddenInput(),
+        required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['orgType'].queryset = OrganisationType.objects.translated_sorted_by_text()
 
     def clean_latitude(self):
         if not self.cleaned_data['latitude']:
@@ -85,15 +89,15 @@ class OrganisationForm(forms.Form):
             organisation.approved = self.data.get('approved', organisation.approved)
         else:
             organisation = Organisation(
-                    name=self.data['name'],
-                    url=self.cleaned_data['url'],
-                    creator=args.user,
-                    latitude=self.data['latitude'],
-                    longitude=self.data['longitude'],
-                    description=self.data['description'],
-                    orgType=orgType,
-                    contactPoint=self.data['contact_point'],
-                    contactPointEmail=self.data['contact_point_email'])
+                name=self.data['name'],
+                url=self.cleaned_data['url'],
+                creator=args.user,
+                latitude=self.data['latitude'],
+                longitude=self.data['longitude'],
+                description=self.data['description'],
+                orgType=orgType,
+                contactPoint=self.data['contact_point'],
+                contactPointEmail=self.data['contact_point_email'])
 
         if logo_path:
             organisation.logo = logo_path
@@ -107,7 +111,7 @@ class OrganisationPermissionForm(forms.Form):
     selectedUsers = forms.CharField(widget=forms.HiddenInput(), required=False, initial=())
     usersCollection = forms.CharField(widget=forms.HiddenInput(), required=False, initial=())
     usersAllowed = forms.MultipleChoiceField(
-            choices=(),
-            widget=Select2MultipleWidget,
-            required=False,
-            label=_("Give additional users permission to edit"))
+        choices=(),
+        widget=Select2MultipleWidget,
+        required=False,
+        label=_("Give additional users permission to edit"))

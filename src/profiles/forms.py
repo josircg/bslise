@@ -1,15 +1,16 @@
-from __future__ import unicode_literals
-from django import forms
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, Field
-from django.contrib.auth import get_user_model
-from . import models
-from django.utils.translation import ugettext_lazy as _
-from django_select2 import forms as s2forms
-from organisations.models import Organisation
 from ckeditor.widgets import CKEditorWidget
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Field, Submit
+from django import forms
+from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
+from django_select2 import forms as s2forms
+from django_select2.forms import ModelSelect2Widget
+from projects.models import Project
 
+from . import models
 
 User = get_user_model()
 
@@ -40,35 +41,59 @@ class ProfileForm(forms.ModelForm):
             Field("bio"),
             Field("orcid"),
             Field("interestAreas"),
+            Field("language"),
             Field("latitude"),
             Field("longitude"),
             Submit("update", "Update", css_class="btn-green"),
         )
+        self.fields["lattes_id"].help_text = models.Profile._meta.get_field("lattes_id").help_text
+
     bio = forms.CharField(
-            widget=CKEditorWidget(config_name='frontpage'),
-            max_length=2000,
-            required=False)
+        widget=CKEditorWidget(config_name='frontpage'),
+        max_length=2000,
+        required=False)
     interestAreas = forms.ModelMultipleChoiceField(
-            queryset=models.InterestArea.objects.all(),
-            widget=s2forms.ModelSelect2TagWidget(
-                search_fields=['interestArea__icontains'],
-                blank_label=_('None'),
-                attrs={
-                    'data-token-separators': '[","]'}),
-            required=False,
-            label=_('Interest Areas'),
-            help_text=_('Please write or select interest areas, separated by commas or pressing enter'))
+        queryset=models.InterestArea.objects.all(),
+        widget=s2forms.ModelSelect2TagWidget(
+            search_fields=['interestArea__icontains'],
+            blank_label=_('None'),
+            attrs={
+                'data-token-separators': '[","]'}),
+        required=False,
+        label=_('Interest Areas'),
+        help_text=_("Please write or select 2 to 3 interest areas, separated by commas or by "
+                    "pressing enter"))
+    lattes_id = forms.CharField(
+        max_length=200,
+        required=False
+    )
     country = CountryField(blank=True).formfield()
+    language = forms.ChoiceField(
+        label=_('Language'),
+        help_text=_("Select your preferred language to browse and receive emails upon logging in."),
+        choices=settings.TRANSLATED_LANGUAGES)
     country.label = _('Country')
 
     class Meta:
         model = models.Profile
-        fields = ["picture", "title", "bio", "orcid", "interestAreas"]
+        fields = ["picture", "title", "bio", "orcid", "lattes_id", "language", "interestAreas"]
+
+    def clean_orcid(self):
+        data = self.cleaned_data["orcid"]
+        if data:
+            data = data.split('/')[-1]
+        return data
+
+    def clean_lattes_id(self):
+        data = self.cleaned_data["lattes_id"]
+        if data:
+            data = data.split('/')[-1]
+        return data
 
     def save(self, args):
-        pForm = super(ProfileForm, self).save(commit=False)
-        pForm.user = args.user
-        pForm.interestAreas.set(self.data.getlist('interestAreas'))
-        pForm.country = self.data['country']
-        pForm.save()
+        p_form = super(ProfileForm, self).save(commit=False)
+        p_form.user = args.user
+        p_form.interestAreas.set(self.data.getlist('interestAreas'))
+        p_form.country = self.data['country']
+        p_form.save()
         return 'success'

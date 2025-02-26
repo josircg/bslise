@@ -1,7 +1,6 @@
 import copy
 import csv
 
-from PIL import Image, ImageOps
 from authors.models import Author
 from django.conf import settings
 from django.contrib import messages
@@ -18,9 +17,9 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from eucs_platform import send_email
 from eucs_platform.logger import log_message
+from eucs_platform.utils import get_message_list
 from rest_framework import status
-from reviews.models import Review
-from utilities.file import save_image_with_path
+from utilities.file import crop_and_save
 
 from .forms import ResourceForm, ResourcePermissionForm
 from .models import Resource, Keyword, SavedResources, BookmarkedResources, Theme, Category
@@ -218,11 +217,7 @@ def editResource(request, pk):
     if request.method == 'POST':
         form = ResourceForm(request.POST, request.FILES)
         if form.is_valid():
-            images = []
-            image1_path = saveImage(request, form, 'image1', '1')
-            image2_path = saveImage(request, form, 'image2', '2')
-            images.append(image1_path)
-            images.append(image2_path)
+            images = setImages(request, form)
             form.save(request, images)
             if isTrainingResource:
                 return redirect('/training_resource/' + str(pk))
@@ -244,22 +239,28 @@ def saveResourceAjax(request):
     request.POST = updateAuthors(request.POST)
     form = ResourceForm(request.POST, request.FILES)
 
-    isTrainingResource = request.POST.get('isTrainingResource') == 'True'
+    is_training_resource = request.POST.get('isTrainingResource') == 'True'
 
     if form.is_valid():
         images = setImages(request, form)
         pk = form.save(request, images)
 
         if pk and not request.POST.get('resourceID').isnumeric():
-            sendResourceEmail(pk, request, isTrainingResource, form)
+            sendResourceEmail(pk, request, is_training_resource, form)
+        elif pk and request.POST.get('resourceID').isnumeric():
+            if is_training_resource:
+                messages.success(request, _('Training Resource updated correctly!'))
+            else:
+                messages.success(request, _('Resource updated correctly!'))
 
-        if isTrainingResource:
+        if is_training_resource:
             redirect_to = f'/training_resource/{pk}'
         else:
             redirect_to = f'/resource/{pk}'
 
         return JsonResponse(
-            {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to}, status=status.HTTP_200_OK
+            {'ResourceCreated': 'OK', 'Resource': pk, 'redirect_to': redirect_to,
+             'messages': get_message_list(request)}, status=status.HTTP_200_OK
         )
     else:
         return JsonResponse(form.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -267,11 +268,11 @@ def saveResourceAjax(request):
 
 def sendResourceEmail(id, request, isTrainingResource, form):
     if isTrainingResource:
-        msg = _('Training Resource added correctly')
+        msg = _('Training Resource added correctly!')
         resource_url = 'training_resource'
         resource_edit_url = 'editTrainingResource'
     else:
-        msg = _('Resource added correctly')
+        msg = _('Resource added correctly!')
         resource_url = 'resource'
         resource_edit_url = 'editResource'
 
@@ -327,12 +328,10 @@ def updateAuthors(dictio):
 
 
 def setImages(request, form):
-    images = []
-    image1_path = saveImage(request, form, 'image1', '1')
-    image2_path = saveImage(request, form, 'image2', '2')
-    images.append(image1_path)
-    images.append(image2_path)
-    return images
+    return [
+        crop_and_save(request, form, 'image1', '1'),
+        crop_and_save(request, form, 'image2', '2', final_width=1100),
+    ]
 
 
 def deleteResource(request, pk, isTrainingResource):
@@ -412,49 +411,6 @@ def getCooperatorsEmail(resourceID):
 
 def clearFilters(request):
     return redirect('resources')
-
-
-def saveImage(request, form, element, ref):
-    image_path = ''
-    filepath = request.FILES.get(element, False)
-    withImage = form.cleaned_data.get('withImage' + ref)
-    if filepath:
-        x = form.cleaned_data.get('x' + ref)
-        y = form.cleaned_data.get('y' + ref)
-        w = form.cleaned_data.get('width' + ref)
-        h = form.cleaned_data.get('height' + ref)
-        photo = request.FILES[element]
-        image = Image.open(photo)
-        # Fix image orientation based on EXIF information
-        fixed_image = ImageOps.exif_transpose(image)
-        cropped_image = fixed_image.crop((x, y, w+x, h+y))
-        if ref == '2':
-            finalSize = (1100, 400)
-        else:
-            finalSize = (600, 400)
-        resized_image = cropped_image.resize(finalSize, Image.ANTIALIAS)
-
-        if cropped_image.width > fixed_image.width:
-            size = (abs(int((finalSize[0]-(finalSize[0]/cropped_image.width*fixed_image.width))/2)), finalSize[1])
-            whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
-            position = ((finalSize[0] - whitebackground.width), 0)
-            resized_image.paste(whitebackground, position)
-            position = (0, 0)
-            resized_image.paste(whitebackground, position)
-        if(cropped_image.height > fixed_image.height):
-            size = (finalSize[0], abs(int((finalSize[1]-(finalSize[1]/cropped_image.height*fixed_image.height))/2)))
-            whitebackground = Image.new(mode='RGBA', size=size, color=(255, 255, 255, 0))
-            position = (0, (finalSize[1] - whitebackground.height))
-            resized_image.paste(whitebackground, position)
-            position = (0, 0)
-            resized_image.paste(whitebackground, position)
-
-        image_path = save_image_with_path(resized_image, photo.name)
-    elif withImage:
-        image_path = '/'
-    else:
-        image_path = ''
-    return image_path
 
 
 def preFilteredResources(request):

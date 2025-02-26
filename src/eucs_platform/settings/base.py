@@ -7,21 +7,22 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
-from django.urls import reverse_lazy
-from django.utils.translation import gettext_lazy as _
-from machina import MACHINA_MAIN_TEMPLATE_DIR, MACHINA_MAIN_STATIC_DIR
-from pathlib import Path
 import os
-# For Bootstrap 3, change error alert to 'danger'
-from django.contrib import messages
+from pathlib import Path
+
 # Use 12factor inspired environment variables or from a file
 import environ
+# For Bootstrap 3, change error alert to 'danger'
+from django.contrib import messages
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
 
 from django.conf.locale.pt import formats as pt_formats
 
 # Build paths inside the project like this: BASE_DIR / "directory"
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-STATICFILES_DIRS = [str(BASE_DIR / "static"), MACHINA_MAIN_STATIC_DIR]
+STATICFILES_DIRS = [str(BASE_DIR / "static"), ]
 MEDIA_ROOT = str(BASE_DIR / "media")
 MEDIA_URL = "/media/"
 STATIC_ROOT = str(BASE_DIR.parent / "static")
@@ -35,10 +36,6 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
-    'machina_attachments': {
-        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/tmp',
-    },
     # … default cache config and others
     "select2": {
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
@@ -49,7 +46,7 @@ CACHES = {
         #   "OPTIONS": {
         #       "CLIENT_CLASS": "django_redis.client.DefaultClient",
         #   }
-     }
+    }
 }
 
 # Tell select2 which cache configuration to use:
@@ -61,7 +58,6 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             str(BASE_DIR / "templates"),
-            MACHINA_MAIN_TEMPLATE_DIR
             # insert more TEMPLATE_DIRS here
         ],
         "APP_DIRS": False,
@@ -77,8 +73,6 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 'django.template.context_processors.request',
-                # Machina
-                'machina.core.context_processors.metadata',
                 # Wwn
                 'eucs_platform.context_processors.global_settings',
             ],
@@ -129,8 +123,11 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
+    "django.contrib.postgres",
     "authtools",
     "crispy_forms",
+    "crispy_bootstrap3",
     "easy_thumbnails",
     "profiles",
     "accounts",
@@ -145,7 +142,6 @@ INSTALLED_APPS = (
     "django_countries",
     "authors",
     "contact",
-    "reviews",
     'django.contrib.sites',
     'cookielaw',
     'events',
@@ -160,27 +156,8 @@ INSTALLED_APPS = (
     'oauth2_provider',
     'django.contrib.gis',
 
-    # Machina dependencies:
-    'mptt',
-    'haystack',
-    'widget_tweaks',
-
-    # Machina apps:
-    'machina',
-    'machina.apps.forum',
-    'machina.apps.forum_conversation',
-    'machina.apps.forum_conversation.forum_attachments',
-    'machina.apps.forum_conversation.forum_polls',
-    'machina.apps.forum_feeds',
-    'machina.apps.forum_moderation',
-    'machina.apps.forum_search',
-    'machina.apps.forum_tracking',
-    'machina.apps.forum_member',
-    'machina.apps.forum_permission',
-
     'organisations',
     "django_cron",
-    'django_crontab',
     'ckeditor',
     'ckeditor_uploader',
 
@@ -197,9 +174,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # Machina
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'accounts.middleware.BruteForceProtectionMiddleware'
 ]
 
 ROOT_URLCONF = "eucs_platform.urls"
@@ -295,18 +271,24 @@ SUMMERNOTE_CONFIG = {
 }
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-SITE_ID = 1
 SITE_NAME = 'BSLISE'
-EMAIL_HOST = env("HOST_EMAIL")
-EMAIL_HOST_USER = env("FROM_EMAIL")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = '587'
+#EMAIL_HOST = env("EMAIL_HOST")
+#EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+#EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+#EMAIL_PORT = '587'
+#EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'enacin.web@ibict.br'
+EMAIL_HOST_PASSWORD = 'arqgwrneowcquyye'
+EMAIL_SENDER = 'ENACIN/IBICT <enacin.web@ibict.br>'
 # EMAIL_BACKEND = 'django_ses.SESBackend'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 
-# How will receive contact emails from users
+# How will receive contact emails from external users
 # Can be more than one but the first one will appear on site
 EMAIL_RECIPIENT_LIST = env("REPLY_EMAIL").split(',')
 REPLY_EMAIL = EMAIL_RECIPIENT_LIST[0]
@@ -322,14 +304,14 @@ VISAO_PASSWORD = env('VISAO_PASSWORD')
 VISAO_GROUP = env('VISAO_GROUP')
 VISAO_LAYER = env('VISAO_LAYER')
 VISAO_URL = env('VISAO_URL')
-VISAO_LAYOUT = env('VISAO_LAYOUT')
 
 # Debug Options
 DEBUG = env('DEBUG')
 ADMIN_EMAIL = env('ADMIN_EMAIL')
+TEMPLATES[0]["OPTIONS"].update({"debug": DEBUG})
 
-REVIEW_PUBLISH_UNMODERATED = True
-NEWSLETTER_TYPE = 'Local'   # Accepts Local or Mailchimp
+SITE_ID = 1
+NEWSLETTER_TYPE = 'Local'  # Accepts Local or Mailchimp
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
@@ -337,6 +319,17 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication'
     ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'utilities.renderers.CSVRenderer',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+
+SWAGGER_SETTINGS = {
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'utilities.inspectors.SwaggerAutoSchema',
 }
 
 PASSWORD_RESET_CONFIRM_URL = '/password-reset/'
@@ -372,32 +365,13 @@ HAYSTACK_CONNECTIONS = {
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-MACHINA_BASE_TEMPLATE_NAME = 'base_forum_new.html'
-MACHINA_FORUM_NAME = 'Community Forums'
-MACHINA_USER_DISPLAY_NAME_METHOD = 'get_full_name'
-
-MACHINA_DEFAULT_AUTHENTICATED_USER_FORUM_PERMISSIONS = [
-    'can_see_forum',
-    'can_read_forum',
-    'can_start_new_topics',
-    'can_reply_to_topics',
-    'can_edit_own_posts',
-    'can_post_without_approval',
-    'can_create_polls',
-    'can_vote_in_polls',
-    'can_download_file',
-]
-
-MACHINA_MARKUP_LANGUAGE = None
-MACHINA_MARKUP_WIDGET = 'ckeditor_uploader.widgets.CKEditorUploadingWidget'
-MACHINA_PROFILE_AVATARS_ENABLED = False
-
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_REQUIRE_STAFF = False
 
 CKEDITOR_CONFIGS = {
     'default': {
+        'removePlugins': 'exportpdf',
         'toolbar': 'default_custom',
         'toolbar_default_custom': [
             {'name': 'basicstyles',
@@ -425,25 +399,11 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# https://django-cron.readthedocs.io/en/latest/introduction.html
 CRON_CLASSES = [
-    "eucs_platform.cron.ExpiredUsersCronJob",
-    "eucs_platform.cron.NewForumResponseCronJob",
     "eucs_platform.cron.CleanExpiredCaptchaCronJob",
+    "eucs_platform.cron.ClearSessions",
 ]
-
-CRONJOBS = [
-    ('0 1 * * *', 'eucs_platform.cron.ExpiredUsersCronJob'),
-    ('0 * * * *', 'eucs_platform.cron.NewForumResponseCronJob'),
-    ('30 0 * * *', 'eucs_platform.cron.CleanExpiredCaptchaCronJob')
-]
-
-# These are optional -- if they're set as environment variables they won't need to be set here as well
-# AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-# Additionally, if you are not using the default AWS region of us-east-1,
-# you need to specify a region, like so:
-# AWS_SES_REGION_NAME = env('AWS_SES_REGION_NAME')
-# AWS_SES_REGION_ENDPOINT = env('AWS_SES_REGION_ENDPOINT')
 
 FEATURED_MGT = env('FEATURED_MGT')
 FORUM_ENABLED = env('FORUM_ENABLED')
@@ -455,3 +415,12 @@ COUNTRIES_OVERRIDE = {
 
 ADMIN_TOOLS_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomIndexDashboard'
 ADMIN_TOOLS_APP_INDEX_DASHBOARD = 'eucs_platform.dashboard.CustomAppIndexDashboard'
+
+# geopy Nominatim user agent
+USER_AGENT = env('USER_AGENT')
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
+# Allow only 4 failed login attempts
+BRUTE_FORCE_THRESHOLD = 4
+# User failed attempts cache timeout
+BRUTE_FORCE_TIMEOUT = 600

@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 <div class="row">
     <form class="form-inline float-lg-right" id="searchOrganisations" action="{% url 'organisations' %}">
         <input type="hidden" name="keywords" value="{{filters.keywords}}"/>
@@ -39,8 +39,8 @@
                     <select id="orgTypes" name="orgTypes" class="custom-select form-control">
                         <option value="">{% trans "Type" %}<option>
                         {% for t in orgTypes %}
-                        <option {% if t.type ==  filters.orgTypes %} selected {% endif %} value="{{t.type}}">
-                        {{t.type|capfirst}}
+                        <option {% if t|safe ==  filters.orgTypes %} selected {% endif %} value="{{t}}">
+                        {{t|capfirst}}
                         </option>
                         {% endfor %}
                     </select>

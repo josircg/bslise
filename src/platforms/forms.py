@@ -76,7 +76,7 @@ class PlatformForm(forms.Form):
 
     contactPhone = forms.CharField(
         label=_('Contact Phone'),
-        max_length=100,
+        max_length=20,
         help_text=_('Insert a contact phone'),
         widget=forms.TextInput(),
         required=False)
@@ -84,9 +84,9 @@ class PlatformForm(forms.Form):
     organisation = forms.ModelMultipleChoiceField(
         label=_("Organisation(s)"),
         help_text=_(
-            "Please select the organisation(s) coordinating the platform. "
+            "Please select the organisation(s) coordinating the programme/course. "
             "If not listed, please add <a href='/new_organisation' "
-            "target='_blank'>here</a> before submitting the network or platform."),
+            "target='_blank'>here</a> before submitting it."),
         queryset=Organisation.objects.all(),
         widget=s2forms.ModelSelect2MultipleWidget(
             model=Organisation,
@@ -102,9 +102,9 @@ class PlatformForm(forms.Form):
 
     logo = forms.ImageField(
         required=False,
-        label=_("Logo of your network or platform"),
+        label=_("Logo of your programme"),
         help_text=_('This image will be resized to 600x400 pixels.'),
-        widget=forms.FileInput)
+        widget=forms.FileInput(attrs={'data-image-suffix': 'logo', 'data-image-width-option': 0}))
     xlogo = forms.FloatField(widget=forms.HiddenInput(), required=False)
     ylogo = forms.FloatField(widget=forms.HiddenInput(), required=False)
     widthlogo = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -118,7 +118,7 @@ class PlatformForm(forms.Form):
         required=False,
         label=_("Network or platform profile image"),
         help_text=_('This image will be resized to 1100x400 pixels.'),
-        widget=forms.FileInput)
+        widget=forms.FileInput(attrs={'data-image-suffix': 'profileImage', 'data-image-width-option': 1}))
     xprofileImage = forms.FloatField(widget=forms.HiddenInput(), required=False)
     yprofileImage = forms.FloatField(widget=forms.HiddenInput(), required=False)
     widthprofileImage = forms.FloatField(widget=forms.HiddenInput(), required=False)
@@ -145,6 +145,7 @@ class PlatformForm(forms.Form):
 
         platform.save()
         platform.organisation.set(self.data.getlist('organisation'))
+        platform.topic.set(self.data.getlist('topic'))
         platform.countries = self.data.getlist('countries')
         # I don't like it
         for key in images:

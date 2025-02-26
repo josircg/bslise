@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.gis.db import models
+from django.urls import reverse_lazy
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
@@ -79,7 +80,10 @@ class Platform(models.Model):
         return ",".join([p.name for p in self.organisation.all()])
 
     def save(self, *args, **kwargs):
-        if not self.pk and self.creator.is_staff:
-            self.approved = True
+        if not self.pk:
+            self.active = self.creator.is_staff
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('platform', kwargs={'pk': self.pk})

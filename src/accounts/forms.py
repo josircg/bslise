@@ -1,10 +1,9 @@
-from __future__ import unicode_literals
-
 from authtools import forms as authtoolsforms
 from crispy_forms.bootstrap import StrictButton
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit, HTML, Field
 from django import forms
+from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth import forms as authforms
 from django.contrib.auth.forms import AuthenticationForm
@@ -23,16 +22,13 @@ class LoginForm(AuthenticationForm):
         self.fields["username"].widget.input_type = "email"  # ugly hack
         self.fields["username"].label = ""
         self.fields["password"].label = ""
-
+        reset_pwd_msg = _('Forgot password?')
+        reset_pwd_url = reverse("accounts:password-reset")
         self.helper.layout = Layout(
             Field("username", label="", placeholder=_("Enter Email"), autofocus=""),
             HTML('<div class="m-4"></div>'),
             Field("password", placeholder=_("Enter Password")),
-            HTML(
-                '<div class="mt-3 mb-4"><a href="{}" class="pt-1 mb-5">Esqueci a senha</a></div>'.format(
-                    reverse("accounts:password-reset")
-                )
-            ),
+            HTML(f'<div class="mt-3 mb-4"><a href="{reset_pwd_url}" class="pt-1 mb-5">{reset_pwd_msg}</a></div>'),
             StrictButton(_("Log in"), css_class="btn btn-submit-account", type="Submit")
 
         )
@@ -51,9 +47,9 @@ class LoginForm(AuthenticationForm):
                 if user_temp is not None:
                     if not user_temp.is_active:
                         raise forms.ValidationError(
-                            _("We see that your email address is in our database, but that you have not yet"
-                              "confirmed your address. Please search for the confirmation email in your inbox"
-                              "(or spam) to activate your account")
+                            _("We see that your email address is already in our database, but that you have not "
+                              "yet confirmed your address. Please search for the confirmation email in your "
+                              "inbox(or spam) to activate your account")
                         )
                     else:
                         raise forms.ValidationError(
@@ -73,7 +69,11 @@ class LoginForm(AuthenticationForm):
 
 
 class SignupForm(authtoolsforms.UserCreationForm):
-    newsletter = forms.BooleanField(label=_('I want to receive the newsletter from Civis'), required=False)
+    language = forms.ChoiceField(
+        label=_('Language'),
+        help_text=_('Select your preferred language to browse and receive emails upon logging in.'),
+        choices=settings.TRANSLATED_LANGUAGES)
+    newsletter = forms.BooleanField(label=_('I want to receive the BSLISE newsletter'), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -83,12 +83,16 @@ class SignupForm(authtoolsforms.UserCreationForm):
         self.fields["name"].label = ""
         self.fields["password1"].label = ""
         self.fields["password2"].label = ""
- #       self.fields["captcha"] = ReCaptchaField()
- #       self.fields["captcha"].label = ""
+        #       self.fields["captcha"] = ReCaptchaField()
+        #       self.fields["captcha"].label = ""
         self.helper.layout = Layout(
             Field("email", placeholder=_("Enter Email"), autofocus=""),
             HTML('<div class="m-4"></div>'),
-            Field("name", placeholder=_("Enter name")),
+            Field("name", placeholder=_("Enter your first name and surname")),
+            HTML('<div class="m-4"></div>'),
+            Field("language", placeholder=_("Enter your prefered language")),
+            HTML('<div class="m-4"></div>'),
+            Field("orcid", placeholder=_("Enter your ORCID")),
             HTML('<div class="m-4"></div>'),
             Field("password1", placeholder=_("Enter Password")),
             HTML('<div class="m-4"></div>'),

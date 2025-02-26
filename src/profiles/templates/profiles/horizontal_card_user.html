@@ -1,8 +1,9 @@
 {% extends "horizontal_card.html" %}
 {% load thumbnail %}
+{% load eucs_platform_tags %}
 {% block img %}
 <a href="{% if request.user.pk == member.pk %}{% url 'profiles:show_self'%}{% else %}{% url 'profiles:show' slug=member.slug %}{% endif %}">
-    <img title="project picture" class="img-fluid p-1 zoom lazyload" data-src="{% thumbnail member.picture|default:'default_profile.png' 200x133 crop %}">
+    <img title="project picture" class="img-fluid p-1 zoom lazyload" data-src="{% thumbnail member.picture|safe_image:'default_profile.png' 200x133 crop %}">
 </a>
 {% endblock img %}
 {% block title %}

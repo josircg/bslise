@@ -4,28 +4,39 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">{% trans "Crop the photo" %}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span><span class="sr-only">{% trans "Close" %}</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-11">
-                        <img src="" id="image" class="img-fluid img-zoom">
-                    </div>
-                </div>
+              <div class="row">
+                <img src="" id="image" class="img-fluid img-zoom">
+              </div>
+              <div class="mb-3"></div>
             </div>
             <div class="modal-footer">
-                <div class="btn-group pull-left" role="group">
-                    <button type="button" class="btn btn-default js-zoom-in">
-                        <span><i class="material-icons" style="font-size: 18px;">{% trans "zoom_in" %}</i> </span>
+                <div class="col justify-content-start">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-light" id="zoom-in"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Zoom in'%}">
+                      <i class="fas fa-search-plus"></i>
                     </button>
-                    <button type="button" class="btn btn-default js-zoom-out">
-                        <span><i class="material-icons" style="font-size: 18px;">{% trans "zoom_out" %}</i></span>
+                    <button type="button" class="btn btn-light" id="zoom-out"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Zoom out'%}">
+                      <i class="fas fa-search-minus"></i>
                     </button>
+                    <button type="button" class="btn btn-light" id="fill"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Fill'%}">
+                      <i class="fas fa-file"></i>
+                    </button>
+                    <button type="button" class="btn btn-light" id="zoom-reset"
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="{% translate 'Reset'%}">
+                      <i class="fas fa-sync-alt"></i>
+                    </button>
+                  </div>
                 </div>
-                <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Cancel" %}</button>
-                <button type="button" class="btn btn-primary js-crop-and-upload">{% trans "Crop and upload" %}</button>
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">{% translate "Cancel" %}</button>
+                  <button type="button" class="btn btn-primary js-crop-and-upload">{% translate "Crop and upload" %}</button>
             </div>
         </div>
     </div>

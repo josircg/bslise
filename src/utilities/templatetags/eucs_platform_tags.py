@@ -31,6 +31,11 @@ def safe_image(img_field, default=None):
 
 
 @register.filter
+def safe_meta_image(img_field):
+    return safe_image(img_field)
+
+
+@register.filter
 def safe_image_url(img_field, default=None):
     if default is None:
         default = f'{settings.MEDIA_URL}/void_600.png'

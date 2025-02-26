@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, pgettext
 from organisations.models import Organisation
-from utilities.admin import TranslationInline
+from utilities.admin import EUCSAdmin, TranslationInline
 
 from .models import Project, Topic, Status, ParticipationTask, ProjectPermission, Keyword, FundingBody
 
@@ -35,7 +35,7 @@ class ProjectA(admin.ModelAdmin):
     fields = (
         'name', 'url', 'description', 'status', 'keywords',
         'topic', ('start_date', 'end_date'), 'participationTask', 'howToParticipate', 'equipment',
-        ('latitude', 'longitude'), 'country', ('author', 'author_email', 'mainOrganisation'),
+        ('latitude', 'longitude'), ('country', 'language'), ('author', 'author_email', 'mainOrganisation'),
         ('fundingBody', 'fundingProgram'), ('image1', 'imageCredit1'), ('image2', 'imageCredit2'),
         ('image3', 'imageCredit3'), ('originDatabase', 'originURL', 'originUID'), 'approved',
         'featured', 'host', 'doingAtHome', 'participatingInaContest', 'creator'
@@ -45,6 +45,7 @@ class ProjectA(admin.ModelAdmin):
     list_select_related = ('creator',)
     raw_id_fields = ('creator',)
     autocomplete_fields = ('topic', 'keywords', 'participationTask', 'fundingBody')
+    readonly_fields = ('dateCreated', 'dateUpdated', 'image1', 'image2', 'image3')
 
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)

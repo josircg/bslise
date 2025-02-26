@@ -145,10 +145,38 @@ main:not(.home) {
 }
 
 /* Buttons */
+.btn-default {
+    border: 1px solid var(--green6) !important;
+    color: var(--green5);
+    background-color: var(--white);
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    background-color: var(--green6);
+    border: 1px solid var(--green6);
+    color: var(--white);
+    transition: 0.3s;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-my-outline-darkGreen {
+    border: 1px solid var(--green5) !important;
+    background-color: var(--green5);
+    color: var(--white);
+}
+
+.btn-my-outline-darkGreen:hover {
+    color: var(--white);
+    border: 1px solid #012e1a !important;
+    background-color: #012e1a;
+}
+
 .btn-my-outline-darkBlue {
     border: 1px solid var(--green6) !important;
     color: var(--green5);
-    background-color: var(--bs-white);
+    background-color: var(--white);
 }
 
 .btn-my-outline-darkBlue:hover,
@@ -192,20 +220,6 @@ main:not(.home) {
     background-color: var(--darkBlue2);
     color: var(--white);
     transition: 0.3s;
-}
-
-
-
-.btn-my-outline-darkGreen {
-    border: 1px solid #03301C !important;
-    background-color: #03301C;
-    color: var(--white);
-}
-
-.btn-my-outline-darkGreen:hover {
-    color: var(--white);
-    border: 1px solid #012e1a !important;
-    background-color: #012e1a;
 }
 
 .btn-arrow {
@@ -261,9 +275,11 @@ a {
     position: fixed !important;
     z-index: 10;
     width: 100%;
-    background: transparent !important;
-    border-bottom: 2px solid #ffffff87;
     transition: 0.3s;
+}
+
+#navTop.home:not(.active) .nav-link {
+    color: var(--white) !important;
 }
 
 #navTop:not(.home) .nav-link,
@@ -271,14 +287,10 @@ a {
     color: var(--green6) !important;
 }
 
-#navTop.home:not(.active) .nav-link {
-    color: var(--bs-white) !important;
-}
-
 #navTop:not(.home),
 #navTop.active {
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10);
-    background-color: var(--bs-white) !important;
+    background: #ffffff
 }
 
 #searchNav .icon {
@@ -438,8 +450,8 @@ a {
 
 /* HOME */
 .bg-pill {
-    background-color: var(--green1) !important;
-    color: var(--green6) !important;
+    background-color: var(--green5) !important;
+    color: var(--white) !important;
 }
 
 .btn-mapa-interativo {
@@ -524,6 +536,10 @@ a {
 
 .img-card {
     aspect-ratio: attr(width) / attr(height);
+}
+
+.img-zoom {
+    background-color: gray;
 }
 
 .card-desc {
@@ -648,7 +664,7 @@ footer #mcti img {
 }
 
 #searchNav .nav-link.active {
-    border-bottom: 2px solid var(--green5);
+    border-bottom: 3px solid var(--green5);
 }
 
 #navTop ul.navbar-nav .nav-item.top a:hover {

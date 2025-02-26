@@ -1,0 +1,26 @@
+{% block html_body %}
+
+<p>Hello {{ user.name }}</p>
+
+<p>
+    Welcome to BSLISE Directory! We are very happy that you join our project.<br>
+    Your sign-up is almost done. To finish it, confirm your email address clicking on the
+    <a href="{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}">Activate Link</a>, or copy the link below and paste on your browser.
+</p>
+
+<p>
+    {{domain}}{% url 'accounts:activate' uidb64=uid token=token %}
+</p>
+
+<p>
+    Keep in mind that your email will only be used so that we can send you alerts like this, unless you explicitly choose to disclose it in the future.
+</p>
+
+<p>
+    If you didn't sign up on BSLISE, please ignore this message or write to bslise@ibict.br to inform us.
+</p>
+
+
+<p>Sincerely,<br>BSLISE Team</p>
+
+{% endblock html_body %}

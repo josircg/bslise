@@ -54,10 +54,7 @@ logger = StyleAdapter(logging.getLogger("project"))
 # logger.debug('Lazily formatted entry: {0} {keyword}', 123, keyword='foo')
 
 
-def log_message(instance, message, user=None, action_flag=None):
-    if action_flag is None:
-        action_flag = CHANGE
-
+def log_message(instance, message, user=None, action_flag=CHANGE):
     if not user:
         User = get_user_model()
         user = User.objects.get_or_create(name='sys')[0]

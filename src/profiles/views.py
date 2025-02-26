@@ -1,25 +1,25 @@
-from __future__ import unicode_literals
-
 from itertools import chain
 
 from contact.models import Subscriber
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
+from django.db import ProgrammingError
 from django.db.models import Q
-from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 from django.views import generic
+from eucs_platform import set_language_preference
 from events.models import Event
 from organisations.models import Organisation, OrganisationPermission
 from projects.models import Project, FollowedProjects, ProjectPermission
 from resources.models import Resource, BookmarkedResources, ResourcePermission
 
+
 from . import forms
-from . import models
-from .models import Profile
+from .models import Profile, InterestArea
 
 
 class ShowProfile(LoginRequiredMixin, generic.TemplateView):
@@ -29,7 +29,7 @@ class ShowProfile(LoginRequiredMixin, generic.TemplateView):
     def get(self, request, *args, **kwargs):
         slug = self.kwargs.get("slug")
         if slug:
-            profile = get_object_or_404(models.Profile, slug=slug)
+            profile = get_object_or_404(Profile, slug=slug)
             user = profile.user
             if user.profile.profileVisible is True:
                 kwargs["show_user"] = user
@@ -76,19 +76,18 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
         profile_form = forms.ProfileForm(
             request.POST, request.FILES, instance=user.profile
         )
-        if not (user_form.is_valid() and profile_form.is_valid()):
-            messages.error(
-                request,
-                "There was a problem with the form. " "Please check the details.",
-            )
-            user_form = forms.UserForm(instance=user)
-            profile_form = forms.ProfileForm(instance=user.profile)
-            return super().get(request, user_form=user_form, profile_form=profile_form)
-        # Both forms are fine. Time to save!
-        user_form.save()
-        profile_form.save(request)
-        messages.success(request, _("Profile details saved!"))
-        return redirect("profiles:show_self")
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save(request)
+            user.refresh_from_db()
+            translation.activate(user.profile.language)
+            messages.success(request, _("Profile details saved!"))
+            response = redirect("profiles:show_self")
+
+            return set_language_preference(self.request, response, user.profile.language)
+        else:
+            messages.error(request, _("Please correct the error below."))
+            return self.get(request, user_form=user_form, profile_form=profile_form)
 
 
 class PrivacyCenter(LoginRequiredMixin, generic.TemplateView):
@@ -125,18 +124,19 @@ class Submissions(generic.TemplateView):
     def get(self, request, *args, **kwargs):
         slug = self.kwargs.get("slug")
         if slug:
-            profile = get_object_or_404(models.Profile, slug=slug)
+            profile = get_object_or_404(Profile, slug=slug)
             user = profile.user
         else:
             user = self.request.user
             if user.is_anonymous:
                 return redirect("/login")
 
-        projectsSubmitted = Project.objects.all().filter(creator=user).order_by('-dateUpdated')
-        resourcesSubmitted = Resource.objects.all().filter(creator=user).filter(isTrainingResource=False)
-        trainingsSubmitted = Resource.objects.all().filter(creator=user).filter(isTrainingResource=True)
+        projectsSubmitted = Project.objects.filter(creator=user).order_by('-dateUpdated')
+        resourcesSubmitted = Resource.objects.filter(creator=user).filter(isTrainingResource=False)
+        trainingsSubmitted = Resource.objects.filter(creator=user).filter(isTrainingResource=True)
         organisationsSubmitted = Organisation.objects.all().filter(creator=user)
         eventsSubmitted = Event.objects.all().filter(creator=user)
+
         kwargs["show_user"] = user
         kwargs["projects_submitted"] = projectsSubmitted
         kwargs["resources_submitted"] = resourcesSubmitted
@@ -158,17 +158,19 @@ class Bookmarks(LoginRequiredMixin, generic.TemplateView):
             return redirect("/login")
 
         kwargs["show_user"] = user
-        followedProjects = FollowedProjects.objects.all().filter(user_id=user.id).values_list('project_id', flat=True)
-        projects = Project.objects.filter(id__in=followedProjects)
-        bookmarkedResources = BookmarkedResources.objects.all().filter(
-            user_id=user.id).values_list('resource_id', flat=True)
-        resources = Resource.objects.filter(id__in=bookmarkedResources).filter(isTrainingResource=False)
-        training = Resource.objects.filter(id__in=bookmarkedResources).filter(isTrainingResource=True)
+        # User Bookmarks
+        projects = FollowedProjects.objects.filter(user_id=user.pk).select_related('project')
+        bookmarks = BookmarkedResources.objects.filter(user_id=user.pk).select_related('resource')
+        resources = bookmarks.filter(resource__isTrainingResource=False)
+        training = bookmarks.filter(resource__isTrainingResource=True)
+
         if user == self.request.user:
             kwargs["editable"] = True
         kwargs["projects_followed"] = projects
         kwargs["resources_followed"] = resources
         kwargs["trainings_followed"] = training
+        # This view shows only current user bookmarks, so it's safe to send followed True to change follow icon color
+        kwargs["followed"] = True
 
         return super().get(request, *args, **kwargs)
 
@@ -199,7 +201,11 @@ class UsersSearch(generic.TemplateView):
                 Q(interestAreas__interestArea__icontains=request.GET['keywords'])).distinct()
             filters['keywords'] = request.GET['keywords']
 
-        counter = len(users)
+        try:
+            counter = len(users)
+        except ProgrammingError:
+            counter = 0
+            users = Profile.objects.none()
 
         paginator = Paginator(users, 42)
         page = request.GET.get('page')
@@ -297,8 +303,8 @@ def updateInterestAreas(dictio):
         for ia in interestAreas:
             if not ia.isdecimal():
                 # This is a new interestArea
-                models.InterestArea.objects.get_or_create(interestArea=ia)
-                interestArea_id = models.InterestArea.objects.get(interestArea=ia).id
+                InterestArea.objects.get_or_create(interestArea=ia)
+                interestArea_id = InterestArea.objects.get(interestArea=ia).id
                 dictio.update({'interestAreas': interestArea_id})
             else:
                 # This keyword is already in the database
@@ -317,15 +323,15 @@ def usersAutocompleteSearch(request):
 
 
 def getProfilesAutocomplete(text):
-    profiles = models.Profile.objects.all().filter(
+    profiles = Profile.objects.all().filter(
         Q(user__name__icontains=text)).filter(profileVisible=True).values_list('user__id', 'user__name', 'slug')
-    interestAreas = models.InterestArea.objects.filter(
+    interestAreas = InterestArea.objects.filter(
         interestArea__icontains=text).values_list('interestArea', flat=True).distinct()
     report = []
     for profile in profiles:
         report.append({"type": "profile", "id": profile[0], "text": profile[1], "slug": profile[2]})
     for interestArea in interestAreas:
-        numberElements = models.Profile.objects.filter(
+        numberElements = Profile.objects.filter(
             profileVisible=True).filter(Q(interestAreas__interestArea__icontains=interestArea)).count()
         report.append({"type": "profileInterestArea", "text": interestArea, "numberElements": numberElements})
     return report

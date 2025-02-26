@@ -1,17 +1,15 @@
 from django.contrib import admin
 from utilities.admin import TranslationInline
 
-from .models import *
+from .models import GeographicExtend, Platform
 
 
 @admin.register(Platform)
 class PlatformAdmin(admin.ModelAdmin):
-    list_search = ('organisation',)
-    list_display = ('name', 'organizations', 'creator',  'dateCreated', 'dateUpdated', 'approved', 'safe_url')
-    exclude = ('geographicExtend', 'keywords')
-    readonly_fields = ('creator', )
-    ordering = ('-dateCreated',)
-    autocomplete_fields = ('organisation', 'topic' )
+    list_filter = ('active', 'organisation',)
+    list_display = ('name', 'creator', 'organizations', 'dateCreated', 'dateUpdated', 'active', 'safe_url')
+    exclude = ('geographicExtend',)
+    ordering = ('-name',)
 
 
 @admin.register(GeographicExtend)

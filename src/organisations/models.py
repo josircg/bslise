@@ -5,13 +5,17 @@ from django.urls import reverse_lazy as rl
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django_countries.fields import CountryField
+from utilities.models import AbstractTranslatedModel
+
+from .managers import OrganisationTypeQuerySet
 
 
-class OrganisationType(models.Model):
+class OrganisationType(AbstractTranslatedModel):
     type = models.TextField()
 
-    def __str__(self):
-        return f'{self.type}'
+    str_field = 'type'
+
+    objects = OrganisationTypeQuerySet.as_manager()
 
     class Meta:
         verbose_name = _('Organization Type')
@@ -25,8 +29,8 @@ class Organisation(models.Model):
     description = models.CharField(max_length=3000)
     orgType = models.ForeignKey(OrganisationType, on_delete=models.CASCADE, verbose_name=_('Organization Type'))
     creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                related_name='creator', verbose_name=_('Criador'))
-    dateCreated = models.DateTimeField('Created date', auto_now=True)
+                                related_name='creator', verbose_name=_('Creator'))
+    dateCreated = models.DateTimeField('Created date', auto_now_add=True)
     dateUpdated = models.DateTimeField('Updated date', auto_now=True)
     logo = models.ImageField(upload_to='images/', max_length=300, null=True, blank=True)
     contactPoint = models.CharField(max_length=100, null=True, blank=True)
@@ -64,6 +68,9 @@ class Organisation(models.Model):
             self.approved = True
 
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return rl('organisation', kwargs={'pk': self.pk})
 
 
 class OrganisationPermission(models.Model):

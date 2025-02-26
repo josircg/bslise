@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load staticfiles %}
+{% load static %}
 {% load eucs_platform_translate %}
 
 {% block head %}
@@ -19,8 +19,9 @@
 {% include '_modal_zone.html' %}
 
 {% if platform.profileImage %}
-<div class="container-fluid profileImage"
-     style="background: url('{{ platform.profileImage.url }}') no-repeat; background-size: cover;">
+<div class="d-flex justify-content-center">
+    <img class="img-fluid img-responsive img-zoom lazyloaded" 
+         data-src="{{ platform.profileImage.url }}" src="{{ platform.profileImage.url }}">
 </div>
 {% endif %}
 

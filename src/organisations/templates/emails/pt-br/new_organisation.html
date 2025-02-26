@@ -1,0 +1,15 @@
+{% load i18n %}
+
+{% block html_body  %}
+  <p>Olá, {{ username }}</p>
+  <p>
+    Agradecemos por registrar a organização <a href="{{ domain }}{% url 'organisation' pk=id %}">{{ submissionName }}</a> no diretório
+      {{ site_name }}.
+  </p>
+  <p>A partir de agora, o registro será moderado por nossa equipe.</p>
+  <p>O objetivo é evitar que a plataforma seja utilizado para fins distintos do planejado.</p>
+  <p>Se quiser entrar em contato conosco, escreva para bslise@ibict.br.</p>
+  <p>Este é um e-mail automático, NÃO responda.</p>
+  <p>Obrigada,</p>
+  <p>Equipe {{ site_name }}</p>
+{% endblock html_body %}
