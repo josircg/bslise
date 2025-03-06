@@ -270,20 +270,14 @@ SUMMERNOTE_CONFIG = {
     },
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SITE_NAME = 'BSLISE'
-#EMAIL_HOST = env("EMAIL_HOST")
-#EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-#EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-#EMAIL_PORT = '587'
-#EMAIL_USE_TLS = True
-
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'enacin.web@ibict.br'
-EMAIL_HOST_PASSWORD = 'arqgwrneowcquyye'
-EMAIL_SENDER = 'ENACIN/IBICT <enacin.web@ibict.br>'
+
 # EMAIL_BACKEND = 'django_ses.SESBackend'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
