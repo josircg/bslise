@@ -8,9 +8,9 @@ from .models import GeographicExtend, Platform
 class PlatformAdmin(admin.ModelAdmin):
     list_filter = ('active', 'organisation',)
     list_display = ('name', 'creator', 'organizations', 'dateCreated', 'dateUpdated', 'active', 'safe_url')
+    search_fields = ('name', 'organisation__name')
     exclude = ('geographicExtend',)
     ordering = ('-name',)
-
 
 @admin.register(GeographicExtend)
 class GeographicExtendAdmin(admin.ModelAdmin):
